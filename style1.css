@@ -1,0 +1,21 @@
+*{
+    text-align: center;
+    caret-color: transparent;
+    font-weight: bolder;
+}
+.highlight{
+    color: red;
+}
+.headline{
+    font-size: 60px;
+}
+.overline{
+    text-decoration: overline;
+}
+.underline{
+    text-decoration: underline;
+    text-underline-offset: 30px;
+}
+p{
+    font-size: 30px;
+}
