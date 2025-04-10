@@ -1,3 +1,6 @@
+*{
+    caret-color: transparent;
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -31,8 +34,18 @@ a {
     font-size: 20px;
     margin-top: -2%;
 }
+.navbar__menu ul{
+    list-style: none;
+    font-size: 15px;
+    text-align: center;
+    padding-left: 0;
+    background-color: white;
+    display: none;
+}
+.navbar__menu >li:hover >ul{
+    display: block;
 
-
+}
 .navbar__menu li {
     padding: 8px 30px;
 }
