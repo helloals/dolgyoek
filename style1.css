@@ -3,6 +3,9 @@
     caret-color: transparent;
     font-weight: bolder;
 }
+#logo img{
+    width: 300px;
+}
 .highlight{
     color: red;
 }
