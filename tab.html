@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>버튼 탭 전환</title>
+    <style>
+        .button-group {
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            padding: 10px 16px;
+            margin-right: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: white;
+            transition: 0.2s;
+        }
+
+        .category-btn.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="button-group">
+        <button class="category-btn active" data-category="1">카테고리 1</button>
+        <button class="category-btn" data-category="2">카테고리 2</button>
+        <button class="category-btn" data-category="3">카테고리 3</button>
+        <button class="category-btn" data-category="4">카테고리 4</button>
+    </div>
+
+    <div class="category-content active" data-category="1">
+        <h2>21가지 메뉴</h2>
+        <p></p>
+    </div>
+    <div class="category-content" data-category="2">
+        <h2>카테고리 2</h2>
+        <p>카테고리 2의 내용입니다.</p>
+    </div>
+    <div class="category-content" data-category="3">
+        <h2>카테고리 3</h2>
+        <p>카테고리 3의 내용입니다.</p>
+    </div>
+    <div class="category-content" data-category="4">
+        <h2>카테고리 4</h2>
+        <p>카테고리 4의 내용입니다.</p>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.category-btn');
+        const contents = document.querySelectorAll('.category-content');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+
+                buttons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                document.querySelector(`.category-content[data-category="${category}"]`).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
