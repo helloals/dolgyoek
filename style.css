@@ -345,6 +345,7 @@ body {
 .grid_img li a:hover i.off{right:-20px;opacity:0}
 .grid_img li a:hover i.on{right:0;opacity:1}
 }
+/* 사이드 */
 @media(hover:hover){
 .grid_image li:hover .thum{transform:scale(1.1)}
 .grid_image li:hover .mask{opacity:.8}
@@ -352,7 +353,6 @@ body {
 .grid_image li a:hover i.off{right:-20px;opacity:0}
 .grid_image li a:hover i.on{right:0;opacity:1}
 }
-/* 사이드 */
 .size {
   font-size: 20px !important;
 }
