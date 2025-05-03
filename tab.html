@@ -1,404 +1,52 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>버튼 탭 전환</title>
-    <link rel="stylesheet" href="tab-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        .div-1 {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .div-2 {
+            position: absolute;
+            vertical-align: middle;
+            color: white;
+            font-weight: bolder;
+            font-size: 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="flex">
+        <div class="div-1">
+            <iframe width="1500px" height="600"
+                src="https://www.youtube.com/embed/OLY1zwZnILc?autoplay=1&controls=0&mute=1&si=XhSKPnX9nKwLY0fy"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
 
-    <div class="button-group">
-        <button class="category-btn active" data-category="1">21가지 맛 종류</button>
-        <button class="category-btn" data-category="2">사이즈 구성</button>
-        <button class="category-btn" data-category="3">곁들임 메뉴</button>
-        <button class="category-btn" data-category="4">사이드메뉴</button>
+        </div>
+        <div class="div-2">
+            어디에서도 본 적 없는 육즙가득 프리미엄 닭강정<br>
+            큼직한 100% 닭다리살과 전용 특제소스로 퀄리티를 높이
+        </div>
     </div>
-
-    <div class="category-content active" data-category="1">
-        <h1>21가지 맛</h1>
-        <ul class="grid_imgs">
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [빨간맛 161] <br>
-                            맵지 않은 순한맛부터 1, 2, 3단계 매운맛까지
-                            돌격만의 배합으로 완성시킨 시그니처 특제소스
-                            쉴새 없이 반복되는 새콤, 달콤, 매콤함의 향연!
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/빨간맛161.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [단짠마늘간장] <br>
-                            맵지 않은 간장과 매운간장맛으로 나뉜,
-                            전 연령층을 사로잡은 달콤한 특제 간장 소스와 감칠맛나는 마늘의 만남 !
-                            끊임없이 손이 가는 마성의 단짠단짠이 선사하는 중독성
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/단짠마늘간장맛.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [크림폭탄] <br>
-                            돌격의 특제 소스 161빨간맛 위로 떨어진 크림소스 폭탄 !
-                            입안 가득 폭발하듯 퍼지는 크림의 부드러움과 매콤새콤달콤한 161빨간맛의 환상적인 만남
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/크림폭탄_메인.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [청양크림] <br>
-                            돌격의 특제 간장소스 위로 떨어진 매콤한 청양크림소스 폭탄 !
-                            단짠단짠 간장맛과 청양크림의 부드러운 매콤함이 더해져 더욱 극대화된 감칠맛!
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/크림폭탄_마늘간장+청양크림.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [치즈폭포] <br>
-                            돌격의 특제 소스 161빨간맛 위로 폭포처럼 쏟아지는 치즈소스!
-                            매콤달콤한 161빨간맛에 더해진 고소한 치즈의 깊고 풍부한 맛
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/치즈폭포.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [후추라이드-순살] <br>고소하고 바삭한 후라이드에
-                            은은하게 입힌 알싸한 후추향!
-                            마늘간장소스에 찍어 먹을 때 극대화 되는 감칠맛에 계속해서 손이 가는 맛
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/후추라이드(순살).jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [후추라이드-윙봉] <br>
-                            고소하고 바삭한 후라이드에
-                            은은하게 입힌 알싸한 후추향!
-                            마늘간장소스에 찍어 먹을 때 극대화 되는 감칠맛에 계속해서 손이 가는 맛
-
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/후추라이드(윙봉).jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [눈꽃치즈] <br>
-                            갓 튀겨낸 치킨에 범벅된 시즈닝 가루가
-                            단짠 고소하게 입맛을 자극하는 멈출 수 없는 중독성 눈꽃시리즈
-
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/눈꽃시즈닝_눈꽃치즈맛.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>[눈꽃허니버터] <br>
-                            따끈한 치킨에 범벅된 시즈닝가루가 단짠고소하게
-                            입맛을 자극하는 멈출 수 없는 중독성 눈꽃시리즈
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/눈꽃시즈닝_눈꽃허니버터맛.jpg" alt="" />
-                    <br>
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <p>
-                            [순살 후라이드] <br>
-                            후라이드가 정말 맛있는
-                            돌격 전용 크런키 파우더로 맛을 낸
-                            느끼하지 않은 고소함과 빠삭함 !
-                        </p>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션19 다양한 맛/순살후라이드.jpg" alt="" />
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="category-content" data-category="2">
-        <h2>사이즈 구성</h2>
-        <ul class="grid_image">
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [왕컵]
-                        </span>
-                    </div>
-                    <img class="thum" src="왕컵.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [대왕컵]
-                        </span>
-                    </div>
-                    <img class="thum" src="대왕컵.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [실속단품]
-                        </span>
-                    </div>
-                    <img class="thum" src="/중장단품.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [중장SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="중장세트.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [대장SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="대장세트.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [왕대장SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="중장세트.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [중장 2종 콤보 SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션20 사이즈/2종콤보_중장2종.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [왕대장 2종 콤보 SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션20 사이즈/2종콤보_왕대장2종.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [삼대장 3종 콤보 SET]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션20 사이즈/3대장.jpeg" alt="" />
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-    <div class="category-content" data-category="3">
-        <h2>곁들임 메뉴</h2>
-        <ul class="grid_image">
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [火떡볶이]
-                        </span>
-                    </div>
-                    <img class="thum" src="./돌격닭강정/섹션21 사이드/화떡볶이.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [커리어묵칩스]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/커리어묵칩스.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [옛날통닭]
-                        </span>
-                    </div>
-                    <img class="thum" src="옛날통닭.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [치즈폭포감자튀김]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/치즈폭포감자튀김.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [후라이드감자튀김]
-                        </span>
-                    </div>
-                    <img class="thum" src="레트로 떡강정.jpg" alt="" />
-                </a>
-            </li>
-
-        </ul>
-    </div>
-    <div class="category-content" data-category="4">
-        <h2>사이드 메뉴</h2>
-        <ul class="grid_image">
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [후라이드감자튀김]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/후라이드 감자튀김.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [눈꽃감자튀김]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/눈꽃감자튀김.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [치즈스틱]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/치즈스틱.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [고구마 치즈스틱]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/고구마치즈스틱.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [치즈볼]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/치즈볼.jpg" alt="" />
-                </a>
-            </li>
-            <li data-aos="zoom-in" data-aos-offset="300">
-                <a href="">
-                    <div class="mask"></div>
-                    <div class="txt">
-                        <span class="size" style="font-size: 20px;">
-                            [눈꽃 치즈볼]
-                        </span>
-                    </div>
-                    <img class="thum" src="돌격닭강정/섹션21 사이드/눈꽃 치즈볼.jpg" alt="" />
-                </a>
-            </li>
-
-        </ul>
-    </div>
-
-    <script src="./tab-script.js"></script>
-
 </body>
 
 </html>

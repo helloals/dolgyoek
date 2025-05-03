@@ -91,3 +91,29 @@ const buttons = document.querySelectorAll('.category-btn');
                 document.querySelector(`.category-content[data-category="${category}"]`).classList.add('active');
             });
         });
+// 리뷰 슬라이드
+        
+       const options = {
+            slidesPerView: 1,
+            loop: true,
+            speed: 4000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            allowTouchMove: false,
+        };
+
+        const swiper1 = new Swiper('.swiper1', options);
+        const swiper2 = new Swiper('.swiper2', options);
+        const swiper3 = new Swiper('.swiper3', options);
+
+        function setupInstantPause(swiper, selector) {
+            const el = document.querySelector(selector);
+            el.addEventListener('mouseenter', () => swiper.autoplay.stop());
+            el.addEventListener('mouseleave', () => swiper.autoplay.start());
+        }
+
+        setupInstantPause(swiper1, '.swiper1');
+        setupInstantPause(swiper2, '.swiper2');
+        setupInstantPause(swiper3, '.swiper3');

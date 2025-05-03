@@ -16,28 +16,40 @@
 }
 body {
   font-family: 'Pretendard Variable', sans-serif;
+  background-color: beige;
 }
 
 /* Ensure that the navbar takes the full width */
 .navbar {
     width: 100%;
-    background-color: var(--background-color); /* 배경 색상 */
     position: relative;
+        z-index: 999;
+          /* 다른 요소보다 위에 표시되도록 */
 }
 
 /* Use Flexbox to make the menu horizontally aligned */
 .navbar__menu {
     display: flex;
-    justify-content: space-between; /* 메뉴 항목 사이에 공간을 균등하게 배치 */
+    justify-content: space-around; /* 메뉴 항목 사이에 공간을 균등하게 배치 */
     align-items: center; /* 세로 중앙 정렬 */
     padding: 10px 20px; /* 상하, 좌우 여백 */
+    background-color: red;
+    position: fixed;
+    width: 100%;
+        z-index: 999;
+          /* 다른 요소보다 위에 표시되도록 */
 }
 .navbar__menu img{
     width: 100px;
+        z-index: 999;
+          /* 다른 요소보다 위에 표시되도록 */
 }
 
 .navbar__menu li {
     list-style-type: none;
+    background-color: red;
+        z-index: 999;
+          /* 다른 요소보다 위에 표시되도록 */
 }
 
 .navbar__menu li a {
@@ -45,7 +57,8 @@ body {
     text-decoration: none; /* 밑줄 없애기 */
     padding: 10px 20px; /* 링크에 패딩 추가 */
     display: block; /* 링크가 영역을 차지하도록 */
-    background-color: red;
+    z-index: 999; /* 다른 요소보다 위에 표시되도록 */
+
 }
 
 /* 햄버거 버튼 숨기기 */
@@ -58,6 +71,31 @@ body {
     top: 20px;
     right: 20px; /* 오른쪽 상단에 위치 */
     z-index: 999; /* 다른 요소보다 위에 표시되도록 */
+}
+/* 메인 섹션 */
+.flex {
+  display: flex;
+}
+
+.div-1 {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  
+}
+
+.div-2 {
+  position: absolute;
+  vertical-align: middle;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  line-height: 100px;
+  text-align: center;
 }
 
 /* 모바일 화면에서 메뉴 숨기고, 햄버거 버튼 보이게 하기 */
@@ -274,6 +312,32 @@ body {
   .next {
     right: 10px;
   }
+  /* 리뷰 슬라이드 */
+        .slide-wrapper {
+          padding: 40px 20px;
+        }
+    
+        .swiper {
+          width: 100%;
+          max-width: 600px;
+          height: 400px;
+          border: 2px solid #333;
+          border-radius: 10px;
+          overflow: hidden;
+          margin: 20px auto;
+        }
+    
+        .swiper-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+    
+        .swiper-slide img {
+          width: 400px;
+          object-fit: cover;
+          border-radius: 8px;
+        }
   #sec8-1{
       -webkit-transform: skew(-18deg);
       -moz-transform: skew(20deg);
@@ -457,4 +521,19 @@ body {
 .red-font{
     color: var(--red-font);
     font-weight: bolder;
+}
+.bolder-red{
+  font-weight: bolder;
+  color: #ad0000;
+  font-size: 60px;
+}
+.fs-mdl{
+  font-size: 40px;
+  font-weight: 500;
+}
+#brand{
+  text-align: left;
+}
+#brand img{
+  margin-left: 10%;
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>창업문의</title>
+    <style>
+        .bottom-form {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: yellow;
+            color: red;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: sans-serif;
+            z-index: 1000;
+        }
+
+        .bottom-form input[type="text"] {
+            height: 30px;
+            margin: 5px;
+            padding: 0 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .bottom-form label {
+            margin: 0 8px;
+        }
+
+        .radio-group {
+            margin-left: 15px;
+        }
+
+        .bottom-form input[type="radio"] {
+            margin-left: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .bottom-form {
+                font-size: 14px;
+                padding: 10px 5px;
+            }
+
+            .bottom-form input[type="text"] {
+                width: 80%;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <form class="bottom-form" action="#" method="post">
+        <img src="./로고/대지 2@4x.png" alt="" style=" width: 150px; position: absolute;
+        left: 5%;
+        bottom: 5px;">
+        <label>
+            이름
+            <input type="text" name="name" placeholder="이름">
+        </label>
+        <label>
+            연락처
+            <input type="text" name="phone" placeholder="연락처">
+        </label>
+        <label>
+            희망지역
+            <input type="text" name="area" placeholder="희망지역">
+        </label>
+        <span class="radio-group">
+            <label>
+                <input type="radio" name="type" value="신규매장"> 신규매장
+            </label>
+            <label>
+                <input type="radio" name="type" value="업종변경"> 업종변경
+            </label>
+        </span>
+    </form>
+
+</body>
+
+</html>
