@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>중간 원 투명도 조절 도넛 그래프</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+    canvas {
+      border: 2px solid #000;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      position: relative; /* 위치 조정 */
+      z-index: 0;  /* 캔버스의 z-index를 0으로 설정 */
+    }
+    .center-text {
+      position: absolute;
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      user-select: none;
+      z-index: 1; /* 텍스트가 캔버스 위로 오도록 설정 */
+    }
+    .controls {
+      margin-top: 20px;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="400"></canvas>
+  
+  <!-- Absolute position으로 중앙에 표시할 텍스트 -->
+  <div class="center-text" id="centerText">Rotating...</div>
+
+  <!-- z-index 조절 슬라이더 -->
+  <div class="controls">
+    <label for="zIndexSlider">Text Z-Index:</label>
+    <input type="range" id="zIndexSlider" min="0" max="10" value="1"/>
+    <span id="zIndexValue">1</span>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const data = [
+      { label: '식자재비', value: 34, color: '#2a0100' },
+      { label: '음표&주류', value: 3, color: '#ffd291' },
+      { label: '인건비', value: 17, color: '#ffbb73' },
+      { label: '임대료', value: 3, color: '#feff86' },
+      { label: '카드수수료', value: 1, color: '#fbe8a4' },
+      { label: '배달수수료', value: 10, color: '#efd4a7' },
+      { label: '공과잡비', value: 3, color: '#e9c079' },
+      { label: '영업이익', value: 29, color: '#e60012' }
+    ];
+
+    const totalValue = data.reduce((acc, segment) => acc + segment.value, 0);
+
+    let startAngle = 0;
+    const outerRadius = 200;
+    const middleRadius = 90;
+    const innerRadius = 80;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    // 고정된 투명도 값 (0.3)
+    const fixedAlpha = 0.3;
+
+    function drawChart() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let currentAngle = startAngle;
+
+      // 도넛 섹션 그리기
+      data.forEach((segment) => {
+        const angle = (segment.value / totalValue) * Math.PI * 2;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, outerRadius, currentAngle, currentAngle + angle);
+        ctx.arc(centerX, centerY, innerRadius, currentAngle + angle, currentAngle, true);
+        ctx.closePath();
+
+        ctx.fillStyle = segment.color;
+        ctx.fill();
+
+        const textAngle = currentAngle + angle / 2;
+        const textX = centerX + (outerRadius - (outerRadius - innerRadius) / 2) * Math.cos(textAngle);
+        const textY = centerY + (outerRadius - (outerRadius - innerRadius) / 2) * Math.sin(textAngle);
+
+        ctx.fillStyle = 'black';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(segment.label, textX, textY);
+
+        currentAngle += angle;
+      });
+
+      // 고정된 투명도 값으로 중간 원 그리기
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fillStyle = `rgba(0, 0, 0, ${fixedAlpha})`;  // 0.3으로 고정된 투명도
+      ctx.fill();
+
+      // 중앙 원 (검정색)
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fillStyle = "black";
+      ctx.fill();
+    }
+
+    function animate() {
+      startAngle += 0.001;
+      drawChart();
+      requestAnimationFrame(animate);
+    }
+
+    // Z-Index 슬라이더 업데이트
+    const zIndexSlider = document.getElementById("zIndexSlider");
+    const zIndexValueDisplay = document.getElementById("zIndexValue");
+    const centerText = document.getElementById("centerText");
+
+    zIndexSlider.addEventListener("input", () => {
+      const zIndex = zIndexSlider.value;
+      zIndexValueDisplay.textContent = zIndex;
+      centerText.style.zIndex = zIndex;  // 텍스트의 z-index를 슬라이더 값에 맞게 업데이트
+    });
+
+    animate();
+  </script>
+</body>
+</html>
