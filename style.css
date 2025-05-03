@@ -215,6 +215,65 @@ body {
   .next {
     right: 10px;
   }
+.rev-slider {
+    position: relative;
+    width: 300%;
+    max-width: 1400px;
+    height: 650px;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rev-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .rev-slides img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 2rem;
+    background: none;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-button :hover {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 2rem;
+    background: none;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
   #sec8-1{
       -webkit-transform: skew(-18deg);
       -moz-transform: skew(20deg);
@@ -258,10 +317,11 @@ body {
   .avg{
     margin-top: 10%
   }
-  #first{
+  #first img{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 5%;
+    width: 300px;
   }
   .wating img{
     width: 100%;
@@ -291,6 +351,33 @@ body {
     justify-content: space-around;
     gap: 20px;
 }
+ .button-group {
+   margin-bottom: 20px;
+ }
+
+ .category-btn {
+   padding: 10px 16px;
+   margin-right: 8px;
+   font-size: 16px;
+   cursor: pointer;
+   border: 1px solid #ccc;
+   background-color: white;
+   transition: 0.2s;
+ }
+
+ .category-btn.active {
+   background-color: #007bff;
+   color: white;
+   border-color: #007bff;
+ }
+
+ .category-content {
+   display: none;
+ }
+
+ .category-content.active {
+   display: block;
+ }
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');/* regular-400, medium-500, semibold-600, bold-700 */ 
 
 *, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
