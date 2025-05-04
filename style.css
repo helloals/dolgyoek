@@ -253,6 +253,9 @@ img.reveal {
   transform: translateX(-50%);
 
 }
+.bolder{
+  font-weight: bolder;
+}
 /* 슬라이드 스타일 */
 .slider {
     position: relative;
@@ -694,6 +697,20 @@ img.reveal {
     #graph{
       position: relative;
       margin: 5%;
+    }
+    #exterior img{
+      width: 95%;
+      height: 99%;
+    }
+    #interior img{
+      width: 95%;
+      height: 99%;
+    }
+    
+    #sec8-1{
+      line-height: 1;
+      font-size: 60px;
+      width: 70%;
     }
 }
 @media (max-width:320px){
