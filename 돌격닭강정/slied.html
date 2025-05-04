@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>회전 도넛 그래프 - 고정 라벨</title>
+    <title>회전 도넛 그래프 - 회전 라벨</title>
     <style>
         body {
             margin: 0;
@@ -27,16 +27,6 @@
             z-index: 0;
         }
 
-        svg {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 400px;
-            height: 400px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
         .label {
             position: absolute;
             font-size: 12px;
@@ -44,6 +34,7 @@
             color: black;
             pointer-events: none;
             transform: translate(-50%, -50%);
+            white-space: nowrap;
             z-index: 3;
         }
 
@@ -92,8 +83,8 @@
         ];
 
         const total = data.reduce((acc, d) => acc + d.value, 0);
-
         let rotation = 0;
+        const labelElements = [];
 
         function polarToCartesian(angle, radius) {
             return {
@@ -102,28 +93,38 @@
             };
         }
 
-        function checkCollision(newPos, existingLabels) {
-            const minDistance = 40; // 라벨 간 최소 거리
-            for (let label of existingLabels) {
-                const dist = Math.sqrt(Math.pow(newPos.x - label.x, 2) + Math.pow(newPos.y - label.y, 2));
-                if (dist < minDistance) {
-                    return true; // 겹침
-                }
+        function createLabelElements() {
+            data.forEach(d => {
+                const div = document.createElement("div");
+                div.className = "label";
+                div.innerText = d.label;
+                labelsContainer.appendChild(div);
+                labelElements.push(div);
+            });
+        }
+
+        function updateLabelPositions() {
+            let start = rotation;
+            for (let i = 0; i < data.length; i++) {
+                const d = data[i];
+                const sliceAngle = (d.value / total) * Math.PI * 2;
+                const midAngle = start + sliceAngle / 2;
+                const pos = polarToCartesian(midAngle, 210);
+                const label = labelElements[i];
+                label.style.left = `${pos.x}px`;
+                label.style.top = `${pos.y}px`;
+                start += sliceAngle;
             }
-            return false; // 겹침 없음
         }
 
         function drawChart() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            labelsContainer.innerHTML = "";
-
             let start = rotation;
-            let existingLabels = []; // 기존 라벨들의 위치를 저장
 
             data.forEach(d => {
                 const sliceAngle = (d.value / total) * Math.PI * 2;
 
-                // 도넛 부분
+                // 도넛 조각
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
                 ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
@@ -131,27 +132,8 @@
                 ctx.fillStyle = d.color;
                 ctx.fill();
 
-                // 중심각으로 라벨 위치 계산
+                // 퍼센트 텍스트
                 const midAngle = start + sliceAngle / 2;
-                let labelPos = polarToCartesian(midAngle, 210);  // 초기 라벨 위치
-
-                // 겹치지 않도록 라벨 위치 조정
-                while (checkCollision(labelPos, existingLabels)) {
-                    labelPos = polarToCartesian(midAngle, 230);  // 더 바깥쪽으로 이동
-                }
-
-                // 외부 고정 라벨 (퍼센트 제거)
-                const label = document.createElement("div");
-                label.className = "label";
-                label.innerText = d.label;  // 퍼센트 제거
-                label.style.left = `${labelPos.x}px`;
-                label.style.top = `${labelPos.y}px`;
-                labelsContainer.appendChild(label);
-
-                // 기존 라벨들의 위치 저장
-                existingLabels.push(labelPos);
-
-                // 도넛 내부에 퍼센트 표시
                 const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2);
                 ctx.fillStyle = "white";
                 ctx.font = "16px Arial";
@@ -178,10 +160,12 @@
         function animate() {
             rotation += 0.005;
             drawChart();
+            updateLabelPositions();
             requestAnimationFrame(animate);
         }
 
-        animate();
+        createLabelElements(); // 최초 한 번
+        animate(); // 회전 시작
     </script>
 </body>
 

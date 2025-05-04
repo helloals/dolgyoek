@@ -169,7 +169,46 @@ transform: scale(1.2);
 transform: scale(1);
 }
 }
+.chart-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
 
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  z-index: 4;
+  user-select: none;
+}
+#graph{
+  margin-top: -15%;
+  margin-left: 60%;
+}
 .heartbeat-image {
 animation: heartbeat 2s ease-in-out infinite;
 }
