@@ -10,7 +10,7 @@
 }
 /* Reset some default styles */
 span{
-  font-size: 30px;
+  font-size: 20px;
 }
 * {
   margin: 0;
@@ -78,6 +78,7 @@ body {
 /* 메인 섹션 */
 .flex {
   display: flex;
+  width: 100%;
 }
 
 .div-1 {
@@ -101,37 +102,7 @@ body {
   text-align: center;
 }
 
-/* 모바일 화면에서 메뉴 숨기고, 햄버거 버튼 보이게 하기 */
-@media (max-width: 800px) {
-    .navbar__menu {
-        display: none; /* 메뉴 숨기기 */
-        width: 100%;
-        flex-direction: column; /* 세로로 정렬 */
-        position: absolute;
-        top: 60px; /* navbar 높이 만큼 떨어지게 설정 */
-        left: 0;
-        background-color: var(--background-color);
-        
-    }
 
-    .navbar__menu.active {
-        display: flex; /* active 상태에서 메뉴 보이게 하기 */
-    }
-
-    .navbar__toggle {
-        display: block; /* 햄버거 버튼 보이기 */
-    }
-
-    .navbar__menu li a {
-        padding: 15px 20px; /* 모바일에서 더 넓은 클릭 영역 */
-    }
-    .box {
-        flex: 1 1 100%; /* 화면이 좁으면 각 div가 100% 차지 */
-    }
-    *{
-        font-size: 20px;
-    }
-}
 .box {
     padding: 20px;
     flex: 1 1 200px; /* 최소 200px 크기로 반응형 */
@@ -261,13 +232,28 @@ img.reveal {
   opacity: 1;
   transform: translateX(0) translateY(0);
 }
-.product{
+#product{
   display: flex;
+  justify-content: space-around
 }
-.product img{
+#product img{
   border-radius: 5px;
+}
+#exterior{
+  display: flex;
+  justify-content: space-around;
+}
+#exterior img{
   width: 300px;
-  height: 300px;
+  height: 400px;
+}
+#interior{
+  display: flex;
+  justify-content: space-around;
+}
+#interior img{
+  width: 300px;
+  height: 400px;
 }
 .lined-text {
   border-top: 3px solid black;
@@ -469,10 +455,9 @@ img.reveal {
     margin-top: 10%
   }
   #first img{
+    width: 100%;
     display: flex;
-    margin-left: 27%;
-    width: 300px;
-  left: 50%;
+    justify-content: space-around;
   }
   .wating img{
     width: 100%;
@@ -658,23 +643,59 @@ img.reveal {
 .bottom-form input[type="radio"] {
   margin-left: 10px;
 }
-@media (max-width: 600px) {
-  .bottom-form {
-      font-size: 14px;
-      padding: 10px 5px;
-  }
-
-  .bottom-form input[type="text"] {
-      width: 80%;
-      margin-top: 5px;
-  }
-}.btm-img{
-  width: 150px; position: absolute;
-        left: 5%;
-        bottom: 5px;
+.bottom-form img{
+  width: 100px;
+  position: fixed;
+  top: 90%;
+  left: 3%;
 }
 .bottom-form .submit{
   width: 100px;
   height: 30px;
   margin-left: 5%;
 }
+  @media (max-width: 600px) {
+    .bottom-form {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+  
+    .bottom-form input[type="text"] {
+        width: 80%;
+        margin-top: 5px;
+    }
+  }
+    /* 모바일 화면에서 메뉴 숨기고, 햄버거 버튼 보이게 하기 */
+    @media (max-width: 800px) {
+      .navbar__menu {
+        display: none;
+        /* 메뉴 숨기기 */
+        width: 100%;
+        /* 세로로 정렬 */
+  
+      }
+  
+      .navbar__menu.active {
+        display: flex;
+        /* active 상태에서 메뉴 보이게 하기 */
+      }
+  
+      .navbar__toggle {
+        display: block;
+        /* 햄버거 버튼 보이기 */
+      }
+  
+      .navbar__menu li a {
+        padding: 15px 20px;
+        /* 모바일에서 더 넓은 클릭 영역 */
+      }
+  
+      .box {
+        flex: 1 1 100%;
+        /* 화면이 좁으면 각 div가 100% 차지 */
+      }
+  
+      * {
+        font-size: 20px;
+      }
+    }
