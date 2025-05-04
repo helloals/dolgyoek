@@ -1,14 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.querySelector('.navbar__toggle'); // 햄버거 버튼
-    const menu = document.querySelector('.navbar__menu'); // 메뉴 목록
-    
-    // 햄버거 버튼 클릭 시 메뉴 토글
-    toggleButton.addEventListener('click', function() {
-        menu.classList.toggle('active');
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const slidesContainer = document.getElementById("slides");
   const slides = slidesContainer.querySelectorAll("img");
   const prevBtn = document.getElementById("prevBtn");

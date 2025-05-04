@@ -63,18 +63,6 @@ body {
     z-index: 999; /* 다른 요소보다 위에 표시되도록 */
 
 }
-
-/* 햄버거 버튼 숨기기 */
-.navbar__toggle {
-    display: none; /* 기본적으로 햄버거 버튼은 숨김 */
-    font-size: 30px;
-    color: red;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px; /* 오른쪽 상단에 위치 */
-    z-index: 999; /* 다른 요소보다 위에 표시되도록 */
-}
 /* 메인 섹션 */
 .flex {
   display: flex;
@@ -234,10 +222,6 @@ img.reveal {
 }
 #product{
   display: flex;
-  justify-content: space-around
-}
-#product img{
-  border-radius: 5px;
 }
 #exterior{
   display: flex;
@@ -654,48 +638,14 @@ img.reveal {
   height: 30px;
   margin-left: 5%;
 }
-  @media (max-width: 600px) {
-    .bottom-form {
-        font-size: 14px;
-        padding: 10px 5px;
-    }
-  
-    .bottom-form input[type="text"] {
-        width: 80%;
-        margin-top: 5px;
-    }
+@media (max-width:768px){
+  #nav{
+    width: 100%;
+
   }
-    /* 모바일 화면에서 메뉴 숨기고, 햄버거 버튼 보이게 하기 */
-    @media (max-width: 800px) {
-      .navbar__menu {
-        display: none;
-        /* 메뉴 숨기기 */
-        width: 100%;
-        /* 세로로 정렬 */
-  
-      }
-  
-      .navbar__menu.active {
-        display: flex;
-        /* active 상태에서 메뉴 보이게 하기 */
-      }
-  
-      .navbar__toggle {
-        display: block;
-        /* 햄버거 버튼 보이기 */
-      }
-  
-      .navbar__menu li a {
-        padding: 15px 20px;
-        /* 모바일에서 더 넓은 클릭 영역 */
-      }
-  
-      .box {
-        flex: 1 1 100%;
-        /* 화면이 좁으면 각 div가 100% 차지 */
-      }
-  
-      * {
-        font-size: 20px;
-      }
-    }
+#brand-video{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
