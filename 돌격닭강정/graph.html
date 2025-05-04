@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>중간 원 투명도 조절 도넛 그래프</title>
   <style>
     body {
@@ -16,13 +17,17 @@
       font-family: Arial, sans-serif;
       position: relative;
     }
+
     canvas {
       border: 2px solid #000;
       border-radius: 50%;
       margin-bottom: 20px;
-      position: relative; /* 위치 조정 */
-      z-index: 0;  /* 캔버스의 z-index를 0으로 설정 */
+      position: relative;
+      /* 위치 조정 */
+      z-index: 0;
+      /* 캔버스의 z-index를 0으로 설정 */
     }
+
     .center-text {
       position: absolute;
       font-size: 24px;
@@ -30,30 +35,35 @@
       font-weight: bold;
       text-align: center;
       user-select: none;
-      z-index: 1; /* 텍스트가 캔버스 위로 오도록 설정 */
+      z-index: 1;
+      /* 텍스트가 캔버스 위로 오도록 설정 */
     }
+
     .controls {
       margin-top: 20px;
       text-align: center;
     }
+
     label {
       font-weight: bold;
     }
+
     input[type="range"] {
       width: 100%;
     }
   </style>
 </head>
+
 <body>
   <canvas id="myCanvas" width="400" height="400"></canvas>
-  
+
   <!-- Absolute position으로 중앙에 표시할 텍스트 -->
   <div class="center-text" id="centerText">Rotating...</div>
 
   <!-- z-index 조절 슬라이더 -->
   <div class="controls">
     <label for="zIndexSlider">Text Z-Index:</label>
-    <input type="range" id="zIndexSlider" min="0" max="10" value="1"/>
+    <input type="range" id="zIndexSlider" min="0" max="10" value="1" />
     <span id="zIndexValue">1</span>
   </div>
 
@@ -148,4 +158,5 @@
     animate();
   </script>
 </body>
+
 </html>
