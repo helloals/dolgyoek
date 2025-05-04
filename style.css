@@ -248,7 +248,10 @@ img.reveal {
   text-align: center;
   font-size: 40px;
   font-weight: bolder;
-  margin-left: 33%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 /* 슬라이드 스타일 */
 .slider {
@@ -591,7 +594,6 @@ img.reveal {
   text-align: left;
 }
 #brand img{
-  margin-left: 10%;
 }
 .bottom-form {
   position: fixed;
@@ -639,13 +641,61 @@ img.reveal {
   margin-left: 5%;
 }
 @media (max-width:768px){
-  #nav{
-    width: 100%;
-
+  .navbar__menu li a{
+    font-size: 11px;
+    text-align: center;
   }
-#brand-video{
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  #brand-video{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .div-2{
+    font-size: 13px
+  }
+  #brand{
+    .bolder{
+      font-size: 15px;
+      font-weight: bolder;
+    }
+    .bolder-red{
+      font-size: 30px;
+    }
+    .fs-mdl{
+      font-size: 20px;
+    }
+  }
+    .lined-text{
+     font-size: 30px;
+     width: 100%;
+
+    }
+    .reveal.from-left{
+      width: 30%;
+    
+    }
+    .reveal.from-bottom{
+      width: 30%
+
+    }
+    .reveal.from-right{
+      width: 30%
+
+    }
+    .image-container{
+      width: 100%;
+    }
+    .box img{
+      width: 100%;
+    }
+    .modeling img{
+      width: 100%;
+    }
+    #graph{
+      position: relative;
+      margin: 5%;
+    }
 }
+@media (max-width:320px){
+
 }
