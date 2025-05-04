@@ -117,3 +117,13 @@ const buttons = document.querySelectorAll('.category-btn');
         setupInstantPause(swiper1, '.swiper1');
         setupInstantPause(swiper2, '.swiper2');
         setupInstantPause(swiper3, '.swiper3');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+              observer.unobserve(entry.target); // 한 번만 애니메이션 실행
+            }
+          });
+        });
+    
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

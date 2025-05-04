@@ -193,6 +193,51 @@ body {
   width: 350px;
   margin-left: 15%;
 }
+img.reveal {
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  display: block;
+  width: 300px;
+  max-width: 80%;
+  margin: 50px auto;
+  transform: translateY(50px); /* 기본 위치 */
+}
+
+.reveal.from-left {
+  transform: translateX(-100px);
+}
+
+.reveal.from-right {
+  transform: translateX(100px);
+}
+
+.reveal.from-bottom {
+  transform: translateY(100px);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+.product{
+  display: flex;
+}
+.product img{
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+}
+.lined-text {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  padding: 20px;
+  margin: 25px 0;
+  width: 30%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  margin-left: 33%;
+}
 /* 슬라이드 스타일 */
 .slider {
     position: relative;
@@ -383,9 +428,9 @@ body {
   }
   #first img{
     display: flex;
-    justify-content: space-between;
-    margin-top: 5%;
+    margin-left: 27%;
     width: 300px;
+  left: 50%;
   }
   .wating img{
     width: 100%;
@@ -536,4 +581,58 @@ body {
 }
 #brand img{
   margin-left: 10%;
+}
+.bottom-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: yellow;
+  color: red;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: sans-serif;
+  z-index: 1000;
+  font-weight: bolder;
+}
+
+.bottom-form input[type="text"] {
+  height: 30px;
+  margin: 5px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+.bottom-form label {
+  margin: 0 8px;
+}
+
+.radio-group {
+  margin-left: 15px;
+}
+
+.bottom-form input[type="radio"] {
+  margin-left: 10px;
+}
+@media (max-width: 600px) {
+  .bottom-form {
+      font-size: 14px;
+      padding: 10px 5px;
+  }
+
+  .bottom-form input[type="text"] {
+      width: 80%;
+      margin-top: 5px;
+  }
+}.btm-img{
+  width: 150px; position: absolute;
+        left: 5%;
+        bottom: 5px;
+}
+.bottom-form .submit{
+  width: 100px;
+  height: 30px;
+  margin-left: 5%;
 }
