@@ -20,6 +20,7 @@ span{
 body {
   font-family: 'Pretendard Variable', sans-serif;
   background-color: beige;
+  padding-bottom: 100px;
 }
 
 /* Ensure that the navbar takes the full width */
@@ -348,7 +349,7 @@ img.reveal {
     z-index: 2;
     font-size: 2rem;
     background: none;
-    color: white;
+    color: black;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -455,10 +456,8 @@ img.reveal {
   #menu-info{
     display: flex;
     background-color: yellow;
-    gap: 300px;
   }
   #menu-info img{
-    margin-left: 20%;
   }
   #menu-info > #ment{
     font-weight: bolder;
@@ -476,6 +475,15 @@ img.reveal {
     display: flex;
     justify-content: space-around;
     gap: 20px;
+}
+
+.competition-ment-box{
+  border: 1px solid red;
+width: 50%;
+height: auto;
+}
+#competition-ment{
+
 }
  .button-group {
    margin-bottom: 20px;
@@ -600,12 +608,16 @@ img.reveal {
 }
 .bottom-form {
   position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: yellow;
   color: red;
-  padding: 15px 10px;
+  padding: 5px 5px;
   box-sizing: border-box;
   text-align: center;
   font-family: sans-serif;
@@ -622,26 +634,45 @@ img.reveal {
 }
 
 .bottom-form label {
-  margin: 0 8px;
+  margin: 5px;
+  font-size: 15px;
 }
 
 .radio-group {
-  margin-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+.radio-group label {
+  margin: 0;
+}
+
+.bottom-form .submit {
+  width: 100px;
+  height: 30px;
+  margin: 5px;
 }
 
 .bottom-form input[type="radio"] {
-  margin-left: 10px;
+  margin-left: 5px;
+}
+
+.bottom-form img {
+  width: 100px;
+  display: block;
+  position: absolute;
+  top: -110px; /* 폼 위로 올림 */
+  left: 10px;
 }
 .bottom-form img{
   width: 100px;
   position: fixed;
   top: 90%;
   left: 3%;
-}
-.bottom-form .submit{
-  width: 100px;
-  height: 30px;
-  margin-left: 5%;
 }
 @media (max-width:768px){
   .navbar__menu li a{
@@ -712,6 +743,50 @@ img.reveal {
       font-size: 60px;
       width: 70%;
     }
+    #menu-info{
+      width: 100%;
+      height: auto;
+    }
+    #menu-info span{
+      font-size: 15px;
+    }
+    #menu-info img{
+      display: flex;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .competition-ment-top{
+    }
+    .button-group button{
+      width: 100%;
+      border-radius: 5px;
+    }
+    .category-content.active > .grid_imgs{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .category-content.active > .grid_image{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .slider{
+      width: 100%;
+    }
+    #last-div h1{
+      font-size: 20px;
+    }
+    #last-div span{
+      font-size: 13px;
+    }
+
+      .bottom-form label{
+        font-size: 15px;
+      }
+      .bottom-form img{
+        display: none;
+      }
+      body{
+        padding-bottom: 200px;
+      }
 }
 @media (max-width:320px){
 
