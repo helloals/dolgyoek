@@ -9,7 +9,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
+      background-color: #ffffff;
     }
 
     .chart-wrapper {
@@ -18,7 +18,8 @@
       height: 400px;
       max-width: 600px;
       margin: auto;
-      margin-top: 39%;
+      top: 50%;
+      transform: translateY(50%);
     }
 
     canvas {
@@ -174,7 +175,7 @@
       // 외곽 반투명 레이어
       ctx.beginPath();
       ctx.arc(centerX, centerY, outerRadius + 20, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fill();
 
       // 중간 반투명 원

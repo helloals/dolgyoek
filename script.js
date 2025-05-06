@@ -115,7 +115,7 @@ const buttons = document.querySelectorAll('.category-btn');
             }
           });
         });
-    
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         const canvas = document.getElementById("donutCanvas");
         const ctx = canvas.getContext("2d");
         const labelsContainer = document.getElementById("labels");
@@ -214,7 +214,7 @@ const buttons = document.querySelectorAll('.category-btn');
             // 퍼센트 텍스트
             const midAngle = start + sliceAngle / 2;
             const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2, centerX, centerY);
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "yellow";
             ctx.font = `${w * 0.04}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
@@ -226,7 +226,7 @@ const buttons = document.querySelectorAll('.category-btn');
           // 외곽 반투명 레이어
           ctx.beginPath();
           ctx.arc(centerX, centerY, outerRadius + 20, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+          ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
           ctx.fill();
     
           // 중간 반투명 원
