@@ -116,109 +116,140 @@ const buttons = document.querySelectorAll('.category-btn');
           });
         });
     
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         const canvas = document.getElementById("donutCanvas");
         const ctx = canvas.getContext("2d");
         const labelsContainer = document.getElementById("labels");
-
-        const centerX = 200;
-        const centerY = 200;
-        const outerRadius = 160;
-        const middleRadius = 100;
-        const innerRadius = 80;
-
+    
         const data = [
-            { label: '식자재비', value: 34, color: '#2a0100' },
-            { label: '음료&주류', value: 3, color: '#ffd291' },
-            { label: '인건비', value: 17, color: '#ffbb73' },
-            { label: '임대료', value: 3, color: '#feff86' },
-            { label: '카드수수료', value: 1, color: '#fbe8a4' },
-            { label: '배달수수료', value: 10, color: '#efd4a7' },
-            { label: '공과잡비', value: 3, color: '#e9c079' },
-            { label: '영업이익', value: 29, color: '#e60012' }
+          { label: '식자재비', value: 34, color: '#2a0100' },
+          { label: '음료&주류', value: 3, color: '#ffd291' },
+          { label: '인건비', value: 17, color: '#ffbb73' },
+          { label: '임대료', value: 3, color: '#feff86' },
+          { label: '카드수수료', value: 1, color: '#fbe8a4' },
+          { label: '배달수수료', value: 10, color: '#efd4a7' },
+          { label: '공과잡비', value: 3, color: '#e9c079' },
+          { label: '영업이익', value: 29, color: '#e60012' }
         ];
-
+    
         const total = data.reduce((acc, d) => acc + d.value, 0);
         let rotation = 0;
         const labelElements = [];
-
-        function polarToCartesian(angle, radius) {
-            return {
-                x: centerX + radius * Math.cos(angle),
-                y: centerY + radius * Math.sin(angle),
-            };
+    
+        function resizeCanvas() {
+          const size = canvas.parentElement.clientWidth;
+          canvas.width = size;
+          canvas.height = size;
         }
-
+    
+        function polarToCartesian(angle, radius, centerX, centerY) {
+          return {
+            x: centerX + radius * Math.cos(angle),
+            y: centerY + radius * Math.sin(angle),
+          };
+        }
+    
         function createLabelElements() {
-            data.forEach(d => {
-                const div = document.createElement("div");
-                div.className = "label";
-                div.innerText = d.label;
-                labelsContainer.appendChild(div);
-                labelElements.push(div);
-            });
+          data.forEach(d => {
+            const div = document.createElement("div");
+            div.className = "label";
+            div.innerText = d.label;
+            labelsContainer.appendChild(div);
+            labelElements.push(div);
+          });
         }
-
-        function updateLabelPositions() {
-            let start = rotation;
-            for (let i = 0; i < data.length; i++) {
-                const d = data[i];
-                const sliceAngle = (d.value / total) * Math.PI * 2;
-                const midAngle = start + sliceAngle / 2;
-                const pos = polarToCartesian(midAngle, 210);
-                const label = labelElements[i];
-                label.style.left = `${pos.x}px`;
-                label.style.top = `${pos.y}px`;
-                start += sliceAngle;
+    
+        function updateLabelPositions(centerX, centerY, outerRadius) {
+          const labelRadius = outerRadius + 30;
+          const positions = [];
+          let start = rotation;
+    
+          for (let i = 0; i < data.length; i++) {
+            const d = data[i];
+            const sliceAngle = (d.value / total) * Math.PI * 2;
+            const midAngle = start + sliceAngle / 2;
+    
+            let pos = polarToCartesian(midAngle, labelRadius, centerX, centerY);
+    
+            // 간단한 충돌 방지 (y축 기준 최소 거리 유지)
+            if (i > 0) {
+              const prevY = positions[i - 1].y;
+              if (Math.abs(pos.y - prevY) < 18) {
+                pos.y = prevY + 18;
+              }
             }
+    
+            labelElements[i].style.left = `${pos.x}px`;
+            labelElements[i].style.top = `${pos.y}px`;
+            positions.push(pos);
+    
+            start += sliceAngle;
+          }
         }
-
+    
         function drawChart() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            let start = rotation;
-
-            data.forEach(d => {
-                const sliceAngle = (d.value / total) * Math.PI * 2;
-
-                // 도넛 조각
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
-                ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
-                ctx.closePath();
-                ctx.fillStyle = d.color;
-                ctx.fill();
-
-                // 퍼센트 텍스트
-                const midAngle = start + sliceAngle / 2;
-                const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2);
-                ctx.fillStyle = "white";
-                ctx.font = "16px Arial";
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillText(`${d.value}%`, textPos.x, textPos.y);
-
-                start += sliceAngle;
-            });
-
-            // 중간 반투명 원
+          resizeCanvas();
+          const w = canvas.width;
+          const h = canvas.height;
+          const centerX = w / 2;
+          const centerY = h / 2;
+          const outerRadius = w * 0.4;
+          const middleRadius = w * 0.25;
+          const innerRadius = w * 0.2;
+    
+          ctx.clearRect(0, 0, w, h);
+          let start = rotation;
+    
+          for (let i = 0; i < data.length; i++) {
+            const d = data[i];
+            const sliceAngle = (d.value / total) * Math.PI * 2;
+    
+            // 도넛 조각
             ctx.beginPath();
-            ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+            ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
+            ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
+            ctx.closePath();
+            ctx.fillStyle = d.color;
             ctx.fill();
-
-            // 중앙 검정색 원
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "black";
-            ctx.fill();
+    
+            // 퍼센트 텍스트
+            const midAngle = start + sliceAngle / 2;
+            const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2, centerX, centerY);
+            ctx.fillStyle = "white";
+            ctx.font = `${w * 0.04}px Arial`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(`${d.value}%`, textPos.x, textPos.y);
+    
+            start += sliceAngle;
+          }
+    
+          // 외곽 반투명 레이어
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, outerRadius + 20, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+          ctx.fill();
+    
+          // 중간 반투명 원
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+          ctx.fill();
+    
+          // 중앙 검정색 원
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
+          ctx.fillStyle = "black";
+          ctx.fill();
+    
+          updateLabelPositions(centerX, centerY, outerRadius);
         }
-
+    
         function animate() {
-            rotation += 0.005;
-            drawChart();
-            updateLabelPositions();
-            requestAnimationFrame(animate);
+          rotation += 0.005;
+          drawChart();
+          requestAnimationFrame(animate);
         }
-
-        createLabelElements(); // 최초 한 번
-        animate(); // 회전 시작
+    
+        window.addEventListener("resize", drawChart);
+        createLabelElements();
+        animate();

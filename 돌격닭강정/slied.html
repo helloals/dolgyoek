@@ -2,171 +2,206 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>회전 도넛 그래프 - 회전 라벨</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <title>회전 도넛 그래프 - 개선 버전</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
 
-        .chart-wrapper {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
+    .chart-wrapper {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      max-width: 600px;
+      margin: auto;
+      margin-top: 39%;
+    }
 
-        canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 0;
-        }
+    canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-        .label {
-            position: absolute;
-            font-size: 12px;
-            font-weight: bold;
-            color: black;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            white-space: nowrap;
-            z-index: 3;
-        }
+    .label {
+      position: absolute;
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      z-index: 3;
+    }
 
-        .center-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-            color: white;
-            z-index: 4;
-            user-select: none;
-        }
-    </style>
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight: bold;
+      font-size: 3vmin;
+      color: white;
+      z-index: 4;
+      user-select: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="chart-wrapper">
-        <canvas id="donutCanvas" width="400" height="400"></canvas>
-        <div id="labels"></div>
-        <div class="center-text">월 매출 1억 5천</div>
-    </div>
+  <div class="chart-wrapper">
+    <canvas id="donutCanvas"></canvas>
+    <div id="labels"></div>
+    <div class="center-text">월 매출 1억 5천</div>
+  </div>
 
-    <script>
-        const canvas = document.getElementById("donutCanvas");
-        const ctx = canvas.getContext("2d");
-        const labelsContainer = document.getElementById("labels");
+  <script>
+    const canvas = document.getElementById("donutCanvas");
+    const ctx = canvas.getContext("2d");
+    const labelsContainer = document.getElementById("labels");
 
-        const centerX = 200;
-        const centerY = 200;
-        const outerRadius = 160;
-        const middleRadius = 100;
-        const innerRadius = 80;
+    const data = [
+      { label: '식자재비', value: 34, color: '#2a0100' },
+      { label: '음료&주류', value: 3, color: '#ffd291' },
+      { label: '인건비', value: 17, color: '#ffbb73' },
+      { label: '임대료', value: 3, color: '#feff86' },
+      { label: '카드수수료', value: 1, color: '#fbe8a4' },
+      { label: '배달수수료', value: 10, color: '#efd4a7' },
+      { label: '공과잡비', value: 3, color: '#e9c079' },
+      { label: '영업이익', value: 29, color: '#e60012' }
+    ];
 
-        const data = [
-            { label: '식자재비', value: 34, color: '#2a0100' },
-            { label: '음료&주류', value: 3, color: '#ffd291' },
-            { label: '인건비', value: 17, color: '#ffbb73' },
-            { label: '임대료', value: 3, color: '#feff86' },
-            { label: '카드수수료', value: 1, color: '#fbe8a4' },
-            { label: '배달수수료', value: 10, color: '#efd4a7' },
-            { label: '공과잡비', value: 3, color: '#e9c079' },
-            { label: '영업이익', value: 29, color: '#e60012' }
-        ];
+    const total = data.reduce((acc, d) => acc + d.value, 0);
+    let rotation = 0;
+    const labelElements = [];
 
-        const total = data.reduce((acc, d) => acc + d.value, 0);
-        let rotation = 0;
-        const labelElements = [];
+    function resizeCanvas() {
+      const size = canvas.parentElement.clientWidth;
+      canvas.width = size;
+      canvas.height = size;
+    }
 
-        function polarToCartesian(angle, radius) {
-            return {
-                x: centerX + radius * Math.cos(angle),
-                y: centerY + radius * Math.sin(angle),
-            };
+    function polarToCartesian(angle, radius, centerX, centerY) {
+      return {
+        x: centerX + radius * Math.cos(angle),
+        y: centerY + radius * Math.sin(angle),
+      };
+    }
+
+    function createLabelElements() {
+      data.forEach(d => {
+        const div = document.createElement("div");
+        div.className = "label";
+        div.innerText = d.label;
+        labelsContainer.appendChild(div);
+        labelElements.push(div);
+      });
+    }
+
+    function updateLabelPositions(centerX, centerY, outerRadius) {
+      const labelRadius = outerRadius + 30;
+      const positions = [];
+      let start = rotation;
+
+      for (let i = 0; i < data.length; i++) {
+        const d = data[i];
+        const sliceAngle = (d.value / total) * Math.PI * 2;
+        const midAngle = start + sliceAngle / 2;
+
+        let pos = polarToCartesian(midAngle, labelRadius, centerX, centerY);
+
+        // 간단한 충돌 방지 (y축 기준 최소 거리 유지)
+        if (i > 0) {
+          const prevY = positions[i - 1].y;
+          if (Math.abs(pos.y - prevY) < 18) {
+            pos.y = prevY + 18;
+          }
         }
 
-        function createLabelElements() {
-            data.forEach(d => {
-                const div = document.createElement("div");
-                div.className = "label";
-                div.innerText = d.label;
-                labelsContainer.appendChild(div);
-                labelElements.push(div);
-            });
-        }
+        labelElements[i].style.left = `${pos.x}px`;
+        labelElements[i].style.top = `${pos.y}px`;
+        positions.push(pos);
 
-        function updateLabelPositions() {
-            let start = rotation;
-            for (let i = 0; i < data.length; i++) {
-                const d = data[i];
-                const sliceAngle = (d.value / total) * Math.PI * 2;
-                const midAngle = start + sliceAngle / 2;
-                const pos = polarToCartesian(midAngle, 210);
-                const label = labelElements[i];
-                label.style.left = `${pos.x}px`;
-                label.style.top = `${pos.y}px`;
-                start += sliceAngle;
-            }
-        }
+        start += sliceAngle;
+      }
+    }
 
-        function drawChart() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            let start = rotation;
+    function drawChart() {
+      resizeCanvas();
+      const w = canvas.width;
+      const h = canvas.height;
+      const centerX = w / 2;
+      const centerY = h / 2;
+      const outerRadius = w * 0.4;
+      const middleRadius = w * 0.25;
+      const innerRadius = w * 0.2;
 
-            data.forEach(d => {
-                const sliceAngle = (d.value / total) * Math.PI * 2;
+      ctx.clearRect(0, 0, w, h);
+      let start = rotation;
 
-                // 도넛 조각
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
-                ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
-                ctx.closePath();
-                ctx.fillStyle = d.color;
-                ctx.fill();
+      for (let i = 0; i < data.length; i++) {
+        const d = data[i];
+        const sliceAngle = (d.value / total) * Math.PI * 2;
 
-                // 퍼센트 텍스트
-                const midAngle = start + sliceAngle / 2;
-                const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2);
-                ctx.fillStyle = "white";
-                ctx.font = "16px Arial";
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillText(`${d.value}%`, textPos.x, textPos.y);
+        // 도넛 조각
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
+        ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
+        ctx.closePath();
+        ctx.fillStyle = d.color;
+        ctx.fill();
 
-                start += sliceAngle;
-            });
+        // 퍼센트 텍스트
+        const midAngle = start + sliceAngle / 2;
+        const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2, centerX, centerY);
+        ctx.fillStyle = "white";
+        ctx.font = `${w * 0.04}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(`${d.value}%`, textPos.x, textPos.y);
 
-            // 중간 반투명 원
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-            ctx.fill();
+        start += sliceAngle;
+      }
 
-            // 중앙 검정색 원
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "black";
-            ctx.fill();
-        }
+      // 외곽 반투명 레이어
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, outerRadius + 20, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+      ctx.fill();
 
-        function animate() {
-            rotation += 0.005;
-            drawChart();
-            updateLabelPositions();
-            requestAnimationFrame(animate);
-        }
+      // 중간 반투명 원
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+      ctx.fill();
 
-        createLabelElements(); // 최초 한 번
-        animate(); // 회전 시작
-    </script>
+      // 중앙 검정색 원
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+
+      updateLabelPositions(centerX, centerY, outerRadius);
+    }
+
+    function animate() {
+      rotation += 0.005;
+      drawChart();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", drawChart);
+    createLabelElements();
+    animate();
+  </script>
 </body>
 
 </html>
