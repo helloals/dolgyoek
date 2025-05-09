@@ -519,6 +519,12 @@ height: auto;
  .category-content.active {
    display: block;
  }
+ .grid_image, .grid_img, .grid_imgs img{
+  pointer-events: none;
+ }
+ .grid_image, .grid_img, .grid_imgs:hover{
+pointer-events: auto;
+ }
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');/* regular-400, medium-500, semibold-600, bold-700 */ 
 
 *, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}

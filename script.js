@@ -253,3 +253,9 @@ const buttons = document.querySelectorAll('.category-btn');
         window.addEventListener("resize", drawChart);
         createLabelElements();
         animate();
+// 메뉴 a태그 페이지 이동 방지
+        document.querySelectorAll('.grid_imgs a, .grid_image a, .grid_image a').forEach(function(anchor) {
+  anchor.addEventListener('click', function(event) {
+    event.preventDefault();  // 기본 동작 방지 (페이지 이동 안함)
+  });
+});
