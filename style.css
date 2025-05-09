@@ -1,5 +1,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css");
-  
+  body, html{ 
+    overflow-x: hidden;
+  }
 :root{
   --red-font:#ff0000;
   --bolder-font:font-weight:bolder;
@@ -110,7 +112,7 @@ body {
 }
 
 .image-container img {
-  width: 200%;
+  width: 100%;
 }
 @keyframes heartbeat {
 0% {
@@ -726,8 +728,23 @@ height: auto;
     .lined-text{
      font-size: 30px;
      width: 100%;
-
+     
     }
+     .image-container .flex{
+      flex-direction: column;
+      align-items: center;
+        gap: 30px;
+
+      }
+      .image-container .flex > div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .image-container .heartbeat-image{
+        width: 80%;
+        max-width: 300px;
+      }
     .reveal.from-left{
       width: 30%;
     
@@ -744,7 +761,8 @@ height: auto;
       width: 100%;
     }
     #last-flex{
-      width: 70%;
+      width: 100%;
+      margin: 0;
     }
     .box img{
       width: 100%;
