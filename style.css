@@ -40,7 +40,7 @@ body {
     background-color: red;
     position: fixed;
     width: 100%;
-        z-index: 999;
+    z-index: 999;
           /* 다른 요소보다 위에 표시되도록 */
 }
 .navbar__menu img{
@@ -505,9 +505,9 @@ height: auto;
  }
 
  .category-btn.active {
-   background-color: #007bff;
+   background-color: red;
    color: white;
-   border-color: #007bff;
+   border-color: red;
  }
 
  .category-content {
@@ -680,14 +680,28 @@ height: auto;
   left: 3%;
 }
 @media (max-width:768px){
+  .navbar{
+    width: 100%;
+  }
+  .navbar__menu li.logo{
+    display: none;
+  }
+  .navbar__menu{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .navbar__menu{
     width: 100%;
   }
-
+  .navbar__menu li{
+    width: 30%;
+    margin: 1.5%;
+    text-align: center;
+  }
   .navbar__menu li a{
     font-size: 10px;
     text-align: center;
-    width: 80%;
+    width: 100%;
   }
   #brand-video{
     position: relative;
@@ -769,9 +783,15 @@ height: auto;
       top: 50%;
       transform: translateY(-50%);
     }
+    .button-group{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+    }
     .button-group button{
       width: 100%;
-      border-radius: 5px;
+      border-radius: 10px;
     }
     .category-content.active > .grid_imgs{
       grid-template-columns: repeat(1, 1fr);
