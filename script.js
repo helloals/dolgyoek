@@ -226,13 +226,13 @@ const buttons = document.querySelectorAll('.category-btn');
           // 외곽 반투명 레이어
           ctx.beginPath();
           ctx.arc(centerX, centerY, outerRadius + 20, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+          ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
           ctx.fill();
     
           // 중간 반투명 원
           ctx.beginPath();
           ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+          ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
           ctx.fill();
     
           // 중앙 검정색 원
