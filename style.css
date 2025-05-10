@@ -11,7 +11,7 @@
   --yellow-background:#ffd400;
 }
 /* Reset some default styles */
-span{
+span:not(.headline){
   font-size: 20px;
 }
 * {
@@ -489,9 +489,6 @@ img.reveal {
 width: 50%;
 height: auto;
 }
-#competition-ment{
-
-}
  .button-group {
    margin-bottom: 20px;
  }
@@ -532,37 +529,65 @@ pointer-events: auto;
 /* 이미지 */
 /* 맛 종류 */
 .grid_imgs{display:grid;grid-template-columns:repeat(5, 1fr);gap:100px;font-family:'pretendard'}
-.grid_imgs li{overflow:hidden;position:relative;}
+.grid_imgs li{overflow:visible;position:relative; list-style: none;}
 .grid_imgs li a{display:block;height:100%}
 .grid_imgs li .thum{width:100%; height: 100%; transition:all .6s}
 .grid_imgs li .mask{opacity:0;position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;background:rgb(1,1,1);background:linear-gradient(0deg, rgba(1,1,1,1) 0%, rgba(0,0,0,0) 80%);transition:all .25s}
-.grid_imgs li .txt{opacity:0;position:absolute;z-index:1;display:flex;justify-content:flex-end;width:100%;height:100%;padding:0 0 15% 12%;flex-flow:column;font-weight:500;color:#fff;transition:.6s}
-.grid_imgs li .txt p{padding-right:15%;;font-size:15px;}
-.grid_imgs li .txt span{overflow:hidden;position:relative;width:max-content;padding-right:28px;font-size:14px}
+.grid_imgs li .txt{opacity:0;position:absolute;z-index:1;display:flex;justify-content:flex-end;width:100%;height:100%;padding:0 0 15% 12%;flex-flow:column;font-weight:400;color:#fff;transition:.6s}
+.grid_imgs li .txt p{padding-right:15%;;font-size:10px;}
+.grid_imgs li .txt span{overflow:visible;position:relative;width:max-content;padding-right:28px;font-size:14px}
 .grid_imgs li .txt span i{position:absolute;right:0;top:4px;transition:all .2s}
 .grid_imgs li .txt span i.on{right:20px;opacity:0}
+.grid_imgs li .img-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  font-family: 'pretendard';
+  text-align: left;
+  z-index: 123;
+  /* or center if you prefer */
+}
 /* 사이즈 */
 .grid_img{display:grid;grid-template-columns:repeat(3, 1fr);gap:100px;font-family:'pretendard'}
-.grid_img li{overflow:hidden;position:relative;}
+.grid_img li{overflow:visible;position:relative;list-style: none;}
 .grid_img li a{display:block;height:100%}
 .grid_img li .thum{width:100%; height: 100%; transition:all .6s}
 .grid_img li .mask{opacity:0;position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;background:rgb(1,1,1);background:linear-gradient(0deg, rgba(1,1,1,1) 0%, rgba(0,0,0,0) 80%);transition:all .25s}
 .grid_img li .txt{opacity:0;position:absolute;z-index:1;display:flex;justify-content:flex-end;width:100%;height:100%;padding:0 0 15% 12%;flex-flow:column;font-weight:500;color:#fff;transition:.6s}
 .grid_img li .txt p{padding-right:15%;;font-size:15px;}
-.grid_img li .txt span{overflow:hidden;position:relative;width:max-content;padding-right:28px;font-size:14px}
+.grid_img li .txt span{overflow:visible;position:relative;width:max-content;padding-right:28px;font-size:14px}
 .grid_img li .txt span i{position:absolute;right:0;top:4px;transition:all .2s}
 .grid_img li .txt span i.on{right:20px;opacity:0}
+.grid_img li .img-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  font-family: 'pretendard';
+  text-align: left;
+  z-index: 123;
+}
 /* 사이드 */
 .grid_image{display:grid;grid-template-columns:repeat(3, 1fr);gap:100px;font-family:'pretendard'}
-.grid_image li{overflow:hidden;position:relative;}
+.grid_image li{overflow:visible;position:relative;list-style: none;}
 .grid_image li a{display:block;height:100%}
 .grid_image li .thum{width:100%; height: 100%; transition:all .6s}
 .grid_image li .mask{opacity:0;position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;background:rgb(1,1,1);background:linear-gradient(0deg, rgba(1,1,1,1) 0%, rgba(0,0,0,0) 80%);transition:all .25s}
 .grid_image li .txt{opacity:0;position:absolute;z-index:1;display:flex;justify-content:flex-end;width:100%;height:100%;padding:0 0 15% 12%;flex-flow:column;font-weight:500;color:#fff;transition:.6s}
 .grid_image li .txt p{padding-right:15%;;font-size:15px;}
-.grid_image li .txt span{overflow:hidden;position:relative;width:max-content;padding-right:28px;font-size:14px}
+.grid_image li .txt span{overflow:visible;position:relative;width:max-content;padding-right:28px;font-size:14px}
 .grid_image li .txt span i{position:absolute;right:0;top:4px;transition:all .2s}
 .grid_image li .txt span i.on{right:20px;opacity:0}
+.grid_image li .img-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  font-family: 'pretendard';
+  text-align: left;
+  z-index: 123;
+}
 /* 맛 종류 */
 @media(hover:hover){
 .grid_imgs li:hover .thum{transform:scale(1.1)}
@@ -717,7 +742,11 @@ pointer-events: auto;
     transform: translateX(-50%);
   }
   .div-2{
-    font-size: 13px
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    color: red;
+    
   }
   #brand{
     .bolder{
@@ -795,7 +824,6 @@ pointer-events: auto;
       width: 70%;
     }
     #menu-info{
-      width: 100%;
       height: auto;
     }
     #menu-info span{
