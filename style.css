@@ -865,9 +865,12 @@ pointer-events: auto;
       gap: 20px;
 
     }
-      .line {
+    .line {
           display: none; 
-        }
+    }
+    #business-area{
+      width: 100%;
+    }
     .button-group button{
       width: 100%;
       border-radius: 10px;
