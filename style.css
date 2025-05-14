@@ -490,7 +490,24 @@ img.reveal {
   gap: 20px;
   margin-top: 5%;
 }
-
+.benefit-span{
+  font-size: 40px;
+color: red;
+}
+#benefit{
+  font-weight: bolder;
+}
+#benefit hr{
+  text-align: center;
+  width: 30%;
+  margin-left: 35%;
+  border: 0;
+  height: 3px;
+  background-color: red;
+}
+#procedure img{
+  width: 50%;
+}
 /* 웹 환경: 4개씩 (가로폭 넓을 때) */
 .competition-ment-box {
   width: 23%;
@@ -863,7 +880,16 @@ pointer-events: auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
-
+    }
+    #benefit span{
+      font-size: 18px;
+    }
+    #benefit hr{
+      width: 80%;
+      margin-left: 10%;
+    }
+    #procedure img{
+      width: 100%;
     }
     .line {
           display: none; 
