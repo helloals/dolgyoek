@@ -571,12 +571,13 @@ pointer-events: auto;
 .grid_imgs li .txt span i.on{right:20px;opacity:0}
 .grid_imgs li .img-caption {
   margin-top: 8px;
-  font-size: 12px;
-  color: #444;
+  font-size: 20px;
   line-height: 1.5;
   font-family: 'pretendard';
   text-align: left;
   z-index: 123;
+  font-weight: bolder;
+
   /* or center if you prefer */
 }
 /* 사이즈 */
@@ -592,12 +593,13 @@ pointer-events: auto;
 .grid_img li .txt span i.on{right:20px;opacity:0}
 .grid_img li .img-caption {
   margin-top: 8px;
-  font-size: 12px;
-  color: #444;
+  font-size: 20px;
   line-height: 1.5;
   font-family: 'pretendard';
   text-align: left;
   z-index: 123;
+  font-weight: bolder;
+
 }
 /* 사이드 */
 .grid_image{display:grid;grid-template-columns:repeat(3, 1fr);gap:100px;font-family:'pretendard'}
@@ -612,12 +614,12 @@ pointer-events: auto;
 .grid_image li .txt span i.on{right:20px;opacity:0}
 .grid_image li .img-caption {
   margin-top: 8px;
-  font-size: 12px;
-  color: #444;
+  font-size: 20px;
   line-height: 1.5;
   font-family: 'pretendard';
   text-align: left;
   z-index: 123;
+  font-weight: bolder;
 }
 /* 맛 종류 */
 @media(hover:hover){
