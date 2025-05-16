@@ -778,6 +778,9 @@ pointer-events: auto;
     left: 50%;
     transform: translateX(-50%);
   }
+  .slogan span{
+    font-size: 22px;
+  }
   .div-2{
     font-size: 13px;
     text-align: center;
