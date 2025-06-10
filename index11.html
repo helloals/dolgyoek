@@ -1,123 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>자동 회전 카드 (hover 시 멈춤)</title>
     <style>
-        .wrap {
-            overflow: hidden;
-        }
-
-        .roller {
+        body {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #eee;
+            margin: 0;
         }
 
-        .rolling_list {
-            display: flex;
+        .card {
+            width: 200px;
+            height: 300px;
+            perspective: 1000px;
         }
 
-        .wrap .rolling_list .item {
-            width: 500px;
-            border-radius: 20px;
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            color: #fff;
-            margin-right: 30px;
+            font-size: 24px;
+            font-family: sans-serif;
         }
 
-        .roller .rolling_list.original {
-            animation: rollingTop1 40s linear infinite;
+        .card-front {
+            background: #6200ea;
+            color: white;
         }
 
-        .roller .rolling_list.clone {
-            animation: rollingTop2 40s linear infinite;
+        .card-back {
+            background: white;
+            color: #6200ea;
+            transform: rotateY(180deg);
+            border: 2px solid #6200ea;
         }
 
-        @keyframes rollingTop1 {
-            0% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(-100%);
-            }
-
-            50.01% {
-                transform: translateX(100%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes rollingTop2 {
-            0% {
-                transition: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-200%);
-            }
-        }
-
-        /* hover시 일시정지 */
-        .roller:hover .rolling_list {
-            animation-play-state: paused;
+        .card img {
+            width: 300px;
         }
     </style>
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="roller">
-            <ul class="rolling_list">
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/004.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/005.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/006.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/007.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/008.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/009.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/010.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/012.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/013.png" alt="">
-                </li>
-                <li class="item">
-                    <img src="./돌격닭강정/섹션2 매출/014.png" alt="">
-                </li>
-            </ul>
+    <div class="card" id="autoCard">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="./KakaoTalk_20250503_142748382.png" alt="앞면 이미지">
+            </div>
+            <div class="card-back">
+                <img src="./KakaoTalk_20250503_142748382_01.png" alt="뒷면 이미지">
+            </div>
         </div>
     </div>
 
     <script>
-        let roller = document.querySelector('.roller .rolling_list');
-        roller.id = 'roller1';
-        let clone = roller.cloneNode(true);
-        clone.id = 'roller2';
-        document.querySelector('.roller').appendChild(clone);
-        roller.classList.add('original');
-        clone.classList.add('clone');
+        const card = document.getElementById("autoCard");
+        let isFlipped = false;
+        let intervalId = null;
+
+        function startAutoFlip() {
+            intervalId = setInterval(() => {
+                isFlipped = !isFlipped;
+                card.classList.toggle("flipped", isFlipped);
+            }, 1500);
+        }
+
+        function stopAutoFlip() {
+            clearInterval(intervalId);
+        }
+
+        // 시작 시 자동 회전 실행
+        startAutoFlip();
+
+        // 마우스를 올리면 자동 회전 멈춤
+        card.addEventListener('mouseenter', stopAutoFlip);
+
+        // 마우스를 떼면 다시 회전 시작
+        card.addEventListener('mouseleave', startAutoFlip);
     </script>
+</body>
 
 </html>

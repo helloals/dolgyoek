@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>스크롤 등장 애니메이션</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            min-height: 200vh;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            background: white;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="item" style="transition-delay: 0s;">첫 번째 요소</div>
+        <div class="item" style="transition-delay: 0.2s;">두 번째 요소</div>
+        <div class="item" style="transition-delay: 0.4s;">세 번째 요소</div>
+        <div class="item" style="transition-delay: 0.6s;">네 번째 요소</div>
+        <div class="item" style="transition-delay: 0.8s;">다섯 번째 요소</div>
+    </section>
+
+    <script>
+        const items = document.querySelectorAll('.item');
+
+        function showOnScroll() {
+            const triggerBottom = window.innerHeight * 0.85;
+
+            items.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+
+                if (itemTop < triggerBottom) {
+                    item.classList.add('show');
+                } else {
+                    item.classList.remove('show'); // 스크롤 올리면 다시 사라짐 (필요 없으면 제거)
+                }
+            });
+        }
+
+        window.addEventListener('scroll', showOnScroll);
+        window.addEventListener('load', showOnScroll);
+    </script>
+
+</body>
+
+</html>
