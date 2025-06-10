@@ -112,6 +112,70 @@ body {
   text-align: center;
 }
 
+/* 매출표 슬라이드 */
+.wrap {
+  overflow: hidden;
+}
+
+.roller {
+  display: flex;
+}
+
+.rolling_list {
+  display: flex;
+}
+
+.wrap .rolling_list .item {
+  width: 500px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  margin-right: 30px;
+}
+
+.roller .rolling_list.original {
+  animation: rollingTop1 90s linear infinite;
+}
+
+.roller .rolling_list.clone {
+  animation: rollingTop2 90s linear infinite;
+}
+
+@keyframes rollingTop1 {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  50.01% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rollingTop2 {
+  0% {
+    transition: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+/* hover시 일시정지 */
+.roller:hover .rolling_list {
+  animation-play-state: paused;
+}
 
 .box {
     padding: 20px;
@@ -129,25 +193,6 @@ body {
   margin: auto;
 }
 
-.image-container img {
-}
-@keyframes heartbeat {
-0% {
-transform: scale(1);
-}
-25% {
-transform: scale(1.2);
-}
-50% {
-transform: scale(1);
-}
-75% {
-transform: scale(1.2);
-}
-100% {
-transform: scale(1);
-}
-}
 .chart-wrapper {
   position: relative;
   width: 70vmin;
@@ -192,9 +237,6 @@ canvas {
   margin-top: -15%;
   margin-left: 60%;
 }
-.heartbeat-image {
-  animation: heartbeat 2s ease-in-out;
-}
 
 .highlight{
 font-size: 20px;
@@ -213,11 +255,15 @@ body {
     display: flex;
     
 }
-#last-flex{
-  display: flex;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+#reveal{
+background-color: #FEEFC5;
+}
+#reveal img{
+  margin-top: -20%;
+}
+#reveal-first-img{
+  width: 900px;
+  height: 900px;
 }
 img.reveal {
   opacity: 0;
@@ -403,12 +449,17 @@ img.reveal {
   /* 리뷰 슬라이드 */
         .slide-wrapper {
           padding: 40px 20px;
+          background-image: url(./리뷰배경.jpg);
+          display: flex;
+          background-size: 100%;
         }
+        
+      
     
         .swiper {
           width: 100%;
           max-width: 600px;
-          height: 400px;
+          height: 700px;
           border: 2px solid #333;
           border-radius: 10px;
           overflow: hidden;
@@ -822,18 +873,7 @@ line-height: 80px;
      font-size: 30px;
      width: 100%;
     }
-     .image-container .flex{
-        gap: 30px;
-      }
-      .image-container .flex > div{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      .image-container .heartbeat-image{
-        width: 80%;
-        max-width: 300px;
-      }
+
     .reveal.from-left{
       width: 30%;
     
@@ -846,14 +886,7 @@ line-height: 80px;
       width: 30%
 
     }
-    .image-container{
-      width: 100%;
-    }
-    #last-flex{
-      width: 100%;
-      margin: 0;
-    }
-    
+
     .box img{
       width: 100%;
     }
