@@ -9,6 +9,7 @@
   --orange-font:#ffa500;
   --white-font:#ffffff;
   --yellow-background:#ffd400;
+  --border-font:font-weight:bold;
 }
 /* Reset some default styles */
 * {
@@ -78,8 +79,17 @@ body {
   width: 100%;
   text-align: center;
 }
+.main-sec-1 img{
+  width: 100%;
+}
 #since{
   font-size: 30px !important;
+}
+#since span{
+  font-size: 40px;
+}
+#since .bold{
+  font-weight: 500;
 }
 .div-1 {
   position: relative;
@@ -93,7 +103,7 @@ body {
   position: absolute;
   vertical-align: middle;
   color: white;
-  font-weight: bolder;
+  font-weight: var(--bolder-font);
   font-size: 30px;
   top: 50%;
   left: 50%;
@@ -673,7 +683,6 @@ pointer-events: auto;
 #brand{
   text-align: left;
   width: 100%;
-  background-image: url(./격자\ 배경.jpg);
   background-size: 2000px;
 }
 .bottom-form {
