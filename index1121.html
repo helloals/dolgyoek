@@ -1,220 +1,109 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3개 보이는 캐러셀</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: #111;
-        }
-
-        .carousel {
-            width: 90%;
-            max-width: 1000px;
-            margin: 50px auto;
+        .drag-slider {
             overflow: hidden;
-            position: relative;
-            cursor: grab;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-
-        .slide {
-            flex: 0 0 33.3333%;
-            padding: 0 10px;
-            transition: transform 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slide img {
             width: 100%;
-            height: 300px;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            pointer-events: none;
+            cursor: grab;
+            background: #f8f8f8;
+            padding: 1rem 0;
+        }
+
+        .drag-track {
+            display: flex;
+            gap: 1rem;
+            transition: transform 0.3s ease;
             user-select: none;
         }
 
-        .slide.active {
-            transform: scale(1.1);
-            z-index: 10;
+        .drag-slide {
+            min-width: 200px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1rem;
+            flex-shrink: 0;
         }
 
-        .slide.prev,
-        .slide.next {
-            transform: scale(0.9);
-            z-index: 5;
+        .drag-slide img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="carousel" id="carousel">
-        <div class="carousel-track" id="track">
-            <div class="slide"><img src="점주인터뷰1.png" /></div>
-            <div class="slide"><img src="점주인터뷰2.png" /></div>
-            <div class="slide"><img src="점주인터뷰3.png" /></div>
-            <div class="slide"><img src="점주인터뷰4.png" /></div>
-            <div class="slide"><img src="점주인터뷰5.png" /></div>
+    <div class="drag-slider">
+        <div class="drag-track">
+            <div class="drag-slide"><img src="img1.jpg" alt="">
+                <p>전략 1</p>
+            </div>
+            <div class="drag-slide"><img src="img2.jpg" alt="">
+                <p>전략 2</p>
+            </div>
+            <div class="drag-slide"><img src="img3.jpg" alt="">
+                <p>전략 3</p>
+            </div>
+            <div class="drag-slide"><img src="img4.jpg" alt="">
+                <p>전략 4</p>
+            </div>
+            <div class="drag-slide"><img src="img5.jpg" alt="">
+                <p>전략 5</p>
+            </div>
         </div>
     </div>
-
     <script>
-        const track = document.getElementById('track');
-        const carousel = document.getElementById('carousel');
-        let slides = Array.from(track.children);
-        const slideCount = slides.length;
-        let currentIndex = 1;
+        const slider = document.querySelector('.drag-slider');
+        const track = document.querySelector('.drag-track');
 
-        // 복제 슬라이드 추가
-        const firstClone = slides[0].cloneNode(true);
-        const lastClone = slides[slideCount - 1].cloneNode(true);
-        track.appendChild(firstClone);
-        track.insertBefore(lastClone, slides[0]);
+        let isDown = false;
+        let startX;
+        let scrollLeft;
 
-        slides = Array.from(track.children);
-        let slideWidth = slides[0].getBoundingClientRect().width;
-        let offset = slideWidth * currentIndex;
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = -offset;
-        let prevTranslate = -offset;
-        let animationID;
-        let autoSlideInterval;
-
-        function setPosition() {
-            track.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function animate() {
-            setPosition();
-            if (isDragging) requestAnimationFrame(animate);
-        }
-
-        function startDrag(e) {
-            isDragging = true;
-            startX = e.pageX;
-            animationID = requestAnimationFrame(animate);
-            carousel.style.cursor = 'grabbing';
-            stopAutoSlide();
-        }
-
-        function dragging(e) {
-            if (!isDragging) return;
-            const currentX = e.pageX;
-            const deltaX = currentX - startX;
-            currentTranslate = prevTranslate + deltaX;
-        }
-
-        function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            cancelAnimationFrame(animationID);
-
-            const movedBy = currentTranslate - prevTranslate;
-            if (movedBy < -50) currentIndex++;
-            else if (movedBy > 50) currentIndex--;
-
-            snapToIndex();
-            carousel.style.cursor = 'grab';
-            startAutoSlide();
-        }
-
-        function snapToIndex() {
-            slideWidth = slides[0].getBoundingClientRect().width;
-            currentTranslate = -slideWidth * currentIndex;
-            prevTranslate = currentTranslate;
-            track.style.transition = 'transform 0.4s ease';
-            setPosition();
-            updateActive();
-
-            track.addEventListener('transitionend', checkLoop, { once: true });
-        }
-
-        function checkLoop() {
-            track.style.transition = 'none';
-            if (currentIndex === 0) {
-                currentIndex = slideCount;
-            } else if (currentIndex === slides.length - 1) {
-                currentIndex = 1;
-            }
-            currentTranslate = -slideWidth * currentIndex;
-            prevTranslate = currentTranslate;
-            setPosition();
-            updateActive();
-        }
-
-        function updateActive() {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active', 'prev', 'next');
-            });
-            slides[currentIndex].classList.add('active');
-
-            let prevIndex = currentIndex - 1;
-            if (prevIndex < 0) prevIndex = slides.length - 1;
-            slides[prevIndex].classList.add('prev');
-
-            let nextIndex = currentIndex + 1;
-            if (nextIndex >= slides.length) nextIndex = 0;
-            slides[nextIndex].classList.add('next');
-        }
-
-        function startAutoSlide() {
-            if (autoSlideInterval) return;
-            autoSlideInterval = setInterval(() => {
-                currentIndex++;
-                snapToIndex();
-            }, 3000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
-
-        // 마우스 드래그만
-        track.addEventListener('mousedown', startDrag);
-        window.addEventListener('mousemove', dragging);
-        window.addEventListener('mouseup', endDrag);
-
-        // 자동 슬라이드 hover 제어
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', () => {
-            if (!isDragging) startAutoSlide();
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
         });
 
-        // 리사이즈 대응
-        window.addEventListener('resize', () => {
-            slideWidth = slides[0].getBoundingClientRect().width;
-            currentTranslate = -slideWidth * currentIndex;
-            prevTranslate = currentTranslate;
-            setPosition();
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
         });
 
-        // 초기 설정
-        window.addEventListener('load', () => {
-            track.style.transition = 'none';
-            slideWidth = slides[0].getBoundingClientRect().width;
-            currentTranslate = -slideWidth * currentIndex;
-            prevTranslate = currentTranslate;
-            setPosition();
-            updateActive();
-            startAutoSlide();
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
         });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // 가속도 조절
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // 터치 지원
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX;
+            scrollLeft = slider.scrollLeft;
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+            const x = e.touches[0].pageX;
+            const walk = (x - startX) * 1.5;
+            slider.scrollLeft = scrollLeft - walk;
+        }, { passive: true });
+
     </script>
 </body>
 
