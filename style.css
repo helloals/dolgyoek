@@ -2,6 +2,10 @@
   body, html{ 
     overflow-x: hidden;
   }
+  @font-face {
+    font-family: 'GmarketSansTTFMedium';
+    src: url('./GmarketSansTTFMedium.ttf') format('truetype');
+}
 :root{
   --red-font:#ff0000;
   --bolder-font:font-weight:bolder;
@@ -17,59 +21,76 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 * span{
   font-size: 25px;
 }
+html{
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: 'Pretendard Variable', sans-serif;
+  font-family: 'GmarketSansTTFBold', sans-serif;
   background-color: beige;
+   margin: 0;
+  padding: 0;
+   overflow-x: hidden;
 }
 .slogan span{
   font-size: 30px;
 }
-.your-taste_our-target{
+h1{
+  font-size: 50px;
 }
 /* Ensure that the navbar takes the full width */
-.navbar {
-    width: 100%;
-    position: relative;
-        z-index: 999;
-          /* 다른 요소보다 위에 표시되도록 */
-}
-
-/* Use Flexbox to make the menu horizontally aligned */
 .navbar__menu {
-    display: flex;
-    justify-content: space-around; /* 메뉴 항목 사이에 공간을 균등하게 배치 */
-    align-items: center; /* 세로 중앙 정렬 */
-    padding: 10px 20px; /* 상하, 좌우 여백 */
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-          /* 다른 요소보다 위에 표시되도록 */
-}
-.navbar__menu img{
-    width: 100px;
-        z-index: 999;
-          /* 다른 요소보다 위에 표시되도록 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 999;
 }
 
-.navbar__menu li {
-    list-style-type: none;
-        z-index: 999;
-          /* 다른 요소보다 위에 표시되도록 */
+.logo img {
+  width: 150px;
 }
 
-.navbar__menu li a {
-    color: white; /* 글자 색 */
-    text-decoration: none; /* 밑줄 없애기 */
-    padding: 10px 20px; /* 링크에 패딩 추가 */
-    display: block; /* 링크가 영역을 차지하도록 */
-    z-index: 999; /* 다른 요소보다 위에 표시되도록 */
-    
-
-
+.menu-items {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.menu-items li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.sns-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.sns-icons a {
+  color: black;
+  transition: color 0.3s;
+}
+
+.sns-icons a.instagram:hover {
+  color: #e1306c;
+}
+
+.sns-icons a.youtube:hover {
+  color: #ff0000;
+}
+
+
 /* 메인 섹션 */
 .flex {
   display: flex;
@@ -92,13 +113,52 @@ body {
   font-weight: 500;
 }
 .div-1 {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 50px;
-  
+   position: relative;
+  width: 100%; /* 뷰포트 너비 전체 */
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 }
+.div-1 iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+#btn-box-2{
+  display: flex;
+  justify-content: space-between;
+}
+#scroll-btm-2{
+  width: 15%;
+  bottom: 5%;
+  right: 1%;
+  background-color: red;
+  text-align: center;
+  height: 80px;
+  line-height: 60px;
+}
+#scroll-btm-2 a{
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+#call-2{
+width: 15%;
+height: auto;
+bottom: 5%;
+background-color: red;
+  text-align: center;
+    height: 80px;
+  line-height: 60px;
 
+}
+#call-2 a{
+  color: #fff;
+  text-decoration: none;
+}
 .div-2 {
   position: absolute;
   vertical-align: middle;
@@ -110,6 +170,11 @@ body {
   transform: translate(-50%, -70%);
   line-height: 100px;
   text-align: center;
+}
+.div-2 img{
+  width: 300px;
+  margin-left: 115%;
+  margin-top: 190%;
 }
 
 /* 매출표 슬라이드 */
@@ -946,8 +1011,7 @@ line-height: 80px;
     #last-div h1{
       font-size: 20px;
     }
-    #last-div span{
-    }
+
       .bottom-form label{
         font-size: 15px;
         z-index: 2;
