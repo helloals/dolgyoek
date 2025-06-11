@@ -89,7 +89,12 @@ h1{
 .sns-icons a.youtube:hover {
   color: #ff0000;
 }
-
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 /* 메인 섹션 */
 .flex {
@@ -99,9 +104,24 @@ h1{
 .main-sec-1 {
   width: 100%;
   text-align: center;
+  background-color: black;
+  background-size: 100%;
+}
+.main-sec-1 video{
+  width: 100%;
 }
 .main-sec-1 img{
-  width: 100%;
+  width: 1000px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.star img{
+  margin-top: -20%;
+}
+.miracle img{
+  width: 70%;
+  margin-top: -20%;
 }
 #since{
   font-size: 30px !important;
@@ -180,12 +200,16 @@ background-color: red;
 /* 매출표 슬라이드 */
 .wrap {
   overflow: hidden;
+  background-color: black;
 }
 
 .roller {
   display: flex;
 }
-
+.roller img{
+  width: 440px;
+  height: 440px;
+}
 .rolling_list {
   display: flex;
 }
@@ -202,11 +226,11 @@ background-color: red;
 }
 
 .roller .rolling_list.original {
-  animation: rollingTop1 90s linear infinite;
+  animation: rollingTop1 130s linear infinite;
 }
 
 .roller .rolling_list.clone {
-  animation: rollingTop2 90s linear infinite;
+  animation: rollingTop2 130s linear infinite;
 }
 
 @keyframes rollingTop1 {
@@ -294,7 +318,7 @@ font-weight: bolder;
 }
 body {
     
-    background-color: white;
+    background-color: #0d1b2a;
 }
 .flex{
     display: flex;
@@ -779,7 +803,7 @@ pointer-events: auto;
 #brand{
   text-align: left;
   width: 100%;
-  background-size: 2000px;
+  background-color: black;  
 }
 .bottom-form {
   display: flex;
