@@ -134,3 +134,19 @@ const buttons = document.querySelectorAll('.category-btn');
     event.preventDefault();  // 기본 동작 방지 (페이지 이동 안함)
   });
         });
+// 점주 인터뷰
+    const container = document.querySelector('.interview-container');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+
+    prev.addEventListener('click', () => {
+        const slides = document.querySelectorAll('.interview-slide');
+
+        container.append(slides[0]);
+    });
+
+    next.addEventListener('click', () => {
+        const slides = document.querySelectorAll('.interview-slide');
+
+        container.prepend(slides[slides.length - 1]);
+    })

@@ -1,110 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>별빛 터지는 효과</title>
     <style>
-        .drag-slider {
+        body {
+            margin: 0;
+            background: #000;
             overflow: hidden;
-            width: 100%;
-            cursor: grab;
-            background: #f8f8f8;
-            padding: 1rem 0;
         }
 
-        .drag-track {
-            display: flex;
-            gap: 1rem;
-            transition: transform 0.3s ease;
-            user-select: none;
-        }
-
-        .drag-slide {
-            min-width: 200px;
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 1rem;
-            flex-shrink: 0;
+            border-radius: 50%;
+            animation: twinkle 1s ease-out forwards;
         }
 
-        .drag-slide img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
+        @keyframes twinkle {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="drag-slider">
-        <div class="drag-track">
-            <div class="drag-slide"><img src="img1.jpg" alt="">
-                <p>전략 1</p>
-            </div>
-            <div class="drag-slide"><img src="img2.jpg" alt="">
-                <p>전략 2</p>
-            </div>
-            <div class="drag-slide"><img src="img3.jpg" alt="">
-                <p>전략 3</p>
-            </div>
-            <div class="drag-slide"><img src="img4.jpg" alt="">
-                <p>전략 4</p>
-            </div>
-            <div class="drag-slide"><img src="img5.jpg" alt="">
-                <p>전략 5</p>
-            </div>
-        </div>
-    </div>
     <script>
-        const slider = document.querySelector('.drag-slider');
-        const track = document.querySelector('.drag-track');
+        function createStar(x, y) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${x}px`;
+            star.style.top = `${y}px`;
+            document.body.appendChild(별);
 
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+            setTimeout(() => {
+                star.remove();
+            }, 1000);
+        }
 
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
+        document.addEventListener('click', e => {
+            for (let i = 0; i < 20; i++) {
+                const offsetX = (Math.random() - 0.5) * 100;
+                const offsetY = (Math.random() - 0.5) * 100;
+                createStar(e.clientX + offsetX, e.clientY + offsetY);
+            }
         });
 
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 1.5; // 가속도 조절
-            slider.scrollLeft = scrollLeft - walk;
-        });
-
-        // 터치 지원
-        slider.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX;
-            scrollLeft = slider.scrollLeft;
-        }, { passive: true });
-
-        slider.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].pageX;
-            const walk = (x - startX) * 1.5;
-            slider.scrollLeft = scrollLeft - walk;
-        }, { passive: true });
-
+        // 자동으로 터지는 효과
+        setInterval(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            for (let i = 0; i < 10; i++) {
+                const offsetX = (Math.random() - 0.5) * 80;
+                const offsetY = (Math.random() - 0.5) * 80;
+                createStar(x + offsetX, y + offsetY);
+            }
+        }, 1000);
     </script>
+
 </body>
 
 </html>
