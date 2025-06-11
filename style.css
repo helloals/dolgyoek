@@ -31,7 +31,6 @@ html{
 }
 body {
   font-family: 'GmarketSansTTFBold', sans-serif;
-  background-color: beige;
    margin: 0;
   padding: 0;
    overflow-x: hidden;
@@ -53,7 +52,38 @@ h1{
   background: white;
   z-index: 999;
 }
-
+.nav-Inquiry-1st {
+  color: #000;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 30px;
+  font-size: 20x;
+  border-radius: 15px;
+  margin-left: 20px;
+  pointer-events: none;
+  /* ✅ 클릭 비활성화 */
+  user-select: none;
+  /* ✅ 텍스트 선택도 방지 (선택 사항) */
+}
+.nav-Inquiry-2nd {
+  background-color: #000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 30px;
+  font-size: 20x;
+  border-radius: 15px;
+  margin-left: 20px;
+  pointer-events: none;
+  /* ✅ 클릭 비활성화 */
+  user-select: none;
+  /* ✅ 텍스트 선택도 방지 (선택 사항) */
+}
 .logo img {
   width: 150px;
 }
@@ -88,12 +118,6 @@ h1{
 
 .sns-icons a.youtube:hover {
   color: #ff0000;
-}
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 /* 메인 섹션 */
@@ -207,8 +231,8 @@ background-color: red;
   display: flex;
 }
 .roller img{
-  width: 440px;
-  height: 440px;
+  width: 600px;
+  height: 600px;
 }
 .rolling_list {
   display: flex;
@@ -281,7 +305,20 @@ background-color: red;
 .image-container {
   margin: auto;
 }
+.img-1{
+  width: 100%;
+}
+.img-1 img{
+  width: 100%;
+}
+.dolgyeok{
+  background-color: #fff;
+  margin-top: -100px;
+}
+.dolgyeok img{
+  width: 1500px;
 
+}
 .label {
   position: absolute;
   font-size: 12px;
@@ -305,8 +342,46 @@ background-color: red;
   z-index: 4;
   user-select: none;
 }
+#story{
+  position: relative;
+    width: 100%;
+    height: 1080px;
+    background-image: url(./KakaoTalk_20250611_194555681.png);
+    background-size: cover;
+    background-position: center;
+}
+.story-span {
+  position: absolute;
+}
 
+.story-span:nth-child(1) {
+  top: 38%;
+  left: 35%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  font-weight: bolder;
+}
 
+.story-span:nth-child(3) {
+  top: 44%;
+  left: 35%;
+    transform: translateX(-50%);
+  font-size: 50px;
+  font-weight: bolder;
+  color: #b20a0a;
+}
+
+.story-span:nth-child(5) {
+  top: 51%;
+  left: 35%;
+    transform: translateX(-50%);
+  color: white;
+}
+#story img{
+  position: absolute;
+  top: 15%;
+  left: -5%;
+}
 .highlight{
 font-size: 20px;
 font-weight: bolder;
@@ -316,10 +391,7 @@ font-weight: bolder;
     font-weight: bolder;
     font-size: 20px;
 }
-body {
-    
-    background-color: #0d1b2a;
-}
+
 .flex{
     display: flex;
     
