@@ -145,8 +145,13 @@ h1{
 }
 .miracle img{
   width: 70%;
-  margin-top: -20%;
 }
+
+.miracle.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 #since{
   font-size: 30px !important;
 }
@@ -392,8 +397,29 @@ background-color: red;
       -webkit-text-stroke: 2px red;
 
 }
-    
-    
+
+.scroll-text {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.8s ease;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.scroll-text.from-left {
+  transform: translateX(-100%);
+}
+
+.scroll-text.from-right {
+  transform: translateX(100%);
+}
+
+.scroll-text.active {
+  opacity: 1;
+  transform: translateX(0);
+}
 .custom-slider-container {
       width: 100%;
       height: 100%;
@@ -430,28 +456,6 @@ background-color: red;
     background-position: center;
 }
 
-.story-span:nth-child(1) {
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 50px;
-  font-weight: bolder;
-}
-
-.story-span:nth-child(3) {
-  top: 15%;
-  left: 50%;
-    transform: translateX(-50%);
-  font-size: 50px;
-  font-weight: bolder;
-  color: #b20a0a;
-}
-
-.story-span:nth-child(5) {
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-}
 #story img{
   position: absolute;
   top: 15%;

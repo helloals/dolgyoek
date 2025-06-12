@@ -219,3 +219,18 @@ const buttons = document.querySelectorAll('.category-btn');
   setInterval(() => {
     customNext.click();
   }, 3000);
+  function revealOnScroll() {
+  const elements = document.querySelectorAll('.scroll-text');
+  const triggerBottom = window.innerHeight * 0.85;
+
+  elements.forEach(el => {
+    const boxTop = el.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll); // 페이지 로드시도 확인
+(box => observer.observe(box));
