@@ -151,10 +151,15 @@ const updateSlides = () => {
         { transform: 'translate(calc(-55% * -2.9), -200%) translateZ(-100px)', zIndex: 1 },
     ];
 
-    slides.forEach((slide, i) => {
+       slides.forEach((slide, i) => {
+        slide.classList.remove('center-slide'); // 기존 클래스 제거
         slide.style.transition = 'transform 0.5s, z-index 0.5s';
         slide.style.transform = positions[i].transform;
         slide.style.zIndex = positions[i].zIndex;
+
+        if (i === 3) {
+            slide.classList.add('center-slide'); // 가운데 슬라이드에만 추가
+        }
     });
 };
 
