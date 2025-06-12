@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    .custom-slider-container {
+      width: 100%;
+      height: 100%;
+      perspective: 500px;
+      transform-style: preserve-3d;
+      position: relative;
+      user-select: none; /* 선택 방지 */
+    }
+body {
+  font-family: 'GmarketSansTTFBold', sans-serif;
+   margin: 0;
+  padding: 0;
+   overflow-x: hidden;
+}
+    .custom-slide {
+      transition: 0.5s;
+      width: 800px;
+      box-shadow: 0 10px 50px gray;
+      height: 500px;
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -80%);
+    }
+
+    .custom-slide img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 버튼 스타일 */
+    .custom-prev, .custom-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      cursor: pointer;
+      z-index: 20; /* 슬라이드 위에 표시 */
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .custom-prev:hover, .custom-next:hover {
+      opacity: 1;
+    } 
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .blinking-text {
+      animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+      color: red;
+      font-weight: bolder;
+      font-size: 35px;
+      text-align: center;
+    }
+    .flex{
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        top: -77%;
+        transform: translateY(-30%);
+        line-height: 20px;
+    }
+  </style>
+</head>
+<body>
+    <!-- 업종변경 -->
+     
+    <div id="interview">
+        <div class="custom-slider-container">
+            <div class='custom-slide'>
+                <img src="./004.png" alt="">
+                <div class="flex">
+                    <div>
+                        <p class="before-text">350만원으로 업종변경</p>
+                    </div>
+                    <div>
+                        <p class="blinking-text">매출</p>
+                        <p class="blinking-text">300%상승</p>
+                    </div>
+                </div>
+            </div>
+
+      <div class='custom-slide'>
+        <img src="./005.png" alt="">
+        <div>
+            <p>asdasd</p>
+        </div>
+      </div>
+
+      <div class='custom-slide'>
+        <img src="./006.png" alt="">
+      </div>
+
+      <button class="custom-prev" aria-label="이전 슬라이드"></button>
+      <button class="custom-next" aria-label="다음 슬라이드"></button>
+    </div>
+  </div>
+
+  <script>
+    // 업종변경
+    const container = document.querySelector('.custom-slider-container');
+    const prev = document.querySelector('.custom-prev');
+    const next = document.querySelector('.custom-next');
+
+    const updateCustomSlides = () => {
+      const slides = container.querySelectorAll('.custom-slide');
+      const positions = [
+        { transform: 'translate(-150%, 50%) translateZ(100px)', zIndex: 1 },
+        { transform: 'translate(-50%, 35%) translateZ(150px)', zIndex: 3 },
+        { transform: 'translate(50%, 50%) translateZ(100px)', zIndex: 1 },
+      ];
+
+      slides.forEach((slide, i) => {
+        slide.classList.remove('center-slide');
+        slide.style.transition = 'transform 0.5s, z-index 0.5s';
+        slide.style.transform = positions[i].transform;
+        slide.style.zIndex = positions[i].zIndex;
+
+        if (i === 1) {
+          slide.classList.add('center-slide');
+        }
+      });
+    };
+
+    prev.addEventListener('click', () => {
+      container.append(container.querySelector('.custom-slide'));
+      updateCustomSlides();
+    });
+
+    next.addEventListener('click', () => {
+      const slides = container.querySelectorAll('.custom-slide');
+      container.prepend(slides[slides.length - 1]);
+      updateCustomSlides();
+    });
+
+    updateCustomSlides();
+      // 자동 슬라이드: 3초마다 다음 슬라이드로 이동
+  setInterval(() => {
+    next.click();
+  }, 3000); // 3000ms = 3초
+  </script>
+</body>
+</html>

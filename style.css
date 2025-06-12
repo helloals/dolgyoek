@@ -315,7 +315,7 @@ background-color: red;
   margin-top: -100px;
 }
 .dolgyeok img{
-  width: 1500px;
+  width: 100%;
 
 }
 .label {
@@ -328,7 +328,7 @@ background-color: red;
   white-space: nowrap;
   z-index: 3;
 }
-
+/* 점주 인터뷰 */
 .interview-container {
             width: 100%;
             height: 100%;
@@ -358,6 +358,72 @@ background-color: red;
  
             transform: translate(-50%);
         }
+/* 업변 전 후 */
+@keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .before-text{
+     font-size: 30px;
+     position: relative;
+     left: 22%;
+     top: -370%;
+     transform: translateY(-50%);
+     z-index: 2;
+     font-weight: bold;
+    }
+    .blinking-text {
+      animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+      color: red;
+      font-weight: bolder;
+      font-size: 20px;
+      text-align: center;
+      position: relative;
+      top: -400%;
+      left: 50%;
+      transform: translateX(50%);
+    }
+.custom-slide .flex div:last-child p:last-child {
+  font-size: 50px; /* 원하는 크기로 조절 */
+      top: -410%;
+
+}
+    
+    
+.custom-slider-container {
+      width: 100%;
+      height: 100%;
+      perspective: 500px;
+      transform-style: preserve-3d;
+      position: relative;
+      user-select: none; /* 선택 방지 */
+    }
+
+    .custom-slide {
+      transition: 0.5s;
+      width: 800px;
+      box-shadow: 0 10px 50px gray;
+      height: 500px;
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -80%);
+    }
+
+    .custom-slide img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 #story{
   position: relative;
     width: 100%;

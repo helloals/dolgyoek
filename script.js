@@ -135,44 +135,87 @@ const buttons = document.querySelectorAll('.category-btn');
   });
         });
 // 점주 인터뷰
-   const container = document.querySelector('.interview-container');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
+  // === [1] 인터뷰 슬라이더 ===
+  const interviewContainer = document.querySelector('.interview-container');
+  const interviewPrev = document.querySelector('.prev');
+  const interviewNext = document.querySelector('.next');
 
-const updateSlides = () => {
-    const slides = container.querySelectorAll('.interview-slide');
+  const updateInterviewSlides = () => {
+    const slides = interviewContainer.querySelectorAll('.interview-slide');
     const positions = [
-        { transform: 'translate(calc(-55% * 5.1), -200%) translateZ(-100px)', zIndex: 1 },
-        { transform: 'translate(calc(-45% * 5.1), -220%) translateZ(-100px)', zIndex: 2 },
-        { transform: 'translate(calc(-45% * 3.1), -230%) translateZ(-50px)', zIndex: 3 },
-        { transform: 'translate(calc(-45% * 1.1), -210%) translateZ(50px)', zIndex: 4 },
-        { transform: 'translate(calc(-45% * -0.9), -230%) translateZ(-50px)', zIndex: 3 },
-        { transform: 'translate(calc(-45% * -2.9), -220%) translateZ(-100px)', zIndex: 2 },
-        { transform: 'translate(calc(-55% * -2.9), -200%) translateZ(-100px)', zIndex: 1 },
+      { transform: 'translate(calc(-55% * 5.1), -200%) translateZ(-100px)', zIndex: 1 },
+      { transform: 'translate(calc(-45% * 5.1), -220%) translateZ(-100px)', zIndex: 2 },
+      { transform: 'translate(calc(-45% * 3.1), -230%) translateZ(-50px)', zIndex: 3 },
+      { transform: 'translate(calc(-45% * 1.1), -210%) translateZ(50px)', zIndex: 4 },
+      { transform: 'translate(calc(-45% * -0.9), -230%) translateZ(-50px)', zIndex: 3 },
+      { transform: 'translate(calc(-45% * -2.9), -220%) translateZ(-100px)', zIndex: 2 },
+      { transform: 'translate(calc(-55% * -2.9), -200%) translateZ(-100px)', zIndex: 1 },
     ];
 
-       slides.forEach((slide, i) => {
-        slide.classList.remove('center-slide'); // 기존 클래스 제거
-        slide.style.transition = 'transform 0.5s, z-index 0.5s';
-        slide.style.transform = positions[i].transform;
-        slide.style.zIndex = positions[i].zIndex;
+    slides.forEach((slide, i) => {
+      slide.classList.remove('center-slide');
+      slide.style.transition = 'transform 0.5s, z-index 0.5s';
+      slide.style.transform = positions[i].transform;
+      slide.style.zIndex = positions[i].zIndex;
 
-        if (i === 3) {
-            slide.classList.add('center-slide'); // 가운데 슬라이드에만 추가
-        }
+      if (i === 3) {
+        slide.classList.add('center-slide');
+      }
     });
-};
+  };
 
-prev.addEventListener('click', () => {
-    container.append(container.querySelector('.interview-slide'));
-    updateSlides();
-});
+  interviewPrev.addEventListener('click', () => {
+    interviewContainer.append(interviewContainer.querySelector('.interview-slide'));
+    updateInterviewSlides();
+  });
 
-next.addEventListener('click', () => {
-    const slides = container.querySelectorAll('.interview-slide');
-    container.prepend(slides[slides.length - 1]);
-    updateSlides();
-});
+  interviewNext.addEventListener('click', () => {
+    const slides = interviewContainer.querySelectorAll('.interview-slide');
+    interviewContainer.prepend(slides[slides.length - 1]);
+    updateInterviewSlides();
+  });
 
-updateSlides();
+  updateInterviewSlides();
 
+  // === [2] 업종변경 슬라이더 ===
+  const customContainer = document.querySelector('.custom-slider-container');
+  const customPrev = document.querySelector('.custom-prev');
+  const customNext = document.querySelector('.custom-next');
+
+  const updateCustomSlides = () => {
+    const slides = customContainer.querySelectorAll('.custom-slide');
+    const positions = [
+      { transform: 'translate(-150%, 50%) translateZ(100px)', zIndex: 1 },
+      { transform: 'translate(-50%, 35%) translateZ(150px)', zIndex: 3 },
+      { transform: 'translate(50%, 50%) translateZ(100px)', zIndex: 1 },
+    ];
+
+    slides.forEach((slide, i) => {
+      slide.classList.remove('center-slide');
+      slide.style.transition = 'transform 0.5s, z-index 0.5s';
+      slide.style.transform = positions[i].transform;
+      slide.style.zIndex = positions[i].zIndex;
+
+      if (i === 1) {
+        slide.classList.add('center-slide');
+      }
+    });
+  };
+
+  customPrev.addEventListener('click', () => {
+    customContainer.append(customContainer.querySelector('.custom-slide'));
+    updateCustomSlides();
+  });
+
+  customNext.addEventListener('click', () => {
+    const slides = customContainer.querySelectorAll('.custom-slide');
+    customContainer.prepend(slides[slides.length - 1]);
+    updateCustomSlides();
+  });
+
+  updateCustomSlides();
+
+  // 자동 슬라이드 (업종변경 슬라이더 전용)
+  setInterval(() => {
+    customNext.click();
+  }, 3000);
