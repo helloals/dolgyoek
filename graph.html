@@ -4,39 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-</head>
-<body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    .blinking-text {
-      animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
-      color: red;
-      font-weight: bolder;
-      position: relative;
-    }
-    
-  </style>
-  <title>Blinking Text</title>
-</head>
-<body>
-  <p class="blinking-text">askldfj;asklfjalsk;jflask;jflask;jfla;ksjfalsk;ㅁ나로ㅓ;ㅁ니ㅓㄹ;ㅣㅁ나ㅓㄹ미나얼 애ㅑㅛ쟈ㅕ교뱌ㅐㅕ죡뱌ㅕ죡</p>
-</body>
-</html>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrap {
+  overflow: hidden;
+  background-color: black;
+}
 
+.roller {
+  display: flex;
+}
+.roller img{
+  width: 600px;
+  height: 600px;
+}
+.rolling_list {
+  display: flex;
+}
+
+.wrap .rolling_list .item {
+  width: 500px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.roller .rolling_list.original {
+  animation: rollingTop1 30s linear infinite;
+}
+.roller .rolling_list.clone {
+  animation: rollingTop2 30s linear infinite;
+}
+@keyframes rollingTop1 {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-100%); }
+  50.01% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes rollingTop2 {
+  0% { transition: translateX(0); }
+  100% { transform: translateX(-200%); }
+}
+
+/* hover시 일시정지 */
+.roller:hover .rolling_list {
+   animation-play-state: paused; 
+}
+</style>
+</head>
+
+<body>
+   <div class="wrap">
+                <div class="roller">
+                    <ul class="rolling_list">
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/004.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/005.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/006.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/007.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/008.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/009.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/010.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/012.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/013.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/014.png" alt="">
+                        </li>
+                        <li class="item">
+                            <img src="./돌격닭강정/섹션2 매출/015.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
 </body>
+<script>
+      // 매출 슬라이드
+  let roller = document.querySelector('.roller .rolling_list');
+roller.id = 'roller1';
+let clone = roller.cloneNode(true)
+clone.id = 'roller2';
+document.querySelector('.roller').appendChild(clone);
+roller.classList.add('original');
+clone.classList.add('clone');
+</script>
 </html>

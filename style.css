@@ -247,48 +247,27 @@ background-color: red;
   flex-shrink: 0;
   color: #fff;
 }
-
 .roller .rolling_list.original {
-  animation: rollingTop1 130s linear infinite;
+  animation: rollingTop1 30s linear infinite;
 }
-
 .roller .rolling_list.clone {
-  animation: rollingTop2 130s linear infinite;
+  animation: rollingTop2 30s linear infinite;
 }
-
 @keyframes rollingTop1 {
-  0% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(-100%);
-  }
-
-  50.01% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-100%); }
+  50.01% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
 }
-
 @keyframes rollingTop2 {
-  0% {
-    transition: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-200%);
-  }
+  0% { transition: translateX(0); }
+  100% { transform: translateX(-200%); }
 }
 
 /* hover시 일시정지 */
 .roller:hover .rolling_list {
-  animation-play-state: paused;
+   animation-play-state: paused; 
 }
-
 .box {
     padding: 20px;
     flex: 1 1 200px; /* 최소 200px 크기로 반응형 */

@@ -10,7 +10,7 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script src="./script.js" defer></script>
+    <script src="./script.js"></script>
 </head>
 <header>
     <nav class="navbar" id="nav">
@@ -86,6 +86,7 @@
                 <br><br><br><br><br><br><br><br>
                 <br><br>
             </div>
+        </div>
             <div class="wrap">
                 <div class="roller">
                     <ul class="rolling_list">
@@ -125,8 +126,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
+            </div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br>
 
@@ -142,7 +142,7 @@
         <img src="./웨이팅 영상/제목을-입력해주세요_ (1).gif" alt="">
             <img src="./웨이팅 영상/제목을-입력해주세요_ (2).gif" alt="">
             <img src="./웨이팅 영상/제목을-입력해주세요_ (3).gif" alt="">
-            <img src="./웨이팅 영상/제목을-입력해주세요_ (4).gif" alt="">
+            <img src="./웨이팅 영상/제목을-입력해주세요_ (4).gif" alt=""><br>
             <img src="./웨이팅 영상/제목을-입력해주세요_ (5).gif" alt="">
             <img src="./웨이팅 영상/제목을-입력해주세요_ (6).gif" alt="">
             <img src="./웨이팅 영상/제목을-입력해주세요_ (7).gif" alt="">
@@ -262,9 +262,9 @@
             <div>
                 <img src="3way.png" style="width: 80%;" alt=""> 
             </div>
-            <div style="background-color: #ffcd4a; width: 60%; position: relative; left: 50%; transform: translateX(-50%);"><span style="font-size: 40px; color: #4e0006; font-weight: bolder;">배달 매출만으로는 가맹점 수익을 제대로 낼 수 없습니다!</span></div>
+            <div style="background-color: #ffcd4a; width: 60%; position: relative; left: 50%; transform: translateX(-50%) translateY(-80%);"><span style="font-size: 40px; color: #4e0006; font-weight: bolder;">배달 매출만으로는 가맹점 수익을 제대로 낼 수 없습니다!</span></div>
             <br>
-            <span style="color: #ffcd4a; font-size: 40px; font-weight: bolder;">3WAY 시스템 도입으로 고른 매출 구조</span><span style="color: white; font-size: 40px; font-weight: bolder;">를 지향합니다!</span>
+            <span style="color: #ffcd4a; font-size: 40px; font-weight: bolder; position: relative; transform: translateY(-80%);">3WAY 시스템 도입으로 고른 매출 구조</span><span style="color: white; font-size: 40px; font-weight: bolder;">를 지향합니다!</span>
         </div>
             <div class="box">
                 <div>
@@ -1094,5 +1094,15 @@
         </div>
 
 </body>
+<script>
+          // 매출 슬라이드
+  let roller = document.querySelector('.roller .rolling_list');
+roller.id = 'roller1';
+let clone = roller.cloneNode(true)
+clone.id = 'roller2';
+document.querySelector('.roller').appendChild(clone);
+roller.classList.add('original');
+clone.classList.add('clone');
+</script>
 
 </html>
