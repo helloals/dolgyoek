@@ -2,23 +2,125 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <title>이미지 확대</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>벽돌 튀어나와서 벽 치기</title>
     <style>
-        .zoom-img {
-            width: 300px;
-            transition: transform 0.3s ease;
+        body {
+            margin: 0;
+            height: 300vh;
+            /* 충분한 스크롤 */
+            background: #8B5E3C;
+            /* 벽 색 */
+            display: flex;
+            justify-content: center;
+            padding-top: 100vh;
+            /* 벽 시작 위치 */
         }
 
-        .zoom-img:hover {
-            transform: scale(1.2);
+        .wall {
+            position: relative;
+            width: 320px;
+            height: 600px;
+            background: #6f4a2f;
+            box-shadow: inset 0 0 50px #40280c;
+            border-radius: 6px;
+            overflow: visible;
+        }
+
+        .brick {
+            position: absolute;
+            width: 75px;
+            height: 35px;
+            background: url('https://i.imgur.com/8T6FfHk.png') no-repeat center/cover;
+            border-radius: 3px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+            /* 초기 위치는 화면 왼쪽 바깥 */
+            left: -100px;
+            opacity: 0;
+            transform: scale(0.7);
+        }
+
+        /* 벽돌이 지정 위치까지 날아가고 부딪히는 애니메이션 */
+        @keyframes flyAndHit {
+            0% {
+                opacity: 1;
+                left: -100px;
+                transform: scale(0.7) rotate(-10deg);
+            }
+
+            80% {
+                left: var(--target-left);
+                top: var(--target-top);
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            90% {
+                transform: scale(0.9) rotate(-5deg);
+            }
+
+            100% {
+                opacity: 1;
+                left: var(--target-left);
+                top: var(--target-top);
+                transform: scale(1) rotate(0deg);
+                box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <img class="zoom-img" src="./KakaoTalk_20250503_142748382.png" alt="예시 이미지">
+    <div class="wall" id="wall"></div>
+
+    <script>
+        const wall = document.getElementById('wall');
+
+        // 벽돌 위치 배열
+        const brickPositions = [
+            { top: 0, left: 0 },
+            { top: 0, left: 80 },
+            { top: 0, left: 160 },
+            { top: 0, left: 240 },
+
+            { top: 40, left: 40 },
+            { top: 40, left: 120 },
+            { top: 40, left: 200 },
+
+            { top: 80, left: 0 },
+            { top: 80, left: 80 },
+            { top: 80, left: 160 },
+            { top: 80, left: 240 },
+        ];
+
+        let currentIndex = 0;
+
+        window.addEventListener('scroll', () => {
+            const triggerPoint = window.innerHeight * 0.75;
+            const wallRect = wall.getBoundingClientRect();
+
+            if (wallRect.top < triggerPoint && currentIndex < brickPositions.length) {
+                addBrick(brickPositions[currentIndex]);
+                currentIndex++;
+            }
+        });
+
+        function addBrick(pos) {
+            const brick = document.createElement('div');
+            brick.classList.add('brick');
+            // CSS 변수로 타겟 위치 전달
+            brick.style.setProperty('--target-left', pos.left + 'px');
+            brick.style.setProperty('--target-top', pos.top + 'px');
+            brick.style.top = '0px'; // 시작은 임의로 0, 애니메이션에서 이동
+            brick.style.opacity = '1';
+
+            wall.appendChild(brick);
+
+            // 애니메이션 시작
+            brick.style.animation = 'flyAndHit 0.8s cubic-bezier(0.3, 1.5, 0.5, 1) forwards';
+        }
+    </script>
 
 </body>
 

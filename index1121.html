@@ -3,31 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>별빛 터지는 효과</title>
+    <title>별빛 터짐 효과</title>
     <style>
         body {
+            height: 3000px;
             margin: 0;
             background: #000;
-            overflow: hidden;
         }
 
-        .star {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 1s ease-out forwards;
+        .star-image {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: starPop 0.6s ease-out forwards;
         }
 
-        @keyframes twinkle {
+        @keyframes starPop {
             0% {
                 transform: scale(1);
                 opacity: 1;
             }
 
             100% {
-                transform: scale(5);
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .starlight {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: yellow;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            z-index: 9998;
+            animation: starlightFly 1.2s ease-out forwards;
+        }
+
+        @keyframes starlightFly {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0.5);
                 opacity: 0;
             }
         }
@@ -35,37 +59,56 @@
 </head>
 
 <body>
+
     <script>
-        function createStar(x, y) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = `${x}px`;
-            star.style.top = `${y}px`;
-            document.body.appendChild(별);
+        const starImageURL = 'star.png'; // ⭐ 사용자가 넣을 별 이미지 경로
 
-            setTimeout(() => {
-                star.remove();
-            }, 1000);
-        }
+        let lastScroll = 0;
 
-        document.addEventListener('click', e => {
-            for (let i = 0; i < 20; i++) {
-                const offsetX = (Math.random() - 0.5) * 100;
-                const offsetY = (Math.random() - 0.5) * 100;
-                createStar(e.clientX + offsetX, e.clientY + offsetY);
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastScroll > 1000) {
+                triggerStarburst();
+                lastScroll = now;
             }
         });
 
-        // 자동으로 터지는 효과
-        setInterval(() => {
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            for (let i = 0; i < 10; i++) {
-                const offsetX = (Math.random() - 0.5) * 80;
-                const offsetY = (Math.random() - 0.5) * 80;
-                createStar(x + offsetX, y + offsetY);
+        function triggerStarburst() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // ⭐ 중앙의 큰 별 이미지
+            const img = document.createElement('img');
+            img.src = starImageURL;
+            img.className = 'star-image';
+            img.style.left = (centerX - 25) + 'px';
+            img.style.top = (centerY - 25) + 'px';
+            document.body.appendChild(img);
+            setTimeout(() => img.remove(), 700);
+
+            // ✨ 별빛 파편 생성
+            for (let i = 0; i < 20; i++) {
+                const light = document.createElement('div');
+                light.className = 'starlight';
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 60 + Math.random() * 80;
+                const x = Math.cos(angle) * distance + 'px';
+                const y = Math.sin(angle) * distance * -1 + 'px'; // 위로 흩어지게
+
+                light.style.left = centerX + 'px';
+                light.style.top = centerY + 'px';
+                light.style.setProperty('--x', x);
+                light.style.setProperty('--y', y);
+
+                // 밝기 및 크기 살짝 랜덤
+                light.style.width = light.style.height = (4 + Math.random() * 4) + 'px';
+                light.style.boxShadow = `0 0 ${(4 + Math.random() * 6)}px 2px rgba(255,255,255,0.8)`;
+
+                document.body.appendChild(light);
+                setTimeout(() => light.remove(), 1300);
             }
-        }, 1000);
+        }
     </script>
 
 </body>
