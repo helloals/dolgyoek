@@ -355,9 +355,26 @@ background-color: red;
             z-index: 1;
             bottom: 1em;
             left: 50%;
- 
             transform: translate(-50%);
         }
+        .buttons button {
+  width: 100%; /* 원하는 크기 */
+  height: 100px;
+  background-size: cover;      /* 이미지가 꽉 차게 */
+  background-position: center; /* 중앙 정렬 */
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  
+  /* 버튼 기본 스타일 제거 */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+}
+
 /* 업변 전 후 */
 @keyframes blink {
       0% {
@@ -429,7 +446,7 @@ background-color: red;
   position: relative;
     width: 100%;
     height: 1080px;
-    background-image: url(./KakaoTalk_20250612_030520849.png);
+    background-image: url(점주인터뷰백.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -512,6 +529,9 @@ img.reveal {
   opacity: 1;
   transform: translateX(0) translateY(0);
 }
+#three-way{
+  background-color: #4e0006;
+}
 #product{
   display: flex;
 }
@@ -574,40 +594,7 @@ img.reveal {
     object-fit: cover;
   }
   
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    font-size: 2rem;
-    background: none;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    user-select: none;
-  }
-  .nav-button :hover {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    font-size: 2rem;
-    background: none;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    user-select: none;
-  }
   
-  .prev {
-    left: 10px;
-  }
-  
-  .next {
-    right: 10px;
-  }
 .rev-slider {
     position: relative;
     width: 300%;
@@ -633,40 +620,6 @@ img.reveal {
     object-fit: cover;
   }
   
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    font-size: 2rem;
-    background: none;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    user-select: none;
-  }
-  .nav-button :hover {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    font-size: 2rem;
-    background: none;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  .prev {
-    left: 10px;
-  }
-  
-  .next {
-    right: 10px;
-  }
   /* 리뷰 슬라이드 */
         .slide-wrapper {
           padding: 40px 20px;
