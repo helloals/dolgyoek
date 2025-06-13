@@ -391,6 +391,56 @@ background-color: red;
       left: 50%;
       transform: translateX(50%);
     }
+    .blink-text{
+      animation: blink 1s infinite;
+      /* 1초 간격으로 무한 반복 */
+    }
+    #logo-1{
+      width: 130%;
+    }
+    #logo-2{
+      margin-top: 5%;
+      transform: translateX(50%);
+      width: 50%;
+      
+    }
+    .pic1 img{
+      width: 100%;
+    }
+    .pic2 img{
+      width: 100%;
+    }
+        .blink-img img {
+          animation: blink 1s infinite;
+          /* 1초 간격으로 무한 반복 */
+        }
+        @keyframes smooth-rotate-shake {
+          0% {
+            transform: rotate(0deg);
+          }
+    
+          20% {
+            transform: rotate(-30deg);
+          }
+    
+          50% {
+            transform: rotate(0deg);
+          }
+    
+          80% {
+            transform: rotate(30deg);
+          }
+    
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+    
+        .rotate-smooth {
+          animation: smooth-rotate-shake 2s ease-in-out infinite;
+          transform-origin: center;
+          display: inline-block; 
+          }
 .custom-slide .flex div:last-child p:last-child {
   font-size: 50px; /* 원하는 크기로 조절 */
       top: -410%;
@@ -573,6 +623,11 @@ img.reveal {
 }
 .thway-text{
   margin-top: -70px;
+}
+.thway-img img{
+width: 250px;
+height: 250px;
+padding: 10px;
 }
 #product{
   display: flex;

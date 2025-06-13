@@ -1,46 +1,63 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>스르르 등장 모션</title>
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    body {
-      height: 2000px;
-      color: black;
-      font-family: sans-serif;
+    i {
+      transform-origin: 50% 50%;
+      animation-name: shake;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-delay: 1s;
     }
 
-    .fade-text {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
 
-    .fade-text.active {
-      opacity: 1;
-      transform: translateY(0);
+      10% {
+        transform: rotate(45deg);
+      }
+
+      20% {
+        transform: rotate(-45deg);
+      }
+
+      30% {
+        transform: rotate(30deg);
+      }
+
+      40% {
+        transform: rotate(-30deg);
+      }
+
+      50% {
+        transform: rotate(10deg);
+      }
+
+      60% {
+        transform: rotate(-10deg);
+      }
+
+      70% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="fade-text" id="fadeText">홀&배달&포장형 3WAY</div>
-
-  <script>
-    window.addEventListener("scroll", function () {
-      const text = document.getElementById("fadeText");
-      const rect = text.getBoundingClientRect();
-      const triggerPoint = window.innerHeight * 0.8;
-
-      if (rect.top < triggerPoint) {
-        text.classList.add("active");
-      }
-    });
-  </script>
-
+  <i class="fa fa-bell" style="font-size:48px;color:red"></i>
+  <br>
 </body>
 
 </html>
