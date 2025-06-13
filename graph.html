@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <title>스르르 등장 모션</title>
   <style>
     body {
       height: 2000px;
-      background: #111;
-      color: white;
+      color: black;
       font-family: sans-serif;
     }
 
     .fade-text {
-      font-size: 60px;
-      font-weight: 700;
       text-align: center;
-      margin-top: 800px;
       opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease;
@@ -27,9 +24,10 @@
     }
   </style>
 </head>
+
 <body>
 
-  <div class="fade-text" id="fadeText">스르르~ 등장!</div>
+  <div class="fade-text" id="fadeText">홀&배달&포장형 3WAY</div>
 
   <script>
     window.addEventListener("scroll", function () {
@@ -44,51 +42,5 @@
   </script>
 
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>스르르 등장 모션</title>
-  <style>
-    body {
-      height: 2000px;
-      background: #111;
-      color: white;
-      font-family: sans-serif;
-    }
 
-    .fade-text {
-      font-size: 60px;
-      font-weight: 700;
-      text-align: center;
-      margin-top: 800px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
-
-    .fade-text.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-</head>
-<body>
-
-  <div class="fade-text" id="fadeText">스르르~ 등장!</div>
-
-  <script>
-    window.addEventListener("scroll", function () {
-      const text = document.getElementById("fadeText");
-      const rect = text.getBoundingClientRect();
-      const triggerPoint = window.innerHeight * 0.8;
-
-      if (rect.top < triggerPoint) {
-        text.classList.add("active");
-      }
-    });
-  </script>
-
-</body>
 </html>

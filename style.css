@@ -515,6 +515,65 @@ img.reveal {
 #three-way{
   background-color: #4e0006;
 }
+/* 두둥 텍스트 */
+.dudung-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dudung-text {
+  color: #ff1e1e;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.3s;
+}
+
+.dudung-text.active {
+  animation: dudung 0.8s ease-out forwards;
+}
+
+@keyframes dudung {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+
+  30% {
+    transform: scale(1.3) rotate(-3deg);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(0.9) rotate(3deg);
+  }
+
+  80% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+/* 스르르텍스트 */
+.fade-text {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+  margin-top: -10%;
+}
+
+.fade-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.thway-text{
+  margin-top: -70px;
+}
 #product{
   display: flex;
 }

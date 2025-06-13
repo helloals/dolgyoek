@@ -234,3 +234,24 @@ const buttons = document.querySelectorAll('.category-btn');
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll); // 페이지 로드시도 확인
 (box => observer.observe(box));
+
+// 두둥텍스트
+window.addEventListener("scroll", function () {
+  const target = document.getElementById("dudung");
+  const rect = target.getBoundingClientRect();
+  const triggerPoint = window.innerHeight * 0.8;
+
+  if (rect.top < triggerPoint) {
+      target.classList.add("active");
+  }
+});
+// 스르르텍스트
+window.addEventListener("scroll", function () {
+  const text = document.getElementById("fadeText");
+  const rect = text.getBoundingClientRect();
+  const triggerPoint = window.innerHeight * 0.8;
+
+  if (rect.top < triggerPoint) {
+    text.classList.add("active");
+  }
+});
