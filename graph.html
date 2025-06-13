@@ -4,110 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<style>
-  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.wrap {
-  overflow: hidden;
-  background-color: black;
+  <style>
+    .bouncy-text {
+  display: inline-block;
+  font-size: 48px;
+  font-weight: bold;
+  color: #b80101;
+  animation: bounce 0.6s infinite;
 }
 
-.roller {
-  display: flex;
-}
-.roller img{
-  width: 600px;
-  height: 600px;
-}
-.rolling_list {
-  display: flex;
-}
-
-.wrap .rolling_list .item {
-  width: 500px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: #fff;
-}
-.roller .rolling_list.original {
-  animation: rollingTop1 30s linear infinite;
-}
-.roller .rolling_list.clone {
-  animation: rollingTop2 30s linear infinite;
-}
-@keyframes rollingTop1 {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-100%); }
-  50.01% { transform: translateX(100%); }
-  100% { transform: translateX(0); }
-}
-@keyframes rollingTop2 {
-  0% { transition: translateX(0); }
-  100% { transform: translateX(-200%); }
+/* bounce keyframes */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
 }
 
-/* hover시 일시정지 */
-.roller:hover .rolling_list {
-   animation-play-state: paused; 
-}
-</style>
+  </style>
 </head>
-
 <body>
-   <div class="wrap">
-                <div class="roller">
-                    <ul class="rolling_list">
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/004.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/005.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/006.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/007.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/008.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/009.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/010.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/012.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/013.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/014.png" alt="">
-                        </li>
-                        <li class="item">
-                            <img src="./돌격닭강정/섹션2 매출/015.png" alt="">
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="bouncy-text">튀기는 글자</div>
+
 </body>
-<script>
-      // 매출 슬라이드
-  let roller = document.querySelector('.roller .rolling_list');
-roller.id = 'roller1';
-let clone = roller.cloneNode(true)
-clone.id = 'roller2';
-document.querySelector('.roller').appendChild(clone);
-roller.classList.add('original');
-clone.classList.add('clone');
-</script>
 </html>
