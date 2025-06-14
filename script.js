@@ -413,6 +413,7 @@ cddSliderTrack.addEventListener('transitionend', () => {
 document.querySelectorAll('img').forEach(img => {
     img.ondragstart = () => false;
 });
+
 // 맛, 사이즈, 곁들임, 사이드
 const section19_categories = [
   [ // 21가지 맛
