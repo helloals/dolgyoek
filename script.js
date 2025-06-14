@@ -413,4 +413,215 @@ cddSliderTrack.addEventListener('transitionend', () => {
 document.querySelectorAll('img').forEach(img => {
     img.ondragstart = () => false;
 });
-        
+// 맛, 사이즈, 곁들임, 사이드
+const section19_categories = [
+  [ // 21가지 맛
+      { src: '돌격닭강정/빨간맛161.jpg', text: '161 빨간맛' },
+      { src: '돌격닭강정/닭강정 마늘간장 45도컷.jpg', text: '단짠마늘간장' },
+      { src: '돌격닭강정/닭강정 빨간양념 + 크림폭탄 45도컷.jpg', text: '크림폭탄' },
+      { src: '돌격닭강정/닭강정 마늘간장+청양크림 45도컷 .jpg', text: '청양크림' },
+      { src: '돌격닭강정/닭강정 순한맛 치즈폭포+치즈시즈닝 45도컷.jpg', text: '치즈폭포포' },
+      { src: '돌격닭강정/후추라이드 45도컷.jpg', text: '후추라이드 순살' },
+      { src: '돌격닭강정/윙봉 후추 45도컷.jpg', text: '후추라이드 윙봉' },
+      { src: '돌격닭강정/닭강정 눈꽃시즈닝_치즈가루 45도컷 .jpg', text: '눈꽃치즈' },
+      { src: '돌격닭강정/닭강정 눈꽃시즈닝_하얀가루 45도컷.jpg', text: '눈꽃허니버터터' },
+      { src: '돌격닭강정/순살 후라이드 45도컷.jpg', text: '순살 후라이드' },
+  ],
+  [ // 사이즈 구성
+      { src: '왕컵.jpg', text: '왕컵' },
+      { src: '대왕컵.jpg', text: '대왕컵' },
+      { src: '실속단품.jpeg', text: '실속 단품' },
+      { src: '중장세트.jpg', text: '중장 세트' },
+      { src: '대장세트.jpg', text: '대장 세트' },
+      { src: '2종콤보_중장2종.jpg', text: '중장 2종 콤보' },
+      { src: '2종콤보_왕대장2종.jpg', text: '왕대장 2종 콤보' },
+      { src: '3대장.jpeg', text: '3대장 세트' },
+  ],
+  [ // 곁들임 메뉴
+      { src: '떡볶이', text: '火떡볶이' },
+      { src: '커리어묵칩스.jpg', text: '커리어묵칩스' },
+      { src: '옛날통닭', text: '옛날 통닭' },
+      { src: '치즈폭포감자튀김.jpg', text: '치즈폭포 감자튀김' },
+      { src: '레트로떡강정', text: '레트로 떡강정' },
+  ],
+  [ // 사이드 메뉴
+      { src: '후라이드 감자튀김.jpg', text: '후라이드 감자튀김' },
+      { src: '눈꽃감자튀김.jpg', text: '눈꽃 감자튀김' },
+      { src: '치즈스틱.jpg', text: '치즈스틱' },
+      { src: '고구마치즈스틱.jpg', text: '고구마 치즈스틱' },
+      { src: '치즈볼.jpg', text: '치즈볼' },
+      { src: '눈꽃 치즈볼.jpg', text: '눈꽃 치즈볼' },
+  ]
+];
+
+const section19_slider = document.querySelector('.section19-slider');
+const section19_tabs = document.querySelectorAll('.section19-tab');
+let section19_currentCategory = 0;
+let section19_currentIndex = 0;
+let section19_currentTranslate = 0;
+
+section19_tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+      if (tab.classList.contains('active')) return;
+      section19_tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      section19_currentCategory = +tab.dataset.category;
+      section19_currentIndex = 0;
+      section19_setupSlider();
+  });
+});
+
+function section19_setupSlider() {
+  section19_slider.innerHTML = '';
+  const imgs = section19_categories[section19_currentCategory];
+  const prependImgs = imgs.slice(-2);
+  const appendImgs = imgs.slice(0, 2);
+  const fullImgs = [...prependImgs, ...imgs, ...appendImgs];
+
+  fullImgs.forEach(({ src, text }) => {
+      const div = document.createElement('div');
+      div.className = 'section19-slide';
+      const img = document.createElement('img');
+      img.src = src;
+      const label = document.createElement('div');
+      label.className = 'section19-label';
+      label.textContent = text;
+      div.appendChild(img);
+      div.appendChild(label);
+      section19_slider.appendChild(div);
+  });
+
+  setTimeout(() => {
+      section19_updateSlidesClass();
+      section19_setPositionByIndex();
+  }, 50);
+}
+
+function section19_getSlideWidth() {
+  const slide = section19_slider.querySelector('.section19-slide');
+  return slide ? slide.offsetWidth + 10 : 0;
+}
+
+function section19_setPositionByIndex() {
+  const slideWidth = section19_getSlideWidth();
+  section19_currentTranslate = -((2 + section19_currentIndex - 1) * slideWidth);
+  section19_setSliderPosition();
+}
+
+function section19_setSliderPosition() {
+  section19_slider.style.transform = `translateX(${section19_currentTranslate}px)`;
+}
+
+function section19_updateSlidesClass() {
+  const slides = section19_slider.querySelectorAll('.section19-slide');
+  slides.forEach(slide => slide.classList.remove('current', 'prev', 'next'));
+
+  const prevIdx = 2 + section19_currentIndex - 1;
+  if (slides[prevIdx]) slides[prevIdx].classList.add('prev');
+
+  for (let i = 0; i < 3; i++) {
+      const idx = 2 + section19_currentIndex + i;
+      if (slides[idx]) slides[idx].classList.add('current');
+  }
+
+  const nextIdx = 2 + section19_currentIndex + 3;
+  if (slides[nextIdx]) slides[nextIdx].classList.add('next');
+}
+
+let section19_isDragging = false;
+let section19_startX = 0;
+let section19_prevTranslate = 0;
+
+section19_slider.addEventListener('mousedown', (e) => {
+  section19_isDragging = true;
+  section19_startX = e.pageX;
+  section19_prevTranslate = section19_currentTranslate;
+  section19_slider.style.transition = 'none';
+});
+section19_slider.addEventListener('touchstart', (e) => {
+  section19_isDragging = true;
+  section19_startX = e.touches[0].clientX;
+  section19_prevTranslate = section19_currentTranslate;
+  section19_slider.style.transition = 'none';
+});
+
+section19_slider.addEventListener('mousemove', (e) => {
+  if (!section19_isDragging) return;
+  const currentX = e.pageX;
+  section19_currentTranslate = section19_prevTranslate + (currentX - section19_startX);
+  section19_setSliderPosition();
+});
+section19_slider.addEventListener('touchmove', (e) => {
+  if (!section19_isDragging) return;
+  const currentX = e.touches[0].clientX;
+  section19_currentTranslate = section19_prevTranslate + (currentX - section19_startX);
+  section19_setSliderPosition();
+});
+
+function section19_touchEnd() {
+  if (!section19_isDragging) return;
+  section19_isDragging = false;
+  section19_slider.style.transition = 'transform 0.3s ease';
+
+  const slideWidth = section19_getSlideWidth();
+  let movedIndex = Math.round(-section19_currentTranslate / slideWidth) - 2;
+  const imgsLen = section19_categories[section19_currentCategory].length;
+
+  if (movedIndex < 0) movedIndex = imgsLen - 1;
+  else if (movedIndex >= imgsLen) movedIndex = 0;
+
+  section19_currentIndex = movedIndex;
+  section19_setPositionByIndex();
+  section19_updateSlidesClass();
+}
+
+section19_slider.addEventListener('mouseup', section19_touchEnd);
+section19_slider.addEventListener('mouseleave', section19_touchEnd);
+section19_slider.addEventListener('touchend', section19_touchEnd);
+
+section19_setupSlider();
+//경쟁력
+let index = 0;
+    const totalSlides = 8;
+    const sliderTrack = document.getElementById('sliderTrack');
+    const indicatorDots = document.querySelectorAll('.indicator-dot');
+    let intervalId;
+
+    function updateSlide() {
+      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      indicatorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function goToSlide(i) {
+      index = i;
+      updateSlide();
+      restartAutoSlide();
+    }
+
+    // 슬라이드 자동 전환
+    function startAutoSlide() {
+      intervalId = setInterval(nextSlide, 3000);
+    }
+
+    function restartAutoSlide() {
+      clearInterval(intervalId);
+      startAutoSlide();
+    }
+
+    // 인디케이터 클릭 이벤트
+    indicatorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const i = parseInt(dot.getAttribute('data-index'));
+        goToSlide(i);
+      });
+    });
+
+    updateSlide();
+    startAutoSlide();
