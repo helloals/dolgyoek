@@ -1,65 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>전체 화면 스크롤 고정 + 이미지 등장</title>
   <style>
-    body img {
-      width: 800px;
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 200vh;
+      /* 페이지 충분히 길게 */
+      font-family: sans-serif;
+      background: #f5f5f5;
+      overflow-y: scroll;
+      /* 초기엔 스크롤 가능 */
     }
 
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
+    body.lock-scroll {
+      overflow: hidden;
+      /* 스크롤 잠금 */
+      height: 100vh;
+      /* 화면 고정 */
     }
 
-    .blink-img img {
-      width: 200px;
-      animation: blink 1s infinite;
-      /* 1초 간격으로 무한 반복 */
+    #product {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px;
+      overflow-x: hidden;
+      height: 100vh;
+      box-sizing: border-box;
+      background: white;
     }
 
-    .blink-img2 img {
-      width: 400px;
-      animation: blink 1s infinite;
-      /* 1초 간격으로 무한 반복 */
+    img.reveal {
+      opacity: 0;
+      transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+      width: 30%;
+      max-width: 30%;
+      margin: 0;
+      transform: translateY(50px);
+    }
+
+    .reveal.from-left {
+      transform: translateX(-100px);
+    }
+
+    .reveal.from-right {
+      transform: translateX(100px);
+    }
+
+    .reveal.from-bottom {
+      transform: translateY(100px);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      #product {
+        flex-direction: column;
+        height: auto;
+      }
+
+      img.reveal {
+        width: 80%;
+        max-width: 80%;
+        margin-bottom: 40px;
+      }
     }
   </style>
 </head>
 
-<body>
-  <div style="display: flex;">
-    <div>
-      <div style="transform: translateX(29.5%);">
-        <img src="./돌격닭강정/섹션9 틈새공략/005.png" alt="">
-      </div>
-      <div style="transform: translateY(35%);" class="blink-img">
-        <img src="./돌격닭강정/로고/대지 2@4x.png" width="100px" alt="">
-      </div>
-      <div style="transform: translateX(-28.5%);">
-        <img src=" ./돌격닭강정/섹션9 틈새공략/006.png" alt="">
-      </div>
-      <div style="transform: translateY(30%) translateX(-162%);">
-        <img src="./KakaoTalk_20250613_182030452.png" alt="">
-        <p style="font-size: 40px;  margin-top: -10%; transform: translateX(30%);">한계를 극복하고</p><br>
-        <p style="font-size: 40px; font-weight: bolder; margin-top: -10%;  transform: translateX(30%);"> 장점만 쏙쏙 고른</p>
-      </div>
-      <div style="transform: translateX(-480%) translateY(130%);" class="blink-img2">
-        <img src="./돌격닭강정/로고/대지 3@4x.png" alt="">
-      </div>
-    </div>
+<body class="lock-scroll">
+  <div id="product">
+    <img src="./그림1.jpg" class="reveal from-bottom" alt="아래쪽 이미지" />
+    <img src="./그림2.jpg" class="reveal from-bottom" alt="아래쪽 이미지" />
+    <img src="./그림3.jpg" class="reveal from-bottom" alt="아래쪽 이미지" />
+    <img src="./그림1.jpg" class="reveal from-bottom" alt="아래쪽 이미지" />
   </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    let revealedCount = 0;
+    let scrollCount = 0;
+    const scrollThreshold = 1; // 스크롤 3번 해야 다음 이미지 등장
+
+    // 스크롤 이벤트
+    function onScroll(e) {
+      // 첫 이미지부터 순서대로 처리
+      if (revealedCount >= reveals.length) return; // 다 보여주면 종료
+
+      scrollCount++;
+      if (scrollCount >= scrollThreshold) {
+        reveals[revealedCount].classList.add('show');
+        revealedCount++;
+        scrollCount = 0;
+
+        if (revealedCount === reveals.length) {
+          // 마지막 이미지 다 나오면 스크롤 잠금 해제
+          document.body.classList.remove('lock-scroll');
+        }
+      }
+
+      // 스크롤 막고 있어야 하므로 강제로 스크롤 위치 고정
+      if (document.body.classList.contains('lock-scroll')) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    window.addEventListener('wheel', onScroll, { passive: false });
+    window.addEventListener('touchmove', onScroll, { passive: false });
+
+    // 페이지 로드 시 첫 이미지 보여줄지 체크
+    window.addEventListener('load', () => {
+      // 시작할 때 첫 이미지는 안보이게 하거나 원하는대로 조정 가능
+    });
+  </script>
 </body>
 
 </html>

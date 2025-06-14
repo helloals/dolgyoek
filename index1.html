@@ -2,229 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel=" stylesheet"
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style1.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Section 11 Scroll Reveal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .lock-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .section11-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+        }
+
+        .section11-image {
+            display: block;
+            width: 25%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            border: none;
+            flex-shrink: 0;
+            opacity: 0;
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+            transform: translateY(100px);
+        }
+
+        .section11-image.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section11-image.last {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, 100px);
+            z-index: 10;
+            width: 60%;
+        }
+
+        .section11-image.last.show {
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
-<body>
-    <span>Since2022 - 의정부</span> <span>C급상권</span><span>에서―――</span>
-    <br>
-    <span>―――</span><span>단돈 천만원</span><span>으로 시작한 돌격닭강정</span>
-    <br>
-    <br>
-    <!DOCTYPE html>
-    <html lang="ko">
+<div class="lock-scroll">
+    <div class="section11-container">
+        <img src="./돌격닭강정/섹션11 맛 재료자랑/001.png" class="section11-image" alt="">
+        <img src="./돌격닭강정/섹션11 맛 재료자랑/002.png" class="section11-image" alt="">
+        <img src="./돌격닭강정/섹션11 맛 재료자랑/003.png" class="section11-image" alt="">
+        <img src="./돌격닭강정/섹션11 맛 재료자랑/004.png" class="section11-image" alt="">
+        <img src="./돌격닭강정/섹션11 맛 재료자랑/005.png" class="section11-image last" alt="">
+    </div>
+</div>
 
-    <head>
-        <meta charset="UTF-8" />
-        <title>회전 도넛 그래프 - 고정 라벨</title>
-        <style>
-            body {
-                margin: 0;
-                height: 100vh;
-                background-color: #f0f0f0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+<script>
+    const section11Images = document.querySelectorAll('.section11-image');
+    let revealedCount = 0;
+    let scrollCount = 0;
+    const scrollThreshold = 3;
 
-            .chart-wrapper {
-                position: relative;
-                width: 400px;
-                height: 400px;
-            }
+    function revealNextImage(e) {
+        if (revealedCount >= section11Images.length) return;
 
-            canvas {
-                position: absolute;
-                left: 0;
-                top: 0;
-                z-index: 0;
-            }
+        scrollCount++;
+        if (scrollCount >= scrollThreshold) {
+            section11Images[revealedCount].classList.add('show');
+            revealedCount++;
+            scrollCount = 0;
+        }
 
-            svg {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 400px;
-                height: 400px;
-                z-index: 2;
-                pointer-events: none;
-            }
+        if (document.body.classList.contains('lock-scroll')) {
+            window.scrollTo(0, 0);
+            e.preventDefault(); // 모바일에서 스크롤 막기
+        }
+    }
 
-            .label {
-                position: absolute;
-                font-size: 12px;
-                font-weight: bold;
-                color: black;
-                pointer-events: none;
-                transform: translate(-50%, -50%);
-                z-index: 3;
-            }
-
-            .center-text {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                font-weight: bold;
-                font-size: 20px;
-                color: white;
-                z-index: 4;
-                user-select: none;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="chart-wrapper">
-            <canvas id="donutCanvas" width="400" height="400"></canvas>
-            <div id="labels"></div>
-            <div class="center-text">월 매출 1억 5천</div>
-        </div>
-
-        <script>
-            const canvas = document.getElementById("donutCanvas");
-            const ctx = canvas.getContext("2d");
-            const labelsContainer = document.getElementById("labels");
-
-            const centerX = 200;
-            const centerY = 200;
-            const outerRadius = 160;
-            const middleRadius = 100;
-            const innerRadius = 80;
-
-            const data = [
-                { label: '식자재비', value: 34, color: '#2a0100' },
-                { label: '음료&주류', value: 3, color: '#ffd291' },
-                { label: '인건비', value: 17, color: '#ffbb73' },
-                { label: '임대료', value: 3, color: '#feff86' },
-                { label: '카드수수료', value: 1, color: '#fbe8a4' },
-                { label: '배달수수료', value: 10, color: '#efd4a7' },
-                { label: '공과잡비', value: 3, color: '#e9c079' },
-                { label: '영업이익', value: 29, color: '#e60012' }
-            ];
-
-            const total = data.reduce((acc, d) => acc + d.value, 0);
-
-            let rotation = 0;
-
-            function polarToCartesian(angle, radius) {
-                return {
-                    x: centerX + radius * Math.cos(angle),
-                    y: centerY + radius * Math.sin(angle),
-                };
-            }
-
-            function checkCollision(newPos, existingLabels) {
-                const minDistance = 40; // 라벨 간 최소 거리
-                for (let label of existingLabels) {
-                    const dist = Math.sqrt(Math.pow(newPos.x - label.x, 2) + Math.pow(newPos.y - label.y, 2));
-                    if (dist < minDistance) {
-                        return true; // 겹침
-                    }
-                }
-                return false; // 겹침 없음
-            }
-
-            function drawChart() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                labelsContainer.innerHTML = "";
-
-                let start = rotation;
-                let existingLabels = []; // 기존 라벨들의 위치를 저장
-
-                data.forEach(d => {
-                    const sliceAngle = (d.value / total) * Math.PI * 2;
-
-                    // 도넛 부분
-                    ctx.beginPath();
-                    ctx.arc(centerX, centerY, outerRadius, start, start + sliceAngle);
-                    ctx.arc(centerX, centerY, innerRadius, start + sliceAngle, start, true);
-                    ctx.closePath();
-                    ctx.fillStyle = d.color;
-                    ctx.fill();
-
-                    // 중심각으로 라벨 위치 계산
-                    const midAngle = start + sliceAngle / 2;
-                    let labelPos = polarToCartesian(midAngle, 210);  // 초기 라벨 위치
-
-                    // 겹치지 않도록 라벨 위치 조정
-                    while (checkCollision(labelPos, existingLabels)) {
-                        labelPos = polarToCartesian(midAngle, 230);  // 더 바깥쪽으로 이동
-                    }
-
-                    // 외부 고정 라벨 (퍼센트 제거)
-                    const label = document.createElement("div");
-                    label.className = "label";
-                    label.innerText = d.label;  // 퍼센트 제거
-                    label.style.left = `${labelPos.x}px`;
-                    label.style.top = `${labelPos.y}px`;
-                    labelsContainer.appendChild(label);
-
-                    // 기존 라벨들의 위치 저장
-                    existingLabels.push(labelPos);
-
-                    // 도넛 내부에 퍼센트 표시
-                    const textPos = polarToCartesian(midAngle, (outerRadius + innerRadius) / 2);
-                    ctx.fillStyle = "white";
-                    ctx.font = "16px Arial";
-                    ctx.textAlign = "center";
-                    ctx.textBaseline = "middle";
-                    ctx.fillText(`${d.value}%`, textPos.x, textPos.y);
-
-                    start += sliceAngle;
-                });
-
-                // 중간 반투명 원
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, middleRadius, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-                ctx.fill();
-
-                // 중앙 검정색 원
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
-                ctx.fillStyle = "black";
-                ctx.fill();
-            }
-
-            function animate() {
-                rotation += 0.005;
-                drawChart();
-                requestAnimationFrame(animate);
-            }
-
-            animate();
-        </script>
-    </body>
-
-    </html>
-
-    <br>
-
-    <span>닭강정을</span> <span>좋아하던 신혼부부</span><span>가</span>
-    <br>
-    <span>의정부 C급상권에서</span> <span>단 돈 천만원으로 시작</span> <span>했습니다.</span>
-    <br>
-    <br>
-    <span>아들과 함께 먹기위해 만든 건강하고 맛있는 돌격닭강정,</span>
-    <br>
-    <span>세상에서 가장 정직하고 맛있는 닭강정을 이젠 고객님들께 널리 알리고자 합니다.</span>
-    <br>
-    <br>
-    <span>현실적인 창업비용으로 최고효율이 나오는</span>
-    <br>
-    <span>평균 60% 이상의 높은 재주문율</span>
-    <br>
-
-    <span>돌격닭강정 매장 안내</span>
-    <span>전국 돌격닭강정 매장을 모두 검색할 수 있습니다. 자세한 매장정보를 확인하세요.</span>
-</body>
+    window.addEventListener('wheel', revealNextImage, { passive: false });
+    window.addEventListener('touchmove', revealNextImage, { passive: false });
+</script>
 
 </html>

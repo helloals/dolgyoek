@@ -333,6 +333,9 @@ background-color: red;
             top: 45%;
             transform: translate(-50%, -80%)
         }
+        .interview-slide.center-slide{
+          z-index: 5 !important;
+        }
         /*버튼 */
         .buttons {
             position: absolute;
@@ -396,19 +399,67 @@ background-color: red;
       /* 1초 간격으로 무한 반복 */
     }
     #logo-1{
-      width: 130%;
+      width: 100%;
     }
     #logo-2{
-      margin-top: 5%;
+      margin-top: 10%;
       transform: translateX(50%);
       width: 50%;
       
     }
-    .pic1 img{
+    /* 흐르는 텍스트 */
+    .marquee-container {
       width: 100%;
+      height: 40px;
+      overflow: hidden;
+      background: #111;
+      padding: 4.5px, 0;
+      transform: translateY(300%);
+  }
+
+  .marquee-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: marquee 15s linear infinite;
+  }
+
+  .marquee-item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin-right: 50px;
+      color: #fff;
+      font-size: 24px;
+  }
+
+  .marquee-item img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      vertical-align: middle;
+  }
+
+  @keyframes marquee {
+      0% {
+          transform: translateX(0%);
+      }
+
+      100% {
+          transform: translateX(-50%);
+      }
+  }
+  #sec-9{
+    width: 600px;
+  }
+    #sec-9 span{
+      font-size: 60px;
+      font-weight: bolder;
     }
-    .pic2 img{
-      width: 100%;
+    #sec-9 img{
+      width: 300px;
+      margin-top: -5%;
+      transform: translateY(10%);
     }
         .blink-img img {
           animation: blink 1s infinite;
@@ -565,6 +616,29 @@ img.reveal {
 #three-way{
   background-color: #4e0006;
 }
+/* 틈새공략 하단 */
+.image-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 50px;
+}
+
+img.fade-up {
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  display: block;
+  width: 45%;
+  max-width: 100%;
+  transform: translateY(100px);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* 두둥 텍스트 */
 .dudung-wrapper {
   display: flex;
@@ -664,6 +738,135 @@ padding: 10px;
 }
 .bolder{
   font-weight: bolder;
+}
+/* 섹션11 맛 재료자랑  */
+.lock-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.section11-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+}
+
+.section11-image {
+  display: block;
+  width: 25%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  transform: translateY(100px);
+}
+
+.section11-image.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section11-image.last {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  z-index: 10;
+  width: 55%;
+}
+
+.section11-image.last.show {
+  transform: translate(-50%, -50%);
+}
+
+/* 인테리어 이미지 효과 */
+
+.section12 {
+  width: 100%;
+}
+
+.section12 img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  display: block;
+}
+
+.section12.show img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 인테리어 드래그 앤 드롭 슬라이드 */
+.cdd-slider-container {
+  overflow: hidden;
+  width: 800px;
+  height: auto;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.cdd-slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.cdd-slide {
+  min-width: 800px;
+  height: 800px;
+  user-select: none;
+}
+
+.cdd-slide img {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.cdd-thumbnail-indicators {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.cdd-thumb {
+  display: inline-block;
+  width: 80px;
+  height: 60px;
+  margin: 0 4px;
+  opacity: 0.5;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: opacity 0.3s, border 0.3s;
+}
+
+.cdd-thumb.active {
+  opacity: 1;
+  border: 2px solid #000;
+}
+
+.cdd-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: auto;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 /* 슬라이드 스타일 */
 .slider {

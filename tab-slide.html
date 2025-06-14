@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>탭 롤러 슬라이드</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background: #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tab.active {
+            background: #333;
+            color: white;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            height: 200px;
+        }
+
+        .slide:nth-child(odd) {
+            background: #4caf50;
+        }
+
+        .slide:nth-child(even) {
+            background: #2196f3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="0">카테고리 1</div>
+        <div class="tab" data-tab="1">카테고리 2</div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            <!-- Slides will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const tabData = [
+            ['1번 슬라이드', '2번 슬라이드', '3번 슬라이드'],
+            ['A 슬라이드', 'B 슬라이드', 'C 슬라이드']
+        ];
+
+        const tabs = document.querySelectorAll('.tab');
+        const sliderTrack = document.getElementById('sliderTrack');
+        let currentTab = 0;
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function renderSlides(tabIndex) {
+            sliderTrack.innerHTML = '';
+
+            const slides = tabData[tabIndex];
+            const fullSlides = [slides[slides.length - 1], ...slides, slides[0]];
+
+            fullSlides.forEach(content => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.textContent = content;
+                sliderTrack.appendChild(slide);
+            });
+
+            sliderTrack.style.transform = `translateX(-100%)`;
+            currentIndex = 1;
+        }
+
+        function switchTab(index) {
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs[index].classList.add('active');
+            currentTab = index;
+            renderSlides(index);
+        }
+
+        function autoSlide() {
+            const slideCount = tabData[currentTab].length;
+            currentIndex++;
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+            sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            if (currentIndex > slideCount) {
+                setTimeout(() => {
+                    sliderTrack.style.transition = 'none';
+                    sliderTrack.style.transform = `translateX(-100%)`;
+                    currentIndex = 1;
+                }, 500);
+            }
+        }
+
+        function startAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(autoSlide, 3000);
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchTab(Number(tab.dataset.tab));
+                startAutoSlide();
+            });
+        });
+
+        // 초기 렌더링
+        switchTab(0);
+        startAutoSlide();
+    </script>
+
+</body>
+
+</html>

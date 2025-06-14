@@ -1,75 +1,131 @@
+<!-- 경쟁력 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
-  <title>자동 슬라이드 - 좌우 분할</title>
+  <title>전체 화면 자동 슬라이드 - 클릭 가능한 점 인디케이터</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
-
-    .half-slider-wrapper {
-      display: flex;
-      width: 100%;
-      height: 50%;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .half-slider-fixed {
-      flex: 1;
-      background-color: #222; /* 그냥 어두운 고정 구역 */
-    }
-
-    .half-slider-moving {
-      flex: 1;
-      position: relative;
+    html,
+    body {
+      height: 100%;
       overflow: hidden;
     }
 
-    .half-slider-track {
-      display: flex;
+    .slider-wrapper {
+      width: 100%;
       height: 100%;
-      width: 300%; /* 슬라이드 3개니까 */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      width: 300%;
+      height: 100%;
       transition: transform 0.5s ease-in-out;
     }
 
-    .half-slider-slide {
-      width: 100%;
-      flex-shrink: 0;
+    .slide {
+      flex: 0 0 100%;
       height: 100%;
       background-size: cover;
       background-position: center;
     }
+
+    .indicator-wrapper {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .indicator-dot.active {
+      background-color: white;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="half-slider-wrapper">
-  <div class="half-slider-fixed"></div>
-  <div class="half-slider-moving">
-    <div class="half-slider-track" id="sliderTrack">
-      <div class="half-slider-slide" style="background-image: url('https://picsum.photos/id/1015/800/800');"></div>
-      <div class="half-slider-slide" style="background-image: url('https://picsum.photos/id/1016/800/800');"></div>
-      <div class="half-slider-slide" style="background-image: url('https://picsum.photos/id/1018/800/800');"></div>
+  <div class="slider-wrapper">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide" style="background-image: url('https://picsum.photos/id/1015/1200/800');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/1016/1200/800');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/1018/1200/800');"></div>
+    </div>
+    <div class="indicator-wrapper" id="indicatorWrapper">
+      <div class="indicator-dot" data-index="0"></div>
+      <div class="indicator-dot" data-index="1"></div>
+      <div class="indicator-dot" data-index="2"></div>
     </div>
   </div>
-</div>
 
-<script>
-  let index = 0;
-  const sliderTrack = document.getElementById('sliderTrack');
-  const totalSlides = 3;
+  <script>
+    let index = 0;
+    const totalSlides = 3;
+    const sliderTrack = document.getElementById('sliderTrack');
+    const indicatorDots = document.querySelectorAll('.indicator-dot');
+    let intervalId;
 
-  function updateSlide() {
-    sliderTrack.style.transform = `translateX(-${index * 100}%)`;
-  }
+    function updateSlide() {
+      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      indicatorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
 
-  function nextSlide() {
-    index = (index + 1) % totalSlides;
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function goToSlide(i) {
+      index = i;
+      updateSlide();
+      restartAutoSlide();
+    }
+
+    // 슬라이드 자동 전환
+    function startAutoSlide() {
+      intervalId = setInterval(nextSlide, 3000);
+    }
+
+    function restartAutoSlide() {
+      clearInterval(intervalId);
+      startAutoSlide();
+    }
+
+    // 인디케이터 클릭 이벤트
+    indicatorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const i = parseInt(dot.getAttribute('data-index'));
+        goToSlide(i);
+      });
+    });
+
     updateSlide();
-  }
-
-  // 자동 슬라이드 (3초 간격)
-  setInterval(nextSlide, 3000);
-</script>
+    startAutoSlide();
+  </script>
 
 </body>
+
 </html>

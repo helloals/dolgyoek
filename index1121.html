@@ -2,113 +2,68 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <title>별빛 터짐 효과</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>스크롤 두둥 이미지</title>
     <style>
         body {
-            height: 3000px;
-            margin: 0;
-            background: #000;
+            height: 200vh;
+            /* 스크롤 가능하게 충분히 길게 */
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100vh;
+            /* 이미지가 아래쪽에 위치하게 */
         }
 
-        .star-image {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            pointer-events: none;
-            z-index: 9999;
-            animation: starPop 0.6s ease-out forwards;
+        .image-container {
+            width: 100%;
+            /* 최대 너비 지정 */
+            height: auto;
         }
 
-        @keyframes starPop {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+        img {
+            width: 100%;
+            height: auto;
+            /* 세로 비율 유지 */
+            object-fit: none;
+            /* 없어도 됨 */
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            display: block;
         }
 
-        .starlight {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: yellow;
-            border-radius: 50%;
-            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            z-index: 9998;
-            animation: starlightFly 1.2s ease-out forwards;
-        }
-
-        @keyframes starlightFly {
-            0% {
-                transform: translate(0, 0) scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(var(--x), var(--y)) scale(0.5);
-                opacity: 0;
-            }
+        img.show {
+            opacity: 1;
+            transform: scale(1);
         }
     </style>
 </head>
 
 <body>
 
+    <div class="image-container">
+        <img id="duDungImg" src="./돌격닭강정/인테리어/Artboard 14.png" alt="두둥 이미지" />
+    </div>
+
     <script>
-        const starImageURL = 'star.png'; // ⭐ 사용자가 넣을 별 이미지 경로
+        const img = document.getElementById('duDungImg');
 
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const now = Date.now();
-            if (now - lastScroll > 1000) {
-                triggerStarburst();
-                lastScroll = now;
-            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    // 한 번 나타나면 관찰 중지
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5 // 요소가 50% 보일 때 실행
         });
 
-        function triggerStarburst() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-
-            // ⭐ 중앙의 큰 별 이미지
-            const img = document.createElement('img');
-            img.src = starImageURL;
-            img.className = 'star-image';
-            img.style.left = (centerX - 25) + 'px';
-            img.style.top = (centerY - 25) + 'px';
-            document.body.appendChild(img);
-            setTimeout(() => img.remove(), 700);
-
-            // ✨ 별빛 파편 생성
-            for (let i = 0; i < 20; i++) {
-                const light = document.createElement('div');
-                light.className = 'starlight';
-
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 60 + Math.random() * 80;
-                const x = Math.cos(angle) * distance + 'px';
-                const y = Math.sin(angle) * distance * -1 + 'px'; // 위로 흩어지게
-
-                light.style.left = centerX + 'px';
-                light.style.top = centerY + 'px';
-                light.style.setProperty('--x', x);
-                light.style.setProperty('--y', y);
-
-                // 밝기 및 크기 살짝 랜덤
-                light.style.width = light.style.height = (4 + Math.random() * 4) + 'px';
-                light.style.boxShadow = `0 0 ${(4 + Math.random() * 6)}px 2px rgba(255,255,255,0.8)`;
-
-                document.body.appendChild(light);
-                setTimeout(() => light.remove(), 1300);
-            }
-        }
+        observer.observe(img);
     </script>
 
 </body>
