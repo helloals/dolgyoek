@@ -465,14 +465,14 @@
 
             <br>
             <section class="section19">
-    <div class="section19-tabs">
-      <button class="section19-tab active" data-category="0">21가지 맛</button>
-      <button class="section19-tab" data-category="1">세트 구성</button>
-      <button class="section19-tab" data-category="2">곁들임</button>
-      <button class="section19-tab" data-category="3">사이드</button>
-    </div>
-    <div class="section19-slider"></div>
-  </section>
+                <div class="section19-tabs">
+                    <button class="section19-tab active" data-category="0">21가지 맛</button>
+                    <button class="section19-tab" data-category="1">세트 구성</button>
+                    <button class="section19-tab" data-category="2">곁들임</button>
+                    <button class="section19-tab" data-category="3">사이드</button>
+                </div>
+                <div class="section19-slider"></div>
+            </section>
             <!-- <div class="box">
                 <div class="section19-tabs">
                     <div class="section19-tab active" data-category="0">21가지 맛</div>
@@ -603,41 +603,46 @@
             <div class="sec12-table">
                 <table>
                     <colgroup>
-                        <col width="27.5%;">
-                        <col width="49.4697%;">
-                        <col width="23.0304%;">
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
                     </colgroup>
                     <thead>
                         <tr>
-                            <th style="font-size: 35px;">구분</th>
-                            <th style="font-size: 35px;">내용</th>
-                            <th style="font-size: 35px;">금액 <span style="font-size: 20px;">(vat별도)</span></th>
+                            <th class="table-title">구분</th>
+                            <th class="table-title">내용</th>
+                            <th class="table-title">금액 <span class="table-subtitle">(vat별도)</span></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="padding1">
+                        <tr class="padding-row">
                             <td colspan="3"></td>
                         </tr>
-                        <tr style="font-weight: bolder;">
+                        <tr class="bold">
                             <td>교육비</td>
                             <td>레시피 조리교육, 매장운영교육</td>
-                            <td rowspan="5"><img class="sec12-table__img"
-                                    src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec12-table_img01.png"
-                                    alt=""></td>
+                            <td rowspan="5">
+                                <div class="cost-container">
+                                    <div class="cost-circle-img">
+                                        <img src="sec12-table_img01.png" alt="원형 이미지" />
+                                    </div>
+                                    <div class="cost-led-orbit" id="ledOrbit"></div>
+                                </div>
+                            </td>
                         </tr>
-                        <tr style="font-weight: bolder;">
+                        <tr class="bold">
                             <td>가맹비</td>
                             <td>상호권, 상점보장, 오픈지원</td>
                         </tr>
-                        <tr style="font-weight: bolder;">
+                        <tr class="bold">
                             <td>계약이행보증금</td>
                             <td>계약 종료시 반환</td>
                         </tr>
-                        <tr style="font-weight: bolder;">
+                        <tr class="bold">
                             <td>감리비</td>
                             <td>인테리어 자율시공시 별도 발생</td>
                         </tr>
-                        <tr style="font-weight: bolder;">
+                        <tr class="bold">
                             <td>로열티</td>
                             <td>가맹점 관리 및 지원</td>
                         </tr>
@@ -666,25 +671,26 @@
                             <td>정육 100kg 무상지원</td>
                             <td>한시적지원!</td>
                         </tr>
-                        <tr class="padding2">
+                        <tr class="padding-row">
                             <td colspan="3"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <br><br>
-            <div class="box" id="procedure">
-                <img src="./창업절차.png" alt="">
-            </div>
             <br><br>
 
             <div class="box">
                 매장안내
             </div>
-            
+
             <div id="btn-box">
-                <div id="call"><a href="tel:18993302"><span>성공문의 1899.3302</span></a></div>
-                <div id="scroll-btm"><a href="#faq"><span>온라인 창업문의</span></a></div>
+                <div id="call"><a href="tel:18993302"><span
+                            style="font-size: 20px; font-weight: 900;">성공문의</span><br><span
+                            style="font-size: 20px; font-weight: bolder;">1533 -
+                            4974</span></a></div>
+                <div id="scroll-btm"><a href="#faq"><span style="font-size: 20px; font-weight: 900;">온라인 창업문의</span></a>
+                </div>
             </div>
             <div>
                 <form class="bottom-form" action="#" method="post" id="faq">
@@ -712,16 +718,17 @@
                 </form>
             </div>
 
+            <script>
+                // 매출 슬라이드
+                let roller = document.querySelector('.roller .rolling_list');
+                roller.id = 'roller1';
+                let clone = roller.cloneNode(true);
+                clone.id = 'roller2';
+                document.querySelector('.roller').appendChild(clone);
+                roller.classList.add('original');
+                clone.classList.add('clone');
+            </script>
+            <script src="./led.js"></script>
 </body>
-<script>
-    // 매출 슬라이드
-    let roller = document.querySelector('.roller .rolling_list');
-    roller.id = 'roller1';
-    let clone = roller.cloneNode(true);
-    clone.id = 'roller2';
-    document.querySelector('.roller').appendChild(clone);
-    roller.classList.add('original');
-    clone.classList.add('clone');
-</script>
 
 </html>

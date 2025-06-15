@@ -1,20 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LED 외곽선 포함 테이블</title>
     <style>
-        img {
-            width: 300px;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .cost-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .cost-circle-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px #0ff inset;
+            z-index: 1;
+        }
+
+        .cost-circle-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cost-led-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 240px;
+            height: 240px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .cost-led {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #0ff;
+            opacity: 0.3;
+            animation: cost-blink 2.4s linear infinite;
+        }
+
+        /* LED 딜레이 (24개) */
+        .cost-led:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .cost-led:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .cost-led:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .cost-led:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .cost-led:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .cost-led:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .cost-led:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .cost-led:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .cost-led:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .cost-led:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        .cost-led:nth-child(11) {
+            animation-delay: 1.0s;
+        }
+
+        .cost-led:nth-child(12) {
+            animation-delay: 1.1s;
+        }
+
+        .cost-led:nth-child(13) {
+            animation-delay: 1.2s;
+        }
+
+        .cost-led:nth-child(14) {
+            animation-delay: 1.3s;
+        }
+
+        .cost-led:nth-child(15) {
+            animation-delay: 1.4s;
+        }
+
+        .cost-led:nth-child(16) {
+            animation-delay: 1.5s;
+        }
+
+        .cost-led:nth-child(17) {
+            animation-delay: 1.6s;
+        }
+
+        .cost-led:nth-child(18) {
+            animation-delay: 1.7s;
+        }
+
+        .cost-led:nth-child(19) {
+            animation-delay: 1.8s;
+        }
+
+        .cost-led:nth-child(20) {
+            animation-delay: 1.9s;
+        }
+
+        .cost-led:nth-child(21) {
+            animation-delay: 2.0s;
+        }
+
+        .cost-led:nth-child(22) {
+            animation-delay: 2.1s;
+        }
+
+        .cost-led:nth-child(23) {
+            animation-delay: 2.2s;
+        }
+
+        .cost-led:nth-child(24) {
+            animation-delay: 2.3s;
+        }
+
+        @keyframes cost-blink {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                filter: drop-shadow(0 0 6px #0ff);
+            }
+
+            50% {
+                opacity: 1;
+                filter: drop-shadow(0 0 18px #0ff);
+            }
         }
     </style>
 </head>
 
 <body>
-    <img src="./왕컵.jpg" alt="">
-    <img src="./왕컵1.jpg" alt="">
+
+    <div class="sec12-table">
+        <table>
+            <colgroup>
+                <col width="27.5%">
+                <col width="49.4697%">
+                <col width="23.0304%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="font-size: 35px;">구분</th>
+                    <th style="font-size: 35px;">내용</th>
+                    <th style="font-size: 35px;">금액 <span style="font-size: 20px;">(vat별도)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="padding1">
+                    <td colspan="3"></td>
+                </tr>
+                <tr style="font-weight: bolder;">
+                    <td>교육비</td>
+                    <td>레시피 조리교육, 매장운영교육</td>
+                    <td rowspan="5">
+                        <div class="cost-container">
+                            <div class="cost-circle-img">
+                                <img src="sec12-table_img01.png" alt="원형 이미지" />
+                            </div>
+                            <div class="cost-led-orbit" id="ledOrbit"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="font-weight: bolder;">
+                    <td>가맹비</td>
+                    <td>상호권, 상점보장, 오픈지원</td>
+                </tr>
+                <tr style="font-weight: bolder;">
+                    <td>계약이행보증금</td>
+                    <td>계약 종료시 반환</td>
+                </tr>
+                <tr style="font-weight: bolder;">
+                    <td>감리비</td>
+                    <td>인테리어 자율시공시 별도 발생</td>
+                </tr>
+                <tr style="font-weight: bolder;">
+                    <td>로열티</td>
+                    <td>가맹점 관리 및 지원</td>
+                </tr>
+                <tr>
+                    <td>인테리어</td>
+                    <td>현장 답사 후 도면 및 견적 제공</td>
+                    <td>자율시공 가능</td>
+                </tr>
+                <tr>
+                    <td>간판</td>
+                    <td>자사 디자인 제공(기존 간판 천갈이 가능)</td>
+                    <td>자율시공 가능</td>
+                </tr>
+                <tr>
+                    <td>기기/집기</td>
+                    <td>튀김기, 냉장고, 조리대, 주방집기 등(본사 위탁시 580만원)</td>
+                    <td>자율구매 가능</td>
+                </tr>
+                <tr>
+                    <td>본사 지원 l</td>
+                    <td>개점일 본사 전문 인력 파견</td>
+                    <td>한시적지원!</td>
+                </tr>
+                <tr>
+                    <td>본사 지원 ll</td>
+                    <td>정육 100kg 무상지원</td>
+                    <td>한시적지원!</td>
+                </tr>
+                <tr class="padding2">
+                    <td colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const orbit = document.getElementById('ledOrbit');
+        const ledCount = 24;
+        const orbitSize = 240;
+        const radius = orbitSize / 2;
+
+        for (let i = 0; i < ledCount; i++) {
+            const led = document.createElement('div');
+            led.classList.add('cost-led');
+            const angle = (360 / ledCount) * i;
+            const rad = angle * (Math.PI / 180);
+            const x = radius + radius * Math.cos(rad) - 6;
+            const y = radius + radius * Math.sin(rad) - 6;
+            led.style.left = `${x}px`;
+            led.style.top = `${y}px`;
+            orbit.appendChild(led);
+        }
+    </script>
+
 </body>
 
 </html>
