@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style3.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -477,14 +479,14 @@
             <div class="box">
                 <div class="slider-wrapper">
                     <div class="slider-track" id="sliderTrack">
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/018.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/019.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/020.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/021.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/022.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/023.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/024.webp');"></div>
-                        <div class="slide" style="background-image: url('./돌격닭강정/경쟁력이미지파일/025.webp');"></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/018.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/019.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/020.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/021.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/022.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/023.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/025.webp" alt=""></div>
+                        <div class="slide"><img src="돌격닭강정/경쟁력이미지파일/024.webp" alt=""></div>
                     </div>
                     <div class="indicator-wrapper" id="indicatorWrapper">
                         <div class="indicator-dot" data-index="0"></div>
@@ -800,24 +802,8 @@
                 </form>
             </div>
 
-            <script>
-                // 매출 슬라이드
-                let roller = document.querySelector('.roller .rolling_list');
-                roller.id = 'roller1';
-                let clone = roller.cloneNode(true);
-                clone.id = 'roller2';
-                document.querySelector('.roller').appendChild(clone);
-                roller.classList.add('original');
-                clone.classList.add('clone');
-                //창업 탭 기능
-                function openTab(tabName) {
-                    document.querySelectorAll('.tab, .tabs').forEach(function (el) {
-                        el.classList.remove('on');
-                    });
-                    document.getElementById(tabName).classList.add('on');
-                    document.querySelector('.tabs[onclick="openTab(\'' + tabName + '\')"]').classList.add('on');
-                }
-            </script>
+            <script src="./script2.js"></script>
+            <script src="./script3.js"></script>
             <script src="./led.js"></script>
 </body>
 

@@ -1,0 +1,422 @@
+#story {
+    position: relative;
+    width: 100%;
+    height: 1080px;
+    background-image: url(점주인터뷰백.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#story img {
+    position: absolute;
+    top: 15%;
+    left: -25%;
+}
+
+.flex {
+    display: flex;
+
+}
+
+#reveal {
+    background-color: #FEEFC5;
+}
+
+#reveal img {
+    margin-top: -20%;
+}
+
+#reveal-first-img {
+    width: 900px;
+    height: 900px;
+}
+
+img.reveal {
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    display: block;
+    width: 300px;
+    max-width: 80%;
+    margin: 50px auto;
+    transform: translateY(50px);
+    /* 기본 위치 */
+}
+
+.reveal.from-left {
+    transform: translateX(-100px);
+}
+
+.reveal.from-right {
+    transform: translateX(100px);
+}
+
+.reveal.from-bottom {
+    transform: translateY(100px);
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+#three-way {
+    background-color: #4e0006;
+}
+
+/* 틈새공략 하단 */
+.image-gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 50px;
+}
+
+img.fade-up {
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    display: block;
+    width: 45%;
+    max-width: 100%;
+    transform: translateY(100px);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 두둥 텍스트 */
+.dudung-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.dudung-text {
+    color: #ff1e1e;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s;
+}
+
+.dudung-text.active {
+    animation: dudung 0.8s ease-out forwards;
+}
+
+@keyframes dudung {
+    0% {
+        transform: scale(0.2) rotate(0deg);
+        opacity: 0;
+    }
+
+    30% {
+        transform: scale(1.3) rotate(-3deg);
+        opacity: 1;
+    }
+
+    60% {
+        transform: scale(0.9) rotate(3deg);
+    }
+
+    80% {
+        transform: scale(1.05) rotate(-2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* 스르르텍스트 */
+.fade-text {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+    margin-top: -10%;
+}
+
+.fade-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.thway-text {
+    margin-top: -70px;
+}
+
+.thway-img img {
+    width: 250px;
+    height: 250px;
+    padding: 10px;
+}
+
+#product {
+    display: flex;
+}
+
+.bolder {
+    font-weight: bolder;
+}
+
+/* 섹션11 맛 재료자랑  */
+.lock-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.section11-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    height: 100vh;
+    position: relative;
+}
+
+.section11-image {
+    display: block;
+    width: 25%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transform: translateY(100px);
+}
+
+.section11-image.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section11-image.last {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    z-index: 10;
+    width: 55%;
+}
+
+.section11-image.last.show {
+    transform: translate(-50%, -50%);
+}
+
+/* 인테리어 이미지 효과 */
+
+.section12 {
+    width: 100%;
+}
+
+.section12 img {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    display: block;
+}
+
+.section12.show img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 인테리어 드래그 앤 드롭 슬라이드 */
+.cdd-slider-container {
+    overflow: hidden;
+    width: 800px;
+    height: auto;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.cdd-slider-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.cdd-slide {
+    min-width: 800px;
+    height: 800px;
+    user-select: none;
+}
+
+.cdd-slide img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.cdd-thumbnail-indicators {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.cdd-thumb {
+    display: inline-block;
+    width: 80px;
+    height: 60px;
+    margin: 0 4px;
+    opacity: 0.5;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: opacity 0.3s, border 0.3s;
+}
+
+.cdd-thumb.active {
+    opacity: 1;
+    border: 2px solid #000;
+}
+
+.cdd-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: auto;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* 슬라이드 스타일 */
+.slider {
+    position: relative;
+    width: 300%;
+    max-width: 1400px;
+    height: 650px;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+
+.rev-slider {
+    position: relative;
+    width: 300%;
+    max-width: 1400px;
+    height: 650px;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rev-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.rev-slides img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* 경쟁력 슬라이드 */
+.slider-wrapper {
+    width: 80%;
+    height: 700px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.indicator-wrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.indicator-dot.active {
+    background-color: red;
+}
+
+/* 리뷰 슬라이드 */
+.slide-wrapper {
+    padding: 40px 20px;
+    background-image: url(./리뷰배경.jpg);
+    display: flex;
+    background-size: 100%;
+}
+
+.swiper {
+    width: 100%;
+    max-width: 600px;
+    height: 700px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-slide img {
+    width: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
