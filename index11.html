@@ -3,103 +3,201 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>자동 회전 카드 (hover 시 멈춤)</title>
+    <title>스크롤 쾅쾅 이미지</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #eee;
-            margin: 0;
-        }
+        .scroll-fade-up {
+            background-image: url('돌격닭강정/백그라운드별.webp');
+            background-size: 105% 150%;
+            background-repeat: no-repeat;
+            background-position: center;
 
-        .card {
-            width: 200px;
-            height: 300px;
-            perspective: 1000px;
-        }
-
-        .card-inner {
             width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
+            aspect-ratio: 3 / 1;
+
             position: relative;
+            /* 위치 조정 가능하도록 설정 */
+            overflow: hidden;
+
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-        .card.flipped .card-inner {
-            transform: rotateY(180deg);
+        .scroll-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .card-front,
-        .card-back {
+        .text-content {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-30%, -50%);
+            text-align: center;
+            font-size: 40px;
+            font-weight: bolder;
+            color: black;
+            padding-bottom: 30px;
+        }
+
+        .text-content span {
+            display: inline-block;
+        }
+
+        /* 나머지 스타일 동일 */
+        .image-container {
+            max-width: 800px;
             display: flex;
+            flex-direction: row;
+            gap: 30px;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            margin: 40px auto;
+        }
+
+        .hit-image {
+            width: 100px;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: transform 0.4s ease-out, opacity 0.3s;
+        }
+
+        .hit-image.active {
+            animation: hitEffect 0.5s ease-out forwards;
+        }
+
+        @keyframes hitEffect {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(0deg);
+                filter: brightness(1.5);
+            }
+
+            30% {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            60% {
+                transform: scale(1.05) rotate(-5deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: brightness(1);
+            }
+        }
+
+        .counter-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
             font-family: sans-serif;
+            text-align: center;
+            margin-top: 30px;
         }
 
-        .card-front {
-            background: #6200ea;
-            color: white;
+        .counter {
+            font-size: 5rem;
+            font-weight: bold;
+            color: gold;
         }
 
-        .card-back {
-            background: white;
-            color: #6200ea;
-            transform: rotateY(180deg);
-            border: 2px solid #6200ea;
-        }
-
-        .card img {
-            width: 300px;
+        .counter-container span {
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="card" id="autoCard">
-        <div class="card-inner">
-            <div class="card-front">
-                <img src="./KakaoTalk_20250503_142748382.png" alt="앞면 이미지">
-            </div>
-            <div class="card-back">
-                <img src="./KakaoTalk_20250503_142748382_01.png" alt="뒷면 이미지">
-            </div>
+
+    <!-- 중앙 정렬되는 텍스트 (위치 조절 가능) -->
+    <div class="scroll-fade-up">
+        <div class="text-content">
+            <span style="font-size: 55px;">고객 만족도</span><span>를 </span>
+            <span style="color: red; font-size: 55px;">꼭</span>
+            <span> 확인하세요!</span>
         </div>
     </div>
 
+    <!-- 별 이미지 -->
+    <div class="image-container">
+        <img src="./별3.png" class="hit-image" />
+        <img src="./별3.png" class="hit-image" />
+        <img src="./별3.png" class="hit-image" />
+        <img src="./별3.png" class="hit-image" />
+        <img src="./별3.png" class="hit-image" />
+    </div>
+
+    <!-- 카운터 -->
+    <div class="counter-container">
+        <div class="counter" data-target="5.0">0.0</div>
+        <span style="font-size: 40px; font-weight: bolder;">점 리뷰평가 만점받은 소문난 치킨맛집 !</span>
+    </div>
+
     <script>
-        const card = document.getElementById("autoCard");
-        let isFlipped = false;
-        let intervalId = null;
+        // 별 애니메이션
+        const images = document.querySelectorAll('.hit-image');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, index * 200);
+                    imageObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        images.forEach(img => imageObserver.observe(img));
 
-        function startAutoFlip() {
-            intervalId = setInterval(() => {
-                isFlipped = !isFlipped;
-                card.classList.toggle("flipped", isFlipped);
-            }, 1500);
+        // 숫자 카운트업
+        function countObserver(selector, callback, threshold = 0.5) {
+            const targets = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        callback(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold });
+            targets.forEach(el => observer.observe(el));
         }
 
-        function stopAutoFlip() {
-            clearInterval(intervalId);
+        function startCounting(counter) {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            let current = 0;
+            const duration = 2000;
+            const steps = 200;
+            const increment = target / steps;
+            const interval = duration / steps;
+
+            const update = () => {
+                current += increment;
+                if (current < target) {
+                    counter.innerText = current.toFixed(1);
+                    setTimeout(update, interval);
+                } else {
+                    counter.innerText = target.toFixed(1);
+                }
+            };
+            update();
         }
 
-        // 시작 시 자동 회전 실행
-        startAutoFlip();
+        countObserver('.counter', startCounting);
 
-        // 마우스를 올리면 자동 회전 멈춤
-        card.addEventListener('mouseenter', stopAutoFlip);
-
-        // 마우스를 떼면 다시 회전 시작
-        card.addEventListener('mouseleave', startAutoFlip);
+        // 텍스트 fade-up
+        const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
+        const fadeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        fadeUpElements.forEach(el => fadeObserver.observe(el));
     </script>
 </body>
 

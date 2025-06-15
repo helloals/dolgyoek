@@ -589,3 +589,5 @@ let index = 0;
 
     updateSlide();
 startAutoSlide();
+
+// 창업 탭기능

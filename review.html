@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>아래 줄부터 위로 떨어지는 지그재그 애니메이션 (300x500)</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 80px auto;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            flex: 1 1 0;
+        }
+
+        .item {
+            width: 150px;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-80px);
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+            animation-name: dropDown;
+            animation-duration: 0.6s;
+        }
+
+        /* 짝수번째 아이템 오른쪽으로 밀기 (지그재그) */
+        .column .item:nth-child(even) {
+            margin-left: 20%;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes dropDown {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .column {
+                width: 100%;
+                max-width: none;
+                gap: 30px;
+            }
+
+            .column .item:nth-child(even) {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <div class="column">
+            <div class="item"><img src="images/review1.jpg" alt="리뷰1" /></div>
+            <div class="item"><img src="images/review2.jpg" alt="리뷰2" /></div>
+            <div class="item"><img src="images/review3.jpg" alt="리뷰3" /></div>
+            <div class="item"><img src="images/review4.jpg" alt="리뷰4" /></div>
+        </div>
+        <div class="column">
+            <div class="item"><img src="images/review5.jpg" alt="리뷰5" /></div>
+            <div class="item"><img src="images/review6.jpg" alt="리뷰6" /></div>
+            <div class="item"><img src="images/review7.jpg" alt="리뷰7" /></div>
+            <div class="item"><img src="images/review8.jpg" alt="리뷰8" /></div>
+        </div>
+        <div class="column">
+            <div class="item"><img src="images/review9.jpg" alt="리뷰9" /></div>
+            <div class="item"><img src="images/review10.jpg" alt="리뷰10" /></div>
+            <div class="item"><img src="images/review11.jpg" alt="리뷰11" /></div>
+            <div class="item"><img src="images/review12.jpg" alt="리뷰12" /></div>
+        </div>
+    </section>
+
+    <script>
+        const columns = document.querySelectorAll('.column');
+        const totalRows = columns[0].children.length; // 4
+        const totalCols = columns.length; // 3
+
+        const maxDelay = 0.8;
+        const colDelayStep = 0.15;
+
+        for (let row = 0; row < totalRows; row++) {
+            for (let col = 0; col < totalCols; col++) {
+                const item = columns[col].children[row];
+                const rowDelay = ((totalRows - 1 - row) * maxDelay) / (totalRows - 1);
+                const delay = rowDelay + col * colDelayStep;
+                item.style.animationDelay = delay + 's';
+            }
+        }
+    </script>
+</body>
+
+</html>
