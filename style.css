@@ -29,6 +29,68 @@ html{
   margin: 0;
   padding: 0;
 }
+
+/* 슬라이더 최적화 */
+img[loading="lazy"] {
+  contain: content;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.section19-slider {
+  display: flex;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.section19-slide {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.section19-slide img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  display: block;
+}
+
+.section19-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.section19-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.section19-tab {
+  padding: 8px 16px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.section19-tab.active,
+.section19-tab:hover {
+  background-color: #d33;
+  color: white;
+}
+
+
+
 body {
   font-family: 'GmarketSansTTFBold', sans-serif;
    margin: 0;
