@@ -1124,7 +1124,6 @@ thead th {
 
 
 
-*, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 /* 맛, 사이즈, 곁들임, 사이드  */
 .section19-tabs {
   display: flex;
