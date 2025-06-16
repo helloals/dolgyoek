@@ -654,4 +654,14 @@ let index = 0;
     updateSlide();
 startAutoSlide();
 
-// 창업 탭기능
+const benefitObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('benefit-show');
+          benefitObserver.unobserve(entry.target);
+      }
+  });
+}, { threshold: 0.5 });
+
+const benefitImage = document.getElementById('benefitImage');
+benefitObserver.observe(benefitImage);
