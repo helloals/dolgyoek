@@ -184,7 +184,6 @@ h1{
 #btn-box-2{
   display: flex;
   justify-content: space-between;
-  z-index: 10;
 }
 #scroll-btm-2{
   width: 15%;
@@ -1583,6 +1582,7 @@ bottom: 5%;
 background-color: red;
 height: 70px;
 border-radius: 50px;
+z-index: 999;
 }
 #call a{
   color: #fff;
@@ -1597,6 +1597,7 @@ border-radius: 50px;
   height: 70px;
   line-height: 70px;
   border-radius: 50px;
+  z-index: 999;
 }
 #scroll-btm a{
   color: #fff;

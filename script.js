@@ -199,19 +199,19 @@ const buttons = document.querySelectorAll('.category-btn');
 // 점주 인터뷰
   // === [1] 인터뷰 슬라이더 ===
   const interviewContainer = document.querySelector('.interview-container');
-  const interviewPrev = document.querySelector('.prev');
-  const interviewNext = document.querySelector('.next');
+  const interviewPrev = document.querySelector('.next');
+  const interviewNext = document.querySelector('.prev');
 
   const updateInterviewSlides = () => {
     const slides = interviewContainer.querySelectorAll('.interview-slide');
     const positions = [
-      { transform: 'translate(calc(-55% * 5.1), -200%) translateZ(-100px)', zIndex: 1 },
-      { transform: 'translate(calc(-45% * 5.1), -220%) translateZ(-100px)', zIndex: 2 },
-      { transform: 'translate(calc(-45% * 3.1), -230%) translateZ(-50px)', zIndex: 3 },
+      { transform: 'translate(calc(-40% * 4), -200%) translateZ(0px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * 3.5), -215%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-40% * 3), -230%) translateZ(0px)', zIndex: 3 },
       { transform: 'translate(calc(-45% * 1.1), -210%) translateZ(50px)', zIndex: 4 },
-      { transform: 'translate(calc(-45% * -0.9), -230%) translateZ(-50px)', zIndex: 3 },
-      { transform: 'translate(calc(-45% * -2.9), -220%) translateZ(-100px)', zIndex: 2 },
-      { transform: 'translate(calc(-55% * -2.9), -200%) translateZ(-100px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
+      { transform: 'translate(calc(-40% * -1.5), -215%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-50% * -1.5), -200%) translateZ(0px)', zIndex: 1 },
     ];
 
     slides.forEach((slide, i) => {
