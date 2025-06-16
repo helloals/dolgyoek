@@ -90,6 +90,70 @@ const buttons = document.querySelectorAll('.category-btn');
                 document.querySelector(`.category-content[data-category="${category}"]`).classList.add('active');
             });
         });
+// 리뷰 헤더
+
+ // 별 애니메이션
+ const images = document.querySelectorAll('.hit-image');
+ const imageObserver = new IntersectionObserver((entries) => {
+     entries.forEach((entry, index) => {
+         if (entry.isIntersecting) {
+             setTimeout(() => {
+                 entry.target.classList.add('active');
+             }, index * 200);
+             imageObserver.unobserve(entry.target);
+         }
+     });
+ }, { threshold: 0.3 });
+ images.forEach(img => imageObserver.observe(img));
+
+ // 숫자 카운트업
+ function countObserver(selector, callback, threshold = 0.5) {
+     const targets = document.querySelectorAll(selector);
+     const observer = new IntersectionObserver((entries, obs) => {
+         entries.forEach(entry => {
+             if (entry.isIntersecting) {
+                 callback(entry.target);
+                 obs.unobserve(entry.target);
+             }
+         });
+     }, { threshold });
+     targets.forEach(el => observer.observe(el));
+ }
+
+ function startCounting(counter) {
+     const target = parseFloat(counter.getAttribute('data-target'));
+     let current = 0;
+     const duration = 2000;
+     const steps = 200;
+     const increment = target / steps;
+     const interval = duration / steps;
+
+     const update = () => {
+         current += increment;
+         if (current < target) {
+             counter.innerText = current.toFixed(1);
+             setTimeout(update, interval);
+         } else {
+             counter.innerText = target.toFixed(1);
+         }
+     };
+     update();
+ }
+
+ countObserver('.counter', startCounting);
+
+ // 텍스트 fade-up
+ const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
+ const fadeObserver = new IntersectionObserver((entries, observer) => {
+     entries.forEach(entry => {
+         if (entry.isIntersecting) {
+             entry.target.classList.add('visible');
+             observer.unobserve(entry.target);
+         }
+     });
+ }, { threshold: 0.3 });
+ fadeUpElements.forEach(el => fadeObserver.observe(el));
+
 // 리뷰 슬라이드
         
        const options = {

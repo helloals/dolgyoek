@@ -11,6 +11,97 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script src="./script.js" defer></script>
+    <style>
+        /* 상단/하단 여백 */
+
+        #all_frank {
+            position: relative;
+            width: 100%;
+            min-width: 1500px;
+            height: 1080px;
+            background: #000;
+        }
+
+        .all_frank_title img {
+            width: 500px;
+        }
+
+        #all_frank .all_frank_title {
+            position: absolute;
+            width: 1139px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100px;
+            z-index: 16;
+        }
+
+        #all_frank .all_frank_text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 590px;
+            z-index: 16;
+        }
+
+        #all_frank .all_frank_text p {
+            margin-bottom: 40px;
+            font-size: 26px;
+            text-align: center;
+            font-weight: 500;
+            line-height: 40px;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        #all_frank .all_frank_logo {
+            position: absolute;
+            width: 473px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 840px;
+            z-index: 16;
+        }
+
+        /* 배경 이미지들 */
+        #all_frank .all_frank_bg1,
+        #all_frank .all_frank_bg2,
+        #all_frank .all_frank_bg3,
+        #all_frank .all_frank_bg4,
+        #all_frank .all_frank_bg5 {
+            position: absolute;
+            width: 100%;
+            min-width: 1500px;
+            height: 1080px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #all_frank .all_frank_bg1 {
+            background-image: url('dolgyeok.png');
+            z-index: 11;
+        }
+
+        #all_frank .all_frank_bg2 {
+            background-image: url('dolgyeok1.png');
+            z-index: 12;
+        }
+
+        #all_frank .all_frank_bg3 {
+            background-image: url('dolgyeok2.png');
+            z-index: 13;
+        }
+
+        #all_frank .all_frank_bg4 {
+            background-image: url('dolgyeok3.png');
+            z-index: 14;
+        }
+
+        /*
+        #all_frank .all_frank_bg5 {
+            background-image: url('all_frank_05.png');
+            z-index: 15;
+        } */
+    </style>
 </head>
 <header>
     <nav class="navbar" id="nav">
@@ -502,6 +593,31 @@
         </section>
 
         <br><br><br><br><br><br>
+
+        <!-- 중앙 정렬되는 텍스트 (위치 조절 가능) -->
+        <div class="scroll-fade-up">
+            <div class="text-content">
+                <span style="font-size: 55px;">고객 만족도</span><span>를 </span>
+                <span style="color: red; font-size: 55px;">꼭</span>
+                <span> 확인하세요!</span>
+            </div>
+        </div>
+
+        <!-- 별 이미지 -->
+        <div class="image-container">
+            <img src="./별3.png" class="hit-image" />
+            <img src="./별3.png" class="hit-image" />
+            <img src="./별3.png" class="hit-image" />
+            <img src="./별3.png" class="hit-image" />
+            <img src="./별3.png" class="hit-image" />
+        </div>
+
+        <!-- 카운터 -->
+        <div class="counter-container">
+            <div class="counter" data-target="5.0">0.0</div>
+            <span style="font-size: 40px; font-weight: bolder;">점 리뷰평가 만점받은 소문난 치킨맛집 !</span>
+        </div>
+
         <div class="box">
             <div class="slide-wrapper">
                 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -589,7 +705,26 @@
             </span><br><br>
             <hr>
             <br><br>
-            <img src="./창업혜택.PNG" alt="">
+            <div class="box">
+                <div class="flex">
+                    <div><img src="./돌격닭강정/창업혜택/018.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/019.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/020.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/021.png" alt=""></div>
+                </div>
+                <div class="flex">
+                    <div><img src="./돌격닭강정/창업혜택/022.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/023.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/024.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/025.png" alt=""></div>
+                </div>
+                <div class="flex">
+                    <div><img src="./돌격닭강정/창업혜택/026.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/027.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/028.png" alt=""></div>
+                    <div><img src="./돌격닭강정/창업혜택/029.png" alt=""></div>
+                </div>
+            </div>
         </div>
         <br><br>
         <div class="tab-container">
@@ -768,7 +903,60 @@
         <div class="box">
             매장안내
         </div>
+        <div class="box">
 
+        </div>
+        <!-- 상단 여백 -->
+
+        <!-- 애니메이션 섹션 -->
+        <section id="all_frank">
+            <div class="all_frank_title">
+                <img src="/dolgyeokLogo.png" alt="">
+            </div>
+            <div class="all_frank_text">
+
+                <p>창업의 길이 낯설고 막막하실때,</p>
+                <p>돌격은 가장 가까운 곳에서 함께 뛰겠습니다.</p>
+                <p>매장의 하루, 고객의 반응, 조리의 디테일까지</p>
+                <p>점주님이 마주하는 모든 순간을 본사도 함께 살아갑니다.</p>
+                <p>혼자가 아닙니다.</p>
+                <p>돌격은 점주님의 성공을 위해 현장에서, 그리고 마음으로 늘 함께합니다</p>
+            </div>
+            <div class="all_frank_logo">
+                <img src="/img/2022_fran/all_frank_logo.png" alt="">
+            </div>
+            <div class="all_frank_bg5"></div>
+            <div class="all_frank_bg4"></div>
+            <div class="all_frank_bg3"></div>
+            <div class="all_frank_bg2"></div>
+            <div class="all_frank_bg1"></div>
+        </section>
+
+        <!-- 하단 여백 -->
+
+        <!-- GSAP & ScrollTrigger -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#all_frank",
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: true,
+                },
+            })
+                .from(".all_frank_bg1", { opacity: 0 })
+                .from(".all_frank_bg2", { opacity: 0 }, '-=0.1')
+                .from(".all_frank_bg3", { opacity: 0 }, '-=0.1')
+                .from(".all_frank_bg4", { opacity: 0 }, '-=0.1')
+                .from(".all_frank_bg5", { opacity: 0 }, '-=0.1')
+                .from(".all_frank_title", { y: 120, opacity: 0 }, '-=2')
+                .from(".all_frank_text", { y: 150, opacity: 0 }, '-=1')
+                .from(".all_frank_logo", { y: 120, opacity: 0 });
+        </script>
         <div id="btn-box">
             <div id="call"><a href="tel:18993302"><span style="font-size: 20px; font-weight: 900;">성공문의</span><br><span
                         style="font-size: 20px; font-weight: bolder;">1533 -
