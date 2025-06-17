@@ -46,7 +46,7 @@ body {
 h1{
   font-size: 50px;
 }
-/* Ensure that the navbar takes the full width */
+/* 헤더시작 */
 .navbar__menu {
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,6 @@ h1{
   justify-content: center;
   width: 220px;
   height: 30px;
-  font-size: 20x;
   border-radius: 15px;
   margin-left: 20px;
   pointer-events: none;
@@ -126,6 +125,8 @@ h1{
 .sns-icons a.youtube:hover {
   color: #ff0000;
 }
+/* 헤더 끝 */
+
 
 /* 메인 섹션 */
 .flex {
@@ -352,11 +353,9 @@ background-color: red;
         .buttons button {
   width: 100%; /* 원하는 크기 */
   height: 100px;
-  background-size: cover;      /* 이미지가 꽉 차게 */
-  background-position: center; /* 중앙 정렬 */
-  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+  z-index: 123123;
   
   /* 버튼 기본 스타일 제거 */
   background: none;
@@ -365,6 +364,9 @@ background-color: red;
   margin: 0;
   outline: none;
   cursor: pointer;
+}
+.buttons img{
+  width: 100px;
 }
 
 /* 업변 전 후 */
@@ -1415,7 +1417,99 @@ z-index: 999;
   color: #fff;
   text-decoration: none;
 }
-@media (max-width:768px){
+/* ...existing code... */
+/* 반응형 헤더 */
+@media (max-width: 1024px) {
+  .navbar__menu {
+    padding: 0 10px;
+  }
+  .logo img {
+    width: 120px;
+  }
+  .menu-items {
+    gap: 10px;
+  }
+  .nav-Inquiry-1st,
+  .nav-Inquiry-2nd {
+    width: 150px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__menu {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 0;
+    position: static;
+    background: white;
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .logo img {
+    width: 90px;
+  }
+  .menu-items {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    align-items: center;
+  }
+  .menu-items li {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .menu-items li a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1rem;
+  }
+  .nav-Inquiry-1st,
+  .nav-Inquiry-2nd {
+    width: 100%;
+    margin: 8px 0 0 0;
+    font-size: 1rem;
+    height: 36px;
+    justify-content: center;
+  }
+  .sns-icons {
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+  }
+  .sns-icons a {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__menu {
+    padding: 5px 0;
+  }
+  .logo img {
+    width: 70px;
+  }
+  .nav-Inquiry-1st,
+  .nav-Inquiry-2nd {
+    font-size: 0.9rem;
+    height: 32px;
+  }
+  .menu-items li a {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+  .sns-icons {
+    gap: 12px;
+  }
+}
+/* 헤더 끝 */
+
+/* @media (max-width:768px){
   .navbar{
     width: 100%;
   }
@@ -1599,4 +1693,104 @@ z-index: 1;
 }
 @media (max-width:320px){
 
+} */
+/* 반응형 메인 섹션 */
+@media (max-width: 1024px) {
+  .main-sec-1 {
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 0;
+  }
+  .main-sec-1 video,
+  .main-sec-1 img {
+    width: 350px;
+  }
+  .star img,
+  .miracle img {
+    width: 60px;
+    height: 60px;
+  }
+  #since {
+    font-size: 1.5rem;
+  }
+  #since span {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .main-sec-1 {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+  }
+  .main-sec-1 video,
+  .main-sec-1 img {
+    width: 95vw;
+    max-width: 100%;
+  }
+  .star img,
+  .miracle img {
+    width: 40px;
+    height: 40px;
+  }
+  #since {
+    font-size: 1.1rem;
+  }
+  #since span {
+    font-size: 1.2rem;
+  }
+  .div-1 {
+    max-width: 98vw;
+    padding: 0 5px;
+  }
+  .div-1 iframe {
+    min-height: 120px;
+  }
+  #btn-box-2,
+  #scroll-btm-2 {
+    width: 90vw;
+    min-width: 0;
+    margin: 8px auto;
+  }
+  #call-2 {
+    width: 90vw;
+    min-width: 0;
+    left: 5vw;
+    right: 5vw;
+    bottom: 2vw;
+  }
+  .div-2 {
+    font-size: 1rem;
+    padding: 0 5px;
+  }
+  .div-2 img {
+    width: 120px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-sec-1 video,
+  .main-sec-1 img {
+    width: 98vw;
+  }
+  .star img,
+  .miracle img {
+    width: 28px;
+    height: 28px;
+  }
+  #since {
+    font-size: 0.95rem;
+  }
+  #since span {
+    font-size: 1rem;
+  }
+  .div-2 img {
+    width: 80px;
+  }
 }

@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   const slides = slidesContainer.querySelectorAll("img");
   const nextBtn = document.getElementById("nextBtn");
@@ -93,7 +93,6 @@ const buttons = document.querySelectorAll('.category-btn');
 // 리뷰 헤더
 
  
-
  // 텍스트 fade-up
  const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
  const fadeObserver = new IntersectionObserver((entries, observer) => {
@@ -157,13 +156,13 @@ const buttons = document.querySelectorAll('.category-btn');
   const updateInterviewSlides = () => {
     const slides = interviewContainer.querySelectorAll('.interview-slide');
     const positions = [
-      { transform: 'translate(calc(-40% * 4), -200%) translateZ(0px)', zIndex: 1 },
-      { transform: 'translate(calc(-40% * 3.5), -215%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-40% * 3), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-45% * 1.1), -210%) translateZ(50px)', zIndex: 4 },
-      { transform: 'translate(calc(-40% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-40% * -1.5), -215%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-50% * -1.5), -200%) translateZ(0px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * 4), -210%) translateZ(0px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * 3.5), -220%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-35% * 3), -230%) translateZ(0px)', zIndex: 3 },
+      { transform: 'translate(calc(-45% * 1.1), -220%) translateZ(50px)', zIndex: 4 },
+      { transform: 'translate(calc(-3% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
+      { transform: 'translate(calc(-20% * -1.5), -220%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-35% * -1.5), -210%) translateZ(0px)', zIndex: 1 },
     ];
 
     slides.forEach((slide, i) => {
@@ -175,7 +174,7 @@ const buttons = document.querySelectorAll('.category-btn');
       let transform = positions[i].transform;
 
       if (i === 3) {
-        transform += ' scale(1.2)';
+        transform += ' scale(1.1)';
         slide.classList.add('center-slide');
       }
       slide.style.transform = transform;
@@ -435,7 +434,7 @@ document.querySelectorAll('img').forEach(img => {
 document.addEventListener("DOMContentLoaded", () => {
   const categories = [
     [ // 21가지 맛
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%88%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%86%E1%85%A1%E1%86%BA161.webp', text: '161 빨간맛' },
+      { src: '돌격닭강정/빨간맛161.webp', text: '161 빨간맛' },
       { src: '돌격닭강정/닭강정 마늘간장 45도컷.webp', text: '단짠마늘간장' },
       { src: '돌격닭강정/닭강정 빨간양념 크림폭탄 45도컷.webp', text: '크림폭탄' },
       { src: '돌격닭강정/닭강정 마늘간장청양크림 45도컷 .webp', text: '청양크림' },
@@ -605,7 +604,7 @@ let index = 0;
 
     updateSlide();
 startAutoSlide();
-
+// 창업혜택 헤더 이미지
 const benefitObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
       if (entry.isIntersecting) {
