@@ -13,5 +13,4 @@
      });
      document.getElementById(tabName).classList.add('on');
      document.querySelector('.tabs[onclick="openTab(\'' + tabName + '\')"]').classList.add('on');
-}
- 
+ }

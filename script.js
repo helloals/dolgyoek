@@ -92,55 +92,7 @@ const buttons = document.querySelectorAll('.category-btn');
         });
 // 리뷰 헤더
 
- // 별 애니메이션
- const images = document.querySelectorAll('.hit-image');
- const imageObserver = new IntersectionObserver((entries) => {
-     entries.forEach((entry, index) => {
-         if (entry.isIntersecting) {
-             setTimeout(() => {
-                 entry.target.classList.add('active');
-             }, index * 200);
-             imageObserver.unobserve(entry.target);
-         }
-     });
- }, { threshold: 0.3 });
- images.forEach(img => imageObserver.observe(img));
-
- // 숫자 카운트업
- function countObserver(selector, callback, threshold = 0.5) {
-     const targets = document.querySelectorAll(selector);
-     const observer = new IntersectionObserver((entries, obs) => {
-         entries.forEach(entry => {
-             if (entry.isIntersecting) {
-                 callback(entry.target);
-                 obs.unobserve(entry.target);
-             }
-         });
-     }, { threshold });
-     targets.forEach(el => observer.observe(el));
- }
-
- function startCounting(counter) {
-     const target = parseFloat(counter.getAttribute('data-target'));
-     let current = 0;
-     const duration = 2000;
-     const steps = 200;
-     const increment = target / steps;
-     const interval = duration / steps;
-
-     const update = () => {
-         current += increment;
-         if (current < target) {
-             counter.innerText = current.toFixed(1);
-             setTimeout(update, interval);
-         } else {
-             counter.innerText = target.toFixed(1);
-         }
-     };
-     update();
- }
-
- countObserver('.counter', startCounting);
+ 
 
  // 텍스트 fade-up
  const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
@@ -223,7 +175,7 @@ const buttons = document.querySelectorAll('.category-btn');
       let transform = positions[i].transform;
 
       if (i === 3) {
-        transform += ' scale(1.4)';
+        transform += ' scale(1.2)';
         slide.classList.add('center-slide');
       }
       slide.style.transform = transform;
@@ -483,7 +435,7 @@ document.querySelectorAll('img').forEach(img => {
 document.addEventListener("DOMContentLoaded", () => {
   const categories = [
     [ // 21가지 맛
-      { src: '돌격닭강정/빨간맛161.webp', text: '161 빨간맛' },
+      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%88%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%86%E1%85%A1%E1%86%BA161.webp', text: '161 빨간맛' },
       { src: '돌격닭강정/닭강정 마늘간장 45도컷.webp', text: '단짠마늘간장' },
       { src: '돌격닭강정/닭강정 빨간양념 크림폭탄 45도컷.webp', text: '크림폭탄' },
       { src: '돌격닭강정/닭강정 마늘간장청양크림 45도컷 .webp', text: '청양크림' },
@@ -654,4 +606,14 @@ let index = 0;
     updateSlide();
 startAutoSlide();
 
-// 창업 탭기능
+const benefitObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('benefit-show');
+          benefitObserver.unobserve(entry.target);
+      }
+  });
+}, { threshold: 0.5 });
+
+const benefitImage = document.getElementById('benefitImage');
+benefitObserver.observe(benefitImage);

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Drag to Slide - Text List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #fff;
+        }
+
+        .right-fixed-slider {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 250px;
+            height: 120px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #ccc;
+            z-index: 10;
+        }
+
+        ul.slide-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        ul.slide-list li {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.4;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            user-select: none;
+            z-index: 2;
+        }
+
+        ul.slide-list li::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 180px;
+            background-image: var(--bg);
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="right-fixed-slider">
+        <ul class="slide-list" id="slideList">
+            <li style="--bg:url('https://via.placeholder.com/300x200/ffaacc/000000?text=1')">첫 번째 텍스트 항목입니다.</li>
+            <li style="--bg:url('https://via.placeholder.com/300x200/aaccff/000000?text=2')">두 번째 항목은 설명이 더 깁니다.</li>
+            <li style="--bg:url('https://via.placeholder.com/300x200/aaffcc/000000?text=3')">세 번째 슬라이드는 텍스트만 포함됩니다.</li>
+            <li style="--bg:url('https://via.placeholder.com/300x200/ffccaa/000000?text=4')">마지막 네 번째 슬라이드입니다.</li>
+        </ul>
+    </div>
+
+    <script>
+        const list = document.getElementById("slideList");
+        const slides = list.querySelectorAll("li");
+        const slideHeight = 120;
+        let currentIndex = 0;
+        let startY = 0;
+        let isDragging = false;
+
+        function moveToSlide(index) {
+            const offset = -index * slideHeight;
+            list.style.transform = `translateY(${offset}px)`;
+        }
+
+        function handleSlide(deltaY) {
+            if (deltaY > 50) {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            } else if (deltaY < -50) {
+                currentIndex = (currentIndex + 1) % slides.length;
+            }
+            moveToSlide(currentIndex);
+        }
+
+        list.addEventListener("mousedown", (e) => {
+            startY = e.clientY;
+            isDragging = true;
+        });
+
+        document.addEventListener("mouseup", (e) => {
+            if (!isDragging) return;
+            const deltaY = e.clientY - startY;
+            handleSlide(deltaY);
+            isDragging = false;
+        });
+
+        list.addEventListener("touchstart", (e) => {
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        });
+
+        list.addEventListener("touchend", (e) => {
+            if (!isDragging) return;
+            const deltaY = e.changedTouches[0].clientY - startY;
+            handleSlide(deltaY);
+            isDragging = false;
+        });
+
+        moveToSlide(currentIndex);
+    </script>
+
+</body>
+
+</html>
