@@ -150,12 +150,34 @@ const buttons = document.querySelectorAll('.category-btn');
 // 점주 인터뷰
   // === [1] 인터뷰 슬라이더 ===
   const interviewContainer = document.querySelector('.interview-container');
-  const interviewPrev = document.querySelector('.next');
-  const interviewNext = document.querySelector('.prev');
+const interviewPrev = document.querySelector('.next');
+const interviewNext = document.querySelector('.prev');
 
-  const updateInterviewSlides = () => {
-    const slides = interviewContainer.querySelectorAll('.interview-slide');
-    const positions = [
+function getPositionsByScreenWidth() {
+  const w = window.innerWidth;
+
+  if (w < 768) { // 모바일
+    return [
+      { transform: 'translate(-120%, -450%)', zIndex: 1 },
+      { transform: 'translate(-100%, -460%)', zIndex: 2 },
+      { transform: 'translate(-80%, -470%)', zIndex: 3 },
+      { transform: 'translate(-50%, -480%)', zIndex: 4 },
+      { transform: 'translate(-20%, -470%)', zIndex: 3 },
+      { transform: 'translate(0%, -460%)', zIndex: 2 },
+      { transform: 'translate(20%, -450%)', zIndex: 1 },
+    ];
+  } else if (w < 1200) { // 태블릿
+    return [
+      { transform: 'translate(-160%, -200%)', zIndex: 1 },
+      { transform: 'translate(-100%, -210%)', zIndex: 2 },
+      { transform: 'translate(-50%, -220%)', zIndex: 3 },
+      { transform: 'translate(0%, -230%) translateZ(50px)', zIndex: 4 },
+      { transform: 'translate(50%, -220%)', zIndex: 3 },
+      { transform: 'translate(100%, -210%)', zIndex: 2 },
+      { transform: 'translate(160%, -200%)', zIndex: 1 },
+    ];
+  } else { // PC
+    return [
       { transform: 'translate(calc(-40% * 4), -210%) translateZ(0px)', zIndex: 1 },
       { transform: 'translate(calc(-40% * 3.5), -220%) translateZ(0px)', zIndex: 2 },
       { transform: 'translate(calc(-35% * 3), -230%) translateZ(0px)', zIndex: 3 },
@@ -164,83 +186,89 @@ const buttons = document.querySelectorAll('.category-btn');
       { transform: 'translate(calc(-20% * -1.5), -220%) translateZ(0px)', zIndex: 2 },
       { transform: 'translate(calc(-35% * -1.5), -210%) translateZ(0px)', zIndex: 1 },
     ];
+  }
+}
 
-    slides.forEach((slide, i) => {
-      slide.classList.remove('center-slide');
-      slide.style.transition = 'transform 0.5s, z-index 0.5s';
-      slide.style.transform = positions[i].transform;
-      slide.style.zIndex = positions[i].zIndex;
+const updateInterviewSlides = () => {
+  const slides = interviewContainer.querySelectorAll('.interview-slide');
+  const positions = getPositionsByScreenWidth();
 
-      let transform = positions[i].transform;
+  slides.forEach((slide, i) => {
+    slide.classList.remove('center-slide');
+    slide.style.transition = 'transform 0.5s, z-index 0.5s';
 
-      if (i === 3) {
-        transform += ' scale(1.1)';
-        slide.classList.add('center-slide');
-      }
-      slide.style.transform = transform;
-      slide.style.zIndex = positions[i].zIndex;
-    });
-  };
+    let transform = positions[i].transform;
+    if (i === 3) {
+      transform += ' scale(1.1)';
+      slide.classList.add('center-slide');
+    }
 
-  interviewPrev.addEventListener('click', () => {
-    interviewContainer.append(interviewContainer.querySelector('.interview-slide'));
-    updateInterviewSlides();
+    slide.style.transform = transform;
+    slide.style.zIndex = positions[i].zIndex;
   });
+};
 
-  interviewNext.addEventListener('click', () => {
-    const slides = interviewContainer.querySelectorAll('.interview-slide');
-    interviewContainer.prepend(slides[slides.length - 1]);
-    updateInterviewSlides();
-  });
-
+interviewPrev.addEventListener('click', () => {
+  interviewContainer.append(interviewContainer.querySelector('.interview-slide'));
   updateInterviewSlides();
+});
+
+interviewNext.addEventListener('click', () => {
+  const slides = interviewContainer.querySelectorAll('.interview-slide');
+  interviewContainer.prepend(slides[slides.length - 1]);
+  updateInterviewSlides();
+});
+
+// 반응형 대응
+window.addEventListener('resize', updateInterviewSlides);
+
+// 최초 실행
+updateInterviewSlides();
+
 
   // === [2] 업종변경 슬라이더 ===
-  const customContainer = document.querySelector('.custom-slider-container');
-  const customPrev = document.querySelector('.custom-prev');
-  const customNext = document.querySelector('.custom-next');
+const customContainer = document.querySelector('.custom-slider-container');
+const customPrev = document.querySelector('.custom-prev');
+const customNext = document.querySelector('.custom-next');
 
-  const updateCustomSlides = () => {
-    const slides = customContainer.querySelectorAll('.custom-slide');
-    const positions = [
-      { transform: 'translate(-150%, 50%) translateZ(100px)', zIndex: 1 },
-      { transform: 'translate(-50%, 35%) translateZ(150px)', zIndex: 3 },
-      { transform: 'translate(50%, 50%) translateZ(100px)', zIndex: 1 },
-    ];
-
-    slides.forEach((slide, i) => {
-      slide.classList.remove('center-slide');
-      slide.style.transition = 'transform 0.5s, z-index 0.5s';
-      slide.style.transform = positions[i].transform;
-      slide.style.zIndex = positions[i].zIndex;
-
-      if (i === 1) {
-        slide.classList.add('center-slide');
-      }
-    });
-  };
-
-  customPrev.addEventListener('click', () => {
-    customContainer.append(customContainer.querySelector('.custom-slide'));
-    updateCustomSlides();
+function updateCustomSlides() {
+  const slides = customContainer.querySelectorAll('.custom-slide');
+  const positions = [
+    { transform: 'translate(-150%, 50%) translateZ(100px)', zIndex: 1 },
+    { transform: 'translate(-50%, 35%) translateZ(150px)', zIndex: 3 },
+    { transform: 'translate(50%, 50%) translateZ(100px)', zIndex: 1 },
+  ];
+  slides.forEach((slide, i) => {
+    slide.classList.remove('center-slide');
+    slide.style.transition = 'transform 0.5s, z-index 0.5s';
+    slide.style.transform = positions[i].transform;
+    slide.style.zIndex = positions[i].zIndex;
+    if (i === 1) slide.classList.add('center-slide');
   });
+}
 
-  customNext.addEventListener('click', () => {
-    const slides = customContainer.querySelectorAll('.custom-slide');
-    customContainer.prepend(slides[slides.length - 1]);
-    updateCustomSlides();
-  });
-
+customPrev.addEventListener('click', () => {
+  customContainer.append(customContainer.querySelector('.custom-slide'));
   updateCustomSlides();
+});
 
-  // 자동 슬라이드 (업종변경 슬라이더 전용)
-  setInterval(() => {
-    customNext.click();
-  }, 3000);
-  function revealOnScroll() {
+customNext.addEventListener('click', () => {
+  const slides = customContainer.querySelectorAll('.custom-slide');
+  customContainer.prepend(slides[slides.length - 1]);
+  updateCustomSlides();
+});
+
+updateCustomSlides();
+
+// 자동 슬라이드 (업종변경 슬라이더 전용)
+let customInterval = setInterval(() => {
+  customNext.click();
+}, 3000);
+
+// revealOnScroll 함수는 별도 관리
+function revealOnScroll() {
   const elements = document.querySelectorAll('.scroll-text');
   const triggerBottom = window.innerHeight * 0.85;
-
   elements.forEach(el => {
     const boxTop = el.getBoundingClientRect().top;
     if (boxTop < triggerBottom) {
@@ -248,10 +276,9 @@ const buttons = document.querySelectorAll('.category-btn');
     }
   });
 }
-
 window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll); // 페이지 로드시도 확인
-(box => observer.observe(box));
+window.addEventListener('load', revealOnScroll);
+// (box => observer.observe(box)); // 이 줄은 삭제
 
 // 두둥텍스트
 window.addEventListener("scroll", function () {

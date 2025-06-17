@@ -108,48 +108,65 @@
     </style>
 </head>
 
+<!-- 헤더 HTML 예시 (JS 포함) -->
 <header>
     <nav class="navbar" id="nav">
-        <div class="navbar__menu">
-
-            <!-- 왼쪽: 로고 -->
-            <div class="logo">
-                <a href="#"><img src="./돌격닭강정/로고/대지 3@4x.png" alt="로고"></a>
-            </div>
-
-            <!-- 가운데: 메뉴 -->
-            <ul class="menu-items">
-                <li><a href="#">브랜드소개</a></li>
-                <li><a href="#benefit">창업혜택</a></li>
-                <li><a href="#cost">창업비용</a></li>
-                <li><a href="#menu">메뉴소개</a></li>
-                <li><a href="#">매장안내</a></li>
-                <li><a href="#faq">창업문의</a></li>
-                <li class="nav-Inquiry-1st" aria-hidden="true">YOUR TASTE, <p style="color: red; margin-left: 8px;">
-                        OUR TARGET</p>
-                </li>
-                <li class="nav-Inquiry-2nd" aria-hidden="true">
-                    <a href="tel:15334974" class="nav-Inquiry-link">
-                        <p style="color: white;">성공문의 1533 - 4974</p>
-                    </a>
-                </li>
-            </ul>
-
-            <!-- 오른쪽: 아이콘 -->
-            <div class="sns-icons">
-                <a href="https://www.instagram.com/dol_gyeok/" target="_blank" class="instagram">
-                    <i class="fab fa-instagram fa-2x"></i>
-                </a>
-                <a href="https://www.youtube.com/@%EB%8F%8C%EA%B2%A9%EB%8B%AD%EA%B0%95%EC%A0%95" target="_blank"
-                    class="youtube">
-                    <i class="fab fa-youtube fa-2x"></i>
-                </a>
-            </div>
-
+      <div class="navbar__menu">
+        <!-- 왼쪽: 로고 -->
+        <div class="logo">
+          <a href="#"><img src="./돌격닭강정/로고/대지 3@4x.png" alt="로고"></a>
         </div>
+        <!-- 햄버거 버튼 -->
+        <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <!-- 가운데: 메뉴 -->
+        <ul class="menu-items" id="menuItems">
+          <li><a href="#">브랜드소개</a></li>
+          <li><a href="#benefit">창업혜택</a></li>
+          <li><a href="#cost">창업비용</a></li>
+          <li><a href="#menu">메뉴소개</a></li>
+          <li><a href="#">매장안내</a></li>
+          <li><a href="#faq">창업문의</a></li>
+          <li class="nav-Inquiry-1st" aria-hidden="true">YOUR TASTE,<p style="color: red; margin-left: 8px;">OUR TARGET</p></li>
+          <li class="nav-Inquiry-2nd" aria-hidden="true">
+            <a href="tel:15334974" class="nav-Inquiry-link">
+              <p style="color: white;">성공문의 1533 - 4974</p>
+            </a>
+          </li>
+          <li>
+            <div class="sns-icons">
+              <a href="https://www.instagram.com/dol_gyeok/" target="_blank" class="instagram">
+                <i class="fab fa-instagram fa-2x"></i>
+              </a>
+              <a href="https://www.youtube.com/@%EB%8F%8C%EA%B2%A9%EB%8B%AD%EA%B0%95%EC%A0%95" target="_blank" class="youtube">
+                <i class="fab fa-youtube fa-2x"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
+  </header>
 
-</header>
+  <script>
+    // 햄버거 메뉴 동작
+    const hamburger = document.getElementById('hamburger');
+    const menuItems = document.getElementById('menuItems');
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('active');
+      menuItems.classList.toggle('open');
+    });
+    // 메뉴 클릭 시 닫기
+    menuItems.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        menuItems.classList.remove('open');
+      });
+    });
+  </script>
 
 
 <body>
@@ -236,11 +253,13 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
-    <div class="box">
+    <div class="box" id="wating1">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (1).gif" alt="">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (2).gif" alt="">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (3).gif" alt="">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (4).gif" alt=""><br>
+    </div>
+    <div class="box" id="wating2">    
         <img src="./웨이팅 영상/제목을-입력해주세요_ (5).gif" alt="">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (6).gif" alt="">
         <img src="./웨이팅 영상/제목을-입력해주세요_ (7).gif" alt="">
@@ -251,9 +270,8 @@
     <div class="box" id="story">
         <br><br><br><br>
         <div class="scroll-wrapper">
-            <span class="scroll-text from-left"
-                style="font-weight: 900; color: #fff; font-size: 120px; background-color: #b80101;">점주님들의 리얼 창업스토리 !</span><br><br>
-            <span class="scroll-text from-right" style="color: #fff; font-weight: 900; font-size: 40px;">돌격닭강정을 선택해주신
+            <span class="scroll-text from-left">점주님들의 리얼 창업스토리 !</span><br><br>
+            <span class="scroll-text from-right">돌격닭강정을 선택해주신
                 점주님들의 생생한 창업 후기를 들려드립니다 !</span>
         </div>
     </div>
@@ -261,7 +279,6 @@
 
     <div class="box">
         <!-- 점주 인터뷰 -->
-        <div id="interview">
             <div class="interview-container">
                 <div class='interview-slide'>
                     <img src="./지점 인터뷰/구리인터뷰.png" alt="">
@@ -300,18 +317,18 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <br><br><br><br><br><br>
     <!-- 업종변경 -->
-    <div class="box">
-        <span style="font-size: 50px; font-weight: bolder;-webkit-text-stroke: 2px black;">돌격으로 성공적인 업종변경</span><br>
-        <span style="font-size: 50px; font-weight: bolder; color: red;-webkit-text-stroke: 2px red;">큰 돈 들이지 않아도
-            충분합니다</span><br>
-        <span style="font-weight: bold;">합리적인 공사비용으로 꼭 필요한 시공만 진행 !! 인테리어 자율시공 가능! 쓰던 집기 그대로! 기존 간판 천갈이만
-            가능!</span><br><br>
-        <span style="font-weight: bold;">평균 인테리어비용 350만원 ~ 3000만원</span> <span
-            style="font-weight: bold; color: red;">업종변경 후 매출 최대 3.8배 상승</span>
+    <div class="box" id="change">
+        <span id="change-span-1" style="-webkit-text-stroke: 2px black;">돌격으로 성공적인 업종변경</span><br><br>
+        <span id="change-span-2" style="-webkit-text-stroke: 2px red;">큰 돈 들이지 않아도
+            충분합니다</span><br><br>
+        <span id="change-span-3" style="font-weight: bold;">합리적인 공사비용으로 꼭 필요한 시공만 진행!!</span><br><br>
+        <span style="font-weight: bold;">인테리어 자율시공 가능!</span><br><br>
+        <span id="change-span-4"  style="font-weight: bold;">쓰던 집기 그대로! 기존 간판 천갈이만 가능!</span><br><br>
+        <span id="change-span-5" style="font-weight: bold;">평균 인테리어비용 350만원~3000만원</span> <br><br>
+        <span id="change-span-6">업종변경 후 매출 최대 3.8배 상승</span>
         <div class="custom-slider-container">
             <div class='custom-slide'>
                 <img src="./004.png" alt="">
@@ -369,26 +386,25 @@
         <br><br><br>
         <div class="dudung-wrapper">
             <div class="dudung-text" id="dudung">
-                <span style="font-size: 70px; color: white; font-weight: bolder; margin-top: -10px;">현실적인 창업비용으로 최고 효율이
+                <span id="dudung-span1">현실적인 창업비용으로 최고 효율이
                     나오는<br><br></span>
             </div>
             <br><br>
         </div>
         <div id="fadeText" class="fade-text">
-            <span style="font-size: 70px; color: #ffcd4a; font-weight: bolder;">홀&배달&포장형 3WAY</span><br><br>
+            <span id="dudung-span2" >홀&배달&포장형 3WAY</span><br><br>
         </div>
         <br><br>
-        <span style="color: white; font-weight: bolder; font-size: 40px;">거품을 뺀 창업비용으로 홀&포장&배달 모든 구조가 가능한 브랜드</span>
+        <span id="dudung-span3">거품을 뺀 창업비용으로 홀&포장&배달 모든 구조가 가능한 브랜드</span>
         <div>
             <img src="3way.png" style="width: 80%; margin-top: -10%;" alt="">
         </div>
-        <div
-            style="background-color: #ffcd4a; width: 70%; position: relative; left: 50%; transform: translateX(-50%) translateY(-180%);">
-            <span style="font-size: 40px; color: #4e0006; font-weight: bolder;">배달 매출만으로는 가맹점 수익을 제대로 낼 수 없습니다!</span>
+        <div id="thway-div">
+            <span id="dudung-span4">배달 매출만으로는 가맹점 수익을 제대로 낼 수 없습니다!</span>
         </div>
 
         <div class="thway-text">
-            <span style="color: #ffcd4a; font-size: 40px; font-weight: bolder;">3WAY
+            <span id="dudung-span5">3WAY
                 시스템 도입으로 고른 매출 구조</span><span style="color: white; font-size: 40px; font-weight: bolder;">를
                 지향합니다!</span>
             <br><br><br>

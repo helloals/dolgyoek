@@ -1,138 +1,350 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>아래 줄부터 위로 떨어지는 지그재그 애니메이션 (300x500)</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Pretendard', sans-serif;
-            background-color: #f8f8f8;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>돌격닭강정 메뉴</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  
+  <style>
+  /* 기본 스타일 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.navbar__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 56px;
+}
+.logo img {
+  width: 150px;
+  transition: width 0.2s;
+}
+.menu-items {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+  transition: none;
+}
+.menu-items li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.nav-Inquiry-1st {
+  color: #000;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+.nav-Inquiry-2nd {
+  background-color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: 20px;
+  user-select: none;
+  font-size: 13px;
+}
+.nav-Inquiry-link {
+  color: #fff;
+  text-decoration: none;
+}
+.sns-icons {
+  display: flex;
+  gap: 15px;
+}
+.sns-icons a {
+  color: black;
+  transition: color 0.3s;
+}
+.sns-icons a.instagram:hover {
+  color: #e1306c;
+}
+.sns-icons a.youtube:hover {
+  color: #ff0000;
+}
 
-        .container {
-            max-width: 1200px;
-            width: 90%;
-            margin: 80px auto;
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            align-items: flex-start;
-        }
+/* 햄버거 버튼 기본 숨김 */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  padding: 0;
+  z-index: 2000;
+}
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 32px;
+  background: #222;
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
 
-        .column {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            flex: 1 1 0;
-        }
+/* 데스크탑 - 메뉴 항상 보임 */
+@media (min-width: 901px) {
+  .menu-items {
+    position: static !important;
+    height: auto !important;
+    flex-direction: row !important;
+    width: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
 
-        .item {
-            width: 150px;
-            height: 200px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-80px);
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-out;
-            animation-name: dropDown;
-            animation-duration: 0.6s;
-        }
+/* 900px 이하 - 햄버거 활성화 및 메뉴 숨김 */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .menu-items {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.08);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  .menu-items.open {
+    right: 0;
+  }
+  .menu-items li {
+    width: 100%;
+    text-align: left;
+    padding: 0 32px;
+    margin: 0;
+  }
+  .menu-items li a,
+  .nav-Inquiry-link {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 16px 0;
+    color: #222;
+    text-align: left;
+  }
+  .nav-Inquiry-1st {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    font-size: 1rem;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    display: flex;
+    align-items: center;
+    color: #222;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .nav-Inquiry-1st p {
+    color: red !important;
+    margin: 0 0 0 8px !important;
+    display: inline;
+  }
+  .nav-Inquiry-2nd {
+    background: #000;
+    color: #fff;
+    padding-left: 32px;
+    margin-top: 24px;
+    width: 100%;
+    min-width: 0;
+    border-radius: 0;
+    justify-content: flex-start;
+    font-size: 1rem;
+    height: auto;
+  }
+  .sns-icons {
+    margin-left: 32px;
+    margin-top: 16px;
+    gap: 16px;
+  }
+}
 
-        /* 짝수번째 아이템 오른쪽으로 밀기 (지그재그) */
-        .column .item:nth-child(even) {
-            margin-left: 20%;
-        }
+/* 768px 이하 - 태블릿 맞춤 */
+@media (max-width: 768px) {
+  .menu-items {
+    width: 220px;
+  }
+  .hamburger {
+    right: 12px;
+    width: 48px;
+    height: 48px;
+  }
+  .hamburger span {
+    width: 28px;
+    height: 3px;
+  }
+  .nav-Inquiry-2nd {
+    font-size: 0.95rem;
+  }
+}
 
-        .item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            border-radius: 12px;
-        }
-
-        .item img:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes dropDown {
-            from {
-                opacity: 0;
-                transform: translateY(-80px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                gap: 60px;
-            }
-
-            .column {
-                width: 100%;
-                max-width: none;
-                gap: 30px;
-            }
-
-            .column .item:nth-child(even) {
-                margin-left: 0;
-            }
-        }
-    </style>
+/* 400px 이하 - 모바일 초소형 맞춤 */
+@media (max-width: 400px) {
+  .menu-items {
+    width: 100%;
+  }
+  .hamburger {
+    right: 8px;
+    top: 12px;
+    width: 44px;
+    height: 44px;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 3px;
+  }
+  .nav-Inquiry-2nd {
+    font-size: 0.9rem;
+    padding-left: 16px;
+  }
+}
+  /* CSS는 아래에 따로 넣을게요 */
+  </style>
 </head>
-
 <body>
-    <section class="container">
-        <div class="column">
-            <div class="item"><img src="images/review1.jpg" alt="리뷰1" /></div>
-            <div class="item"><img src="images/review2.jpg" alt="리뷰2" /></div>
-            <div class="item"><img src="images/review3.jpg" alt="리뷰3" /></div>
-            <div class="item"><img src="images/review4.jpg" alt="리뷰4" /></div>
+  <header>
+    <nav class="navbar" id="nav">
+      <div class="navbar__menu">
+        <!-- 로고 -->
+        <div class="logo">
+          <a href="#"><img src="./돌격닭강정/로고/대지 3@4x.png" alt="로고" /></a>
         </div>
-        <div class="column">
-            <div class="item"><img src="images/review5.jpg" alt="리뷰5" /></div>
-            <div class="item"><img src="images/review6.jpg" alt="리뷰6" /></div>
-            <div class="item"><img src="images/review7.jpg" alt="리뷰7" /></div>
-            <div class="item"><img src="images/review8.jpg" alt="리뷰8" /></div>
-        </div>
-        <div class="column">
-            <div class="item"><img src="images/review9.jpg" alt="리뷰9" /></div>
-            <div class="item"><img src="images/review10.jpg" alt="리뷰10" /></div>
-            <div class="item"><img src="images/review11.jpg" alt="리뷰11" /></div>
-            <div class="item"><img src="images/review12.jpg" alt="리뷰12" /></div>
-        </div>
-    </section>
 
-    <script>
-        const columns = document.querySelectorAll('.column');
-        const totalRows = columns[0].children.length; // 4
-        const totalCols = columns.length; // 3
+        <!-- 햄버거 버튼 -->
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="menuItems"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-        const maxDelay = 0.8;
-        const colDelayStep = 0.15;
+        <!-- 메뉴 -->
+        <ul class="menu-items" id="menuItems">
+          <li><a href="#">브랜드소개</a></li>
+          <li><a href="#benefit">창업혜택</a></li>
+          <li><a href="#cost">창업비용</a></li>
+          <li><a href="#menu">메뉴소개</a></li>
+          <li><a href="#">매장안내</a></li>
+          <li><a href="#faq">창업문의</a></li>
+          <li class="nav-Inquiry-1st" aria-hidden="true">
+            YOUR TASTE,
+            <p style="color: red; margin-left: 8px;">OUR TARGET</p>
+          </li>
+          <li class="nav-Inquiry-2nd" aria-hidden="true">
+            <a href="tel:15334974" class="nav-Inquiry-link">
+              <p style="color: white;">성공문의 1533 - 4974</p>
+            </a>
+          </li>
+          <li>
+            <div class="sns-icons">
+              <a
+                href="https://www.instagram.com/dol_gyeok/"
+                target="_blank"
+                class="instagram"
+                ><i class="fab fa-instagram fa-2x"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/@%EB%8F%8C%EA%B2%A9%EB%8B%AD%EA%B0%95%EC%A0%95"
+                target="_blank"
+                class="youtube"
+                ><i class="fab fa-youtube fa-2x"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-        for (let row = 0; row < totalRows; row++) {
-            for (let col = 0; col < totalCols; col++) {
-                const item = columns[col].children[row];
-                const rowDelay = ((totalRows - 1 - row) * maxDelay) / (totalRows - 1);
-                const delay = rowDelay + col * colDelayStep;
-                item.style.animationDelay = delay + 's';
-            }
-        }
-    </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const menuItems = document.getElementById("menuItems");
+
+      // 초기 상태 닫힘 보장
+      menuItems.classList.remove("open");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        menuItems.classList.toggle("open");
+
+        // aria-expanded 업데이트 (접근성)
+        const expanded = hamburger.classList.contains("active");
+        hamburger.setAttribute("aria-expanded", expanded ? "true" : "false");
+      });
+
+      // 메뉴 링크 클릭 시 닫기
+      menuItems.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          menuItems.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+        });
+      });
+    });
+  </script>
 </body>
-
 </html>
