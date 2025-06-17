@@ -156,13 +156,13 @@ const buttons = document.querySelectorAll('.category-btn');
   const updateInterviewSlides = () => {
     const slides = interviewContainer.querySelectorAll('.interview-slide');
     const positions = [
-      { transform: 'translate(calc(-40% * 4), -200%) translateZ(0px)', zIndex: 1 },
-      { transform: 'translate(calc(-40% * 3.5), -215%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-40% * 3), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-45% * 1.1), -210%) translateZ(50px)', zIndex: 4 },
-      { transform: 'translate(calc(-40% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-40% * -1.5), -215%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-50% * -1.5), -200%) translateZ(0px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * 4), -210%) translateZ(0px)', zIndex: 1 },
+      { transform: 'translate(calc(-40% * 3.5), -220%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-35% * 3), -230%) translateZ(0px)', zIndex: 3 },
+      { transform: 'translate(calc(-45% * 1.1), -220%) translateZ(50px)', zIndex: 4 },
+      { transform: 'translate(calc(-3% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
+      { transform: 'translate(calc(-20% * -1.5), -220%) translateZ(0px)', zIndex: 2 },
+      { transform: 'translate(calc(-35% * -1.5), -210%) translateZ(0px)', zIndex: 1 },
     ];
 
     slides.forEach((slide, i) => {
@@ -174,7 +174,7 @@ const buttons = document.querySelectorAll('.category-btn');
       let transform = positions[i].transform;
 
       if (i === 3) {
-        transform += ' scale(1.4)';
+        transform += ' scale(1.1)';
         slide.classList.add('center-slide');
       }
       slide.style.transform = transform;

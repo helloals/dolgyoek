@@ -349,11 +349,7 @@ background-color: red;
             transform: translate(-50%);
         }
         .buttons button {
-  width: 100%; /* 원하는 크기 */
   height: 100px;
-  background-size: cover;      /* 이미지가 꽉 차게 */
-  background-position: center; /* 중앙 정렬 */
-  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   
