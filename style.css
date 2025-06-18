@@ -33,7 +33,6 @@ html{
 /* 슬라이더 최적화 */
 
 
-
 body {
   font-family: 'GmarketSansTTFBold', sans-serif;
    margin: 0;
@@ -621,10 +620,78 @@ background-color: red;
     .blink-text{
       animation: blink 1s infinite;
       /* 1초 간격으로 무한 반복 */
+      font-weight: bolder;
     }
-    #logo-1{
+    #section9-2-1{
+      width: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #section9-div-2-1{
+      width: 100%;
+      position: relative;
+      left: 50%;
+      transform: translate(-85%, 25%);
+      }
+    #section9-div-2-1 img{
+        width: 100%;
+        position: relative;
+        left: 10px;
+      }
+    #section9-div-2-2{
+      width: 45%;
+      position: relative;
+      transform: translate(0%, 65%);
+      }
+      #section9-div-2-2 img{
+        width: 50%;
+        position: relative;
+      }
+    #section9-div-2-3{
+      width: 100%;
+      position: relative;
+      right: 50%;
+      transform: translate(85%, 25%);
+      }
+    #section9-div-2-3 img{
       width: 100%;
     }
+    #section9-div-3{
+      width: 100%;
+      position: relative;
+      transform: translate(0%, -20%);
+    }
+    #section9-div-3 p{
+      font-size: 40px;
+    }
+    #section9-div-3 img{
+      width: 100%;
+      position: relative;
+      left: 50%;
+     transform: translateX(-50%);
+    }
+    .competition-text {
+      border: 3px solid red;
+      border-radius: 5px;
+      width: 80%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px;
+      text-align: center;
+    }
+    .competition-text-span-1{
+      font-size: 50px; font-weight: 900; color: red;
+    }
+    .competition-text-span-2{
+      font-size: 50px; font-weight: 900;
+    }
+    .competition-text-span-3{
+     font-size: 30px; font-weight: 900; color: red;
+    }
+    
+
     #logo-2{
       margin-top: 10%;
       transform: translateX(50%);
@@ -732,16 +799,20 @@ background-color: red;
   text-align: center;
   position: relative;
 }
+#interior-text-1{
+  font-weight: 900; color: #000; font-size: 40px; background-color: #b80101;
+
+}
+#interior-text-2{
+  color: red; font-weight: 900; font-size: 40px;
+}
 
 .scroll-text.from-left {
-  font-weight: 900; color: #fff; font-size: 120px; background-color: #b80101;
-
   transform: translateX(-100%);
 }
 
 .scroll-text.from-right {
   transform: translateX(100%);
-  color: #fff; font-weight: 900; font-size: 40px;
 }
 
 .scroll-text.active {
@@ -861,7 +932,6 @@ img.fade-up {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
 }
 #thway-div{
 background-color: #ffcd4a; width: 70%; position: relative; left: 50%; transform: translateX(-50%) translateY(-180%);
@@ -881,9 +951,13 @@ color: #4e0006; font-weight: bolder;
 #dudung-span5{
   color: #ffcd4a; font-size: 40px; font-weight: bolder;
 }
+#dudung-span6{
+  color: white; font-size: 40px; font-weight: bolder;
+}
 #dudung-span{
   font-weight: bold; color: red;
 }
+
 .dudung-text {
   color: #ff1e1e;
   opacity: 0;
@@ -935,10 +1009,49 @@ color: #4e0006; font-weight: bolder;
 .thway-text{
   margin-top: -100px;
 }
+.thway-text-span{
+  color: white;
+  font-weight: bolder;
+}
 .thway-img img{
 width: 250px;
 height: 250px;
 padding: 10px;
+}
+#delivery{
+  background-image: url(./KakaoTalk_20250613_1.jpg);
+  background-size: 100%;
+  padding: 50px 0;
+}
+#delivery-div-1{
+  margin-top: 60%;
+}
+#delivery-div-2{
+  color: white; width: 50%; position: relative; left: 50%; transform: translateX(-50%); -webkit-text-stroke: 2px #fff
+}
+#delivery-div-2 span{
+  font-size: 50px;
+  font-weight: bolder;
+}
+#delivery-div-3{
+ color: white; display: flex; position: relative; left: 50%; transform: translateX(-40%);
+}
+#delevery-div-3 .blink-text{
+  font-size: 100px;
+  margin-top: 80px;
+  margin-left: 20%;
+  font-weight: bolder;
+  color: #ffcd4a;
+}
+#delivery-div-3 img{
+  width: 300px;
+  margin-left: -5%;
+}
+#dlivery-div-3 span{
+  font-size: 50px;
+  margin-top: 140px;
+  margin-left: -5%;
+  font-weight: bolder
 }
 #product{
   display: flex;
@@ -1127,6 +1240,9 @@ img {
     flex-shrink: 0;
     object-fit: cover;
   }
+  #competition-slide{
+    background-color: #000;
+  }
   /* 경쟁력 슬라이드 */
     .slider-wrapper {
       width: 80%;
@@ -1199,7 +1315,24 @@ img {
           object-fit: cover;
           border-radius: 8px;
         }
- 
+        #review-box{
+          background-image: url(리뷰_백그라운드.png); 
+          background-size: cover;      /* 이미지가 꽉 차게 */
+          background-position: center; 
+        }
+        #reviewbox-1{
+          transform: translate(65%, 249%);
+        }
+        #reviewbox-3{
+          transform: translate(-65%, 16%);
+        }
+        #benefit{
+          font-weight: bolder;
+        background-image: url(./돌격닭강정/창업혜택/창업혜택_백그라운드.png);
+        background-size: 130%;
+          background-position: center;
+          background-repeat: no-repeat"
+        }
  
 /* 창업혜택 메인 이미지 */
 .benefit-img {
@@ -1460,6 +1593,11 @@ thead th {
   border-radius: 5px;
   text-align: center;
   pointer-events: none;
+}
+#review-box{
+  background-image: url(리뷰_백그라운드.png); background-size: cover;      /* 이미지가 꽉 차게 */
+    background-position: center; /* 중앙 정렬 */
+    background-repeat: no-repeat
 }
 
 /* 창업 탭 기능 */
@@ -1897,191 +2035,7 @@ z-index: 999;
   }
 }
 
-/* @media (max-width:768px){
-  .navbar{
-    width: 100%;
-  }
-  .navbar__menu li.logo{
-    display: none;
-  }
-  .navbar__menu{
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .navbar__menu{
-    width: 100%;
-  }
-  .navbar__menu li{
-    width: 30%;
-    margin: 1.5%;
-    text-align: center;
-  }
-#menu-info>#ment {
-  line-height: 15px;
-}
-  .navbar__menu li a{
-    font-size: 10px;
-    text-align: center;
-    width: 100%;
-  }
-  #brand-video{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .slogan span{
-    font-size: 22px;
-  }
-  .div-2{
-    font-size: 13px;
-    text-align: center;
-    white-space: nowrap;
-    color: red;
-    
-  }
-  #brand{
-    .bolder{
-      font-size: 15px;
-      font-weight: bolder;
-    }
-    .bolder-red{
-      font-size: 30px;
-    }
-    .fs-mdl{
-      font-size: 20px;
-    }
-  }
-    .lined-text{
-     font-size: 30px;
-     width: 100%;
-    }
 
-    .reveal.from-left{
-      width: 30%;
-    
-    }
-    .reveal.from-bottom{
-      width: 30%
-
-    }
-    .reveal.from-right{
-      width: 30%
-
-    }
-
-    .box img{
-      width: 100%;
-    }
-    .modeling img{
-      width: 100%;
-    }
-    #graph{
-      position: relative;
-    }
-    .chart-wrapper{
-      margin-top: 50%;
-      margin-left: -120%;
-    }
-    #exterior img{
-      width: 95%;
-      height: 99%;
-    }
-    #interior img{
-      width: 95%;
-      height: 99%;
-    }
-    
-    #sec8-1{
-      line-height: 1;
-      font-size: 60px;
-      width: 70%;
-    }
-    #menu-info{
-      height: auto;
-    }
-    #menu-info span{
-      font-size: 15px;
-    }
-    #menu-info img{
-      display: flex;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-     .competition-ment-box{
-      width: calc(50% - 10px);
-     }
-    .button-group{
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    #procedure img{
-      width: 100%;
-    }
-    .line {
-          display: none; 
-    }
-    #business-area{
-      width: 100%;
-    }
-    .button-group button{
-      width: 100%;
-      border-radius: 10px;
-    }
-    .category-content.active > .grid_imgs{
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .category-content.active > .grid_image{
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .slider{
-      width: 100%;
-    }
-   
-      .bottom-form label{
-        font-size: 15px;
-        z-index: 2;
-      }
-      #bottom-form{
-        width: 80%;
-        z-index: 2;
-      }
-      #call{
-width: 45%;
-height: auto;
-position: fixed;
-bottom: 5%;
-left: 1%;
-background-color: red;
-height: 60px;
-line-height: 25px;
-z-index: 1;
-}
-#call a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 3px;
-}
-#scroll-btm{
-  width: 45%;
-  position: fixed;
-  bottom: 5%;
-  right: 1%;
-  background-color: red;
-  height: 60px;
-  line-height: 60px;
-  z-index: 1;
-}
-#scroll-btm a{
-  font-size: 10px;
-  color: white;
-  text-decoration: none;
-}
-}
-@media (max-width:320px){
-
-} */
  
 /* 반응형 메인 섹션 */
 @media (max-width: 1024px) {
@@ -2137,6 +2091,10 @@ z-index: 1;
     width: 150px;
     height: 180px;
   }
+  .interview-slide.center-slide{
+    width: 150px;
+    height: 180px;
+  }
   #change-span-1{
     font-size: 35px
   }
@@ -2179,17 +2137,217 @@ z-index: 1;
     left: 26%;
     transform: translate(-50%, -50%);
   }
-  .custom-slide .blinking-text{
-    font-size: 0.8rem;
-    position: absolute;
-    top: 75%;
-    left: 74%;
-    transform: translate(-50%, -50%);
-  }
+.custom-slide .flex div:last-child p:last-child {
+  font-size: 30px; /* 원하는 크기로 조절 */
+      top: -410%;
+      -webkit-text-stroke: 2px red;
+      z-index: 999;
+}
   .custom-silder-container{
     width: 170px;
     height: 120px;
+  }
+  #dudung-wrapper{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%)
+  }
+  #dudung-span1{
+    font-size: 20px;
+  }
+  #dudung-span2{
+    font-size: 20px;
+    transform: translateY(50%);
+  }
+  #dudung-span3{
+    font-size: 14px;
+  }
+  #thway-div{
+    width: 100%;
+    position: relative;
+    left: 50%;
+  }
+  .thway-text{
+    width: 100%;
+    margin-top: 0;
+  }
+  #dudung-span4{
+    font-size: 15px;
+  }
+  #dudung-span5{
+    font-size: 15px;
+  }  
+  .dudung-span6{
+    font-size: 15px;
+    color: white;
+  }
+  #delivery{
+    background-image: url(./KakaoTalk_20250613_1.jpg);
+    background-size: cover;
+  }
+  #delivery-div-1{
+    margin-top: 0;
+    padding: 5px 0;
+  }
+  #delivery-div-2 {
+    color: white;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    transform: translate(-50%, 750%);
+  }
+  #delivery-div-2 span{
+    width: 100%;
+    font-size: 20px;
+    }
+    #delivery-div-3 {
+      position: relative;
+      left: 50%;
+      width: 100%;
+      align-items: center;
+      transform: translate(-40%, 220%);
+    }
+    #delivery-div-3 img {
+      width: 20%;
+      margin-left: 0;
+    }
+  #delivery-div-3 .blink-text{
+    font-size: 30px;
+    margin-top: 0;
+    margin-left: 0;
+    font-weight: bolder;
+    color: #ffcd4a;
+    line-height: 1.5;
+  }
+  #delivery-div-4{
+    width: 100%;
+    transform: translateY(200%);
+  }
+  #delivery-div-4 span{
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bolder;
+  }
+  
+  .thway-img{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 70%);
+  }
+  .thway-img img{
+    width: 300px;
+    height: 100px;
+    padding: 0;
+  }
+  #sec-9 span{
+    font-size: 20px;
+  }
+  #sec-9 img{
+    width: 50%;
+    height: auto;
+    position: relative;
+  }
+  .marquee-container{
+    width: 100%;
+    position: relative;
+    transform: translate(0%, 50%);
+  }
+  #section9-div-2-1{
+    display: flex;
+    width: 50%;
+    position: relative;
     
+  }
+  #section9-div-2-1 img{
+    width: 100%;
+    height: auto;
+  }
+  #section9-div-2-2{
+    position: relative;
+    left: 50%;
+    transform: translate(-45%, -300%);
+  }
+  #section9-div-2-2 img{
+    width: 20%;
+  }
+  #section9-div-2-3{
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translate(-11%, -100%);
+  }
+  #section9-div-2-3 img{
+    width: 100%;
+    height: auto;
+  }
+
+  #section9-div-3{
+    width: 100%;
+    position: relative;
+    transform: translate(25%, -75%);
+  }
+  #section9-div-3 img{
+    width: 80%;
+    height: auto;
+    transform: translate(-81%, 15%);
+  }
+  #section9-div-3 p{
+    font-size: 20px;
+    transform: translateX(-23%);
+  }
+  .blink-img{
+    width: 100%;
+    position: relative;
+    right: 17%;
+  }
+  .competition-text{
+    font-size: 20px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+  .competition-text-span-1, .competition-text-span-2{
+    font-size: 15px;
+  }
+  .competition-text-span-3{
+    font-size: 20px;
+  }
+  .competition-image-1{
+    width: 70%;
+    transform: translateY(-120%);
+  }
+  .image-gallery{
+    transform: translateY(-100%);
+    justify-content: space-around;
+  }
+  .lock-scroll{
+    transform: translateY(-80%);
+  }
+  .lock-scroll .section11-image.last{
+    transform: translate(-50%, -70%);
+  }
+  #competition-slide{
+    width: 100%;
+    height: auto;
+    position: relative;
+    transform: translateY(-80%);
+  }
+    #section12{
+      transform: translateY(-150%);
+  }
+  .scroll-wrapper{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative;
+    transform: translateY(-50%);
   }
   #since {
     font-size: 1.1rem;
@@ -2301,6 +2459,68 @@ z-index: 1;
   .scroll-text{
     font-size: 20px;
   }
+  #interior-text-1{
+    font-size: 30px;
+  }
+  #interior-text-2{
+    font-size: 20px;
+  }
+  
+  .cdd-slider-container {
+    max-width: 80%;
+    border-radius: 5px;
+  }
+
+  .cdd-slide {
+    min-width: 120%;
+    height: 300px;
+  }
+
+  .cdd-thumb {
+    width: 60px;
+    height: 45px;
+  }
+  .section19-slider {
+    width: 180%;
+    height: 150px
+  }
+  #review-box{
+    background-size: 10%;      /* 이미지가 꽉 차게 */
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  #reviewbox-1{
+    width: 100%;
+    position: relative;
+    transform: translate(0%, 0%);
+  }
+  #reviewbox-3{
+    width: 100%;
+    position: relative;
+    transform: translate(0%, -0%);
+  }
+#benefit {
+    background-image: url(./돌격닭강정/창업혜택/창업혜택_백그라운드.png);
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  #benefit-div {
+    display: flex;
+    width: 100%;
+    position: relative;
+    right: 30%;
+  }
+  .table-title{
+    font-size: 15px;
+  }
+#Tab1 .sec12-table table{
+  font-size: 10px;
+  }
+  
+
   #since {
     font-size: 0.95rem;
   }

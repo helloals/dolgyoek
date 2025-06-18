@@ -161,7 +161,7 @@ function getPositionsByScreenWidth() {
       { transform: 'translate(-120%, -450%)', zIndex: 1 },
       { transform: 'translate(-100%, -460%)', zIndex: 2 },
       { transform: 'translate(-80%, -470%)', zIndex: 3 },
-      { transform: 'translate(-50%, -480%)', zIndex: 4 },
+      { transform: 'translate(-40%, -480%)', zIndex: 4 },
       { transform: 'translate(-20%, -470%)', zIndex: 3 },
       { transform: 'translate(0%, -460%)', zIndex: 2 },
       { transform: 'translate(20%, -450%)', zIndex: 1 },
