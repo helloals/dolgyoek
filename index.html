@@ -10,7 +10,8 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="mobileS.css">
+    <link rel="stylesheet" href="mobileM.css">
     <script src="./script.js" defer></script>
     <style>
         /* 상단/하단 여백 */
@@ -118,41 +119,44 @@
 
 <!-- 헤더 HTML 예시 (JS 포함) -->
 <header>
-    <nav class="navbar" id="nav">
-      <div class="navbar__menu">
-        <!-- 왼쪽: 로고 -->
-        <div class="logo">
-          <a href="#"><img src="./돌격닭강정/로고/대지 3@4x.png" alt="로고"></a>
+  <nav class="navbar__menu">
+    <!-- 왼쪽: 로고 -->
+    <div class="logo">
+      <a href="#"><img src="./돌격닭강정/로고/대지 3@4x.png" alt="로고"></a>
+    </div>
+    <!-- 햄버거 버튼 -->
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- 오른쪽: 메뉴 -->
+    <ul class="menu-items" id="menuItems">
+      <li><a href="#">브랜드소개</a></li>
+      <li><a href="#benefit">창업혜택</a></li>
+      <li><a href="#cost">창업비용</a></li>
+      <li><a href="#menu">메뉴소개</a></li>
+      <li><a href="#">매장안내</a></li>
+      <li><a href="#faq">창업문의</a></li>
+      <li class="nav-Inquiry-1st" aria-hidden="true">YOUR TASTE,<p style="color: red; margin-left: 8px;">OUR TARGET</p></li>
+      <li class="nav-Inquiry-2nd" aria-hidden="true">
+        <a href="tel:15334974" class="nav-Inquiry-link">
+          <p style="color: white;">성공문의 1533 - 4974</p>
+        </a>
+      </li>
+      <li>
+        <div class="sns-icons">
+          <a href="https://www.instagram.com/dol_gyeok/" target="_blank" class="instagram">
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a href="https://www.youtube.com/@%EB%8F%8C%EA%B2%A9%EB%8B%AD%EA%B0%95%EC%A0%95" target="_blank" class="youtube">
+            <i class="fab fa-youtube fa-2x"></i>
+          </a>
         </div>
-        </button>
-        <!-- 가운데: 메뉴 -->
-        <ul class="menu-items" id="menuItems">
-          <li><a href="#">브랜드소개</a></li>
-          <li><a href="#benefit">창업혜택</a></li>
-          <li><a href="#cost">창업비용</a></li>
-          <li><a href="#menu">메뉴소개</a></li>
-          <li><a href="#">매장안내</a></li>
-          <li><a href="#faq">창업문의</a></li>
-          <li class="nav-Inquiry-1st" aria-hidden="true">YOUR TASTE,<p style="color: red; margin-left: 8px;">OUR TARGET</p></li>
-          <li class="nav-Inquiry-2nd" aria-hidden="true">
-            <a href="tel:15334974" class="nav-Inquiry-link">
-              <p style="color: white;">성공문의 1533 - 4974</p>
-            </a>
-          </li>
-          <li>
-            <div class="sns-icons">
-              <a href="https://www.instagram.com/dol_gyeok/" target="_blank" class="instagram">
-                <i class="fab fa-instagram fa-2x"></i>
-              </a>
-              <a href="https://www.youtube.com/@%EB%8F%8C%EA%B2%A9%EB%8B%AD%EA%B0%95%EC%A0%95" target="_blank" class="youtube">
-                <i class="fab fa-youtube fa-2x"></i>
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <body>
     <div class="container">
@@ -285,7 +289,6 @@
                 <div class='interview-slide'>
                     <img src="./지점 인터뷰/주안인터뷰.png" alt="">
                 </div>
-                <br><br><br><br><br><br><br>
                 <div class='buttons'>
                     <div>
                         <button class='prev'><img src="left.png"></button>
@@ -313,7 +316,7 @@
                         <span class="before-text">350만원으로 업종변경</span>
                     </div>
                     <div class="blinking-div">
-                        <p class="blinking-text">매출
+                        <p class="blinking-text">매출 <br>
                             <p class="blinking-text">300%상승</p>
                         </p>
                     </div>
@@ -326,7 +329,7 @@
                     <div>
                         <span class="before-text">320만원으로 업종변경</span>
                     </div>
-                    <div>
+                    <div class="blinking-div">
                         <p class="blinking-text">매출
                         <p class="blinking-text">300%상승</p>
                         </p>
@@ -340,7 +343,7 @@
                     <div>
                         <span class="before-text">555만원으로 업종변경</span>
                     </div>
-                    <div>
+                    <divv class="blinking-div">
                         <p class="blinking-text">매출
                         <p class="blinking-text">300%상승</p>
                         </p>
@@ -371,7 +374,7 @@
         </div>
         <br><br>
         <span id="dudung-span3">거품을 뺀 창업비용으로 홀&포장&배달 모든 구조가 가능한 브랜드</span>
-        <div>
+        <div class="dudung-div">
             <img src="3way.png" alt="">
         </div>
         <div id="thway-div">
@@ -973,6 +976,7 @@
             document.querySelector('.tabs[onclick="openTab(\'' + tabName + '\')"]').classList.add('on');
         }
     </script>
+    
     <script src="script3.js"></script>
     <script src="./led.js"></script>
 </body>

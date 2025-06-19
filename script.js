@@ -643,3 +643,27 @@ const benefitObserver = new IntersectionObserver((entries) => {
 
 const benefitImage = document.getElementById('benefitImage');
 benefitObserver.observe(benefitImage);
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  const menuItems = document.getElementById('menuItems');
+  hamburger.addEventListener('click', function() {
+    menuItems.classList.toggle('active');
+    hamburger.classList.toggle('active');
+    // 메뉴 열릴 때 body 스크롤 방지
+    if (menuItems.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+  // 메뉴 항목 클릭 시 닫기 (선택)
+  menuItems.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        menuItems.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+});
