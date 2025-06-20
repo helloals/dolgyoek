@@ -247,7 +247,7 @@ font-size: 20px;
 
 }
 #reviewbox-1 {
-    transform: translate(65%, 234%);
+    transform: translate(65%, 242%);
 }
 #reviewbox-3{
     transform: translate(-45%, -29%);
@@ -321,3 +321,6 @@ th, td{
     display: none;
 }
   }
+.from-dolgyoek-bg1{
+    background-image: 100%;
+}
