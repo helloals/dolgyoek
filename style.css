@@ -441,6 +441,9 @@ font-weight: bolder;
         opacity: 1;
       }
     }
+    .custom-prev, .custom-next{
+      transform: translate(123123123%);
+    }
     .custom-slide span{
           font-size: 12px;
           position: relative;

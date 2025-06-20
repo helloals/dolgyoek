@@ -308,7 +308,7 @@ th, td{
   #from-dolgyoek .from-dolgyoek-title {
     position: relative;
     width: 100%;
-    top: 20vh;
+    top: 30vh;
 
   }
 
@@ -319,7 +319,7 @@ th, td{
 
   #from-dolgyoek .from-dolgyoek-text {
     top: auto;
-    bottom: 10vh;
+    bottom: 20vh;
     width: 90%;
   }
 
