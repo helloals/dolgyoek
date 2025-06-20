@@ -97,6 +97,7 @@
         font-size: 20px;
     }
     .custom-slide{
+        position: relative;
         width: 80%;
     }
     .custom-slide .before-text{
@@ -302,14 +303,14 @@ th, td{
   }
 
   #from-dolgyoek .from-dolgyoek-title {
-    width: 90%;
+    position: relative;
+    width: 100%;
     top: 20vh;
 
-    transform: translateX(-50%);
   }
 
   .from-dolgyoek-title img {
-    transform: translate(0%, 0);
+    position: relative;
     width: 100%;
   }
 
