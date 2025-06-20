@@ -223,31 +223,14 @@ font-size: 20px;
 font-size: 20px;
 
 }
-.cdd-slider-container{
-    width: 116.5%;
-    transform: translateX(-6%);
-    margin: 0 auto;
-overflow: hidden;
-}
+.thumbnails img {
+        width: 70px;
+        height: 45px;
+      }
 
-.cdd-slider-container img{
-width: 100%;
-}
-.cdd-slide {
-    flex: 0 0 100%;
-    min-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  background: #fff;
-}
-.cdd-slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: #fff;
-}
+      .slider-container {
+        margin: 20px 10px;
+      }
 
 .section19{
     width: 250%;
@@ -256,15 +239,18 @@ width: 100%;
 #review-box{
     background-position: center;
     background-repeat: no-repeat;    
-    background-size: cover;
+    background-size: 110%;
 }
 .swiper-horizontal {
-    width: 50%;
+    width: 30%;
     height: auto;
 
 }
 #reviewbox-1 {
-    transform: translate(65%, 259%);
+    transform: translate(65%, 234%);
+}
+#reviewbox-3{
+    transform: translate(-45%, -29%);
 }
 #business-area{
     font-size: 15px;

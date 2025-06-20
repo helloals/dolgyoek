@@ -43,7 +43,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 55vh;
+  top: 20vh;
   z-index: 16;
   width: 90%;
   text-align: center;
@@ -532,40 +532,31 @@
         </div>
         
         <div class="box">
-            <div class="cdd-slider-container">
-                <div class="cdd-slider-track" id="cddSliderTrack">
-                    <div class="cdd-slide"><img src="./인테리어1.png" alt="1" loading="lazy"></div>
-                    <div class="cdd-slide"><img src="./인테리어1.png" alt="1" loading="lazy"></div>
-                    <div class="cdd-slide"><img src="./인테리어2.png" alt="2"></div>
-                    <div class="cdd-slide"><img src="./인테리어2.png" alt="2"></div>
-                    <div class="cdd-slide"><img src="./인테리어3.png" alt="3"></div>
-                    <div class="cdd-slide"><img src="./인테리어3.png" alt="3"></div>
-                    <div class="cdd-slide"><img src="./인테리어4.png" alt="4"></div>
-                    <div class="cdd-slide"><img src="./인테리어4.png" alt="4"></div>
-                    <div class="cdd-slide"><img src="./익스테리어1.png" alt="5"></div>
-                    <div class="cdd-slide"><img src="./익스테리어1.png" alt="5"></div>
-                    <div class="cdd-slide"><img src="./익스테리어2.png" alt="6"></div>
-                    <div class="cdd-slide"><img src="./익스테리어2.png" alt="6"></div>
-                    <div class="cdd-slide"><img src="./익스테리어3.png" alt="7"></div>
-                    <div class="cdd-slide"><img src="./익스테리어3.png" alt="7"></div>
-                    <div class="cdd-slide"><img src="./익스테리어4.png" alt="8"></div>
-                    <div class="cdd-slide"><img src="./익스테리어4.png" alt="8"></div>
-                    <div class="cdd-slide"><img src="./익스테리어5.jpg" alt="9"></div>
-                    <div class="cdd-slide"><img src="./익스테리어5.jpg" alt="9"></div>
-                </div>
-            </div>
+            <div class="slider-container">
+    <div class="main-slide">
+      <img src="인테리어1.png" class="active" alt="슬라이드1">
+      <img src="인테리어2.png" class="" alt="슬라이드1">
+      <img src="인테리어3.png" class="" alt="슬라이드1">
+      <img src="인테리어4.png" class="" alt="슬라이드1">
+      <img src="익스테리어1.png" class="" alt="슬라이드1">
+      <img src="익스테리어2.png" class="" alt="슬라이드1">
+      <img src="익스테리어3.png" class="" alt="슬라이드1">
+      <img src="익스테리어4.png" class="" alt="슬라이드1">
+      <img src="익스테리어5.jpg" class="" alt="슬라이드1">
 
-            <div class="cdd-thumbnail-indicators" id="cddThumbnailIndicators">
-                <span class="cdd-thumb active" data-index="0"><img src="./인테리어1.png" /></span>
-                <span class="cdd-thumb" data-index="1"><img src="./인테리어2.png" /></span>
-                <span class="cdd-thumb" data-index="2"><img src="./인테리어3.png" /></span>
-                <span class="cdd-thumb" data-index="3"><img src="./인테리어4.png" /></span>
-                <span class="cdd-thumb" data-index="4"><img src="./익스테리어1.png" /></span>
-                <span class="cdd-thumb" data-index="5"><img src="./익스테리어2.png" /></span>
-                <span class="cdd-thumb" data-index="6"><img src="./익스테리어3.png" /></span>
-                <span class="cdd-thumb" data-index="7"><img src="./익스테리어4.png" /></span>
-            </div>
-        </div>
+    </div>
+    <div class="thumbnails">
+      <img src="인테리어1.png" class="thumb active" data-index="0" alt="썸네일1">
+      <img src="인테리어2.png" class="thumb" data-index="1" alt="썸네일2">
+      <img src="인테리어3.png" class="thumb" data-index="1" alt="썸네일2">
+      <img src="인테리어4.png" class="thumb" data-index="1" alt="썸네일2">
+      <img src="익스테리어1.png" class="thumb" data-index="2" alt="썸네일3">
+      <img src="익스테리어2.png" class="thumb" data-index="2" alt="썸네일3">
+      <img src="익스테리어3.png" class="thumb" data-index="2" alt="썸네일3">
+      <img src="익스테리어4.png" class="thumb" data-index="2" alt="썸네일3">
+      <img src="익스테리어5.jpg" class="thumb" data-index="2" alt="썸네일3">
+    </div>
+  </div>
     </div>
 
     <br>
@@ -976,6 +967,20 @@
             document.getElementById(tabName).classList.add('on');
             document.querySelector('.tabs[onclick="openTab(\'' + tabName + '\')"]').classList.add('on');
         }
+        const mainImages = document.querySelectorAll('.main-slide img');
+    const thumbnails = document.querySelectorAll('.thumbnails img');
+
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        // 기존 active 제거
+        mainImages.forEach(img => img.classList.remove('active'));
+        thumbnails.forEach(img => img.classList.remove('active'));
+
+        // 새 active 추가
+        mainImages[index].classList.add('active');
+        thumbnails[index].classList.add('active');
+      });
+    });
     </script>
     
     <script src="script3.js"></script>
