@@ -991,6 +991,7 @@ padding: 10px;
 .cdd-slider-track {
   display: flex;
   transition: transform 0.4s ease;
+  width: 100%;
 }
 
 .cdd-slide {
