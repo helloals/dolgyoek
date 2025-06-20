@@ -97,7 +97,6 @@
         font-size: 20px;
     }
     .custom-slide{
-        position: relative;
         width: 80%;
     }
     .custom-slide .before-text{
@@ -108,7 +107,7 @@
     }
     .blinking-div{
         position: absolute;
-        left: 22%;
+        left: 25%;
     }
    #dudung-span1{
     font-size: 15px;
@@ -254,6 +253,7 @@ flex: 0 0 100%;
 #review-box{
     background-position: center;
     background-repeat: no-repeat;    
+    background-size: cover;
 }
 .swiper-horizontal {
     width: 50%;
