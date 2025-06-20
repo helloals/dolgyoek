@@ -295,14 +295,12 @@ th, td{
     position: relative;
     width: 100%;
     top: 30vh;
-
   }
 
   .from-dolgyoek-title img {
     position: relative;
     width: 100%;
   }
-
   #from-dolgyoek .from-dolgyoek-text {
     top: auto;
     bottom: 20vh;
@@ -320,7 +318,4 @@ th, td{
 .cost-led-orbit{
     display: none;
 }
-  }
-.from-dolgyoek-bg1{
-    background-image: 100%;
 }
