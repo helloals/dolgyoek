@@ -1,4 +1,4 @@
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -46,10 +46,18 @@
       width: 30%;
       gap: 10px;
     }
+    #story{
+        height: 700px;
+    }
     .scroll-wrapper .scroll-text.from-left{
+        position: relative;
+        top: -50px;
         font-size: 25px;
     }
     .scroll-wrapper .scroll-text.from-right{
+
+        position: relative;
+        top: -30px;
         font-size: 25px;
     }
     .interview-container{
@@ -57,11 +65,15 @@
         top: 200px;
     }
     .interview-slide{
-        width: 50%;
-        height: 150px;
+        position: absolute;
+        top: 300px;
+        width: 60%;
+        height: 200px;
     }
     .buttons{
-        transform: translate(-50%, -150%);
+        position: relative;
+        width: 50%;
+        top: -35vh;
     }
     #change-span-1{
         font-size: 25px;
@@ -85,14 +97,13 @@
         font-size: 20px;
     }
     .custom-slide{
-        width: 150px;
-        height: 300px;
+        width: 80%;
     }
     .custom-slide .before-text{
         position: absolute;
         top: 27%;
         left: 8%;
-        font-size: 11px;
+        font-size: 0.7rem;
     }
     .blinking-div{
         position: absolute;
@@ -122,7 +133,7 @@
     width: 80%;
    }
    #thway-div{
-    width: 100%;
+    width: 80%;
    }
    #dudung-span4{
     font-size: 10px;
@@ -135,6 +146,7 @@
     font-size: 15px;
    }
    .dudung-span6{
+
     font-size: 15px;
    }
    #delivery{
@@ -163,6 +175,7 @@
 }
 .thway-img img{
     width: 100%;
+
     height: auto;
     border-radius: 10px;
 }
@@ -174,10 +187,12 @@ font-size: 40px;
     transform: translateY(250%);
 }
 #competition-text{
-width: 100%;
+width: 120%;
+
 }
 .competition-text-span-1{
     font-size: 20px;
+
 }
 .competition-text-span-2{
     font-size: 20px;
@@ -194,6 +209,9 @@ font-size: 20px;
 .lock-scroll{
     height: 500px;
 }
+.section11-controller{
+    height: 50vh;
+}
 .section11-image.last.show{
     transform: translate(-50%, -100%);
 }
@@ -202,16 +220,19 @@ font-size: 20px;
 }
 .scroll-wrapper #interior-text-2{
 font-size: 20px;
+
 }
 .cdd-slider-container{
     width: 100%;
     margin: 0 auto;
 }
+
 .cdd-slider-container img{
 width: 100%;
 }
 .cdd-slide {
 flex: 0 0 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,8 +245,9 @@ flex: 0 0 100%;
   display: block;
   background: #fff;
 }
+
 .section19{
-    width: 140%;
+    width: 250%;
     height: 300px;
 }
 #review-box{
@@ -235,6 +257,7 @@ flex: 0 0 100%;
 .swiper-horizontal {
     width: 50%;
     height: auto;
+
 }
 #reviewbox-1 {
     transform: translate(65%, 259%);
@@ -251,8 +274,60 @@ position: relative;
 left: 50%;
 transform: translate(-50%, -90%);
 }
-
-
-  
-  
+.table-title, .table-subtitle{
+font-size: 15px;
 }
+.bold td{
+    font-size: 8px;
+}
+th, td{
+    font-size: 5px;
+}
+.cost-container{
+    position: relative;
+}
+.cost-circle-img{
+    position: relative;
+    width: 50%;
+    height: 50%;
+    top: 7vh;
+    left: 25%;
+}
+.cost-circle-img img{
+    width: 100%;
+}
+ #from-dolgyoek {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  #from-dolgyoek .from-dolgyoek-title {
+    width: 90%;
+    top: 20vh;
+
+    transform: translateX(-50%);
+  }
+
+  .from-dolgyoek-title img {
+    transform: translate(0%, 0);
+    width: 100%;
+  }
+
+  #from-dolgyoek .from-dolgyoek-text {
+    top: auto;
+    bottom: 20vh;
+    width: 90%;
+  }
+
+  .from-dolgyoek-text span {
+    font-size: 1.1rem;
+    width: 50%;
+  }
+  .tab_wrap{
+    margin-top: 0px;
+    padding: 0px;
+    }
+.cost-led-orbit{
+    display: none;
+}
+  }

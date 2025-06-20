@@ -345,12 +345,12 @@ font-weight: bolder;
             transition: 0.5s;
             width: 350px;
             box-shadow: 0 10px 50px gray;
-            height: 400px;
+            height: 300px;
             background: white;
             border: 1px solid rgba(0, 0, 0, 0.1);
             position: absolute;
             left: 50%;
-            top: 110%;
+            top: 150%;
         }
         .interview-slide.center-slide{
           z-index: 5 !important;
@@ -361,7 +361,7 @@ font-weight: bolder;
             z-index: 1;
             bottom: 1em;
             left: 50%;
-            transform: translate(-50%);
+            transform: translate(-50%, 30%);
         }
         .buttons button {
   border: none;
@@ -773,6 +773,13 @@ img.fade-up {
   justify-content: center;
   align-items: center;
 }
+.dudung-div{
+  position: relative;
+  transform: translateY(-10%);
+}
+.dudung-div img{
+  width: 50%;
+}
 #thway-div{
 background-color: #ffcd4a; width: 50%; position: relative; left: 50%; transform: translateX(-50%) translateY(-250%);
 }
@@ -997,6 +1004,7 @@ padding: 10px;
   min-width: 800px;
   height: 800px;
   user-select: none;
+  
 }
 
 .cdd-slide img {

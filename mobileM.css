@@ -1,5 +1,5 @@
 /* 401~768px: 태블릿 및 작은 화면 */
-@media (min-width: 401px) and (max-width: 768px) {
+@media (min-width: 503px) and (max-width: 768px) {
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
         height: 200px;
     }
     .buttons{
-        transform: translate(-50%, -150%);
+        position: relative;
     }
     #change-span-1{
         font-size: 25px;
@@ -247,4 +247,32 @@ position: relative;
 left: 50%;
 transform: translate(-50%, -90%);
 }
+ #from-dolgyoek .from-dolgyoek-title {
+    width: 90%;
+    top: 20vh;
+    left: 20vw;
+    transform: translateX(-50%);
+  }
+
+  .from-dolgyoek-title img {
+    transform: translate(0, 0);
+    width: 100%;
+  }
+
+  #from-dolgyoek .from-dolgyoek-text {
+    top: auto;
+    bottom: 20vh;
+    width: 90%;
+  }
+
+  .from-dolgyoek-text span {
+    font-size: 1.1rem;
+  }
+
+  #from-dolgyoek .from-dolgyoek-logo {
+    width: 60vw;
+    top: auto;
+    bottom: 10vh;
+  }
+  
 }
