@@ -459,7 +459,7 @@ font-weight: bolder;
     .blinking-div{
       position: absolute;
       left: 110px;
-      top: 285px;
+      top: 300px;
     }
     .blinking-text {
       animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */

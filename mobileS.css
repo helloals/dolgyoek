@@ -328,4 +328,18 @@ th, td{
 .cost-led-orbit{
     display: none;
 }
+#from-dolgyoek .from-dolgyoek-title {
+  position: absolute;
+  z-index: 16;
+  bottom: 15vh;
+}
+#from-dolgyoek .from-dolgyoek-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10vh;
+  z-index: 16;
+  width: 100%;
+  text-align: center;
+}
 }
