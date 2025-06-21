@@ -314,14 +314,12 @@ th, td{
   }
 
   #from-dolgyoek .from-dolgyoek-title {
-    position: relative;
+    position: absolute;
     width: 100%;
-    top: 30vh;
   }
-
-  .from-dolgyoek-title img {
-    position: relative;
-    width: 100%;
+  #from-dolgyoek .from-dolgyoek-title img{
+  position: absolute;
+  transform: translateX(-80%)
   }
   #from-dolgyoek .from-dolgyoek-text {
     top: auto;
@@ -340,12 +338,7 @@ th, td{
 .cost-led-orbit{
     display: none;
 }
-#from-dolgyoek .from-dolgyoek-title {
-  position: absolute;
-  left: 105%;
-  z-index: 16;
-  bottom: 2vh;
-}
+
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
   left: 50%;
