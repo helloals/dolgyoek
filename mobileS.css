@@ -105,6 +105,10 @@
         left: 8%;
         font-size: 0.7rem;
     }
+    .custom-slide .before-text{
+    position: absolute;
+    transform: translateY(0px)
+    }
     .blinking-div{
         position: absolute;
         left: 25%;
