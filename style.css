@@ -377,15 +377,15 @@ font-weight: bolder;
   cursor: pointer;
 }
 .buttons img{
-  width: 40%;
+  width: 20%;
 }
 .buttons .prev {
   position: relative;
-  left: -70%;
+  left: -40%;
 }
 .buttons .next {
   position: relative;
-  left: 70%;
+  left: 40%;
   transform: translateY(-100%);
  }
 #change-span-1{

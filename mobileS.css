@@ -77,7 +77,7 @@
     .buttons{
         position: relative;
         width: 50%;
-        bottom: 45vh;
+        bottom: 35vh;
     }
     #change-span-1{
         font-size: 25px;
@@ -192,7 +192,7 @@
     border-radius: 10px;
 }
 #sec-9 span{
-font-size: 30px;
+    font-size: 30px;
 }
 .marquee-container{
     position: relative;
@@ -321,11 +321,7 @@ th, td{
   position: absolute;
   transform: translateX(-80%)
   }
-  #from-dolgyoek .from-dolgyoek-text {
-    top: auto;
-    bottom: 20vh;
-    width: 90%;
-  }
+ 
 
   .from-dolgyoek-text span {
     font-size: 1.1rem;
@@ -334,7 +330,7 @@ th, td{
   .tab_wrap{
     margin-top: 0px;
     padding: 0px;
-    }
+}
 .cost-led-orbit{
     display: none;
 }
