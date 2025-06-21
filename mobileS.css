@@ -311,7 +311,7 @@ th, td{
   }
 
   #from-dolgyoek .from-dolgyoek-title img{
-    width: 70%;
+    width: 90%;
     position: absolute;
     transform: translate(-80%, 50%);
   } 
@@ -331,7 +331,7 @@ th, td{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 5vh;
+  bottom: 3vh;
   z-index: 16;
   width: 100%;
   text-align: center;
