@@ -1147,6 +1147,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+//경쟁력
+let index = 0;
+    const totalSlides = 8;
+    const sliderTrack = document.getElementById('sliderTrack');
+    const indicatorDots = document.querySelectorAll('.indicator-dot');
+    let intervalId;
+
+    function updateSlide() {
+      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      indicatorDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function goToSlide(i) {
+      index = i;
+      updateSlide();
+      restartAutoSlide();
+    }
+
+    // 슬라이드 자동 전환
+    function startAutoSlide() {
+      intervalId = setInterval(nextSlide, 3000);
+    }
+
+    function restartAutoSlide() {
+      clearInterval(intervalId);
+      startAutoSlide();
+    }
+
+    // 인디케이터 클릭 이벤트
+    indicatorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const i = parseInt(dot.getAttribute('data-index'));
+        goToSlide(i);
+      });
+    });
+
+    updateSlide();
+startAutoSlide();
     </script>
     <script src="script3.js"></script>
     <script src="./led.js"></script>

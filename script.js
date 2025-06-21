@@ -161,7 +161,7 @@ function getPositionsByScreenWidth() {
       { transform: 'translate(-120%, -450%)', zIndex: 1 },
       { transform: 'translate(-100%, -460%)', zIndex: 2 },
       { transform: 'translate(-80%, -470%)', zIndex: 3 },
-      { transform: 'translate(-40%, -480%)', zIndex: 4 },
+      { transform: 'translate(-50%, -480%)', zIndex: 4 },
       { transform: 'translate(-20%, -470%)', zIndex: 3 },
       { transform: 'translate(0%, -460%)', zIndex: 2 },
       { transform: 'translate(20%, -450%)', zIndex: 1 },
@@ -454,51 +454,7 @@ document.querySelectorAll('img').forEach(img => {
     img.ondragstart = () => false;
 });
 
-//경쟁력
-let index = 0;
-    const totalSlides = 8;
-    const sliderTrack = document.getElementById('sliderTrack');
-    const indicatorDots = document.querySelectorAll('.indicator-dot');
-    let intervalId;
 
-    function updateSlide() {
-      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
-      indicatorDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      index = (index + 1) % totalSlides;
-      updateSlide();
-    }
-
-    function goToSlide(i) {
-      index = i;
-      updateSlide();
-      restartAutoSlide();
-    }
-
-    // 슬라이드 자동 전환
-    function startAutoSlide() {
-      intervalId = setInterval(nextSlide, 3000);
-    }
-
-    function restartAutoSlide() {
-      clearInterval(intervalId);
-      startAutoSlide();
-    }
-
-    // 인디케이터 클릭 이벤트
-    indicatorDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const i = parseInt(dot.getAttribute('data-index'));
-        goToSlide(i);
-      });
-    });
-
-    updateSlide();
-startAutoSlide();
 
 // 창업혜택 헤더 이미지
 

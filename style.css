@@ -316,7 +316,7 @@ font-weight: bolder;
 }
 .dolgyeok{
   background-color: #fff;
-  margin-top: -100px;
+  margin-top: -50px;
 }
 .dolgyeok img{
   width: 100%;
@@ -903,6 +903,8 @@ padding: 10px;
   color: #ffcd4a;
 }
 #delivery-div-3 img{
+  position: relative;
+  top: 60px;
   width: 200px;
 }
 #delivery-div-3{
