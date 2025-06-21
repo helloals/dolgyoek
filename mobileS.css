@@ -313,7 +313,7 @@ th, td{
     width: 100%;
     position: absolute;
     top: 30%;
-    left: 40%;
+    left: 100%;
   }
 
   .tab_wrap{
@@ -325,8 +325,9 @@ th, td{
 }
 
 #from-dolgyoek .from-dolgyoek-text{
-    position: absolute;
-    top: 75%;
+    position: absolute; 
+    top: 60%;
+    left: 180%;
     width: 100%;
 }
 #from-dolgyoek .from-dolgyoek-text span{
