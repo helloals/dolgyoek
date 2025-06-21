@@ -281,8 +281,12 @@ position: relative;
 left: 50%;
 transform: translate(-50%, -90%);
 }
-.table-title, .table-subtitle{
-font-size: 15px;
+.table-title{
+font-size: 10px;
+
+}
+.table-subtitle{
+font-size: 10px;
 }
 .bold td{
     font-size: 8px;
@@ -339,7 +343,7 @@ th, td{
 #from-dolgyoek .from-dolgyoek-title {
   position: absolute;
   z-index: 16;
-  bottom: 5vh;
+  bottom: 2vh;
 }
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
