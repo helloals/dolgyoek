@@ -185,11 +185,11 @@
     border-radius: 10px;
 }
 #sec-9 span{
-font-size: 40px;
+font-size: 30px;
 }
 .marquee-container{
     position: relative;
-    transform: translateY(250%);
+    transform: translateY(200%);
 }
 #competition-text{
 width: 120%;
@@ -250,11 +250,16 @@ font-size: 20px;
     height: auto;
 
 }
-#reviewbox-1 {
-    transform: translate(65%, 242%);
+#reviewbox-1{
+    position: relative;
+    top: -1vh;
+}
+#review-box-2{
+    width: 50%;
 }
 #reviewbox-3{
-    transform: translate(-45%, -29%);
+    position: relative;
+    top: -7vh;
 }
 #business-area{
     font-size: 15px;

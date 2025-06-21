@@ -505,18 +505,12 @@ let index = 0;
 
     updateSlide();
 startAutoSlide();
-// 창업혜택 헤더 이미지
-const benefitObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-      if (entry.isIntersecting) {
-          entry.target.classList.add('benefit-show');
-          benefitObserver.unobserve(entry.target);
-      }
-  });
-}, { threshold: 0.5 });
 
-const benefitImage = document.getElementById('benefitImage');
-benefitObserver.observe(benefitImage);
+// 창업혜택 헤더 이미지
+
+
+
+// 햄버거 메뉴
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger');
   const menuItems = document.getElementById('menuItems');
