@@ -109,8 +109,9 @@
     position: absolute;
     transform: translateY(0px)
     }
-    .blinking-div{
+    .custom-slide .blinking-div{
         position: absolute;
+        top: 113%;
         left: 25%;
     }
    #dudung-span1{

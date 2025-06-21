@@ -454,12 +454,6 @@ document.querySelectorAll('img').forEach(img => {
     img.ondragstart = () => false;
 });
 
-
-//메뉴
-
-
-
-
 //경쟁력
 let index = 0;
     const totalSlides = 8;
@@ -507,8 +501,6 @@ let index = 0;
 startAutoSlide();
 
 // 창업혜택 헤더 이미지
-
-
 
 // 햄버거 메뉴
 document.addEventListener('DOMContentLoaded', function() {
