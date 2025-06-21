@@ -187,7 +187,7 @@ h1{
   height: 100%;
   border: 0;
 }
-#btn-box-2{
+#btn-box{
   display: flex;
   justify-content: space-between;
 }
@@ -1638,7 +1638,8 @@ z-index: 999;
 }
 #call a{
   position: relative;
-  left: 15%;
+  position: relative;
+  left: -7%;
   color: #fff;
   text-decoration: none;
   text-align: center;
@@ -1657,6 +1658,8 @@ z-index: 999;
 #scroll-btm a{
   color: #fff;
   text-decoration: none;
+  position: relative;
+  left: -10%;
 }
 .navbar__menu {
   display: flex;
