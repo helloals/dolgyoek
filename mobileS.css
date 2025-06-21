@@ -121,12 +121,10 @@
    #dudung-span1{
     font-size: 15px;
     top: -60px;
-
    }
    #dudung-span2{
     font-size: 25px;
     top: -25px;
-
    }
    #dudung-span3{
     font-size: 15px;
@@ -156,10 +154,9 @@
     font-size: 15px;
    }
    .dudung-span6{
-
     font-size: 15px;
    }
-   #delivery{
+#delivery{
   background-image: url(./KakaoTalk_20250613_1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -313,16 +310,11 @@ th, td{
     min-height: 100vh;
   }
 
-  #from-dolgyoek .from-dolgyoek-title {
-    position: absolute;
-    width: 100%;
-  }
   #from-dolgyoek .from-dolgyoek-title img{
-  position: absolute;
-  transform: translateX(-80%)
-  }
- 
-
+    width: 70%;
+    position: absolute;
+    transform: translate(-80%, 50%);
+  } 
   .from-dolgyoek-text span {
     font-size: 1.1rem;
     width: 50%;
