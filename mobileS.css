@@ -309,15 +309,13 @@ th, td{
     height: auto;
     min-height: 100vh;
   }
-
-  #from-dolgyoek .from-dolgyoek-title img{
-    width: 90%;
-    position: relative;
-    left: 90%;
-  } 
-  .from-dolgyoek-text span {
-    width: 50%;
+  #from-dolgyoek .from-dolgyoek-title{
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    left: 40%;
   }
+
   .tab_wrap{
     margin-top: 0px;
     padding: 0px;
@@ -326,9 +324,12 @@ th, td{
     display: none;
 }
 
-#from-dolgyoek .from-dolgyoek-text span{
-    position: relative;
-  font-size: 20px;
+#from-dolgyoek .from-dolgyoek-text{
+    position: absolute;
+    top: 75%;
+    width: 100%;
 }
-
+#from-dolgyoek .from-dolgyoek-text span{
+font-size: 13px;
+}
 }
