@@ -309,13 +309,6 @@ th, td{
     height: auto;
     min-height: 100vh;
   }
-  #from-dolgyoek .from-dolgyoek-title{
-    width: 100%;
-    position: absolute;
-    top: 30%;
-    left: 100%;
-  }
-
   .tab_wrap{
     margin-top: 0px;
     padding: 0px;
