@@ -33,14 +33,14 @@
   .main-sec-1{
     height: 1000px;
   }
-  .wrap img{
-    width: 80%;
-    height: 80%;
-  }
   #wating1{
     display: flex;
     width: 30%;
     gap: 10px;
+  }
+  .wrap img{
+    width: 90%;
+    height: 90%;
   }
   #wating1 img, #wating2 img{
     border-radius: 10px;
@@ -341,13 +341,13 @@ th, td{
 #from-dolgyoek .from-dolgyoek-title {
   position: absolute;
   z-index: 16;
-  bottom: 15vh;
+  bottom: 5vh;
 }
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 10vh;
+  bottom: 1vh;
   z-index: 16;
   width: 100%;
   text-align: center;
