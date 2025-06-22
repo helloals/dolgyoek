@@ -80,7 +80,6 @@
         font-size: 25px;
     }
     .scroll-wrapper .scroll-text.from-right{
-
         position: relative;
         top: -30px;
         font-size: 23px;
@@ -140,7 +139,7 @@
     .custom-slide .blinking-div{
         position: absolute;
         top: 113%;
-        left: 13%;
+        left: 3%;
     }
    #dudung-span1{
     font-size: 15px;
