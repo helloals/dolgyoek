@@ -24,19 +24,19 @@
   overflow: hidden;
 }
 
-.from-dolgyoek-title img {
-  width: 100%;
-  position: relative;
-  transform: translate(-25%, -30%);
-}
 
 #from-dolgyoek .from-dolgyoek-title {
-  position: absolute;
-  width: 70%;
-  left: 50%;
-  transform: translateX(-25%);
-  top: 10vh;
-  z-index: 16;
+    position: absolute;
+    width: 70%;
+    left: 50%;
+    transform: translateX(-40%);
+    top: 10vh;
+    z-index: 16;
+}
+.from-dolgyoek-title img {
+  width: 50%;
+  position: relative;
+  transform: translate(-25%, -30%);
 }
 
 #from-dolgyoek .from-dolgyoek-text {
@@ -50,7 +50,7 @@
 }
 
 .from-dolgyoek-text span {
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   font-weight: bolder;
   color: white;
@@ -912,41 +912,33 @@
         .from(".from-dolgyoek-logo", { y: 120, opacity: 0 });
 </script>
 
-    <div id="btn-box">
-        <div id="call"><a href="tel:15334974"><span
-                    style="font-size: 1.56rem; font-weight: 900; text-align: center; position: relative; left: 10%;">성공문의</span><br><span
-                    style="font-size: 20px; font-weight: bolder; position: relative; left: 6%;">1533 -
-                    4974</span></a></div>
-        <div id="scroll-btm"><a href="#faq"><span
-                    style="font-size: 20px; font-weight: 900; position: relative; left: 15%;">온라인 창업문의</span></a>
+    <form class="bottom-form" action="#" method="post" id="faq">
+        <div class="bottom-form-logo">
+            <img src="./돌격닭강정/로고/대지 7@4x.png" alt="">
         </div>
-    </div><br><br>
-
-    <div>
-        <form class="bottom-form" action="#" method="post" id="faq">
-            <label>
-                이름
-                <input type="text" name="name" placeholder="이름">
-            </label>
-            <label>
-                연락처
-                <input type="text" name="phone" placeholder="연락처">
-            </label>
-            <label>
-                희망지역
-                <input type="text" name="area" placeholder="희망지역">
-            </label>
-            <span class="radio-group">
-                <label>
-                    <input type="radio" name="type" value="신규매장"> 신규매장
-                </label>
-                <label>
-                    <input type="radio" name="type" value="업종변경"> 업종변경
-                </label>
-                <button class="submit">전송</button> <!-- 버튼 이 안에 위치시킴 -->
-            </span>
-        </form>
+    <label>
+        <input type="text" name="user-name" class="user_name" placeholder="이름">
+    </label>
+    <label>
+        <input type="text" name="phone" placeholder="연락처">
+    </label>
+    <label>
+        <input type="text" name="area" placeholder="희망지역">
+    </label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="type" value="신규매장"> 신규매장
+        </label>
+        <label>
+            <input type="radio" name="type" value="업종변경"> 업종변경
+        </label>
+        <label>
+            <input type="checkbox" name="agree" value="개인정보"> 개인정보 처리방침 동의
+        </label>
+        <button class="submit" style="border-radius: 50px;">상담신청</button>
+        <span>YOUR TASTE, OUR TARGET</span>
     </div>
+</form>
 
     <script>
         // 매출 슬라이드

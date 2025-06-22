@@ -349,4 +349,48 @@ th, td{
 #from-dolgyoek .from-dolgyoek-text span{
 font-size: 13px;
 }
+ .bottom-form {
+    flex-wrap: nowrap;
+    gap: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .bottom-form-logo {
+    width: 13vw;
+    min-width: 28px;
+  }
+  .bottom-form img {
+    width: 90%;
+    min-width: 24px;
+  }
+  .bottom-form label {
+    margin: 0 1px;
+    font-size: 12px;
+  }
+  .bottom-form input[type="text"] {
+    width: 48px;
+    height: 24px;
+    font-size: 12px;
+    margin: 1px;
+    padding: 0 3px;
+  }
+  .radio-group {
+    gap: 4px;
+    margin: 0 1px;
+  }
+  .radio-group label {
+    font-size: 11px;
+  }
+  .bottom-form .submit {
+    width: 48px;
+    height: 24px;
+    font-size: 12px;
+    margin: 1px;
+    padding: 0 4px;
+  }
+  .radio-group span {
+    font-size: 12px;
+    transform: none;
+  }
+
 }

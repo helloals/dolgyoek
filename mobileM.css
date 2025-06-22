@@ -275,4 +275,36 @@ transform: translate(-50%, -90%);
     bottom: 10vh;
   }
   
+
+
+
+/* 바텀 폼 */
+
+  /* 
+  .bottom-form {
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 8px 0;
+  }
+  .bottom-form label,
+  .bottom-form .radio-group {
+    font-size: 13px;
+    margin: 0 2px;
+  }
+  .bottom-form input[type="text"] {
+    width: 60px;
+    font-size: 13px;
+    padding: 0 4px;
+  }
+  .bottom-form .submit {
+    width: 60px;
+    height: 28px;
+    font-size: 13px;
+    margin-left: 2px;
+    padding: 0 6px;
+  }
+  .radio-group label {
+    font-size: 12px;
+  }
+  */
 }
