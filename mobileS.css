@@ -33,10 +33,26 @@
   .main-sec-1{
     height: 700px;
   }
+  .star{
+    width: 150%;
+    height: 7%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .miracle{
+    width: 130%;
+    position: relative;
+    top: 20%;
+    left: -15%;
+  }
   #wating1{
     display: flex;
     width: 30%;
     gap: 10px;
+  }
+  .wrap{
+    transform: translateY(-50%);
   }
   .wrap img{
     width: 90%;
