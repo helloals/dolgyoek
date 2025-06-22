@@ -35,6 +35,7 @@
   }
   .star{
     width: 150%;
+    top: 4%;
     height: 7%;
     position: relative;
     left: 50%;
@@ -45,6 +46,10 @@
     position: relative;
     top: 20%;
     left: -15%;
+  }
+  .dolgyeok{
+    position: relative;
+    margin-top: 10px;
   }
   #wating1{
     display: flex;
@@ -78,7 +83,7 @@
 
         position: relative;
         top: -30px;
-        font-size: 25px;
+        font-size: 23px;
     }
     .interview-container{
         position: relative;
@@ -102,22 +107,25 @@
         font-size: 25px;
     }
     #change-span-3{
-        font-size: 20px;
+        font-size: 17px;
     }
     #change-span-4{
-        font-size: 20px;
+        font-size: 17px;
     }
     #change-span-5{
-        font-size: 20px;
+        font-size: 17px;
     }
     #change-span-6{
-        font-size: 20px;
+        font-size: 17px;
     }
     #change-span-7{
-        font-size: 20px;
+        font-size: 17px;
     }
     .custom-slide{
         width: 80%;
+    }
+    .custom-slide img{
+        max-width: 100%;
     }
     .custom-slide .before-text{
         position: absolute;
@@ -132,7 +140,7 @@
     .custom-slide .blinking-div{
         position: absolute;
         top: 113%;
-        left: 25%;
+        left: 13%;
     }
    #dudung-span1{
     font-size: 15px;
