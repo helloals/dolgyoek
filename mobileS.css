@@ -379,8 +379,12 @@ font-size: 13px;
     gap: 10px;
 
 }
+.mobile-form-top span{
+    position: relative;
+    left: 5%;
+}
 .mobile-form img{
-    width: 10%;
+    width: 20%;
 }
 .mobile-form-middle{
     display: flex;
