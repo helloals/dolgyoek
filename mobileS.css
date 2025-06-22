@@ -377,6 +377,7 @@ font-size: 13px;
     display: flex;
     align-items: center;
     gap: 10px;
+
 }
 .mobile-form img{
     width: 10%;
@@ -395,7 +396,12 @@ font-size: 13px;
     gap: 3px;
 }
 .mobile-form-bottom input{
-    text-align: center;
+    text-align: center;    
+    width: 120px;
+    height: 20px;
+}
+.mobile-form-bottom label{
+height: 30px;
 }
 .mobile-submit {
     width: 100%;

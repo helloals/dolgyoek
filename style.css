@@ -1603,7 +1603,11 @@ a {
   width: 90%;
   text-align: center;
 }
-
+#from-dolgyoek .from-dolgyoek-text img{
+  width: 50%;
+  transform: translateY(25%);
+  
+}
 .from-dolgyoek-text span {
   font-size: 20px;
   text-align: center;
@@ -1705,11 +1709,9 @@ a {
   border-radius: 4px;
   text-align: center;
 }
-.bottom-form > label > span{
-}
 
 .bottom-form label {
-  margin: 5px;
+  margin: 15px;
   font-size: 20px;
   transform: translateX();
 }
@@ -1723,9 +1725,11 @@ a {
   margin: 5px 0;
   
 }
-.radio-group span{
+.form-slogan{
   transform: translateX(15%);
-  font-size: 30px;
+  font-size: 20px;
+  justify-content: center;
+  padding-top: 20px;
 }
 
 .radio-group label {
