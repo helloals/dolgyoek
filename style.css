@@ -1589,7 +1589,7 @@ a {
     left: 50%;
     transform: translateX(-50%);
     top: 30%;
-    z-index: 16;
+    z-index: 100 !important;
 }
 .from-dolgyoek-title img {
   width: 100%;
