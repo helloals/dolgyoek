@@ -351,26 +351,25 @@ font-size: 13px;
 }
  .bottom-form {
     flex-wrap: nowrap;
-    gap: 2px;
-    padding-left: 2px;
-    padding-right: 2px;
+    gap: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .bottom-form-logo {
-    width: 13vw;
-    min-width: 28px;
+    display: none;
   }
   .bottom-form img {
     width: 90%;
     min-width: 24px;
   }
   .bottom-form label {
-    margin: 0 1px;
-    font-size: 12px;
+    margin: 0;
+    font-size: 8px;
   }
   .bottom-form input[type="text"] {
     width: 48px;
     height: 24px;
-    font-size: 12px;
+    font-size: 8px;
     margin: 1px;
     padding: 0 3px;
   }
@@ -380,8 +379,6 @@ font-size: 13px;
     gap: 4px;
     margin: 0 1px;
   }
-  .radio-group{
-  }
   .bottom-form .submit {
     width: 48px;
     height: 24px;
@@ -390,8 +387,10 @@ font-size: 13px;
     padding: 0 4px;
   }
   .radio-group span {
-    font-size: 12px;
-    transform: none;
+    display: none;
+  }
+  .radio-group .submit{
+    width: 80px;
   }
 
 }
