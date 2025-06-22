@@ -16,96 +16,7 @@
     <style>
         /* 상단/하단 여백 */
 
-     #from-dolgyoek {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: #000;
-  overflow: hidden;
-}
-
-
-#from-dolgyoek .from-dolgyoek-title {
-    position: absolute;
-    width: 70%;
-    left: 50%;
-    transform: translateX(-40%);
-    top: 10vh;
-    z-index: 16;
-}
-.from-dolgyoek-title img {
-  width: 50%;
-  position: relative;
-  transform: translate(-25%, -30%);
-}
-
-#from-dolgyoek .from-dolgyoek-text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 20vh;
-  z-index: 16;
-  width: 90%;
-  text-align: center;
-}
-
-.from-dolgyoek-text span {
-  font-size: 20px;
-  text-align: center;
-  font-weight: bolder;
-  color: white;
-  text-shadow:
-    -1px -1px 0 black,
-    1px -1px 0 black,
-    -1px 1px 0 black,
-    1px 1px 0 black;
-  line-height: 1.6;
-}
-
-#from-dolgyoek .from-dolgyoek-logo {
-  position: absolute;
-  width: 30vw;
-  max-width: 473px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 78vh;
-  z-index: 16;
-}
-
-/* 배경 이미지 공통 */
-#from-dolgyoek .from-dolgyoek-bg1,
-#from-dolgyoek .from-dolgyoek-bg2,
-#from-dolgyoek .from-dolgyoek-bg3,
-#from-dolgyoek .from-dolgyoek-bg4,
-#from-dolgyoek .from-dolgyoek-bg5 {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#from-dolgyoek .from-dolgyoek-bg1 {
-  background-image: url('dolgyeok.png');
-  z-index: 11;
-}
-
-#from-dolgyoek .from-dolgyoek-bg2 {
-  background-image: url('dolgyeok1.png');
-  z-index: 12;
-}
-
-#from-dolgyoek .from-dolgyoek-bg3 {
-  background-image: url('dolgyeok2.png');
-  z-index: 13;
-}
-
-#from-dolgyoek .from-dolgyoek-bg4 {
-  background-image: url('dolgyeok3.png');
-  z-index: 14;
-}
-
+    
     </style>
 </head>
 <body>
@@ -908,7 +819,7 @@
         .from(".from-dolgyoek-bg4", { opacity: 0 }, '-=0.1')
         .from(".from-dolgyoek-bg5", { opacity: 0 }, '-=0.1')
         .from(".from-dolgyoek-title", { y: 120, opacity: 0 }, '-=1.5')
-        .from(".from-dolgyoek-text", { y: 150, opacity: 0 }, '-=1')
+        .from(".from-dolgyoek-text", { y: 150, opacity: 0 }, '-=1.5')
         .from(".from-dolgyoek-logo", { y: 120, opacity: 0 });
 </script>
 

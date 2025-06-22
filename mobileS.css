@@ -280,14 +280,14 @@ font-size: 20px;
     height: auto;
 
 }
-#reviewbox-1{
+#review-box #reviewbox-1{
     position: relative;
-    top: 1vh;
+    top: -10px;
 }
 
 #reviewbox-3{
     position: relative;
-    top: -7vh;
+    top: -65px;
 }
 #business-area{
     font-size: 15px;
@@ -339,15 +339,21 @@ th, td{
 .cost-led-orbit{
     display: none;
 }
-
+ #from-dolgyoek .from-dolgyoek-title{
+    position: absolute;
+    top: 10%;
+}
+ #from-dolgyoek .from-dolgyoek-title{
+    width: 100%;
+}
 #from-dolgyoek .from-dolgyoek-text{
     position: absolute; 
-    top: 60%;
-    left: 180%;
+    top: 40%;
     width: 100%;
 }
 #from-dolgyoek .from-dolgyoek-text span{
 font-size: 13px;
+
 }
  .bottom-form {
     flex-wrap: nowrap;
