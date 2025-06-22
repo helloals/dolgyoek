@@ -375,11 +375,12 @@ font-size: 13px;
     padding: 0 3px;
   }
   .radio-group {
+    display: flex;
+    flex-wrap: nowrap;
     gap: 4px;
     margin: 0 1px;
   }
-  .radio-group label {
-    font-size: 11px;
+  .radio-group{
   }
   .bottom-form .submit {
     width: 48px;
