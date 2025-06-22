@@ -1661,7 +1661,9 @@ a {
   background-image: url('dolgyeok3.png');
   z-index: 14;
 }
-
+.mobile-form{
+ display: none;
+}
 
 
 

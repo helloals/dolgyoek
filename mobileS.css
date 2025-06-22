@@ -287,8 +287,7 @@ font-size: 20px;
 
 #reviewbox-3{
     position: relative;
-    top: -6
-    5px;
+    top: -65px;
 }
 #business-area{
     font-size: 15px;
@@ -354,16 +353,62 @@ th, td{
 }
 #from-dolgyoek .from-dolgyoek-text span{
 font-size: 13px;
-
+}
+.mobile-form{
+   position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4e0006;
+  color: white;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bolder;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.mobile-form-top{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.mobile-form img{
+    width: 10%;
+}
+.mobile-form-middle{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.mobile-form-middle input{
+    width: 20px;
+}
+.mobile-form-bottom{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.mobile-form-bottom input{
+    text-align: center;
+}
+.mobile-submit {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 50px;
+    font-weight: bolder;
 }
  .bottom-form {
+    display: none;
     flex-wrap: nowrap;
     gap: 0px;
     padding-left: 0px;
     padding-right: 0px;
-  }
-  .bottom-form-logo {
-    display: none;
   }
   .bottom-form img {
     width: 90%;
@@ -393,8 +438,7 @@ font-size: 13px;
     margin: 1px;
     padding: 0 4px;
   }
-  .radio-group span {
-    display: none;
+  .bottom-form span {
   }
   .radio-group .submit{
     width: 80px;

@@ -822,8 +822,9 @@
 </script>
 
     <form class="bottom-form" action="#" method="post" id="faq">
-        <div class="bottom-form-logo">
-            <img src="./돌격닭강정/로고/대지 7@4x.png" alt="">
+        <div style="width: 100%; display: flex;">
+            <div class="bottom-form-logo">
+                <img src="./돌격닭강정/로고/대지 7@4x.png" alt="">
         </div>
     <label>
         <input type="text" name="user-name" class="user_name" placeholder="이름">
@@ -836,19 +837,54 @@
     </label>
     <div class="radio-group">
         <label>
-            <input type="radio" name="type" value="신규매장"> 신규매장
+            <input type="radio" name="type" value="신규매장"> 신규
         </label>
         <label>
-            <input type="radio" name="type" value="업종변경"> 업종변경
+            <input type="radio" name="type" value="업종변경"> 업변
         </label>
         <label>
             <input type="checkbox" name="agree" value="개인정보"> 개인정보 처리방침 동의
         </label>
         <button class="submit" style="border-radius: 50px;">상담신청</button>
-        <span>YOUR TASTE, OUR TARGET</span>
     </div>
+    <span>YOUR TASTE, OUR TARGET</span>
+</div>
 </form>
-
+<!-- 반응형 창업문의 -->
+<form class="mobile-form">
+    <div class="mobile-form-top">
+        <img src="/돌격닭강정/로고/대지 7@4x.png" alt="">
+        <span>YOUR TASTE, OUR TARGET</span><br>
+    </div>
+    <br>
+    <div class="mobile-form-middle">
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="type" value="신규매장"> 신규
+        </label>
+        <label>
+            <input type="radio" name="type" value="업종변경"> 업변
+        </label>
+        <label>
+            <input type="checkbox" name="agree" value="개인정보"> 개인정보 처리방침 동의
+        </label>
+    </div>
+</div>
+<br>
+<div class="mobile-form-bottom">
+    <label>
+        <input type="text" name="user-name" class="user_name" placeholder="이름">
+    </label>
+    <label>
+        <input type="text" name="phone" placeholder="연락처">
+    </label>
+    <label>
+        <input type="text" name="area" placeholder="희망지역">
+    </label>
+</div>
+<br>
+<button class="mobile-submit">상담신청</button>
+</form>
     <script>
         // 매출 슬라이드
         let roller = document.querySelector('.roller .rolling_list');
