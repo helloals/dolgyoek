@@ -218,6 +218,22 @@
     position: relative;
     transform: translateY(210%);
 }
+#section9-div-1 > #section9-div-2 > #section9-div-2-1{
+    width: 200%;
+}
+#section9-div-1 > #section9-div-2 > #section9-div-2-2{
+width: 80%;
+position: relative;
+left: 5px;
+}
+#section9-div-1 > #section9-div-2 > #section9-div-2-3{
+    width: 200%;
+}
+#section9-div-3 img{
+width: 100%;
+position: relative;
+transform: translate(-49%, 10%);
+}
 .competition-text{
     width: 120%;
 }
