@@ -1157,6 +1157,9 @@ padding: 10px;
 #business-area{
   font-size: 30px;
 }
+#business-area img{
+  width: 100%;
+}
     
   /* 리뷰 슬라이드 */
         .slide-wrapper {
