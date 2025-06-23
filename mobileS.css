@@ -244,6 +244,9 @@ font-size: 20px;
 .slider-wrapper{
     width: 110%;
 }
+.slide img{
+    height: 80%;
+}
 .image-gallery{
     position: relative;
     padding: 0;
@@ -320,10 +323,13 @@ font-size: 6vw;
 }
 
 #benefit-div .flex{
-width: 100%;
+width: 120%;
 position: relative;
 left: 50%;
-transform: translate(-50%, -90%);
+transform: translate(-50%, -75%);
+}
+table{
+    width: 100%;
 }
 .table-title{
 font-size: 10px;
@@ -345,7 +351,7 @@ th, td{
 .cost-circle-img{
     position: relative;
     width: 100%;
-    height: 40%;
+    height: 35%;
     top: 7vh;
     left: 25%;
 }
