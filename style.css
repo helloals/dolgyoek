@@ -396,7 +396,7 @@ font-weight: bolder;
  }
  #change{
   position: relative;
-  transform: translateY(150%);
+  transform: translateY(130%);
  }
 
 #change-span-2{
@@ -793,6 +793,11 @@ img.reveal {
 #three-way{
   background-color: #4e0006;
 }
+#three-way img{
+  width: 80%;
+  transform: translateY(-10%);
+
+}
 /* 틈새공략 하단 */
 .image-gallery {
   display: flex;
@@ -823,7 +828,7 @@ img.fade-up {
   align-items: center;
 }
 #thway-div{
-background-color: #ffcd4a; width: 80%; position: relative; left: 50%; transform: translateX(-50%) translateY(-250%);
+background-color: #ffcd4a; width: 80%; position: relative; left: 50%; transform: translateX(-50%) translateY(-270%);
 }
 #thway img{
   width: 80%; margin-top: -10%;
@@ -833,6 +838,7 @@ background-color: #ffcd4a; width: 80%; position: relative; left: 50%; transform:
   }
 #dudung-span2{
  font-size: 70px; color: #ffcd4a; font-weight: bolder;
+ transform: translateY(10%);
 }
 #dudung-span3{
 color: white; font-weight: bolder; font-size: 40px;
@@ -908,7 +914,7 @@ color: #4e0006; font-weight: bolder;
 }
 .thway-img img{
 width: 250px;
-height: 250px;
+height: 230px;
 padding: 10px;
 }
 #delivery{
@@ -933,7 +939,7 @@ padding: 10px;
  font-size: 80px;
 }
 #delivery-div-3 .blink-text{
-  font-size: 80px;
+  font-size: 120px;
   margin-top: 80px;
   margin-left: 20%;
   font-weight: bolder;
@@ -1280,9 +1286,9 @@ font-weight: bold;
 .benefit-img {
   opacity: 0;
   transform: scale(0.3);
-}
-.benefit-img{
-  width: 40%;
+  width: 55%;
+  position: relative;
+  margin-top: 10%;
 }
 
 .benefit-img.benefit-show {
@@ -1313,10 +1319,10 @@ font-weight: bold;
 
 
 #benefit-div .flex{
-width: 70%;
+width: 100%;
 position: relative;
 left: 50%;
-transform: translateX(-50%);
+transform: translate(-50%, -40%);
 }
 #procedure img{
   width: 50%;
@@ -1333,9 +1339,13 @@ transform: translateX(-50%);
 /* 테이블 구조 */
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 200%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 th, td {
+  font-size: 30px;
   padding: 12px;
   text-align: left;
 }
@@ -1698,7 +1708,7 @@ a {
   
 }
 .from-dolgyoek-text span {
-  font-size: 20px;
+  font-size: 40px;
   text-align: center;
   font-weight: bolder;
   color: white;
