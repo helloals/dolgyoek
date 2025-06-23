@@ -552,13 +552,14 @@
     </div>
     <br><br><br><br><br>
     <div class="box" id="business-area">
-        <span class="red-font">안정적인</span> <span>매출을 유지할 수 있는 </span><br>
-        <span class="red-font">상권보장 시스템</span> <span>구축</span>
+        <span class="business-area-red-font">안정적인</span> <span>매출을 유지할 수 있는 </span><br>
+        <span class="business-area-red-font">상권보장 시스템</span> <span>구축</span>
         <span>단순히 가맹점 수를 늘리는것에만 집중하지 않습니다.</span><br>
         <span>포장영업지역과 배달영업지역의</span><br>
-        <span>철저한</span><span class="red-font">구분</span><span>과</span><span class="red-font">보호</span><br>
+        <span>철저한</span><span class="business-area-red-font">구분</span><span>과 </span>
+        <span class="business-area-red-font">보호</span><br>
         <span>좁은 반경거리로 같은 브랜드 끼리 다투지 않고</span><br>
-        <span class="red-font">영업구역을 보장</span><span>합니다 !</span><br>
+        <span class="business-area-red-font">영업구역을 보장</span><span>합니다 !</span><br>
         <br><br>
         <img src="./상권보장.webp" alt="">
     </div>
@@ -1133,6 +1134,15 @@ let index = 0;
 
     updateSlide();
 startAutoSlide();
+
+const spans = document.querySelectorAll('#business-area span');
+spans.forEach((span, idx) => {
+  span.style.opacity = 0;
+  setTimeout(() => {
+    span.style.transition = 'opacity 0.3s ease';
+    span.style.opacity = 1;
+  }, idx * 200);
+});
     </script>
     <script src="script3.js"></script>
     <script src="./led.js"></script>

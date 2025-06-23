@@ -1157,10 +1157,29 @@ padding: 10px;
 #business-area{
   font-size: 30px;
 }
+#business-area .red-font{
+  font-size: 30px;
+}
 #business-area img{
   width: 100%;
 }
     
+#business-area{
+font-weight: bold;
+}
+.business-area-red-font {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in forwards;
+  animation-delay: calc(var(--i) * 0.2s);
+  display: inline-block;
+  color: red;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+
+
+
   /* 리뷰 슬라이드 */
         .slide-wrapper {
           padding: 40px 20px;
