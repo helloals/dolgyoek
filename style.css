@@ -1224,6 +1224,36 @@ font-weight: bold;
           background-position: center;
           background-repeat: no-repeat"
         }
+        body {
+}
+.waviy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-size: 80px;
+
+}
+.waviy span {
+  font-family: 'Alfa Slab One';
+  position: relative;
+  display: inline-block;
+  color: #9e0404;
+  text-transform: uppercase;
+  animation: waviy 2s infinite;
+  animation-delay: calc(.1s * var(--i));
+  font-weight:bolder;
+}
+
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
+}
  
 /* 창업혜택 메인 이미지 */
 .benefit-img {
