@@ -30,6 +30,12 @@
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
   }
+  .nav-span{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bolder;
+  }
   .main-sec-1{
     height: 700px;
   }
