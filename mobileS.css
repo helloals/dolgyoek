@@ -275,6 +275,10 @@ font-size: 20px;
     width: 250%;
     height: 300px;
 }
+.waviy{
+  -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0,0,0,.2));
+
+}
 .waviy span{
 font-size: 30px;
 }
@@ -390,10 +394,10 @@ font-size: 13px;
 }
 .mobile-form-top span{
     position: relative;
-    left: 5%;
+    font-size: 25px;
 }
 .mobile-form img{
-    width: 20%;
+    width: 15%;
 }
 .mobile-form-middle{
     display: flex;
@@ -401,7 +405,7 @@ font-size: 13px;
     gap: 10px;
 }
 .mobile-form-middle input{
-    width: 20px;
+    width: 30px;
 }
 .mobile-form-bottom{
     display: flex;
@@ -410,8 +414,8 @@ font-size: 13px;
 }
 .mobile-form-bottom input{
     text-align: center;    
-    width: 120px;
-    height: 20px;
+    width: 130px;
+    height: 30px;
 }
 .mobile-form-bottom label{
 height: 30px;
