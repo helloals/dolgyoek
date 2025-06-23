@@ -227,43 +227,7 @@ updateInterviewSlides();
 
 
   // === [2] 업종변경 슬라이더 ===
-const customContainer = document.querySelector('.custom-slider-container');
-const customPrev = document.querySelector('.custom-prev');
-const customNext = document.querySelector('.custom-next');
 
-function updateCustomSlides() {
-  const slides = customContainer.querySelectorAll('.custom-slide');
-  const positions = [
-    { transform: 'translate(-150%, 50%) translateZ(100px)', zIndex: 1 },
-    { transform: 'translate(-50%, 35%) translateZ(150px)', zIndex: 3 },
-    { transform: 'translate(50%, 50%) translateZ(100px)', zIndex: 1 },
-  ];
-  slides.forEach((slide, i) => {
-    slide.classList.remove('center-slide');
-    slide.style.transition = 'transform 0.5s, z-index 0.5s';
-    slide.style.transform = positions[i].transform;
-    slide.style.zIndex = positions[i].zIndex;
-    if (i === 1) slide.classList.add('center-slide');
-  });
-}
-
-customPrev.addEventListener('click', () => {
-  customContainer.append(customContainer.querySelector('.custom-slide'));
-  updateCustomSlides();
-});
-
-customNext.addEventListener('click', () => {
-  const slides = customContainer.querySelectorAll('.custom-slide');
-  customContainer.prepend(slides[slides.length - 1]);
-  updateCustomSlides();
-});
-
-updateCustomSlides();
-
-// 자동 슬라이드 (업종변경 슬라이더 전용)
-let customInterval = setInterval(() => {
-  customNext.click();
-}, 3000);
 
 // revealOnScroll 함수는 별도 관리
 function revealOnScroll() {

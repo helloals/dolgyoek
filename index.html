@@ -203,67 +203,37 @@
                 </div>
             </div>
     </div>
-    <br><br><br><br><br><br>
     <!-- 업종변경 -->
-    <div class="box" id="change">
-        <span id="change-span-1" >돌격으로 성공적인 업종변경</span><br><br>
-        <span id="change-span-2" style="-webkit-text-stroke: 1px red;">큰 돈 들이지 않아도
-            충분합니다</span><br><br>
-        <span id="change-span-3" style="font-weight: bold;">합리적인 공사비용으로 꼭 필요한 시공만 진행!!</span><br><br>
-        <span id="change-span-4">인테리어 자율시공 가능!</span><br><br>
-        <span id="change-span-5"  style="font-weight: bold;">쓰던 집기 그대로! 기존 간판 천갈이만 가능!</span><br><br>
-        <span id="change-span-6" style="font-weight: bold;">평균 인테리어비용 350만원~3000만원</span> <br><br>
-        <span id="change-span-7">업종변경 후 매출 최대 3.8배 상승</span>
-        <div class="custom-slider-container">
-            <div class='custom-slide'>
-                <img src="./004.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">350만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                            <p class="blinking-text">매출
-                            <p class="blinking-text">300%상승</p>
-                            </p>
-                    </div>
-                </div>
-            </div>
+    <div class="box" id="change-div">
+        <div class="change-header">
+            <img src="./업종변경-헤더.png" class="change-header-image" alt="">
+        </div>
+              <div class="box" id="change" >
+                  <span id="change-span-2" style="-webkit-text-stroke: 1px white;">큰 돈 들이지 않아도
+                      충분합니다</span><br><br>
+                  <span id="change-span-3" style="font-weight: bold;">합리적인 공사비용으로 꼭 필요한 시공만 진행!!</span>
+                  <span id="change-span-4">인테리어 자율시공 가능!</span><br>
+                  <span id="change-span-5"  style="font-weight: bold;">쓰던 집기 그대로! 기존 간판 천갈이만 가능!</span><br>
+                  <span id="change-span-6" style="font-weight: bold;">평균 인테리어비용 350만원~3000만원</span> <br>
+                  <span id="change-span-7">업종변경 후 매출 최대 3.8배 상승</span>
+                  </div>
+                  <br>
+                  <div class="box">
+                     <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="업변1.png" alt="1"></div>
+      <div class="slide"><img src="업변2.png" alt="1"></div>
+      <div class="slide"><img src="업변3.png" alt="1"></div>
+    </div>
+  </div>
 
-            <div class='custom-slide'>
-                <img src="./005.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">320만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                        <p class="blinking-text">매출
-                        <p class="blinking-text">300%상승</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class='custom-slide'>
-                <img src="./006.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">555만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                        <p class="blinking-text">매출
-                        <p class="blinking-text">300%상승</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+                  </div>
+            
+        </div>
+            <div class="custom-slider-container" style="height: 1px;">
             <button class="custom-prev" aria-label="이전 슬라이드"></button>
             <button class="custom-next" aria-label="다음 슬라이드"></button>
         </div>
-    </div>
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
     <div class="box" id="three-way">
         <br><br><br>
         <div class="dudung-wrapper">
@@ -1156,6 +1126,16 @@ spans.forEach((span, idx) => {
     span.style.opacity = 1;
   }, idx * 200);
 });
+ const slides = document.getElementById("slides");
+    const slideCount = slides.children.length;
+    let currentIndex = 0;
+
+    function showNextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(showNextSlide, 3000); // 3초마다 슬라이드 전환
     </script>
     <script src="script3.js"></script>
     <script src="./led.js"></script>
