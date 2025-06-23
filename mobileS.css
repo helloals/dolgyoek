@@ -103,7 +103,8 @@
     .buttons{
         position: relative;
         width: 50%;
-        bottom: 35vh;
+        bottom: 39vh;
+        z-index: 9999;
     }
     #change-span-1{
         font-size: 25px;
@@ -286,7 +287,7 @@ font-size: 20px;
 
 }
 .waviy span{
-font-size: 30px;
+font-size: 6vw;
 }
 
 #review-box{
@@ -314,6 +315,12 @@ font-size: 30px;
 #business-area .red-font{
  font-size: 20px;
 }
+.business-area-img-box{
+    position: relative;
+    left: -30%;
+    width: 160%;
+}
+
 #benefit-div .flex{
 width: 100%;
 position: relative;
@@ -400,7 +407,7 @@ font-size: 13px;
 }
 .mobile-form-top span{
     position: relative;
-    font-size: 25px;
+    font-size: 5vw;
 }
 .mobile-form img{
     width: 15%;
