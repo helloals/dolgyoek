@@ -157,6 +157,11 @@ h1{
 .star img{
   width: 100%;
 }
+#miracle{
+  position: relative; 
+  left: 50%;
+  transform: translate(-50%, -25%);
+}
 
 .miracle.show {
   opacity: 1;
@@ -453,32 +458,20 @@ font-weight: bolder;
     }
 .slider {
   position: relative;
-  top: 300px;
-      width: 100%;
-      max-width: 800px;
-      margin: 50px auto;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .slides {
-      display: flex;
-      width: 100%;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-      min-width: 100%;
-      height: 500px;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }    
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s;
+  width: 100%;
+}
+.slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
 
     .blinking-div{
       position: absolute;
@@ -734,12 +727,12 @@ font-weight: bolder;
     background-size: cover;
     background-position: center;
 }
-.story-1st{
+#story-1st{
   font-size: 100px;
   color: #fff;
   background-color: #b90000;
 }
-.story-2nd{
+#story-2nd{
   font-size: 50px;
   color: #fff;
 }
@@ -1097,31 +1090,7 @@ padding: 10px;
       border-color: #007bff;
     }
 /* 슬라이드 스타일 */
-.slider {
-    position: relative;
-    width: 300%;
-    max-width: 1400px;
-    height: 1200px;
-    margin: auto;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .slides {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-    margin-left: 13%;
-  }
-  
-  .slides img {
-    width: 75%;
-    height: auto;
-    cursor: pointer;
-    flex-shrink: 0;
-    object-fit: cover;
-  }
-  
+
   
 .rev-slider {
     position: relative;
@@ -1465,7 +1434,7 @@ table {
 th, td {
   font-size: 30px;
   padding: 12px;
-  text-align: left;
+  text-align: center;
 }
 thead th {
   background-color: #f8f8f8;
@@ -1820,19 +1789,19 @@ a {
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  bottom: 15vh;
+  transform: translateX(-40%);
+  bottom: 10vh;
   z-index: 16;
   width: 90%;
   text-align: center;
 }
 #from-dolgyoek .from-dolgyoek-text img{
   width: 50%;
-  transform: translateY(25%);
+  transform: translateY(30%);
   
 }
 .from-dolgyoek-text span {
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   font-weight: bolder;
   color: white;

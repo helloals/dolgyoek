@@ -84,7 +84,7 @@
             </div>
             <div style="background-color: black;">
                 <img src="./star.png" alt="">
-                <img src="./소형평수.png" class="fade-up" style="position: relative; left: 50%; transform: translateX(-50%);" alt="">
+                <img src="./소형평수.png" class="fade-up" id="miracle" alt="">
                 <div class="wrap">
                     <div class="roller">
                         <ul class="rolling_list">
@@ -124,6 +124,7 @@
                 </ul>
             </div>
         </div>
+        <br><br>
     <div class="img-1">
         <img src="./제목을-입력해주세요_-003.png" alt="">
     </div>
@@ -145,8 +146,8 @@
     </div>
 
     <div class="box" id="story">
-        <h1 class="story-1st">점주님들의 리얼 창업스토리 ! </h1>
-        <h1 class="story-2nd">돌격닭강정을 선택해주신 점주님들의 생생한 창업 후기를 들려드립니다 !</h1>
+        <h1 id="story-1st" class="visible">점주님들의 리얼 창업스토리 ! </h1>
+        <h1 id="story-2nd">돌격닭강정을 선택해주신 점주님들의 생생한 창업 후기를 들려드립니다 !</h1>
          <style>
          .interview-slide-container {
       position: relative;
@@ -164,6 +165,7 @@
 
     .interview-slide {
       flex: 0 0 100%;
+      margin-top: 5%;
     }
 
     .interview-slide img {
@@ -253,16 +255,58 @@
                 <span id="change-span-7">업종변경 후 매출 최대 3.8배 상승</span>
             </div>
             <br>
-            <div class="box">
-                <div class="slider">
-                    <div class="slides" id="slides">
-                        <div class="slide"><img src="업변1.png" alt="1"></div>
-                        <div class="slide"><img src="업변2.png" alt="1"></div>
-      <div class="slide"><img src="업변3.png" alt="1"></div>
-    </div>
-</div>
+                <style>
+                    .industry-change-slider {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  margin-top: 20%;
+}
 
+.industry-change-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.industry-change-slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.industry-change-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+                </style>
+                <div class="industry-change-slider">
+  <div class="industry-change-track" id="industryChangeSlider">
+    <div class="industry-change-slide"><img src="업변1.png" alt=""></div>
+    <div class="industry-change-slide"><img src="업변2.png" alt=""></div>
+    <div class="industry-change-slide"><img src="업변3.png" alt=""></div>
+  </div>
 </div>
+<script>
+  const industryChangeSlider = document.getElementById('industryChangeSlider');
+  const industryChangeItems = industryChangeSlider.children;
+  let industryChangeIndex = 0;
+
+  function moveToNextIndustryChangeSlide() {
+    industryChangeIndex++;
+    if (industryChangeIndex >= industryChangeItems.length) {
+      industryChangeIndex = 0;
+    }
+    industryChangeSlider.style.transform = `translateX(-${industryChangeIndex * 100}%)`;
+  }
+
+  setInterval(moveToNextIndustryChangeSlide, 3000); // 3초마다 자동 전환
+</script>
+
+
+
 </div>
                   
         </div>
