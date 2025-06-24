@@ -84,7 +84,7 @@
             </div>
             <div style="background-color: black;">
                 <img src="./star.png" alt="">
-                <img src="./소형평수.png" class="reveal from-bottom" alt="">
+                <img src="./소형평수.png" class="fade-up" style="position: relative; left: 50%; transform: translateX(-50%);" alt="">
                 <div class="wrap">
                     <div class="roller">
                         <ul class="rolling_list">
@@ -147,19 +147,96 @@
     <div class="box" id="story">
         <h1 class="story-1st">점주님들의 리얼 창업스토리 ! </h1>
         <h1 class="story-2nd">돌격닭강정을 선택해주신 점주님들의 생생한 창업 후기를 들려드립니다 !</h1>
-        <div class="interview-slide-container">
-            <div class="interview-slide-track" id="interviewSlideTrack">
-                <div class="interview-slide"><img src="./지점 인터뷰/구리인터뷰.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/길음인터뷰.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/면목시장.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/안양인터뷰.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/옥정인터뷰.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/왕십리인터뷰.png" alt="" /></div>
-                <div class="interview-slide"><img src="./지점 인터뷰/주안인터뷰.png" alt="" /></div>
-            </div>
+         <style>
+         .interview-slide-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .interview-slide-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .interview-slide {
+      flex: 0 0 100%;
+    }
+
+    .interview-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .interview-slide-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .interview-slide-button:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .interview-slide-prev {
+      left: 10px;
+    }
+
+    .interview-slide-next {
+      right: 10px;
+    }
+    </style>
+    <div class="interview-slide-container">
+    <div class="interview-slide-track" id="interviewSlideTrack">
+      <div class="interview-slide"><img src="./지점 인터뷰/구리인터뷰.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/길음인터뷰.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/면목시장.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/안양인터뷰.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/옥정인터뷰.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/왕십리인터뷰.png" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="./지점 인터뷰/주안인터뷰.png" alt="Slide 1" /></div>
+    </div>
     <button class="interview-slide-button interview-slide-prev" id="interviewSlidePrev">&#10094;</button>
     <button class="interview-slide-button interview-slide-next" id="interviewSlideNext">&#10095;</button>
-        </div>
+  </div>
+  <script>
+     const interviewSlideTrack = document.getElementById('interviewSlideTrack');
+    const interviewSlides = document.querySelectorAll('.interview-slide');
+    const interviewSlidePrev = document.getElementById('interviewSlidePrev');
+    const interviewSlideNext = document.getElementById('interviewSlideNext');
+
+    let interviewSlideIndex = 0;
+
+    function updateInterviewSlidePosition() {
+      const slideWidth = interviewSlides[0].clientWidth;
+      interviewSlideTrack.style.transform = `translateX(-${interviewSlideIndex * slideWidth}px)`;
+    }
+
+    interviewSlideNext.addEventListener('click', () => {
+      interviewSlideIndex = (interviewSlideIndex + 1) % interviewSlides.length;
+      updateInterviewSlidePosition();
+    });
+
+    interviewSlidePrev.addEventListener('click', () => {
+      interviewSlideIndex = (interviewSlideIndex - 1 + interviewSlides.length) % interviewSlides.length;
+      updateInterviewSlidePosition();
+    });
+
+    window.addEventListener('resize', updateInterviewSlidePosition);
+  </script>
     </div>
     <div>
         <!-- 업종변경 -->
@@ -264,12 +341,12 @@ window.addEventListener("scroll", function () {
             <br>
             <div>
                 <div style="display: flex;" class="thway-img">
-                    <img src="./KakaoTalk_20250613_3jpg.jpg" class="reveal from-bottom" alt="">
-                    <img src="./KakaoTalk_20250613_4jpg.jpg" class="reveal from-bottom" alt="">
-                    <img src="./KakaoTalk_20250613_5jpg.jpg" class="reveal from-bottom" alt="">
-                    <img src="./KakaoTalk_20250613_6jpg.jpg" class="reveal from-bottom" alt="">
-                    <img src="./KakaoTalk_20250613_7jpg.jpg" class="reveal from-bottom" alt="">
-                    <img src="./KakaoTalk_20250613_8jpg.jpg" class="reveal from-bottom" alt="">
+                    <img src="./KakaoTalk_20250613_3jpg.jpg" class="fade-up" alt="">
+                    <img src="./KakaoTalk_20250613_4jpg.jpg" class="fade-up" alt="">
+                    <img src="./KakaoTalk_20250613_5jpg.jpg" class="fade-up" alt="">
+                    <img src="./KakaoTalk_20250613_6jpg.jpg" class="fade-up" alt="">
+                    <img src="./KakaoTalk_20250613_7jpg.jpg" class="fade-up" alt="">
+                    <img src="./KakaoTalk_20250613_8jpg.jpg" class="fade-up" alt="">
                 </div>
             </div>
 
@@ -293,6 +370,21 @@ window.addEventListener("scroll", function () {
                 <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>돌격닭강정</span></div>
 
                 <!-- 반복 세트 (같은 순서로 다시 시작) -->
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>100% 닭다리살</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>프리미엄 닭강정</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>21가지 맛</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>특제 비법 소스</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>돌격닭강정</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>100% 닭다리살</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>프리미엄 닭강정</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>21가지 맛</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>특제 비법 소스</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>돌격닭강정</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>100% 닭다리살</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>프리미엄 닭강정</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>21가지 맛</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>특제 비법 소스</span></div>
+                <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>돌격닭강정</span></div>
                 <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>100% 닭다리살</span></div>
                 <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>프리미엄 닭강정</span></div>
                 <div class="marquee-item"><img src="로고에요.png" alt="아이콘"><span>21가지 맛</span></div>
@@ -337,7 +429,7 @@ window.addEventListener("scroll", function () {
     <script>
         // 틈새공략 하단
 function revealFadeUpElements() {
-  const fadeElements = document.querySelectorAll('.fade-up');
+  const fadeElements = document.querySelectorAll('.fade-up, .fade-up1, .thway-img');
 
   fadeElements.forEach((el) => {
     const windowHeight = window.innerHeight;
@@ -550,7 +642,6 @@ window.addEventListener('load', revealScrollText);
     </div>
     </div>
 
-    <br>
     <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 <!-- jQuery (이미 있다면 생략) -->
@@ -1104,7 +1195,7 @@ $(function () {
         <br><br>
 
         <div class="business-area-img-box">
-            <img src="./상권보장.webp" class="business-area-img" alt="">
+            <img src="./상권보호.png" class="business-area-img" alt="">
         </div>
     </div>
     <br><br>
@@ -1468,100 +1559,13 @@ $(function () {
     });
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-  
-
-  const slider = document.querySelector(".section19-slider");
-  const tabs = document.querySelectorAll(".section19-tab");
-  let currentCategory = 0;
-  let currentIndex = 0;
-  let slideInterval;
-  const visibleSlides = 5; // 한 화면에 보이는 슬라이드 개수
-
-  function setupSlider() {
-    if (!slider) return;
-    clearInterval(slideInterval);
-    slider.innerHTML = "";
-
-    const imgs = categories[currentCategory];
-
-    imgs.forEach(({ src, text }) => {
-      const div = document.createElement("div");
-      div.className = "section19-slide";
-
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = text;
-      img.loading = "lazy";
-
-      const label = document.createElement("div");
-      label.className = "section19-label";
-      label.textContent = text;
-
-      div.appendChild(img);
-      div.appendChild(label);
-      slider.appendChild(div);
-    });
-
-    currentIndex = 0;
-    setSliderPosition(currentIndex);
-
-    slideInterval = setInterval(nextSlide, 3000);
-
-    slider.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    slider.addEventListener("mouseleave", () => {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 3000);
-    });
-  }
-
-  function getSlideWidth() {
-    const slide = slider.querySelector(".section19-slide");
-    return slide ? slide.offsetWidth + 10 : 0; // margin 포함
-  }
-
-  function setSliderPosition(index) {
-    const slideWidth = getSlideWidth();
-    slider.style.transition = "transform 0.3s ease";
-    slider.style.transform = `translateX(${-slideWidth * index}px)`;
-  }
-
-  function nextSlide() {
-    const total = categories[currentCategory].length;
-    currentIndex++;
-
-    if (currentIndex > total - visibleSlides) {
-      // 마지막 슬라이드까지 다 보여준 후 자연스럽게 첫 슬라이드로 이동
-      slider.style.transition = "transform 0.3s ease";
-      setSliderPosition(currentIndex);
-
-      setTimeout(() => {
-        slider.style.transition = "none";
-        currentIndex = 0;
-        setSliderPosition(currentIndex);
-      }, 350);
-    } else {
-      setSliderPosition(currentIndex);
-    }
-  }
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      currentCategory = +tab.dataset.category;
-      currentIndex = 0;
-      setupSlider();
-    });
-  });
-
-  setupSlider();
-});
+       
 
 const benefitObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
       if (entry.isIntersecting) {
-          entry.target.classList.add('benefit-show');
+          // 여러 클래스를 한 번에 추가
+          entry.target.classList.add('benefit-show', 'fade-up', 'visible');
           benefitObserver.unobserve(entry.target);
       }
   });
@@ -1569,7 +1573,6 @@ const benefitObserver = new IntersectionObserver((entries) => {
 
 const benefitImage = document.getElementById('benefitImage');
 benefitObserver.observe(benefitImage);
-
 // 햄버거 메뉴
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger');
@@ -1660,33 +1663,10 @@ document.querySelectorAll('.reveal').forEach(function(el) {
 });
 
 // 점주 인터뷰
- const interviewSlideTrack = document.getElementById('interviewSlideTrack');
-    const interviewSlides = document.querySelectorAll('.interview-slide');
-    const interviewSlidePrev = document.getElementById('interviewSlidePrev');
-    const interviewSlideNext = document.getElementById('interviewSlideNext');
-
- let interviewSlideIndex = 0;
-
-    function updateInterviewSlidePosition() {
-      const slideWidth = interviewSlides[0].clientWidth;
-      interviewSlideTrack.style.transform = `translateX(-${interviewSlideIndex * slideWidth}px)`;
-    }
-
-    interviewSlideNext.addEventListener('click', () => {
-      interviewSlideIndex = (interviewSlideIndex + 1) % interviewSlides.length;
-      updateInterviewSlidePosition();
-    });
-
-    interviewSlidePrev.addEventListener('click', () => {
-      interviewSlideIndex = (interviewSlideIndex - 1 + interviewSlides.length) % interviewSlides.length;
-      updateInterviewSlidePosition();
-    });
-
-    window.addEventListener('resize', updateInterviewSlidePosition);
 
     // 페이지 로드시 바로 보이게 하려면
 document.querySelector('.dudung-text').classList.add('active');
-document.querySelector('.fade-text').classList.add('active');
+document.querySelectorAll('.fade-text, .thway-img').forEach(el => el.classList.add('active'));
     
     
 </script>

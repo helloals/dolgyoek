@@ -4,359 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-<!-- jQuery (이미 있다면 생략) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <style>
-        a.s14-tit__link {
-    outline: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-}
-a.s14-tit__link:focus,
-a.s14-tit__link:active {
-    outline: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-    background: #EE3A36; /* 기존 active 배경 유지 */
-    color: #fff;
-}
-
-    ul{
-        list-style: none;
+         .interview-slide-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 12px;
     }
 
-    .s14 {padding:7.1875em 0 10.625em; background: #6C0811; overflow: hidden;}
-    .s14 .inner-1330 {max-width:69.2709%; margin-left: 15%;}
-    .s14-tit {padding-bottom: 7.3125em; color:#fff; text-align: center;}
-    .s14-tit__title {font-size: 2.625em; font-weight: 900; line-height: 1.15;}
-    .s14-tit__title span {font-size: 1.5em;}
-    .s14-tit__desc {font-size: 1.25em; font-weight: 500; line-height: 1.3; padding-top: 0.9em;}
-    .s14-tit__list {margin:2.875em auto 0; display: flex; justify-content: center;}
-    .s14-tit__item:not(:last-child) {margin-right: 1.5em;}
-    a.s14-tit__link {font-size: 1.25em; font-weight: 700; color:#EE3A36; display: flex; align-items: center; justify-content: center; width:9.75em; height:2.9em; border-radius:50px; border:3px solid #EE3A36; transition:all 0.4s;}
-    a.s14-tit__link.active {background: #EE3A36; color:#fff;}
-
-    @media (hover: hover) {
-        a.s14-tit__link:hover {background: #EE3A36; color:#fff;}
-    }
-    @media (max-width:1370px){
-        .s14 .inner-1330 {max-width:1330px;}
-    }
-    @media (max-width:768px){
-        .s14 {padding:4.1875em 0 5.625em;}
-        .s14-tit__title {font-size: 2em;}
-    }
-    @media (max-width:500px){
-        .s14-tit__item:not(:last-child) {margin-right: 1em;}
-        a.s14-tit__link {width:8.75em;}
-    }
-    .sec14-wrap {position: relative;}
-    .sec14-swiper {width:100%; max-width:85.7143%; margin:0 auto;}
-    .sec14-swiper.swiper-disabled .swiper-wrapper {justify-content: center;}
-    .sec14-swiper .swiper-slide {transition:transform 0.4s;; border:5px solid #EE3A36; border-radius:12px; overflow: hidden;display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;}
-    .sec14-swiper .swiper-slide img {width:100%;}
-    .sec14-swiper.swiper-disabled .swiper-slide {width:30.4386%;}
-    .sec14-swiper.swiper-disabled .swiper-slide:not(:last-child) {margin-right: 4.386%;}
-    .sec14-swiper .swiper-slide-prev2 {transform:translateX(-6.125em); z-index: 1;}
-    .sec14-swiper .swiper-slide-next2 {transform:translateX(6.125em); z-index: 1;}
-    .sec14-swiper .swiper-slide:not(.swiper-slide-active, .swiper-slide-prev, .swiper-slide-next) { background: #820003; border:3px solid #820003;}
-    .sec14-swiper .swiper-slide__bar {font-size: 18px; font-weight: 700; width:100%; height:2.6em; display: flex; align-items: center; justify-content: center; color:#fff; position: absolute; left:0; bottom:0; transition:all 0.4s; text-align: center;}
-    /* .sec14-swiper .swiper-slide__bar--long {font-size: 1.125em; height:2.8889em;} */
-    .sec14-swiper .swiper-slide:not(.swiper-slide-active, .swiper-slide-prev, .swiper-slide-next) .swiper-slide__bar {background: #820003;}
-    .sec14-swiper .swiper-button-next:after, .sec14-swiper .swiper-button-prev:after {display: none;}
-    .sec14-swiper .swiper-button-next, .sec14-swiper .swiper-button-prev {width:3em; height:3em;}
-    .sec14-swiper .swiper-button-next {background: url(http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec14-swiper_next.png) no-repeat center / cover;}
-    .sec14-swiper .swiper-button-prev {background: url(http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec14-swiper_prev.png) no-repeat center / cover;}
-
-    @media (hover: hover){
-        .sec14-swiper .swiper-slide-active:hover, .sec14-swiper .swiper-slide-prev:hover, .sec14-swiper .swiper-slide-next:hover {transform:translateY(-1.5em);}
-    }
-    @media (max-width:768px){
-        .sec14-swiper .swiper-slide:not(.swiper-slide-active) {background: #820003; border:3px solid #820003;}
-        .sec14-swiper .swiper-slide:not(.swiper-slide-active) .swiper-slide__bar {background: #820003;}
-        .sec14-swiper .swiper-slide-prev2 {transform:translateX(0); z-index: 1;}
-        .sec14-swiper .swiper-slide-next2 {transform:translateX(0); z-index: 1;}
-    }
-    @media (max-width:500px){
-    
+    .interview-slide-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
     }
 
+    .interview-slide {
+      flex: 0 0 100%;
+    }
 
+    .interview-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .interview-slide-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .interview-slide-button:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .interview-slide-prev {
+      left: 10px;
+    }
+
+    .interview-slide-next {
+      right: 10px;
+    }
     </style>
-</head>
-<body>
-    <div class="s14">
-    <div class="inner-1330">
-        <div class="s14-tit aos-init aos-animate" data-aos="fade-up">
-            <h2 class="s14-tit__title agro">치킨유목민들의 마지막 종착지, <br>
-            <span>돌고 돌아 돌격닭강정</span></h2>
-            <p class="s14-tit__desc">닭강정 맛의 기준, 돌격이 만들어 갑니다! 누구나 맛있게 즐길 수 있는 <br>
-            닭강정을 만들기 위해 메뉴개발을 멈추지 않습니다.</p>
-            <ul class="s14-tit__list">
-                                    <li class="s14-tit__item"><a href="#null" class="s14-tit__link active">21가지 맛 종류</a></li>
-                                    <li class="s14-tit__item"><a href="#null" class="s14-tit__link ">사이즈 구성</a></li>
-                                    <li class="s14-tit__item"><a href="#null" class="s14-tit__link ">곁들임 및 사이드</a></li>
-                            </ul>
-        </div>
-        <div class="sec14-wrap">
-                        <div class="sec14-swiper sec14-swiper--01 swiper-initialized swiper-horizontal swiper-backface-hidden" style="display: block;">
-                <div class="swiper-wrapper" id="swiper-wrapper-c69ab2d4e55eb489" aria-live="polite" style="cursor: grab; transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(-1190px, 0px, 0px);"><div class="swiper-slide" role="group" aria-label="5 / 7" data-swiper-slide-index="4" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_DiW42dCZ_5e6dc8fb9fb44df67e997acf5c64e59a7b941578_347x234.jpg" alt="크림폭탄 (순한맛/1/2/3단계)">
-                        <p class="swiper-slide__bar">크림폭탄 (순한맛/1/2/3단계)</p>
-                    </div><div class="swiper-slide" role="group" aria-label="6 / 7" data-swiper-slide-index="5" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_lhinx7PF_2398761a653521b447c7ee8a6a90ce664cebba73_347x234.jpg" alt="청양크림폭탄(후라이드/마늘간장/매콤간장)">
-                        <p class="swiper-slide__bar">청양크림폭탄(후라이드/마늘간장/매콤간장)</p>
-                    </div><div class="swiper-slide swiper-slide-prev2" role="group" aria-label="7 / 7" data-swiper-slide-index="6" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_PqwI2TAy_a108d816035184facc338cc7a38b5dec7faea8e6_347x234.jpg" alt="치즈폭포 (순한맛/1/2/3단계)">
-                        <p class="swiper-slide__bar">치즈폭포 (순한맛/1/2/3단계)</p>
-                    </div>
-
-                                    <div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 7" data-swiper-slide-index="0" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_2c9eRUXJ_6bff26b0b90a044e40c20ac97cacbb759ffff6ec_347x234.jpg" alt="161빨간맛 (순한맛/1/2/3단계)">
-                        <p class="swiper-slide__bar">161빨간맛 (순한맛/1/2/3단계)</p>
-                    </div>
-                                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 7" data-swiper-slide-index="1" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_OEG2Isra_72e9f3cf2566a3262838a7a648471d7dc061fbae_347x234.jpg" alt="단짠마늘간장(마늘간장/매콤간장)">
-                        <p class="swiper-slide__bar">단짠마늘간장(마늘간장/매콤간장)</p>
-                    </div>
-                                    <div class="swiper-slide swiper-slide-next" role="group" aria-label="3 / 7" data-swiper-slide-index="2" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_pQ5slCiO_bec35e8aca42de908ad074720fe92e8d2acf0926_347x234.jpg" alt="눈꽃시즈닝(허니버터/치즈)">
-                        <p class="swiper-slide__bar">눈꽃시즈닝(허니버터/치즈)</p>
-                    </div>
-                                    <div class="swiper-slide swiper-slide-next2" role="group" aria-label="4 / 7" data-swiper-slide-index="3" style="width: 346.667px; margin-right: 50px;">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_ALaK94PH_53f18106ad8dc654ff2c5f7c95e443e3eef151c4_347x234.jpg" alt="뚝닭 순살후라이드">
-                        <p class="swiper-slide__bar">뚝닭 순살후라이드</p>
-                    </div>
-                                    
-                                    
-                                    
-                                   
-                </div>
-
-                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-c69ab2d4e55eb489"></div>
-                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-c69ab2d4e55eb489"></div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                        <div class="sec14-swiper sec14-swiper--02" style="display:none;">
-                <div class="swiper-wrapper">
-
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_bptIMgkX_6824f42b47d24b64733c8598d7e60fba04802013_347x234.jpg" alt="왕컵">
-                        <p class="swiper-slide__bar">왕컵</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_HMCbYUNg_74edc58e59c6429c87a2c1189c2aaf26263f8c98_347x234.jpg" alt="대왕컵">
-                        <p class="swiper-slide__bar">대왕컵</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_E13DkCa4_9153a38fe3b45dc90931453c039058cfd7189c07_347x234.jpg" alt="중장">
-                        <p class="swiper-slide__bar">중장</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_yNFBeYkG_5fb2f62ea0c69ecd4384886f84f24852a0afd6d7_347x234.jpg" alt="대장">
-                        <p class="swiper-slide__bar">대장</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_fmxeuWPp_692a44551e89ab0d8f448ef8142742efb92cd225_347x234.jpg" alt="왕대장">
-                        <p class="swiper-slide__bar">왕대장</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_xt1D7H05_3dd796d3a65db96372143ad69f64f93e12a273f7_347x234.jpg" alt="2종 콤보 세트">
-                        <p class="swiper-slide__bar">2종 콤보 세트</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_sr0YRkml_0f7f214d6df0c6e3ac55864dfcd853ad73d2547a_347x234.jpg" alt="3종 콤보 세트">
-                        <p class="swiper-slide__bar">3종 콤보 세트</p>
-                    </div>
-                                   
-                </div>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-                        <div class="sec14-swiper sec14-swiper--03" style="display:none;">
-                <div class="swiper-wrapper">
-
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_mh1RVH47_c74f9b09570721c376c273f924105cb22655d9f0_347x234.jpg" alt="돌격 옛날통닭">
-                        <p class="swiper-slide__bar">돌격 옛날통닭</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_LkwycfWi_ca4a4af66d6ed282e0489568a013f30b4d7852d5_347x234.jpg" alt="火떡볶이">
-                        <p class="swiper-slide__bar">火떡볶이</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_LsKndMhP_8d870a16cb952f9790b3215eb02ef662b1e6565a_347x234.jpg" alt="커리어묵칩스">
-                        <p class="swiper-slide__bar">커리어묵칩스</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_lqdPfGDg_786b76baafc930dd846aafe610c7d8e11ca8c644_347x234.jpg" alt="치즈폭포 감자튀김">
-                        <p class="swiper-slide__bar">치즈폭포 감자튀김</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_wWLIbkhK_1393231bffbbac8d47883f1050472f4282b19b7e_347x234.jpg" alt="눈꽃 감자튀김">
-                        <p class="swiper-slide__bar">눈꽃 감자튀김</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_Q65XY8D9_251a0cdc0c01465f9e7c54546ad59fe25b685845_347x234.jpg" alt="후라이드 감자튀김">
-                        <p class="swiper-slide__bar">후라이드 감자튀김</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_lf4OVzXi_ec06b5a4abb73b12de2aa7373b3c552917dd9397_347x234.jpg" alt="치즈볼">
-                        <p class="swiper-slide__bar">치즈볼</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_FyAkjBze_63278df5be220499916dba61e7a6055431185323_347x234.jpg" alt="눈꽃 치즈볼">
-                        <p class="swiper-slide__bar">눈꽃 치즈볼</p>
-                    </div>
-                                    <div class="swiper-slide">
-                        <img src="http://bz150525b.ilogin.biz/data/file/menu_conf/thumb-1794428362_iJGIP7tm_63aa9ff5413d586fe3de531daa0e82ca05c67a09_347x234.jpg" alt="치즈스틱/고구마치즈스틱">
-                        <p class="swiper-slide__bar">치즈스틱/고구마치즈스틱</p>
-                    </div>
-                                   
-                </div>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-            
-
-             
-        </div>
+    <div class="interview-slide-container">
+    <div class="interview-slide-track" id="interviewSlideTrack">
+      <div class="interview-slide"><img src="https://via.placeholder.com/800x400/ff7f7f/333333?text=1" alt="Slide 1" /></div>
+      <div class="interview-slide"><img src="https://via.placeholder.com/800x400/7f7fff/ffffff?text=2" alt="Slide 2" /></div>
+      <div class="interview-slide"><img src="https://via.placeholder.com/800x400/7fff7f/333333?text=3" alt="Slide 3" /></div>
     </div>
-</div>
-    <script>
-        
-$(function () {
-    // Swiper 인스턴스 배열
-    let swipers = [];
+    <button class="interview-slide-button interview-slide-prev" id="interviewSlidePrev">&#10094;</button>
+    <button class="interview-slide-button interview-slide-next" id="interviewSlideNext">&#10095;</button>
+  </div>
+  <script>
+     const interviewSlideTrack = document.getElementById('interviewSlideTrack');
+    const interviewSlides = document.querySelectorAll('.interview-slide');
+    const interviewSlidePrev = document.getElementById('interviewSlidePrev');
+    const interviewSlideNext = document.getElementById('interviewSlideNext');
 
-    // Swiper 초기화 함수
-    function initSwiper(selector, index) {
-        // 슬라이드 개수 확인
-        const slideCount = $(selector).find('.swiper-slide').length;
+    let interviewSlideIndex = 0;
 
-        if (slideCount <= 5) {
-            // 슬라이드 5개 이하일 경우 Swiper 초기화하지 않음
-            $(selector).find('.swiper-button-prev, .swiper-button-next').hide(); // 네비게이션 버튼 숨기기
-            $(selector).addClass('swiper-disabled'); // 정적 표시용 클래스 추가
-            swipers[index] = null; // Swiper 인스턴스 생성 안 함
-            return;
-        }
-
-        // 슬라이드 5개 초과일 경우 Swiper 초기화
-        swipers[index] = new Swiper(selector, {
-            slidesPerView: 1.5,
-            spaceBetween: 30,
-            slidesPerGroup: 1,
-            effect: 'slide',
-            centeredSlides: true,
-            initialSlide: 1,
-            loop: true,
-            loopAdditionalSlides: 2,
-            watchSlidesVisibility: true,
-            speed: 1000,
-            grabCursor: true,
-            observer: true,
-            observeParents: true,
-            navigation: {
-                prevEl: `${selector} .swiper-button-prev`,
-                nextEl: `${selector} .swiper-button-next`,
-            },
-                breakpoints: {
-                501: {
-                    slidesPerView: 2,  //브라우저가 768보다 클 때
-                    spaceBetween: 30,
-                },
-                769: {
-                    slidesPerView: 3,  //브라우저가 768보다 클 때
-                    spaceBetween: 50,
-                },
-            },
-        });
-
-        // 커스텀 클래스 업데이트 함수
-        function updateCustomClasses(swiper) {
-            swiper.slides.forEach(slide => {
-                slide.classList.remove('swiper-slide-prev2', 'swiper-slide-next2');
-            });
-
-            const activeIndex = swiper.activeIndex;
-            const totalSlides = swiper.slides.length;
-            const slidesPerView = swiper.params.slidesPerView;
-
-            let prev2Index = activeIndex - Math.ceil(slidesPerView / 2);
-            let next2Index = activeIndex + Math.ceil(slidesPerView / 2);
-
-            if (swiper.params.loop) {
-                prev2Index = (prev2Index + totalSlides) % totalSlides;
-                next2Index = next2Index % totalSlides;
-            }
-
-            if (swiper.slides[prev2Index]) {
-                swiper.slides[prev2Index].classList.add('swiper-slide-prev2');
-            }
-            if (swiper.slides[next2Index]) {
-                swiper.slides[next2Index].classList.add('swiper-slide-next2');
-            }
-        }
-
-        // 초기 클래스 업데이트
-        updateCustomClasses(swipers[index]);
-
-        // 슬라이드 변경 시 클래스 업데이트
-        swipers[index].on('slideChange', () => {
-            updateCustomClasses(swipers[index]);
-        });
+    function updateInterviewSlidePosition() {
+      const slideWidth = interviewSlides[0].clientWidth;
+      interviewSlideTrack.style.transform = `translateX(-${interviewSlideIndex * slideWidth}px)`;
     }
 
-    // Swiper 파괴 함수
-    function destroySwiper(index) {
-        if (swipers[index]) {
-            swipers[index].destroy(true, true); // Swiper 완전 파괴
-            swipers[index] = null;
-        }
-    }
-
-    // 탭 클릭 이벤트
-    $(".s14-tit__link").click(function () {
-        $(".s14-tit__link").removeClass("active");
-        $(this).addClass("active");
-        const idx = $(".s14-tit__link").index($(this));
-
-        // 모든 Swiper 파괴
-        swipers.forEach((swiper, i) => {
-            destroySwiper(i);
-        });
-
-        // 모든 스와이퍼 숨기기
-        $(".sec14-swiper").hide();
-        $(".sec14-swiper").removeClass('swiper-disabled'); // 이전 비활성화 클래스 제거
-
-        // 선택된 스와이퍼 표시
-        const targetSwiper = $(".sec14-swiper").eq(idx);
-        targetSwiper.show();
-
-        // Swiper 재초기화
-        const selector = `.sec14-swiper--0${idx + 1}`;
-        initSwiper(selector, idx);
-
-        return false;
+    interviewSlideNext.addEventListener('click', () => {
+      interviewSlideIndex = (interviewSlideIndex + 1) % interviewSlides.length;
+      updateInterviewSlidePosition();
     });
 
-    // 초기 상태: 첫 번째 스와이퍼만 표시
-    $(".sec14-swiper").hide();
-    $(".sec14-swiper--01").show();
-    initSwiper('.sec14-swiper--01', 0);
-});
+    interviewSlidePrev.addEventListener('click', () => {
+      interviewSlideIndex = (interviewSlideIndex - 1 + interviewSlides.length) % interviewSlides.length;
+      updateInterviewSlidePosition();
+    });
 
-    </script>
-</body>
-</html>
+    window.addEventListener('resize', updateInterviewSlidePosition);
+  </script>

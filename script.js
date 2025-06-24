@@ -148,76 +148,6 @@ const buttons = document.querySelectorAll('.category-btn');
   });
         });
 // 점주 인터뷰
-  // === [1] 인터뷰 슬라이더 ===
-  const interviewContainer = document.querySelector('.interview-container');
-const interviewPrev = document.querySelector('.next');
-const interviewNext = document.querySelector('.prev');
-
-function getPositionsByScreenWidth() {
-  const w = window.innerWidth;
-
-  if (w < 768) { // 모바일
-    return [
-      { transform: 'translate(-120%, -450%)', zIndex: 1 },
-      { transform: 'translate(-100%, -460%)', zIndex: 2 },
-      { transform: 'translate(-80%, -470%)', zIndex: 3 },
-      { transform: 'translate(-50%, -480%)', zIndex: 4 },
-      { transform: 'translate(-20%, -470%)', zIndex: 3 },
-      { transform: 'translate(0%, -460%)', zIndex: 2 },
-      { transform: 'translate(20%, -450%)', zIndex: 1 },
-    ];
-  } else if (w < 1200) { // 태블릿
-    return [
-      { transform: 'translate(-160%, -200%)', zIndex: 1 },
-      { transform: 'translate(-100%, -210%)', zIndex: 2 },
-      { transform: 'translate(-50%, -220%)', zIndex: 3 },
-      { transform: 'translate(0%, -230%) translateZ(50px)', zIndex: 4 },
-      { transform: 'translate(50%, -220%)', zIndex: 3 },
-      { transform: 'translate(100%, -210%)', zIndex: 2 },
-      { transform: 'translate(160%, -200%)', zIndex: 1 },
-    ];
-  } else { // PC
-    return [
-      { transform: 'translate(calc(-40% * 4), -210%) translateZ(0px)', zIndex: 1 },
-      { transform: 'translate(calc(-40% * 3.5), -220%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-35% * 3), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-45% * 1.1), -220%) translateZ(50px)', zIndex: 4 },
-      { transform: 'translate(calc(-3% * -0.5), -230%) translateZ(0px)', zIndex: 3 },
-      { transform: 'translate(calc(-20% * -1.5), -220%) translateZ(0px)', zIndex: 2 },
-      { transform: 'translate(calc(-35% * -1.5), -210%) translateZ(0px)', zIndex: 1 },
-    ];
-  }
-}
-
-const updateInterviewSlides = () => {
-  const slides = interviewContainer.querySelectorAll('.interview-slide');
-  const positions = getPositionsByScreenWidth();
-
-  slides.forEach((slide, i) => {
-    slide.classList.remove('center-slide');
-    slide.style.transition = 'transform 0.5s, z-index 0.5s';
-
-    let transform = positions[i].transform;
-    if (i === 3) {
-      transform += ' scale(1.1)';
-      slide.classList.add('center-slide');
-    }
-
-    slide.style.transform = transform;
-    slide.style.zIndex = positions[i].zIndex;
-  });
-};
-
-interviewPrev.addEventListener('click', () => {
-  interviewContainer.append(interviewContainer.querySelector('.interview-slide'));
-  updateInterviewSlides();
-});
-
-interviewNext.addEventListener('click', () => {
-  const slides = interviewContainer.querySelectorAll('.interview-slide');
-  interviewContainer.prepend(slides[slides.length - 1]);
-  updateInterviewSlides();
-});
 
 // 반응형 대응
 window.addEventListener('resize', updateInterviewSlides);
@@ -264,7 +194,7 @@ window.addEventListener("scroll", function () {
 });
 // 틈새공략 하단
 function revealFadeUpElements() {
-  const fadeElements = document.querySelectorAll('.fade-up');
+  const fadeElements = document.querySelectorAll('.fade-up, .fade-up1, .thway-img');
 
   fadeElements.forEach((el) => {
     const windowHeight = window.innerHeight;

@@ -162,7 +162,11 @@ h1{
   opacity: 1;
   transform: translateY(0);
 }
-
+.fade-up1{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
 #since{
   font-size: 30px !important;
 }
@@ -317,15 +321,16 @@ font-weight: bolder;
       height: 1000px;
     }
 
-    .interview-slide-track {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
+.interview-slide-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* width는 지정하지 마세요 */
+}
 
-    .interview-slide {
-      width: 100%;
-      flex: 0 0 100%;
-    }
+.interview-slide {
+  flex: 0 0 100%; /* 한 슬라이드가 트랙의 100% 차지 */
+  max-width: 100%;
+}
 
     .interview-slide img {
       width: 40%;
@@ -624,7 +629,6 @@ font-weight: bolder;
       font-weight: bolder;
     }
     #sec-9 img{
-      margin-left: 5%;
       width: 30%;
     }
         .blink-img img {
@@ -744,8 +748,17 @@ font-weight: bolder;
     display: flex;
     
 }
-#reveal{
-background-color: #FEEFC5;
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.from-bottom {
+  /* 추가적인 효과가 필요하다면 여기에 작성 */
 }
 #reveal img{
   margin-top: -20%;
@@ -899,6 +912,10 @@ color: #4e0006; font-weight: bolder;
 .thway-text-span{
   color: white;
   font-weight: bolder;
+}
+.thway-img{
+  position: relative;
+  left: 10%;
 }
 .thway-img img{
 width: 250px;
@@ -1198,23 +1215,26 @@ font-weight: bold;
 #business-area-img-box{
   width: 100%;
 }
-.business-area-red-font {
-  opacity: 0;
-  animation: fadeIn 0.6s ease-in forwards;
-  animation-delay: calc(var(--i) * 0.2s);
-  display: inline-block;
-  color: red;
-  font-weight: bolder;
-  font-size: 40px;
+.business-area-img-box{
+  width: 100%;
 }
+.business-area-img-box img{
+  width: 100%;
+}
+
   .rev-div{
     text-align: center;
+    background-color: black;
   }
   .rev-div span{
 font-size: 50px;
+font-weight: bolder;
+color: white;
   }
   .rev-div p{
     font-size: 30px;
+    font-weight: bold;
+color: white;
   }
  ul{
             list-style: none;
@@ -1380,10 +1400,10 @@ font-size: 50px;
 /* 창업혜택 메인 이미지 */
 .benefit-img {
   opacity: 0;
-  transform: scale(0.3);
-  width: 55%;
+  width: 40%;
   position: relative;
   margin-top: 10%;
+  left: 30%;
 }
 
 .benefit-img.benefit-show {
@@ -1790,7 +1810,7 @@ a {
     width: 50%;
     left: 50%;
     transform: translateX(-50%);
-    top: 30%;
+    top: 50%;
     z-index: 100 !important;
 }
 .from-dolgyoek-title img {
@@ -1801,7 +1821,7 @@ a {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 25vh;
+  bottom: 15vh;
   z-index: 16;
   width: 90%;
   text-align: center;
