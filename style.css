@@ -46,6 +46,7 @@ h1{
   position: relative;
   left: -5%;
   font-size: 20px;
+  font-weight: bolder;
 }
 /* 헤더 시작 */
     .navbar__menu {
@@ -133,7 +134,12 @@ h1{
       color: #ff0000;
     }
 
-
+.movie{
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+}
 /* 메인 섹션 */
 .flex {
   display: flex;
@@ -528,19 +534,21 @@ font-weight: bolder;
       width: 100%;
     }
     #section9-div-3{
-      width: 50%;
+      width: 80%;
       position: relative;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-48.5%, -6%);
     }
-    #section9-div-3 p{
-      font-size: 40px;
-    }
+    
     #section9-div-3 img{
       width: 100%;
       position: relative;
+    }
+    .section9-div-4{
+      width: 100%;
+      position: relative;
       left: 50%;
-     transform: translateX(-50%);
+      transform: translate(-50%, -50%);
     }
     .competition-text {
       border: 3px solid red;
@@ -564,9 +572,10 @@ font-weight: bolder;
     
 
     #logo-2{
+      position: relative;
       margin-top: 10%;
-      transform: translateX(50%);
-      width: 50%;
+      transform: translate(0%, -100%);
+      width: 100%;
       
     }
     /* 흐르는 텍스트 */
@@ -795,11 +804,15 @@ img.reveal {
 /* 틈새공략 하단 */
 .image-gallery {
   display: flex;
+  width: 150%;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
   padding: 50px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -20%);
 }
 
 img.fade-up {
@@ -964,6 +977,12 @@ padding: 10px;
 .bolder{
   font-weight: bolder;
 }
+.redocean{
+ width: 50%; 
+ position: relative;
+ left: 50%;
+ transform: translate(-50%, -60%);
+}
 /* 섹션11 맛 재료자랑  */
 .lock-scroll {
   overflow: hidden;
@@ -1033,7 +1052,7 @@ padding: 10px;
 }
 
  .slider-container {
-      max-width: 800px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 10px;
       background: white;
@@ -1183,12 +1202,15 @@ font-weight: bold;
 }
 #business-area-img-box{
   width: 100%;
+  z-index: 1;
+  position: relative;
 }
-.business-area-img-box{
-  width: 100%;
-}
+
 .business-area-img-box img{
   width: 100%;
+  transform: translateY(-25%);
+  z-index: 1;
+  position: relative;
 }
 
   .rev-div{
@@ -1738,6 +1760,16 @@ a {
 .table-title{
   font-size: 25px;
   text-align: center;
+}
+.Tab2{
+  width: 100%;
+}
+#Tab2 .box img {
+  width: 300px;    /* 원하는 크기로 조절 (예: 80px) */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .size {
   font-size: 20px !important;
