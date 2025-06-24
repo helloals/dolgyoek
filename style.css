@@ -1919,10 +1919,11 @@ a {
   
 }
 .form-slogan{
-  transform: translateX(15%);
-  font-size: 20px;
+  font-size: 30px;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 15px;
+  margin-left: 3%;
+  color: red;
 }
 
 .radio-group label {
