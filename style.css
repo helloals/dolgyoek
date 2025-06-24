@@ -1478,77 +1478,73 @@ thead th {
 
 /* 맛, 사이즈, 곁들임, 사이드  */
 .section19-tabs {
-  display: flex;
-  margin-bottom: 10px;
-  user-select: none;
-}
+      display: flex;
+      margin-bottom: 10px;
+      user-select: none;
+    }
 
-.section19-tab {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  margin-right: 5px;
-  cursor: pointer;
-  background: #eee;
-  border-radius: 5px 5px 0 0;
-}
+    .section19-tab {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      margin-right: 5px;
+      cursor: pointer;
+      background: #eee;
+      border-radius: 5px 5px 0 0;
+    }
 
-.section19-tab.active {
-  background: white;
-  border-bottom: 2px solid #3498db;
-  font-weight: bold;
-}
+    .section19-tab.active {
+      background: white;
+      border-bottom: 2px solid #3498db;
+      font-weight: bold;
+    }
 
-.section19-slider-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  margin: auto;
-  height: 350px;
-  padding-top: 60px;
-  user-select: none;
-}
+    .section19-slider-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 350px;
+      padding-top: 60px;
+      user-select: none;
+    }
 
-.section19-slider {
-  display: flex;
-  transition: transform 0.3s ease;
-  padding: 0 5px;
-}
+    .section19-slider {
+      display: flex;
+      will-change: transform;
+      transition: transform 0.5s ease-in-out;
+    }
 
-.section19-slide {
-  flex: 0 0 calc((100% - 40px) / 5);
-  margin: 0 5px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  cursor: grab;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-}
+    .section19-slide {
+      flex: 0 0 calc((100% - 40px) / 5);
+      margin: 0 5px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
 
+    .section19-slide img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
 
-
-.section19-slide img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  pointer-events: none;
-  user-select: none;
-}
-
-.section19-slide .section19-label {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 5px 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  text-align: center;
-  pointer-events: none;
-}
+    .section19-slide .section19-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      text-align: center;
+      pointer-events: none;
+    }
 #review-box{
   background-image: url(리뷰_백그라운드.png); background-size: cover;      /* 이미지가 꽉 차게 */
     background-position: center; /* 중앙 정렬 */

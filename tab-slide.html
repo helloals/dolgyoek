@@ -1,284 +1,958 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>section19 무한 드래그 슬라이드 (텍스트 포함)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        /* 맛, 사이즈, 곁들임, 사이드  */
-        .section19-tabs {
-            display: flex;
-            margin-bottom: 10px;
-            user-select: none;
-        }
+        
+    .sec3 {padding:8.125em 0 7.5em}
+    .sec3-tit {padding-bottom: 4.3125em; text-align: center;}
+    .sec3-tit__cate {width:fit-content; display: block; font-size: 1.25em; font-weight: 700; color:#fff; margin:0 auto 0.8em; background: var(--main-color); border-radius:50px; padding:0.4em 1.5em;}
+    .sec3-tit__title {font-size: 3.9375em; font-weight: 800;}
+    .sec3-tit__title span {color:var(--main-color);}
+    .sec3-tit__desc {font-size: 1.25em; font-weight: 500;}
+    .sec3-tit__desc span {font-weight: 800;}
+    .sec3-cont {display: flex; justify-content: space-between; align-items: flex-start;}
+    .sec3-circle {width:48%; display: flex; justify-content: flex-end;}
+    .sec3-circle__donut {width:93.9103%; aspect-ratio:1/1; background: url(http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec3-circle_bg01.png) no-repeat center / cover; display: flex; align-items: center; justify-content: center; padding-left: 11.2628%; position: relative;}
+    .sec3-circle__box {text-align: center;}
+    .sec3-circle__box img {width:12.375em; padding-bottom: 0.75em;}
+    .sec3-circle__title {font-size: 2em; font-weight: 800;}
+    .sec3-circle__title span {color:var(--main-color)}
+    .sec3-circle__standard {font-weight: 500; color:#aaa; padding-top: 1.25em;}
+    .sec3-circle__ani {width:45.5632%; aspect-ratio:1/1.9888; position: absolute; left:-6.4847%; top:50%; transform:translateY(-50%) rotate(-400deg) scale(0); opacity: 0; transform-origin:125% 50%; transition:all 2s;}
+    .sec3-circle__ani.active {transform:translateY(-50%) rotate(0) scale(1); opacity: 1;}
+    .sec3-circle__percent {font-size: 3em; font-weight: 900;;}
+    .sec3-circle__profit {font-size: 2em; font-weight: 500; line-height: 1.3; padding-top: 0.4688em;}
+    .sec3-graph {width:47%;}
+    .sec3-table {width:84.9428%; margin:0 auto; border-radius:5px 5px 0 0; overflow: hidden;}
+    .sec3-table table {width:100%;}
+    .sec3-table thead tr {background: #333; height:2.8125em;}
+    .sec3-table tbody tr {height:2.6875em;}
+    .sec3-table tbody tr:not(:last-child) {border-bottom:1px solid #333;}
+    .sec3-table th {font-size: 1.375em; color:#fff; padding: 0.4em 0.6728em;}
+    .sec3-table th:nth-child(1) {padding: 0.4em 1.2637em; text-align: left;}
+    .sec3-table th span{font-weight: 400;}
+    .sec3-table td {font-size: 1.125em; text-align: center; padding:0.5556em 0.6112em; font-weight: 700; color:#333;}
+    .sec3-table td:nth-child(1) {text-align: left; padding:0.5556em 1.5556em; font-weight: 500;}
+    .sec3-graph__total {width:100%; height:2.5313em; background: var(--main-color); box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.80) inset, -5px -5px 4px 0px rgba(0, 0, 0, 0.25) inset; border-radius:5px; font-size: 2em; font-weight: 700; color:#fff; display: flex; align-items: center; justify-content: space-between; padding:0 3.3125em;}
 
-        .section19-tab {
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            margin-right: 5px;
-            cursor: pointer;
-            background: #eee;
-            border-radius: 5px 5px 0 0;
-            user-select: none;
-        }
-
-        .section19-tab.active {
-            background: white;
-            border-bottom: 2px solid #3498db;
-            font-weight: bold;
-        }
-
-        .section19-slider-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: auto;
-            user-select: none;
-            height: 350px;
-            padding-top: 60px;
-        }
-
-        .section19-slider {
-            display: flex;
-            transition: transform 0.3s ease;
-            padding: 0 5px;
-        }
-
-        .section19-slide {
-            flex: 0 0 calc((100% - 40px) / 5);
-            margin: 0 5px;
-            border-radius: 8px;
-            overflow: visible;
-            position: relative;
-            cursor: grab;
-            transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-            user-select: none;
-        }
-
-        .section19-slide img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: block;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .section19-slide .section19-label {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            text-align: center;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .section19-slide.current:hover {
-            transform: scale(1.2);
-            z-index: 10;
-            filter: none !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-        }
-
-        .section19-slide.prev,
-        .section19-slide.next {
-            filter: blur(3px);
-            opacity: 0.5;
-            pointer-events: none;
-        }
+    @media (max-width:1280px){
+        .sec3-circle__box img {width:10.375em;}
+        .sec3-circle__standard {padding-top: 0.75em;}
+    }
+    @media (max-width:768px){
+        .sec3-tit__title {font-size: 3em;}
+        .sec3-cont {flex-direction: column; align-items: center;}
+        .sec3-circle {width:80%; margin-bottom: 10%;}
+        .sec3-graph {width:100%;}
+        .sec3-graph__total {font-size: 1.75em;}
+    }
+    @media (max-width:480px){
+         .sec3-circle {width:100%;}
+    }
     </style>
+
+ <!-- ...기존 코드... -->
+  <!-- jQuery CDN 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Waypoints CDN 추가 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <!-- animateNumber CDN 추가 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-animateNumber/0.0.14/jquery.animateNumber.min.js"></script>
+  <!-- gsap CDN 추가 (gsap 애니메이션 쓸 경우) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
 </head>
-
 <body>
-    <br /><br /><br /><br /><br />
-    <div class="section19-tabs">
-        <div class="section19-tab active" data-category="0">21가지 맛</div>
-        <div class="section19-tab" data-category="1">사이즈 구성</div>
-        <div class="section19-tab" data-category="2">곁들임 메뉴</div>
-        <div class="section19-tab" data-category="3">사이드 메뉴</div>
+    <div class="sec3">
+    <div class="inner-1300">
+        <div class="sec3-tit aos-init aos-animate" data-aos="fade-up">
+            <span class="sec3-tit__cate">소형 평수도 OK !</span>
+            <h2 class="sec3-tit__title agro">투자비용 최단 회수기간 <span>1개월!</span></h2>
+            <p class="sec3-tit__desc">합리적인 업종변경 및 신규창업 인테리어 평균 시공비 <span>350~3000만원</span></p>
+        </div>
+        <div class="sec3-cont">
+            <div class="sec3-circle">
+                <div class="sec3-circle__donut">
+                    <div class="sec3-circle__box">
+                        <img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec3-circle_logo.png" alt="">
+                        <h3 class="sec3-circle__title agro">배달&amp;포장형 <br>
+                        매출액 <br>
+                        <span>6500만원!</span>
+                        </h3>
+                        <p class="sec3-circle__standard">25년 4월 기준</p>
+                    </div>
+                    <div class="sec3-circle__ani active">
+                        <img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec3-circle_bg02.png" alt="32.39% 영업 이익 약 2100만원">
+                    </div>
+                </div>
+            </div>
+            <div class="sec3-graph">
+                <div class="sec3-table">
+                    <table>
+                        <colgroup>
+                            <col width="28.5164%;">
+                            <col width="49.711%;">
+                            <col width="21.7727%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>금액 <span>(단위:원)</span></th>
+                                <th>비율 <span>(%)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>월매출액</td>
+                                <td>65,086,200</td>
+                                <td>100%</td>
+                            </tr>
+                            <tr>
+                                <td>식자재</td>
+                                <td>19,950,100</td>
+                                <td>30.65%</td>
+                            </tr>
+                            <tr>
+                                <td>식용유</td>
+                                <td>670,000</td>
+                                <td>1.03%</td>
+                            </tr>
+                            <tr>
+                                <td>음료&amp;주류</td>
+                                <td>1,468,240</td>
+                                <td>2.25%</td>
+                            </tr>
+                            <tr>
+                                <td>인건비</td>
+                                <td>1,902,000</td>
+                                <td>2.92%</td>
+                            </tr>
+                            <tr>
+                                <td>임대료</td>
+                                <td>1,562,000</td>
+                                <td>2.40%</td>
+                            </tr>
+                            <tr>
+                                <td>공과금</td>
+                                <td>1,562,000</td>
+                                <td>1.14%</td>
+                            </tr>
+                            <tr>
+                                <td>배달대행비</td>
+                                <td>2,682,020</td>
+                                <td>4.12%</td>
+                            </tr>
+                            <tr>
+                                <td>플랫폼수수료</td>
+                                <td>13,571,478</td>
+                                <td>20,85%</td>
+                            </tr>
+                            <tr>
+                                <td>기타잡비</td>
+                                <td>1,168,090</td>
+                                <td>1.80%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sec3-graph__total">
+                    <span class="sec3-graph__cate">영업 순익</span>
+                    <span class="sec3-graph__num">21,081,420</span>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<script>
+gsap.timeline({
+    scrollTrigger:{
+    trigger:'.sec3-cont',
+    scrub:true,
+    start:'top 50%',
+    toggleActions: 'play none none none',
+    toggleClass: { targets: ".sec3-circle__ani", className: "active" },
+    }
+});
+</script>
+<script>
+    /*!
+Waypoints - 4.0.1
+Copyright © 2011-2016 Caleb Troughton
+Licensed under the MIT license.
+https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
+*/
+(function() {
+  'use strict'
 
-    <div class="section19-slider-container">
-        <div class="section19-slider"></div>
-    </div>
+  var keyCounter = 0
+  var allWaypoints = {}
 
-    <script>
-        const section19_categories = [
-            [ // 21가지 맛
-                { src: '돌격닭강정/빨간맛161.jpg', text: '161 빨간맛' },
-                { src: '돌격닭강정/닭강정 마늘간장 45도컷.jpg', text: '단짠마늘간장' },
-                { src: '돌격닭강정/닭강정 빨간양념 + 크림폭탄 45도컷.jpg', text: '크림폭탄' },
-                { src: '돌격닭강정/닭강정 마늘간장+청양크림 45도컷 .jpg', text: '청양크림' },
-                { src: '돌격닭강정/닭강정 순한맛 치즈폭포+치즈시즈닝 45도컷.jpg', text: '치즈폭포포' },
-                { src: '돌격닭강정/후추라이드 45도컷.jpg', text: '후추라이드 순살' },
-                { src: '돌격닭강정/윙봉 후추 45도컷.jpg', text: '후추라이드 윙봉' },
-                { src: '돌격닭강정/닭강정 눈꽃시즈닝_치즈가루 45도컷 .jpg', text: '눈꽃치즈' },
-                { src: '돌격닭강정/닭강정 눈꽃시즈닝_하얀가루 45도컷.jpg', text: '눈꽃허니버터터' },
-                { src: '돌격닭강정/순살 후라이드 45도컷.jpg', text: '순살 후라이드' },
-            ],
-            [ // 사이즈 구성
-                { src: '왕컵.jpg', text: '왕컵' },
-                { src: '대왕컵.jpg', text: '대왕컵' },
-                { src: '실속단품.jpeg', text: '실속 단품' },
-                { src: '중장세트.jpg', text: '중장 세트' },
-                { src: '대장세트.jpg', text: '대장 세트' },
-                { src: '2종콤보_중장2종.jpg', text: '중장 2종 콤보' },
-                { src: '2종콤보_왕대장2종.jpg', text: '왕대장 2종 콤보' },
-                { src: '3대장.jpeg', text: '3대장 세트' },
-            ],
-            [ // 곁들임 메뉴
-                { src: '떡볶이', text: '火떡볶이' },
-                { src: '커리어묵칩스.jpg', text: '커리어묵칩스' },
-                { src: '옛날통닭', text: '옛날 통닭' },
-                { src: '치즈폭포감자튀김.jpg', text: '치즈폭포 감자튀김' },
-                { src: '레트로떡강정', text: '레트로 떡강정' },
-            ],
-            [ // 사이드 메뉴
-                { src: '후라이드 감자튀김.jpg', text: '후라이드 감자튀김' },
-                { src: '눈꽃감자튀김.jpg', text: '눈꽃 감자튀김' },
-                { src: '치즈스틱.jpg', text: '치즈스틱' },
-                { src: '고구마치즈스틱.jpg', text: '고구마 치즈스틱' },
-                { src: '치즈볼.jpg', text: '치즈볼' },
-                { src: '눈꽃 치즈볼.jpg', text: '눈꽃 치즈볼' },
-            ]
-        ];
+  /* http://imakewebthings.com/waypoints/api/waypoint */
+  function Waypoint(options) {
+    if (!options) {
+      throw new Error('No options passed to Waypoint constructor')
+    }
+    if (!options.element) {
+      throw new Error('No element option passed to Waypoint constructor')
+    }
+    if (!options.handler) {
+      throw new Error('No handler option passed to Waypoint constructor')
+    }
 
-        const section19_slider = document.querySelector('.section19-slider');
-        const section19_tabs = document.querySelectorAll('.section19-tab');
-        let section19_currentCategory = 0;
-        let section19_currentIndex = 0;
-        let section19_currentTranslate = 0;
+    this.key = 'waypoint-' + keyCounter
+    this.options = Waypoint.Adapter.extend({}, Waypoint.defaults, options)
+    this.element = this.options.element
+    this.adapter = new Waypoint.Adapter(this.element)
+    this.callback = options.handler
+    this.axis = this.options.horizontal ? 'horizontal' : 'vertical'
+    this.enabled = this.options.enabled
+    this.triggerPoint = null
+    this.group = Waypoint.Group.findOrCreate({
+      name: this.options.group,
+      axis: this.axis
+    })
+    this.context = Waypoint.Context.findOrCreateByElement(this.options.context)
 
-        section19_tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                if (tab.classList.contains('active')) return;
-                section19_tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                section19_currentCategory = +tab.dataset.category;
-                section19_currentIndex = 0;
-                section19_setupSlider();
-            });
-        });
+    if (Waypoint.offsetAliases[this.options.offset]) {
+      this.options.offset = Waypoint.offsetAliases[this.options.offset]
+    }
+    this.group.add(this)
+    this.context.add(this)
+    allWaypoints[this.key] = this
+    keyCounter += 1
+  }
 
-        function section19_setupSlider() {
-            section19_slider.innerHTML = '';
-            const imgs = section19_categories[section19_currentCategory];
-            const prependImgs = imgs.slice(-2);
-            const appendImgs = imgs.slice(0, 2);
-            const fullImgs = [...prependImgs, ...imgs, ...appendImgs];
+  /* Private */
+  Waypoint.prototype.queueTrigger = function(direction) {
+    this.group.queueTrigger(this, direction)
+  }
 
-            fullImgs.forEach(({ src, text }) => {
-                const div = document.createElement('div');
-                div.className = 'section19-slide';
-                const img = document.createElement('img');
-                img.src = src;
-                const label = document.createElement('div');
-                label.className = 'section19-label';
-                label.textContent = text;
-                div.appendChild(img);
-                div.appendChild(label);
-                section19_slider.appendChild(div);
-            });
+  /* Private */
+  Waypoint.prototype.trigger = function(args) {
+    if (!this.enabled) {
+      return
+    }
+    if (this.callback) {
+      this.callback.apply(this, args)
+    }
+  }
 
-            setTimeout(() => {
-                section19_updateSlidesClass();
-                section19_setPositionByIndex();
-            }, 50);
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy */
+  Waypoint.prototype.destroy = function() {
+    this.context.remove(this)
+    this.group.remove(this)
+    delete allWaypoints[this.key]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable */
+  Waypoint.prototype.disable = function() {
+    this.enabled = false
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable */
+  Waypoint.prototype.enable = function() {
+    this.context.refresh()
+    this.enabled = true
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/next */
+  Waypoint.prototype.next = function() {
+    return this.group.next(this)
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/previous */
+  Waypoint.prototype.previous = function() {
+    return this.group.previous(this)
+  }
+
+  /* Private */
+  Waypoint.invokeAll = function(method) {
+    var allWaypointsArray = []
+    for (var waypointKey in allWaypoints) {
+      allWaypointsArray.push(allWaypoints[waypointKey])
+    }
+    for (var i = 0, end = allWaypointsArray.length; i < end; i++) {
+      allWaypointsArray[i][method]()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy-all */
+  Waypoint.destroyAll = function() {
+    Waypoint.invokeAll('destroy')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable-all */
+  Waypoint.disableAll = function() {
+    Waypoint.invokeAll('disable')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable-all */
+  Waypoint.enableAll = function() {
+    Waypoint.Context.refreshAll()
+    for (var waypointKey in allWaypoints) {
+      allWaypoints[waypointKey].enabled = true
+    }
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/refresh-all */
+  Waypoint.refreshAll = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-height */
+  Waypoint.viewportHeight = function() {
+    return window.innerHeight || document.documentElement.clientHeight
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-width */
+  Waypoint.viewportWidth = function() {
+    return document.documentElement.clientWidth
+  }
+
+  Waypoint.adapters = []
+
+  Waypoint.defaults = {
+    context: window,
+    continuous: true,
+    enabled: true,
+    group: 'default',
+    horizontal: false,
+    offset: 0
+  }
+
+  Waypoint.offsetAliases = {
+    'bottom-in-view': function() {
+      return this.context.innerHeight() - this.adapter.outerHeight()
+    },
+    'right-in-view': function() {
+      return this.context.innerWidth() - this.adapter.outerWidth()
+    }
+  }
+
+  window.Waypoint = Waypoint
+}())
+;(function() {
+  'use strict'
+
+  function requestAnimationFrameShim(callback) {
+    window.setTimeout(callback, 1000 / 60)
+  }
+
+  var keyCounter = 0
+  var contexts = {}
+  var Waypoint = window.Waypoint
+  var oldWindowLoad = window.onload
+
+  /* http://imakewebthings.com/waypoints/api/context */
+  function Context(element) {
+    this.element = element
+    this.Adapter = Waypoint.Adapter
+    this.adapter = new this.Adapter(element)
+    this.key = 'waypoint-context-' + keyCounter
+    this.didScroll = false
+    this.didResize = false
+    this.oldScroll = {
+      x: this.adapter.scrollLeft(),
+      y: this.adapter.scrollTop()
+    }
+    this.waypoints = {
+      vertical: {},
+      horizontal: {}
+    }
+
+    element.waypointContextKey = this.key
+    contexts[element.waypointContextKey] = this
+    keyCounter += 1
+    if (!Waypoint.windowContext) {
+      Waypoint.windowContext = true
+      Waypoint.windowContext = new Context(window)
+    }
+
+    this.createThrottledScrollHandler()
+    this.createThrottledResizeHandler()
+  }
+
+  /* Private */
+  Context.prototype.add = function(waypoint) {
+    var axis = waypoint.options.horizontal ? 'horizontal' : 'vertical'
+    this.waypoints[axis][waypoint.key] = waypoint
+    this.refresh()
+  }
+
+  /* Private */
+  Context.prototype.checkEmpty = function() {
+    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
+    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
+    var isWindow = this.element == this.element.window
+    if (horizontalEmpty && verticalEmpty && !isWindow) {
+      this.adapter.off('.waypoints')
+      delete contexts[this.key]
+    }
+  }
+
+  /* Private */
+  Context.prototype.createThrottledResizeHandler = function() {
+    var self = this
+
+    function resizeHandler() {
+      self.handleResize()
+      self.didResize = false
+    }
+
+    this.adapter.on('resize.waypoints', function() {
+      if (!self.didResize) {
+        self.didResize = true
+        Waypoint.requestAnimationFrame(resizeHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.createThrottledScrollHandler = function() {
+    var self = this
+    function scrollHandler() {
+      self.handleScroll()
+      self.didScroll = false
+    }
+
+    this.adapter.on('scroll.waypoints', function() {
+      if (!self.didScroll || Waypoint.isTouch) {
+        self.didScroll = true
+        Waypoint.requestAnimationFrame(scrollHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.handleResize = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Private */
+  Context.prototype.handleScroll = function() {
+    var triggeredGroups = {}
+    var axes = {
+      horizontal: {
+        newScroll: this.adapter.scrollLeft(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left'
+      },
+      vertical: {
+        newScroll: this.adapter.scrollTop(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      var isForward = axis.newScroll > axis.oldScroll
+      var direction = isForward ? axis.forward : axis.backward
+
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        if (waypoint.triggerPoint === null) {
+          continue
+        }
+        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
+        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
+        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
+        var crossedBackward = !wasBeforeTriggerPoint && !nowAfterTriggerPoint
+        if (crossedForward || crossedBackward) {
+          waypoint.queueTrigger(direction)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
+
+    for (var groupKey in triggeredGroups) {
+      triggeredGroups[groupKey].flushTriggers()
+    }
+
+    this.oldScroll = {
+      x: axes.horizontal.newScroll,
+      y: axes.vertical.newScroll
+    }
+  }
+
+  /* Private */
+  Context.prototype.innerHeight = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportHeight()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerHeight()
+  }
+
+  /* Private */
+  Context.prototype.remove = function(waypoint) {
+    delete this.waypoints[waypoint.axis][waypoint.key]
+    this.checkEmpty()
+  }
+
+  /* Private */
+  Context.prototype.innerWidth = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportWidth()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerWidth()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-destroy */
+  Context.prototype.destroy = function() {
+    var allWaypoints = []
+    for (var axis in this.waypoints) {
+      for (var waypointKey in this.waypoints[axis]) {
+        allWaypoints.push(this.waypoints[axis][waypointKey])
+      }
+    }
+    for (var i = 0, end = allWaypoints.length; i < end; i++) {
+      allWaypoints[i].destroy()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-refresh */
+  Context.prototype.refresh = function() {
+    /*eslint-disable eqeqeq */
+    var isWindow = this.element == this.element.window
+    /*eslint-enable eqeqeq */
+    var contextOffset = isWindow ? undefined : this.adapter.offset()
+    var triggeredGroups = {}
+    var axes
+
+    this.handleScroll()
+    axes = {
+      horizontal: {
+        contextOffset: isWindow ? 0 : contextOffset.left,
+        contextScroll: isWindow ? 0 : this.oldScroll.x,
+        contextDimension: this.innerWidth(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left',
+        offsetProp: 'left'
+      },
+      vertical: {
+        contextOffset: isWindow ? 0 : contextOffset.top,
+        contextScroll: isWindow ? 0 : this.oldScroll.y,
+        contextDimension: this.innerHeight(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up',
+        offsetProp: 'top'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        var adjustment = waypoint.options.offset
+        var oldTriggerPoint = waypoint.triggerPoint
+        var elementOffset = 0
+        var freshWaypoint = oldTriggerPoint == null
+        var contextModifier, wasBeforeScroll, nowAfterScroll
+        var triggeredBackward, triggeredForward
+
+        if (waypoint.element !== waypoint.element.window) {
+          elementOffset = waypoint.adapter.offset()[axis.offsetProp]
         }
 
-        function section19_getSlideWidth() {
-            const slide = section19_slider.querySelector('.section19-slide');
-            return slide ? slide.offsetWidth + 10 : 0;
+        if (typeof adjustment === 'function') {
+          adjustment = adjustment.apply(waypoint)
+        }
+        else if (typeof adjustment === 'string') {
+          adjustment = parseFloat(adjustment)
+          if (waypoint.options.offset.indexOf('%') > - 1) {
+            adjustment = Math.ceil(axis.contextDimension * adjustment / 100)
+          }
         }
 
-        function section19_setPositionByIndex() {
-            const slideWidth = section19_getSlideWidth();
-            section19_currentTranslate = -((2 + section19_currentIndex - 1) * slideWidth);
-            section19_setSliderPosition();
+        contextModifier = axis.contextScroll - axis.contextOffset
+        waypoint.triggerPoint = Math.floor(elementOffset + contextModifier - adjustment)
+        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
+        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
+        triggeredBackward = wasBeforeScroll && nowAfterScroll
+        triggeredForward = !wasBeforeScroll && !nowAfterScroll
+
+        if (!freshWaypoint && triggeredBackward) {
+          waypoint.queueTrigger(axis.backward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
         }
-
-        function section19_setSliderPosition() {
-            section19_slider.style.transform = `translateX(${section19_currentTranslate}px)`;
+        else if (!freshWaypoint && triggeredForward) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
         }
+        else if (freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
 
-        function section19_updateSlidesClass() {
-            const slides = section19_slider.querySelectorAll('.section19-slide');
-            slides.forEach(slide => slide.classList.remove('current', 'prev', 'next'));
+    Waypoint.requestAnimationFrame(function() {
+      for (var groupKey in triggeredGroups) {
+        triggeredGroups[groupKey].flushTriggers()
+      }
+    })
 
-            const prevIdx = 2 + section19_currentIndex - 1;
-            if (slides[prevIdx]) slides[prevIdx].classList.add('prev');
+    return this
+  }
 
-            for (let i = 0; i < 3; i++) {
-                const idx = 2 + section19_currentIndex + i;
-                if (slides[idx]) slides[idx].classList.add('current');
+  /* Private */
+  Context.findOrCreateByElement = function(element) {
+    return Context.findByElement(element) || new Context(element)
+  }
+
+  /* Private */
+  Context.refreshAll = function() {
+    for (var contextId in contexts) {
+      contexts[contextId].refresh()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-find-by-element */
+  Context.findByElement = function(element) {
+    return contexts[element.waypointContextKey]
+  }
+
+  window.onload = function() {
+    if (oldWindowLoad) {
+      oldWindowLoad()
+    }
+    Context.refreshAll()
+  }
+
+
+  Waypoint.requestAnimationFrame = function(callback) {
+    var requestFn = window.requestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      requestAnimationFrameShim
+    requestFn.call(window, callback)
+  }
+  Waypoint.Context = Context
+}())
+;(function() {
+  'use strict'
+
+  function byTriggerPoint(a, b) {
+    return a.triggerPoint - b.triggerPoint
+  }
+
+  function byReverseTriggerPoint(a, b) {
+    return b.triggerPoint - a.triggerPoint
+  }
+
+  var groups = {
+    vertical: {},
+    horizontal: {}
+  }
+  var Waypoint = window.Waypoint
+
+  /* http://imakewebthings.com/waypoints/api/group */
+  function Group(options) {
+    this.name = options.name
+    this.axis = options.axis
+    this.id = this.name + '-' + this.axis
+    this.waypoints = []
+    this.clearTriggerQueues()
+    groups[this.axis][this.name] = this
+  }
+
+  /* Private */
+  Group.prototype.add = function(waypoint) {
+    this.waypoints.push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.clearTriggerQueues = function() {
+    this.triggerQueues = {
+      up: [],
+      down: [],
+      left: [],
+      right: []
+    }
+  }
+
+  /* Private */
+  Group.prototype.flushTriggers = function() {
+    for (var direction in this.triggerQueues) {
+      var waypoints = this.triggerQueues[direction]
+      var reverse = direction === 'up' || direction === 'left'
+      waypoints.sort(reverse ? byReverseTriggerPoint : byTriggerPoint)
+      for (var i = 0, end = waypoints.length; i < end; i += 1) {
+        var waypoint = waypoints[i]
+        if (waypoint.options.continuous || i === waypoints.length - 1) {
+          waypoint.trigger([direction])
+        }
+      }
+    }
+    this.clearTriggerQueues()
+  }
+
+  /* Private */
+  Group.prototype.next = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    var isLast = index === this.waypoints.length - 1
+    return isLast ? null : this.waypoints[index + 1]
+  }
+
+  /* Private */
+  Group.prototype.previous = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    return index ? this.waypoints[index - 1] : null
+  }
+
+  /* Private */
+  Group.prototype.queueTrigger = function(waypoint, direction) {
+    this.triggerQueues[direction].push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.remove = function(waypoint) {
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    if (index > -1) {
+      this.waypoints.splice(index, 1)
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/first */
+  Group.prototype.first = function() {
+    return this.waypoints[0]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/last */
+  Group.prototype.last = function() {
+    return this.waypoints[this.waypoints.length - 1]
+  }
+
+  /* Private */
+  Group.findOrCreate = function(options) {
+    return groups[options.axis][options.name] || new Group(options)
+  }
+
+  Waypoint.Group = Group
+}())
+;(function() {
+  'use strict'
+
+  var $ = window.jQuery
+  var Waypoint = window.Waypoint
+
+  function JQueryAdapter(element) {
+    this.$element = $(element)
+  }
+
+  $.each([
+    'innerHeight',
+    'innerWidth',
+    'off',
+    'offset',
+    'on',
+    'outerHeight',
+    'outerWidth',
+    'scrollLeft',
+    'scrollTop'
+  ], function(i, method) {
+    JQueryAdapter.prototype[method] = function() {
+      var args = Array.prototype.slice.call(arguments)
+      return this.$element[method].apply(this.$element, args)
+    }
+  })
+
+  $.each([
+    'extend',
+    'inArray',
+    'isEmptyObject'
+  ], function(i, method) {
+    JQueryAdapter[method] = $[method]
+  })
+
+  Waypoint.adapters.push({
+    name: 'jquery',
+    Adapter: JQueryAdapter
+  })
+  Waypoint.Adapter = JQueryAdapter
+}())
+;(function() {
+  'use strict'
+
+  var Waypoint = window.Waypoint
+
+  function createExtension(framework) {
+    return function() {
+      var waypoints = []
+      var overrides = arguments[0]
+
+      if (framework.isFunction(arguments[0])) {
+        overrides = framework.extend({}, arguments[1])
+        overrides.handler = arguments[0]
+      }
+
+      this.each(function() {
+        var options = framework.extend({}, overrides, {
+          element: this
+        })
+        if (typeof options.context === 'string') {
+          options.context = framework(this).closest(options.context)[0]
+        }
+        waypoints.push(new Waypoint(options))
+      })
+
+      return waypoints
+    }
+  }
+
+  if (window.jQuery) {
+    window.jQuery.fn.waypoint = createExtension(window.jQuery)
+  }
+  if (window.Zepto) {
+    window.Zepto.fn.waypoint = createExtension(window.Zepto)
+  }
+}())
+;
+</script>
+<script>
+    /*
+ jQuery animateNumber plugin v0.0.14
+ (c) 2013, Alexandr Borisov.
+ https://github.com/aishek/jquery-animateNumber
+*/
+(function(d) {
+    var r = function(b) {
+        return b.split("").reverse().join("")
+    }
+      , m = {
+        numberStep: function(b, a) {
+            var e = Math.floor(b);
+            d(a.elem).text(e)
+        }
+    }
+      , g = function(b) {
+        var a = b.elem;
+        a.nodeType && a.parentNode && (a = a._animateNumberSetter,
+        a || (a = m.numberStep),
+        a(b.now, b))
+    };
+    d.Tween && d.Tween.propHooks ? d.Tween.propHooks.number = {
+        set: g
+    } : d.fx.step.number = g;
+    d.animateNumber = {
+        numberStepFactories: {
+            append: function(b) {
+                return function(a, e) {
+                    var f = Math.floor(a);
+                    d(e.elem).prop("number", a).text(f + b)
+                }
+            },
+            separator: function(b, a, e) {
+                b = b || " ";
+                a = a || 3;
+                e = e || "";
+                return function(f, k) {
+                    var u = 0 > f
+                      , c = Math.floor((u ? -1 : 1) * f).toString()
+                      , n = d(k.elem);
+                    if (c.length > a) {
+                        for (var h = c, l = a, m = h.split("").reverse(), c = [], p, s, q, t = 0, g = Math.ceil(h.length / l); t < g; t++) {
+                            p = "";
+                            for (q = 0; q < l; q++) {
+                                s = t * l + q;
+                                if (s === h.length)
+                                    break;
+                                p += m[s]
+                            }
+                            c.push(p)
+                        }
+                        h = c.length - 1;
+                        l = r(c[h]);
+                        c[h] = r(parseInt(l, 10).toString());
+                        c = c.join(b);
+                        c = r(c)
+                    }
+                    n.prop("number", f).text((u ? "-" : "") + c + e)
+                }
             }
-
-            const nextIdx = 2 + section19_currentIndex + 3;
-            if (slides[nextIdx]) slides[nextIdx].classList.add('next');
         }
-
-        let section19_isDragging = false;
-        let section19_startX = 0;
-        let section19_prevTranslate = 0;
-
-        section19_slider.addEventListener('mousedown', (e) => {
-            section19_isDragging = true;
-            section19_startX = e.pageX;
-            section19_prevTranslate = section19_currentTranslate;
-            section19_slider.style.transition = 'none';
-        });
-        section19_slider.addEventListener('touchstart', (e) => {
-            section19_isDragging = true;
-            section19_startX = e.touches[0].clientX;
-            section19_prevTranslate = section19_currentTranslate;
-            section19_slider.style.transition = 'none';
-        });
-
-        section19_slider.addEventListener('mousemove', (e) => {
-            if (!section19_isDragging) return;
-            const currentX = e.pageX;
-            section19_currentTranslate = section19_prevTranslate + (currentX - section19_startX);
-            section19_setSliderPosition();
-        });
-        section19_slider.addEventListener('touchmove', (e) => {
-            if (!section19_isDragging) return;
-            const currentX = e.touches[0].clientX;
-            section19_currentTranslate = section19_prevTranslate + (currentX - section19_startX);
-            section19_setSliderPosition();
-        });
-
-        function section19_touchEnd() {
-            if (!section19_isDragging) return;
-            section19_isDragging = false;
-            section19_slider.style.transition = 'transform 0.3s ease';
-
-            const slideWidth = section19_getSlideWidth();
-            let movedIndex = Math.round(-section19_currentTranslate / slideWidth) - 2;
-            const imgsLen = section19_categories[section19_currentCategory].length;
-
-            if (movedIndex < 0) movedIndex = imgsLen - 1;
-            else if (movedIndex >= imgsLen) movedIndex = 0;
-
-            section19_currentIndex = movedIndex;
-            section19_setPositionByIndex();
-            section19_updateSlidesClass();
+    };
+    d.fn.animateNumber = function() {
+        for (var b = arguments[0], a = d.extend({}, m, b), e = d(this), f = [a], k = 1, g = arguments.length; k < g; k++)
+            f.push(arguments[k]);
+        if (b.numberStep) {
+            var c = this.each(function() {
+                this._animateNumberSetter = b.numberStep
+            })
+              , n = a.complete;
+            a.complete = function() {
+                c.each(function() {
+                    delete this._animateNumberSetter
+                });
+                n && n.apply(this, arguments)
+            }
         }
+        return e.animate.apply(e, f)
+    }
+}
+)(jQuery);
+</script>
+<script>
+    
+$(function(){
+    var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+    $('.sec3-graph__total').waypoint({
+        handler: function(direction) {
+            if (direction === 'down') {
+                $('.sec3-graph__num').html(''); // 애니메이션 시작 전 내용 초기화
+                $('.sec3-graph__num').animateNumber({
+                    number: 21081420,
+                    easing: 'easeInQuad',
+                    numberStep: comma_separator_number_step
+                }, 1200);
+            } else {
+                $('.sec3-graph__num').animateNumber({
+                    number: 0,
+                    easing: 'easeInQuad',
+                    numberStep: comma_separator_number_step
+                }, 1200);
+            }
+        },
+        offset: '90%'
+    });
+});
 
-        section19_slider.addEventListener('mouseup', section19_touchEnd);
-        section19_slider.addEventListener('mouseleave', section19_touchEnd);
-        section19_slider.addEventListener('touchend', section19_touchEnd);
+</script>
 
-        section19_setupSlider();
-    </script>
+
 </body>
-
 </html>

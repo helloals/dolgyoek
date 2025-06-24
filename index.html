@@ -541,8 +541,12 @@
         <span>좁은 반경거리로 같은 브랜드 끼리 다투지 않고</span><br>
         <span class="business-area-red-font">영업구역을 보장</span><span>합니다 !</span><br>
         <br><br>
+
         <div class="business-area-img-box">
             <img src="./상권보장.webp" class="business-area-img" alt="">
+        </div>
+        <div>
+            <img src="./양주옥정-영업구역.png" alt="">
         </div>
     </div>
     <br><br>
@@ -909,16 +913,16 @@
         document.addEventListener("DOMContentLoaded", () => {
   const categories = [
     [ // 21가지 맛
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%88%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%86%E1%85%A1%E1%86%BA161.webp', text: '161 빨간맛' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%86%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%86%BC+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '단짠마늘간장' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%88%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%82%E1%85%A7%E1%86%B7+%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%91%E1%85%A9%E1%86%A8%E1%84%90%E1%85%A1%E1%86%AB+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '크림폭탄' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%86%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AF%E1%84%80%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA+.webp', text: '청양크림' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%89%E1%85%AE%E1%86%AB%E1%84%92%E1%85%A1%E1%86%AB%E1%84%86%E1%85%A1%E1%86%BA+%E1%84%8E%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%91%E1%85%A9%E1%86%A8%E1%84%91%E1%85%A9%2B%E1%84%8E%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%89%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%82%E1%85%B5%E1%86%BC+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '치즈폭포' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%92%E1%85%AE%E1%84%8E%E1%85%AE%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '후추라이드 순살' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%8B%E1%85%B1%E1%86%BC%E1%84%87%E1%85%A9%E1%86%BC+%E1%84%92%E1%85%AE%E1%84%8E%E1%85%AE+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '후추라이드 윙봉' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%82%E1%85%AE%E1%86%AB%E1%84%81%E1%85%A9%E1%86%BE%E1%84%89%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%82%E1%85%B5%E1%86%BC_%E1%84%8E%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%80%E1%85%A1%E1%84%85%E1%85%AE+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA+.webp', text: '눈꽃치즈' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+%E1%84%82%E1%85%AE%E1%86%AB%E1%84%81%E1%85%A9%E1%86%BE%E1%84%89%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%82%E1%85%B5%E1%86%BC_%E1%84%92%E1%85%A1%E1%84%8B%E1%85%A3%E1%86%AB%E1%84%80%E1%85%A1%E1%84%85%E1%85%AE+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '눈꽃허니버터' },
-      { src: 'https://dolgyeok-homepage.s3.ap-southeast-2.amazonaws.com/%E1%84%83%E1%85%A9%E1%86%AF%E1%84%80%E1%85%A7%E1%86%A8%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC+(1)/%E1%84%89%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AF+%E1%84%92%E1%85%AE%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3+45%E1%84%83%E1%85%A9%E1%84%8F%E1%85%A5%E1%86%BA.webp', text: '순살 후라이드' },
+      { src: '돌격닭강정/닭강정 빨간양념 45도컷.jpg', text: '161 빨간맛' },
+      { src: '돌격닭강정/닭강정 마늘간장 45도컷.jpg ', text: '단짠마늘간장' },
+      { src: '돌격닭강정/닭강정 빨간양념 + 크림폭탄 45도컷.jpg', text: '크림폭탄' },
+      { src: '돌격닭강정/닭강정 마늘간장+청양크림 45도컷 .jpg', text: '청양크림' },
+      { src: '돌격닭강정/닭강정 순한맛 치즈폭포+치즈시즈닝 45도컷.jpg', text: '치즈폭포' },
+      { src: '돌격닭강정/후추라이드 45도컷.jpg', text: '후추라이드 순살' },
+      { src: '돌격닭강정/윙봉 후추 45도컷.jpg', text: '후추라이드 윙봉' },
+      { src: '돌격닭강정/닭강정 눈꽃시즈닝_치즈가루 45도컷  .jpg', text: '눈꽃치즈' },
+      { src: '돌격닭강정/닭강정 눈꽃시즈닝_하얀가루 45도컷.jpg', text: '눈꽃허니버터' },
+      { src: '돌격닭강정/순살 후라이드 45도컷.jpg', text: '순살 후라이드' },
     ],
     [ // 사이즈 구성
       { src: '왕컵.webp', text: '왕컵' },
@@ -931,7 +935,7 @@
       { src: '3대장.webp', text: '3대장 세트' },
     ],
     [ // 곁들임 메뉴
-      { src: '떡볶이.webp', text: '火떡볶이' },
+      { src: '떡볶이.jpg', text: '火떡볶이' },
       { src: '커리어묵칩스.webp', text: '커리어묵칩스' },
       { src: '옛날통닭', text: '옛날 통닭' },
       { src: '치즈폭포감자튀김.webp', text: '치즈폭포 감자튀김' },
