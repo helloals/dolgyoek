@@ -226,8 +226,6 @@ window.addEventListener('resize', updateInterviewSlides);
 updateInterviewSlides();
 
 
-  // === [2] 업종변경 슬라이더 ===
-
 
 // revealOnScroll 함수는 별도 관리
 function revealOnScroll() {
@@ -336,88 +334,6 @@ const section12Observer = new IntersectionObserver((entries) => {
 
 section12Observer.observe(section12Element);
     
-//인테리어 슬라이드
-const cddSliderTrack = document.getElementById('cddSliderTrack');
-const cddThumbs = document.querySelectorAll('.cdd-thumb');
-const cddSlideWidth = 800;
-const cddSlideCount = cddSliderTrack.children.length;
-
-let cddCurrentIndex = 1;
-let cddIsDragging = false;
-let cddStartX = 0;
-let cddPrevTranslate = -cddSlideWidth;
-
-function cddCloneSlides() {
-    const first = cddSliderTrack.children[0].cloneNode(true);
-    const last = cddSliderTrack.children[cddSlideCount - 1].cloneNode(true);
-    cddSliderTrack.appendChild(first);
-    cddSliderTrack.insertBefore(last, cddSliderTrack.firstChild);
-    cddSliderTrack.style.transform = `translateX(-${cddSlideWidth * cddCurrentIndex}px)`;
-}
-cddCloneSlides();
-
-cddThumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-        cddCurrentIndex = index + 1;
-        cddUpdateSlider();
-    });
-});
-
-function cddUpdateSlider() {
-    cddSliderTrack.style.transition = 'transform 0.4s ease';
-    cddSliderTrack.style.transform = `translateX(-${cddSlideWidth * cddCurrentIndex}px)`;
-    cddUpdateThumbs();
-}
-
-function cddUpdateThumbs() {
-    cddThumbs.forEach(t => t.classList.remove('active'));
-    if (cddCurrentIndex > 0 && cddCurrentIndex <= cddThumbs.length)
-        cddThumbs[(cddCurrentIndex - 1 + cddThumbs.length) % cddThumbs.length].classList.add('active');
-}
-
-document.addEventListener('mousedown', (e) => {
-    if (!e.target.closest('.cdd-slider-track')) return;
-    cddIsDragging = true;
-    cddStartX = e.clientX;
-    cddSliderTrack.style.transition = 'none';
-});
-
-document.addEventListener('mouseup', (e) => {
-    if (!cddIsDragging) return;
-    cddIsDragging = false;
-    const movedBy = e.clientX - cddStartX;
-
-    if (movedBy < -100) cddCurrentIndex++;
-    else if (movedBy > 100) cddCurrentIndex--;
-
-    cddUpdateSlider();
-});
-
-document.addEventListener('mousemove', (e) => {
-    if (!cddIsDragging) return;
-    const moved = e.clientX - cddStartX;
-    cddSliderTrack.style.transform = `translateX(${cddPrevTranslate + moved}px)`;
-});
-
-cddSliderTrack.addEventListener('transitionend', () => {
-    if (cddCurrentIndex === 0) {
-        cddSliderTrack.style.transition = 'none';
-        cddCurrentIndex = cddSlideCount;
-        cddSliderTrack.style.transform = `translateX(-${cddSlideWidth * cddCurrentIndex}px)`;
-    }
-    if (cddCurrentIndex === cddSlideCount + 1) {
-        cddSliderTrack.style.transition = 'none';
-        cddCurrentIndex = 1;
-        cddSliderTrack.style.transform = `translateX(-${cddSlideWidth * cddCurrentIndex}px)`;
-    }
-    cddPrevTranslate = -cddSlideWidth * cddCurrentIndex;
-    cddUpdateThumbs();
-});
-
-document.querySelectorAll('img').forEach(img => {
-    img.ondragstart = () => false;
-});
-
 
 
 // 창업혜택 헤더 이미지

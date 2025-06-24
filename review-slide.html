@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+.sec10_1-client {padding-bottom: 1.875em;}
+.sec10_1-client__wrap {display: flex; overflow:hidden; position:relative;}
+.sec10_1-client__list {display:flex; align-items:center; overflow:hidden; flex-shrink:0;}
+.sec10_1-client__wrap:not(.reverse) .sec10_1-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft1;}
+.sec10_1-client__wrap:not(.reverse) .sec10_1-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft2;}
+.sec10_1-client__wrap.reverse .sec10_1-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft3;}
+.sec10_1-client__wrap.reverse .sec10_1-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft4;}
+.sec10_1-client__item {margin-right: 2.1875em;}
+.sec10_1-client__item img {height: auto;}
+
+/* 마우스 올렸을때 애니메이션 스탑 */
+.sec10_1-client__wrap:hover .sec10_1-client__list.original {animation-play-state: paused}
+.sec10_1-client__wrap:hover .sec10_1-client__list.clone {animation-play-state: paused}
+
+@keyframes rollingleft1 { /* 정방향 original */
+0% { transform: translateX(0); }
+50% { transform: translateX(-100%); }
+50.01%{ transform: translateX(100%); }
+100%{ transform: translateX(0); }
+}
+
+@keyframes rollingleft2 { /* 정방향 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(-200%);}
+}
+
+@keyframes rollingleft3 { /* 역행 original */
+0% {transform: translateX(0);}
+50% {transform: translateX(100%);}
+50.01%{transform: translateX(-100%);}
+100%{transform: translateX(0);}
+}
+
+@keyframes rollingleft4 { /* 역행 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(200%);}
+}
+
+</style>
+    <div class="sec10">
+    <div class="inner-1590">
+        <div class="sec10-tit aos-init aos-animate" data-aos="fade-up">
+            <h2 class="sec10-tit__title agro">
+                5.0 만점 평가 받은 <br>
+                <span>소문난 닭강정 맛집</span>
+            </h2>
+            <p class="sec10-tit__desc">속이 꽉찬, 육즙가득한, 부드러운 속살과 비법 특제 소스로 완성한 <br>
+            프리미엄 닭강정의 맛은 고객님들께서 이미 인증해 주고 계십니다.</p>
+        </div>
+    </div>
+<section class="sec10_1-client">
+	<div class="sec10_1-client__wrap reverse" dir="rtl">
+		<ul class="sec10_1-client__list original">
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img01.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img02.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img03.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img04.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img05.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img06.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img07.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img08.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img09.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img10.jpg" alt=""></li>
+		</ul>
+	<ul class="sec10_1-client__list clone">
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img01.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img02.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img03.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img04.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img05.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img06.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img07.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img08.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img09.jpg" alt=""></li>
+      <li class="sec10_1-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_1-client_img10.jpg" alt=""></li>
+		</ul></div>
+</section>
+
+<script>
+
+  function marquee_sec10_1(cnt){
+    const wrap_sec10_1 = document.querySelector(".sec10_1-client");
+    const marquee_sec10_1 = document.querySelector(".sec10_1-client__wrap");
+    let roller_sec10_1 = document.querySelector('.sec10_1-client__list');
+    let rollerClone_sec10_1 = roller_sec10_1.cloneNode(true);
+    for(let i=0; i < cnt; i++){          
+      if(i < 1){
+        marquee_sec10_1.appendChild(rollerClone_sec10_1)
+        marquee_sec10_1.classList.add("reverse");
+        marquee_sec10_1.setAttribute("dir", "rtl")
+      }else{
+        const marqueeClone_sec10_1 = marquee_sec10_1.cloneNode(true);
+        wrap_sec10_1.appendChild(marqueeClone_sec10_1)
+        roller_sec10_1 = document.querySelector('.sec10_1-client__wrap');
+        rollerClone_sec10_1 = roller_sec10_1.cloneNode(true);
+        if(i % 2 == 1) {
+          marqueeClone_sec10_1.classList.add("reverse");
+          marqueeClone_sec10_1.setAttribute("dir", "rtl")
+        }
+      }
+      roller_sec10_1.classList.add("original")
+      rollerClone_sec10_1.classList.add("clone")
+    };
+  }
+  marquee_sec10_1(1);
+
+</script>    
+
+<style>
+.sec10_2-client {padding-bottom: 1.875em;}
+.sec10_2-client__wrap {display: flex; overflow:hidden; position:relative;}
+.sec10_2-client__list {display:flex; align-items:center; overflow:hidden; flex-shrink:0;}
+.sec10_2-client__wrap:not(.reverse) .sec10_2-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft1;}
+.sec10_2-client__wrap:not(.reverse) .sec10_2-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft2;}
+.sec10_2-client__wrap.reverse .sec10_2-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft3;}
+.sec10_2-client__wrap.reverse .sec10_2-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft4;}
+.sec10_2-client__item {margin-right: 2.1875em;}
+.sec10_2-client__item img {height: auto;}
+
+/* 마우스 올렸을때 애니메이션 스탑 */
+.sec10_2-client__wrap:hover .sec10_2-client__list.original {animation-play-state: paused}
+.sec10_2-client__wrap:hover .sec10_2-client__list.clone {animation-play-state: paused}
+
+@keyframes rollingleft1 { /* 정방향 original */
+0% { transform: translateX(0); }
+50% { transform: translateX(-100%); }
+50.01%{ transform: translateX(100%); }
+100%{ transform: translateX(0); }
+}
+
+@keyframes rollingleft2 { /* 정방향 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(-200%);}
+}
+
+@keyframes rollingleft3 { /* 역행 original */
+0% {transform: translateX(0);}
+50% {transform: translateX(100%);}
+50.01%{transform: translateX(-100%);}
+100%{transform: translateX(0);}
+}
+
+@keyframes rollingleft4 { /* 역행 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(200%);}
+}
+</style>
+
+<section class="sec10_2-client">
+	<div class="sec10_2-client__wrap">
+		<ul class="sec10_2-client__list original">
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img01.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img02.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img03.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img04.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img05.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img06.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img07.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img08.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img09.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img10.jpg" alt=""></li>
+		</ul>
+	<ul class="sec10_2-client__list clone">
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img01.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img02.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img03.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img04.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img05.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img06.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img07.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img08.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img09.jpg" alt=""></li>
+      <li class="sec10_2-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_2-client_img10.jpg" alt=""></li>
+		</ul></div>
+</section>
+<script>
+
+  function marquee_sec10_2(cnt){
+    const wrap_sec10_2 = document.querySelector(".sec10_2-client");
+    const marquee_sec10_2 = document.querySelector(".sec10_2-client__wrap");
+    let roller_sec10_2 = document.querySelector('.sec10_2-client__list');
+    let rollerClone_sec10_2 = roller_sec10_2.cloneNode(true);
+    for(let i=0; i < cnt; i++){          
+      if(i < 1){
+        marquee_sec10_2.appendChild(rollerClone_sec10_2)
+      }else{
+        const marqueeClone_sec10_2 = marquee_sec10_2.cloneNode(true);
+        wrap_sec10_2.appendChild(marqueeClone_sec10_2)
+        roller_sec10_2 = document.querySelector('.sec10_2-client__wrap');
+        rollerClone_sec10_2 = roller_sec10_2.cloneNode(true);
+        if(i % 2 == 1) {
+          marqueeClone_sec10_2.classList.add("reverse");
+          marqueeClone_sec10_2.setAttribute("dir", "rtl")
+        }
+      }
+      roller_sec10_2.classList.add("original")
+      rollerClone_sec10_2.classList.add("clone")
+    };
+  }
+  marquee_sec10_2(1);
+
+</script>    
+
+<style>
+.sec10_3-client {}
+.sec10_3-client__wrap {display: flex; overflow:hidden; position:relative;}
+.sec10_3-client__list {display:flex; align-items:center; overflow:hidden; flex-shrink:0;}
+.sec10_3-client__wrap:not(.reverse) .sec10_3-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft1;}
+.sec10_3-client__wrap:not(.reverse) .sec10_3-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft2;}
+.sec10_3-client__wrap.reverse .sec10_3-client__list.original{animation: 45s linear 0s infinite normal forwards running rollingleft3;}
+.sec10_3-client__wrap.reverse .sec10_3-client__list.clone{animation: 45s linear 0s infinite normal none running rollingleft4;}
+.sec10_3-client__item {margin-right: 2.1875em;}
+.sec10_3-client__item img {height: auto;}
+
+/* 마우스 올렸을때 애니메이션 스탑 */
+.sec10_3-client__wrap:hover .sec10_3-client__list.original {animation-play-state: paused}
+.sec10_3-client__wrap:hover .sec10_3-client__list.clone {animation-play-state: paused}
+
+@keyframes rollingleft1 { /* 정방향 original */
+0% { transform: translateX(0); }
+50% { transform: translateX(-100%); }
+50.01%{ transform: translateX(100%); }
+100%{ transform: translateX(0); }
+}
+
+@keyframes rollingleft2 { /* 정방향 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(-200%);}
+}
+
+@keyframes rollingleft3 { /* 역행 original */
+0% {transform: translateX(0);}
+50% {transform: translateX(100%);}
+50.01%{transform: translateX(-100%);}
+100%{transform: translateX(0);}
+}
+
+@keyframes rollingleft4 { /* 역행 clone */
+0% {transform: translateX(0);}
+100% {transform: translateX(200%);}
+}
+</style>
+
+<section class="sec10_3-client">
+	<div class="sec10_3-client__wrap reverse" dir="rtl">
+		<ul class="sec10_3-client__list original">
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img01.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img02.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img03.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img04.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img05.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img06.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img07.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img08.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img09.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img10.jpg" alt=""></li>
+		</ul>
+	<ul class="sec10_3-client__list clone">
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img01.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img02.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img03.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img04.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img05.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img06.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img07.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img08.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img09.jpg" alt=""></li>
+      <li class="sec10_3-client__item"><img src="http://bz150525b.ilogin.biz/theme/responsive_gochicken/include/img/sec10_3-client_img10.jpg" alt=""></li>
+		</ul></div>
+</section>
+
+<script>
+
+  function marquee_sec10_3(cnt){
+    const wrap_sec10_3 = document.querySelector(".sec10_3-client");
+    const marquee_sec10_3 = document.querySelector(".sec10_3-client__wrap");
+    let roller_sec10_3 = document.querySelector('.sec10_3-client__list');
+    let rollerClone_sec10_3 = roller_sec10_3.cloneNode(true);
+    for(let i=0; i < cnt; i++){          
+      if(i < 1){
+        marquee_sec10_3.appendChild(rollerClone_sec10_3)
+        marquee_sec10_3.classList.add("reverse");
+        marquee_sec10_3.setAttribute("dir", "rtl")
+      }else{
+        const marqueeClone_sec10_3 = marquee_sec10_3.cloneNode(true);
+        wrap_sec10_3.appendChild(marqueeClone_sec10_3)
+        roller_sec10_3 = document.querySelector('.sec10_3-client__wrap');
+        rollerClone_sec10_3 = roller_sec10_3.cloneNode(true);
+        if(i % 2 == 1) {
+          marqueeClone_sec10_3.classList.add("reverse");
+          marqueeClone_sec10_3.setAttribute("dir", "rtl")
+        }
+      }
+      roller_sec10_3.classList.add("original")
+      rollerClone_sec10_3.classList.add("clone")
+    };
+  }
+  marquee_sec10_3(1);
+
+</script>
+</html>
