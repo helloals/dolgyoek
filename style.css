@@ -1216,10 +1216,11 @@ font-weight: bold;
   .rev-div{
     text-align: center;
     background-color: black;
+    height: 450px;
   }
   .rev-div span{
     font-family: 'JalnanGothicTTF.ttf';
-font-size: 50px;
+font-size: 100px;
 font-weight: bolder;
 color: white;
   }
@@ -1821,8 +1822,8 @@ a {
 
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
-  left: 50%;
-  transform: translateX(-40%);
+  left: 40%;
+  transform: translateX(-50%);
   bottom: 10vh;
   z-index: 16;
   width: 90%;
