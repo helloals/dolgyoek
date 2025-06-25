@@ -36,11 +36,21 @@
     transform: translateX(-50%);
     font-weight: bolder;
   }
+  .star{
+    width: 50%;
+  }
   .item img{
     width: 50%;
+    height: auto;
   }
   #thway-div span{
     font-size: 30px;
+  }
+  #change{
+    transform: translateY(40%);
+  }
+  #dudung-span4{
+    font-size: 25px;
   }
   #dudung-span5{
     font-size: 30px;
@@ -54,11 +64,17 @@
   #delivery-div-2 span{
 font-size: 40px;
   }
+  #delivery-div-3{
+    transform: translate(-60%, -90%);
+  }
+  #delivery-div-4{
+    transform: translateY(-120%);
+  }
   #delivery-div-3 .blink-text{
     font-size: 50px;
   }
   #delivery-div-3 #delivery-div-3-span{
-    font-size: 40px;
+    font-size: 30px;
   }
   #delivery-div-4 span{
     font-size: 20px;
@@ -76,6 +92,12 @@ font-size: 40px;
   #interior-text-2{
     font-size: 35px;
   }
+.inner-1330{
+  position: relative;
+  left: 50%;
+  transform: translateX(-65%);
+  
+  }
   .rev-div span{
     position: relative;
     transform: translateY(20%);
@@ -89,7 +111,7 @@ font-size: 40px;
 }
 .sec15-2{
     position: relative;
-    margin-top: 40%;    
+    margin-top: 90%;    
 }
 .table-title{
     font-size: 18px;
@@ -110,6 +132,9 @@ font-size: 15px;
     width: 150px;
     height: 150px;
     transform: translateX(-35%);
+}
+.cost-led-orbit{
+  display: none;
 }
 .mobile-form{
    position: fixed;

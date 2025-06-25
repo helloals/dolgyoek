@@ -1,4 +1,4 @@
-@media screen and (min-width: 481px) and (max-width: 767px) {
+@media screen and (min-width: 0px) and (max-width: 480px) {
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@
     width: 50%;
   }
   .item img{
-    width: 45%;
+    width: 30%;
     height: auto;
   }
   #wating1{
@@ -54,7 +54,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
  #story #story-1st{
-    font-size: 40px;
+    font-size: 1.5rem
+  }
+  #story #story-2nd{
+    font-size: 1.3rem;
   }
   .interview-slide-button.interview-slide-prev{
       position: absolute;
@@ -69,138 +72,198 @@
     transform: translateY(20%);
 }
 #change-span-2{
-    font-size: 35px;
+    font-size: 1.5rem;
 }
 #change-span-3{
-font-size: 25px;
+font-size: 1.2rem;
 }
 #change-span-4{
     display: block;
-    font-size: 25px;
+    font-size: 1.5rem;
 }
 #change-span-5{
-font-size: 25px;
+font-size: 1.3rem;
 }
 #change-span-6{
-font-size: 25px;
+font-size: 1.3rem;
+}
+#change-span-7{
+font-size: 1.3rem;
+    
 }
 #dudung span{
-    font-size: 25px;
+    font-size: 1.3rem;
 }
 #dudung-span2{
-    font-size: 50px;
+    font-size: 2rem;
 }
 #dudung-span3{
-    font-size: 25px;
+    font-size: 1.3rem;
 }
 #thway-div{
     width: 100%;
 }
 #thway-div span{
-    font-size: 20px;
+    font-size: 1rem;
 }
 #dudung-span5{
-font-size: 35px;
+font-size: 1.3rem;
 }
 .dudung-span6{
-font-size: 35px;
+font-size: 1.3rem;
 }
   #delivery-div-2{
-    transform: translate(-50%,-170%);
+    position: relative;
+    top: -7vh;
   }
   #delivery-div-2 span{
-font-size: 40px;
+font-size: 1.3rem;
   }
   #delivery-div-3{
+    align-items: center;
     position: relative;
-    transform: translate(-60%, -90%);
+    top: -15vh;
+  }
+  #delivery-div-3 img{
+    width: 25%;
+    margin-bottom: 5%;
   }
   #delivery-div-3 .blink-text{
-    font-size: 50px;
+    font-size: 1.3rem;
+    
   }
   #delivery-div-3 #delivery-div-3-span{
-    font-size: 30px;
+    font-size: 1rem;
   
   }
   #delivery-div-4{
     position: relative;
-    transform: translateY(-110%);
+    top: -14vh;
   }
   #delivery-div-4 span{
-    font-size: 20px;
+    font-size: 0.7rem;
   }
 #sec-9 span{
     position: relative;
-    left: -10%;
-font-size: 60px;
+    font-size: 2rem;
 }
 .image-gallery{
     width: 200%;
+}
+.section11-image.last.show{
+    top: 52vh;
 }
 #competition-slide{
   height: auto;
 }
 #interior-text-1{
-font-size: 35px;
+font-size: 1.7rem;
 }
 #interior-text-2{
-font-size: 25px;
+font-size: 1.1rem;
 }
-.inner-1330{
-  position: relative;
-  left: 50%;
-  transform: translateX(-65%);
+.s14{
+    width: 110%;
+    position: relative;
+    left: -10%;
 }
+.inner-1330 .s14-tit__title.agro{
+    font-size: 1.4rem;
+}
+.s14-tit__link{
+width: 50%;
+}
+.inner-1330 .s14-tit__desc{
+    font-size: 0.8rem;
+}
+ a.s14-tit__link {
+    font-size: 1rem;
+    width: 70%;
+    min-width: 0;
+    height: 2em;
+    padding: 0 0.3em;
+  }
+  .s14-tit__list {
+    gap: 6px;
+  }
 .rev-div span{
-  font-size: 60px;
+  font-size: 2rem;
 }
 .rev-div p{
-    font-size: 20px;
+    font-size: 1rem;
 }
 .waviy span{
-    font-size: 40px;
+    font-size: 1.5rem;
 }
 .font-light{
 font-size: 25px;
 }
 .sec-15 .sec-15-span-1{
-    font-size: 40px;
+    font-size: 2.5rem
 }
 .sec-15 .sec-15-span-2{
-    font-size: 40px;
+    font-size: 2.5rem
 }
 .sec-15 .sec-15-span-3{
-    font-size: 30px;
+    font-size: 1.7rem;
 }
 .sec-15 .sec-15-span-4{
-    font-size: 30px;
+    font-size: 1.7rem;
 }
 .sec15-2{
     position: relative;
-    margin-top: 90%;    
+    margin-top: 250%;    
+}
+.sec15-2-span-1{
+    font-size: 1.5rem;
+}
+.sec15-2-span-2{
+    font-size: 2rem;
+}
+.sec15-2-span-3{
+    font-size: 2rem;
+
+}
+.sec15-2-span-4{
+    font-size: 2rem;
+
+}
+.sec15-2-span-5{
+    font-size: 2rem;
+
+}
+.sec15-2-span-6{
+    font-size: 2rem;
+
 }
 .table-title{
-    font-size: 15px;
+    font-size: 1rem;
 }
 .sec12-table td{
-font-size: 15px;
+font-size: 0.8rem;
 }
 .sec12-table table{
     width: 140%;
 }
 #Tab1{
     position: relative;
-    width: 70%;
+    width: 100%;
     left: 50%;
     transform: translateX(-30%);
 }
 .cost-container{
-    position: relative;;
-    transform: translateX(-20%);
-    
+    position: relative;
+    transform: translateX(-30%);
 }
 .cost-led-orbit{
   display: none;
+}
+.cost-circle-img{
+    width: 70%;
+    height: 70%;
+}
+.from-dolgyoek-text span{
+font-size: 1.3rem;
 }
 .mobile-form{
    position: fixed;
@@ -301,6 +364,4 @@ height: 30px;
   .radio-group .submit{
     width: 80px;
   }
-
-
 }
