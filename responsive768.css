@@ -1,0 +1,113 @@
+@media (max-width: 768px) {
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 1500;
+    padding-top: 80px;
+    align-items: flex-start;
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+    box-shadow: -2px 0 20px rgba(0,0,0,0.08);
+    overflow-y: auto;
+  }
+  .menu-items.active {
+    right: 0;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  .nav-span{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bolder;
+  }
+  #thway-div span{
+    font-size: 30px;
+  }
+  #dudung-span5{
+    font-size: 30px;
+  }
+  .dudung-span6{
+    font-size: 30px;
+  }
+  #delivery-div-2{
+    transform: translate(-50%,-170%);
+  }
+  #delivery-div-2 span{
+font-size: 40px;
+  }
+  #delivery-div-3 .blink-text{
+    font-size: 50px;
+  }
+  #delivery-div-3 #delivery-div-3-span{
+    font-size: 40px;
+  }
+  #delivery-div-4 span{
+    font-size: 20px;
+  }
+  #sec-9 span{
+    position: relative;
+    left: -25%
+  }
+  .redocean{
+    width: 60%;
+  }
+  #competition-slide{
+    height: 422px;
+  }
+  #interior-text-2{
+    font-size: 35px;
+  }
+  .rev-div span{
+    position: relative;
+    transform: translateY(20%);
+    font-size: 50px;
+  }
+  .rev-div p{
+  font-size: 25px;
+}
+.waviy span{
+    font-size: 50px;
+}
+.sec15-2{
+    position: relative;
+    margin-top: 40%;    
+}
+.table-title{
+    font-size: 18px;
+}
+.sec12-table td{
+font-size: 15px;
+}
+.sec12-table table{
+    width: 130%;
+}
+#Tab1{
+    position: relative;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-40%);
+}
+.cost-container{
+    width: 150px;
+    height: 150px;
+    transform: translateX(-35%);
+}
+
+
+}
