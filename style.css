@@ -239,10 +239,26 @@ h1{
 .roller img{
   width: 500px;
   height: 500px;
+  display: block;
 }
 .rolling_list {
   display: flex;
   flex-direction: row;
+   list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+.wrap .rolling_list .item {
+  width: 500px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  margin: 0;
+  padding: 0;
 }
 .scroll-wrapper .scroll-text.from-left{
 font-size: 60px;
@@ -254,15 +270,6 @@ background-color: #b80101;
 font-size: 45px;
 color: white;
 font-weight: bolder;
-}
-.wrap .rolling_list .item {
-  width: 500px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: #fff;
 }
 .roller .rolling_list.original {
   animation: rollingTop1 90s linear infinite;

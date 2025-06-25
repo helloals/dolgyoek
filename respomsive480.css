@@ -39,10 +39,20 @@
   .star{
     width: 50%;
   }
+  .item{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
   .item img{
-    width: 30%;
+    width: 40%;
     height: auto;
   }
+  .rolling_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
   #wating1{
     width: 100%;
     display: grid;
@@ -100,11 +110,17 @@ font-size: 1.3rem;
 #dudung-span3{
     font-size: 1.3rem;
 }
+.thway-img.visible{
+    width: 25%;
+}
+.thway-img.visible img{
+    width: 100%;
+}
 #thway-div{
     width: 100%;
 }
 #thway-div span{
-    font-size: 1rem;
+    font-size: 0.7rem;
 }
 #dudung-span5{
 font-size: 1.3rem;
@@ -169,19 +185,16 @@ font-size: 1.1rem;
 }
 .inner-1330 .s14-tit__title.agro{
     font-size: 1.4rem;
-}
-.s14-tit__link{
-width: 50%;
+
+
 }
 .inner-1330 .s14-tit__desc{
     font-size: 0.8rem;
 }
- a.s14-tit__link {
+.s14-tit__item  a.s14-tit__link {
     font-size: 1rem;
-    width: 70%;
+    width: 7em;
     min-width: 0;
-    height: 2em;
-    padding: 0 0.3em;
   }
   .s14-tit__list {
     gap: 6px;
