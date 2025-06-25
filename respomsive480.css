@@ -36,6 +36,9 @@
     transform: translateX(-50%);
     font-weight: bolder;
   }
+  .main-sec-1{
+    width: 100%;
+  }
   .star{
     width: 50%;
   }
@@ -45,7 +48,7 @@
     padding: 0;
   }
   .item img{
-    width: 40%;
+    width: 80%;
     height: auto;
   }
   .rolling_list {
@@ -69,13 +72,16 @@
   #story #story-2nd{
     font-size: 1.3rem;
   }
+  .interview-slide-container{
+    height: 500px;
+  }
   .interview-slide-button.interview-slide-prev{
       position: absolute;
-      top:30%
+      top:45%
     }
     .interview-slide-button.interview-slide-next{
         position: absolute;
-        top:30%
+        top:45%
 }
 #change{
     position: relative;
