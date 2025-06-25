@@ -160,9 +160,6 @@ h1{
   transform: translateX(-50%);
   top: 130%;
 }
-.star img{
-  width: 100%;
-}
 #miracle{
   position: relative; 
   left: 50%;
@@ -632,6 +629,9 @@ font-weight: bolder;
     }
     #sec-9 img{
       width: 30%;
+    }
+    .sec-9-span-1, .sec-9-span-2{
+      color: #9e0404;
     }
         .blink-img img {
           animation: blink 1s infinite;
@@ -2055,12 +2055,12 @@ a {
   justify-content: center;
   align-items: center;
   width: 44px;
-  height: 44px;
+  height: 48px;
   cursor: pointer;
   background: none;
   border: none;
   position: fixed;
-  top: 18px;
+  top: 10px;
   right: 16px;
   padding: 0;
   z-index: 2000;
