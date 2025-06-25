@@ -1822,7 +1822,7 @@ a {
 
 #from-dolgyoek .from-dolgyoek-text {
   position: absolute;
-  left: 40%;
+  left: 50%;
   transform: translateX(-50%);
   bottom: 10vh;
   z-index: 16;
