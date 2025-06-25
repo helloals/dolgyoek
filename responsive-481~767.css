@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 767px) {
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -37,79 +37,150 @@
     font-weight: bolder;
   }
   .item img{
-    width: 50%;
+    width: 45%;
   }
-  #thway-div span{
-    font-size: 30px;
+  #wating1{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
-  #dudung-span5{
-    font-size: 30px;
+  #wating2{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .dudung-span6{
-    font-size: 30px;
-  }
-  #delivery-div-2{
-    transform: translate(-50%,-170%);
-  }
-  #delivery-div-2 span{
-font-size: 40px;
-  }
-  #delivery-div-3 .blink-text{
-    font-size: 50px;
-  }
-  #delivery-div-3 #delivery-div-3-span{
+ #story #story-1st{
     font-size: 40px;
   }
-  #delivery-div-4 span{
-    font-size: 20px;
-  }
-  #sec-9 span{
-    position: relative;
-    left: -25%
-  }
-  .redocean{
-    width: 60%;
-  }
-  #competition-slide{
-    height: 422px;
-  }
-  #interior-text-2{
-    font-size: 35px;
-  }
-  .rev-div span{
+  .interview-slide-button.interview-slide-prev{
+      position: absolute;
+      top:30%
+    }
+    .interview-slide-button.interview-slide-next{
+        position: absolute;
+        top:30%
+}
+#change{
     position: relative;
     transform: translateY(20%);
+}
+#change-span-2{
+    font-size: 35px;
+}
+#change-span-3{
+font-size: 25px;
+}
+#change-span-4{
+    display: block;
+    font-size: 25px;
+}
+#change-span-5{
+font-size: 25px;
+}
+#change-span-6{
+font-size: 25px;
+}
+#dudung span{
+    font-size: 25px;
+}
+#dudung-span2{
     font-size: 50px;
-  }
-  .rev-div p{
-  font-size: 25px;
+}
+#dudung-span3{
+    font-size: 25px;
+}
+#thway-div{
+    width: 100%;
+}
+#thway-div span{
+    font-size: 20px;
+}
+#dudung-span5{
+font-size: 35px;
+}
+.dudung-span6{
+font-size: 35px;
+}
+#delivery-div-2{
+    transform: translate(-50%, -240%);
+}
+#delivery-div-2 span{
+    font-size: 25px;
+}
+#delivery-div-3{
+    transform: translate(-60%, -130%);
+}
+#delivery-div-3 .blink-text{
+    font-size: 40px;
+}
+#delivery-div-3 #delivery-div-3-span{
+    font-size: 25px;
+}
+#delivery-div-4{
+    position: relative;
+    font-size: 20px;
+    transform: translateY(-100%);
+}
+#sec-9 span{
+    position: relative;
+    left: -15%;
+font-size: 60px;
+}
+.image-gallery{
+    width: 200%;
+}
+#interior-text-1{
+font-size: 35px;
+}
+#interior-text-2{
+font-size: 25px;
+}
+.s14-tit__desc{
+    font-size: 1.1em;
+}
+.rev-div p{
+    font-size: 20px;
 }
 .waviy span{
-    font-size: 50px;
+    font-size: 40px;
+}
+.font-light{
+font-size: 25px;
+}
+.sec-15 .sec-15-span-1{
+    font-size: 40px;
+}
+.sec-15 .sec-15-span-2{
+    font-size: 40px;
+}
+.sec-15 .sec-15-span-3{
+    font-size: 30px;
+}
+.sec-15 .sec-15-span-4{
+    font-size: 30px;
 }
 .sec15-2{
     position: relative;
-    margin-top: 40%;    
+    top: 40vh;
 }
 .table-title{
-    font-size: 18px;
+    font-size: 15px;
 }
 .sec12-table td{
 font-size: 15px;
 }
 .sec12-table table{
-    width: 130%;
+    width: 140%;
 }
 #Tab1{
     position: relative;
-    width: 90%;
+    width: 80%;
     left: 50%;
-    transform: translateX(-40%);
+    transform: translateX(-30%);
 }
 .cost-container{
-    width: 150px;
-    height: 150px;
-    transform: translateX(-35%);
+    position: relative;
+    transform: translateX(-20%);
 }
 .mobile-form{
    position: fixed;
@@ -210,5 +281,6 @@ height: 30px;
   .radio-group .submit{
     width: 80px;
   }
+
 
 }

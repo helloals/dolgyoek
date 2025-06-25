@@ -36,6 +36,9 @@
     transform: translateX(-50%);
     font-weight: bolder;
   }
+  .item img{
+    width: 55%;
+  }
  #story #story-2nd{
     font-size: 25px;
   }

@@ -51,6 +51,13 @@
     height: 80%;
   }
   
+ .bottom-form .form-slogan, .bottom-form-logo{
+    display: none;
+  }
+  .radio-group{
+    display: block;
+  }
+  
 
   /* ✅ 1100px 이하일 때 햄버거 메뉴 전환 */
   @media (max-width: 1100px) {

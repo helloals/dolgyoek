@@ -36,7 +36,7 @@
     transform: translateX(-50%);
     font-weight: bolder;
   }
-  /* .main-sec-1{
+  .main-sec-1{
     height: 700px;
   }
   .star{
@@ -484,6 +484,6 @@ height: 30px;
   }
   .radio-group .submit{
     width: 80px;
-  } */
+  }
 
 }

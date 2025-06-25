@@ -113,4 +113,10 @@ font-size: 80px;
 .cost-led-orbit{
     display: none;
 }
+ .bottom-form .form-slogan, .bottom-form-logo{
+    display: none;
+  }
+  .radio-group{
+    display: block;
+  }
 }
