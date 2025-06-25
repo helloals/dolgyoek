@@ -1427,10 +1427,10 @@ font-size: 50px;
 
 
 #benefit-div .flex{
-width: 100%;
+width: 80%;
 position: relative;
 left: 50%;
-transform: translate(-50%, -40%);
+transform: translate(-50%, -60%);
 }
 #benefit-div .flex img{
   width: 100%;

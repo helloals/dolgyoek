@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="responsive1440.css">
     <link rel="stylesheet" href="responsive1024~1440.css">
     <link rel="stylesheet" href="responsive1024.css">
+    <link rel="stylesheet" href="responsive769~1023.css">
     <script src="./script.js" defer></script>
     <style>
         /* 상단/하단 여백 */
@@ -242,29 +243,67 @@
     <button class="interview-slide-button interview-slide-next" id="interviewSlideNext">&#10095;</button>
   </div>
   <script>
-     const interviewSlideTrack = document.getElementById('interviewSlideTrack');
-    const interviewSlides = document.querySelectorAll('.interview-slide');
-    const interviewSlidePrev = document.getElementById('interviewSlidePrev');
-    const interviewSlideNext = document.getElementById('interviewSlideNext');
+   const interviewSlideTrack = document.getElementById('interviewSlideTrack');
+let interviewSlides = document.querySelectorAll('.interview-slide');
+const interviewSlidePrev = document.getElementById('interviewSlidePrev');
+const interviewSlideNext = document.getElementById('interviewSlideNext');
 
-    let interviewSlideIndex = 0;
+let interviewSlideIndex = 1;
 
-    function updateInterviewSlidePosition() {
-      const slideWidth = interviewSlides[0].clientWidth;
-      interviewSlideTrack.style.transform = `translateX(-${interviewSlideIndex * slideWidth}px)`;
-    }
+// 🔁 슬라이드 복제
+const interviewFirstClone = interviewSlides[0].cloneNode(true);
+const interviewLastClone = interviewSlides[interviewSlides.length - 1].cloneNode(true);
+interviewSlideTrack.appendChild(interviewFirstClone);
+interviewSlideTrack.insertBefore(interviewLastClone, interviewSlides[0]);
 
-    interviewSlideNext.addEventListener('click', () => {
-      interviewSlideIndex = (interviewSlideIndex + 1) % interviewSlides.length;
-      updateInterviewSlidePosition();
-    });
+// 🔄 복제 후 슬라이드 다시 선택
+interviewSlides = document.querySelectorAll('.interview-slide');
 
-    interviewSlidePrev.addEventListener('click', () => {
-      interviewSlideIndex = (interviewSlideIndex - 1 + interviewSlides.length) % interviewSlides.length;
-      updateInterviewSlidePosition();
-    });
+// 슬라이드 이동 함수
+function updateInterviewSlidePosition(animated = true) {
+  const slideWidth = interviewSlides[0].getBoundingClientRect().width;
+  interviewSlideTrack.style.transition = animated ? 'transform 0.4s ease' : 'none';
+  interviewSlideTrack.style.transform = `translateX(-${interviewSlideIndex * slideWidth}px)`;
+}
 
-    window.addEventListener('resize', updateInterviewSlidePosition);
+// 초기 위치 (첫 번째 진짜 슬라이드)
+window.addEventListener('load', () => {
+  updateInterviewSlidePosition(false);
+});
+
+// ▶ 다음 슬라이드
+interviewSlideNext.addEventListener('click', () => {
+  if (interviewSlideIndex >= interviewSlides.length - 1) return;
+  interviewSlideIndex++;
+  updateInterviewSlidePosition();
+
+  if (interviewSlideIndex === interviewSlides.length - 1) {
+    setTimeout(() => {
+      interviewSlideIndex = 1;
+      updateInterviewSlidePosition(false);
+    }, 400);
+  }
+});
+
+// ◀ 이전 슬라이드
+interviewSlidePrev.addEventListener('click', () => {
+  if (interviewSlideIndex <= 0) return;
+  interviewSlideIndex--;
+  updateInterviewSlidePosition();
+
+  if (interviewSlideIndex === 0) {
+    setTimeout(() => {
+      interviewSlideIndex = interviewSlides.length - 2;
+      updateInterviewSlidePosition(false);
+    }, 400);
+  }
+});
+
+// 창 크기 변경 시 위치 재설정
+window.addEventListener('resize', () => {
+  updateInterviewSlidePosition(false);
+});
+
   </script>
     </div>
     <div>
@@ -1342,16 +1381,18 @@ $(function () {
                 <div><img src="./돌격닭강정/창업혜택/018.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/019.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/020.png" alt=""></div>
-                <div><img src="./돌격닭강정/창업혜택/021.png" alt=""></div>
             </div>
             <div class="flex">
+                <div><img src="./돌격닭강정/창업혜택/021.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/022.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/023.png" alt=""></div>
-                <div><img src="./돌격닭강정/창업혜택/024.png" alt=""></div>
-                <div><img src="./돌격닭강정/창업혜택/025.png" alt=""></div>
             </div>
             <div class="flex">
+                <div><img src="./돌격닭강정/창업혜택/024.png" alt=""></div>
+                <div><img src="./돌격닭강정/창업혜택/025.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/026.png" alt=""></div>
+            </div>
+            <div class="flex">
                 <div><img src="./돌격닭강정/창업혜택/027.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/028.png" alt=""></div>
                 <div><img src="./돌격닭강정/창업혜택/029.png" alt=""></div>

@@ -5,108 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    .custom-prev, .custom-next{
-      transform: translate(123123123%);
-    }
-    .custom-slide span{
-          }
-    .custom-slide .before-text{
-    }
-    .blinking-div{
-      position: absolute;
-    }
-    .blinking-text {
-      animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
-      color: red;
-      font-weight: bolder;
-      font-size: 20px;
-      text-align: center;
-      position: relative;      ;
-      transform: translate(120%, -850%)
-    }
-    .blink-text{
-      animation: blink 1s infinite;
-      /* 1초 간격으로 무한 반복 */
-      font-weight: bolder;
-    }
-    @media (max-width: 480px) {
-        .custom-slide{
-        width: 80%;
-    }
-    .custom-slide .before-text{
-        position: absolute;
-        top: 27%;
-        left: 8%;
-        font-size: 0.7rem;
-    }
-    .custom-slide .before-text{
-    position: absolute;
-    transform: translateY(0px)
-    }
-    .custom-slide .blinking-div{
-        position: absolute;
-        left: 25%;
-    }
-    }
+        .interview-slide-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+#interviewSlideTrack {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.interview-slide {
+  flex-shrink: 0;
+  width: 100%; /* 또는 고정 너비 */
+}
+
     </style>
 </head>
 <body>
-    <div class="custom-slider-container">
-            <div class='custom-slide'>
-                <img src="./004.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">350만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                            <p class="blinking-text">매출
-                            <p class="blinking-text">300%상승</p>
-                            </p>
-                    </div>
-                </div>
-            </div>
+    <div class="interview-slider">
+  <button id="interviewSlidePrev">〈</button>
+  <div class="interview-slide-viewport">
+    <div id="interviewSlideTrack">
+      <!-- JS에서 슬라이드 앞뒤 복제 예정 -->
+      <div class="interview-slide">1</div>
+      <div class="interview-slide">2</div>
+      <div class="interview-slide">3</div>
+    </div>
+  </div>
+  <button id="interviewSlideNext">〉</button>
+</div>
 
-            <div class='custom-slide'>
-                <img src="./005.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">320만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                        <p class="blinking-text">매출
-                        <p class="blinking-text">300%상승</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
+<script>
+    const track = document.getElementById('interviewSlideTrack');
+let slides = document.querySelectorAll('.interview-slide');
+const prevBtn = document.getElementById('interviewSlidePrev');
+const nextBtn = document.getElementById('interviewSlideNext');
 
-            <div class='custom-slide'>
-                <img src="./006.png" alt="">
-                <div class="flex">
-                    <div>
-                        <span class="before-text">555만원으로 업종변경</span>
-                    </div>
-                    <div class="blinking-div">
-                        <p class="blinking-text">매출
-                        <p class="blinking-text">300%상승</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
+let currentIndex = 1;
 
-            <button class="custom-prev" aria-label="이전 슬라이드"></button>
-            <button class="custom-next" aria-label="다음 슬라이드"></button>
-        </div>
+// 🔁 1. 슬라이드 복제 (앞뒤로)
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+
+track.appendChild(firstClone);
+track.insertBefore(lastClone, slides[0]);
+
+// 🔄 2. 복제된 상태 반영해서 새로 셀렉션
+slides = document.querySelectorAll('.interview-slide');
+
+// 3. 슬라이드 초기 위치 설정
+function goToSlide(index, animate = true) {
+  const slideWidth = slides[0].getBoundingClientRect().width;
+  if (!animate) track.style.transition = 'none';
+  else track.style.transition = 'transform 0.4s ease';
+
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+window.addEventListener('load', () => {
+  goToSlide(currentIndex, false);
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentIndex >= slides.length - 1) return;
+  currentIndex++;
+  goToSlide(currentIndex);
+
+  // 마지막 → 진짜 첫 번째 슬라이드 순간이동
+  if (currentIndex === slides.length - 1) {
+    setTimeout(() => {
+      currentIndex = 1;
+      goToSlide(currentIndex, false);
+    }, 400);
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex <= 0) return;
+  currentIndex--;
+  goToSlide(currentIndex);
+
+  // 첫 번째 → 진짜 마지막 슬라이드 순간이동
+  if (currentIndex === 0) {
+    setTimeout(() => {
+      currentIndex = slides.length - 2;
+      goToSlide(currentIndex, false);
+    }, 400);
+  }
+});
+
+// 리사이즈 대응
+window.addEventListener('resize', () => {
+  goToSlide(currentIndex, false);
+});
+
+</script>
 </body>
 </html>

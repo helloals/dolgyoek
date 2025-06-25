@@ -1,0 +1,116 @@
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 1500;
+    padding-top: 80px;
+    align-items: flex-start;
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+    box-shadow: -2px 0 20px rgba(0,0,0,0.08);
+    overflow-y: auto;
+  }
+  .menu-items.active {
+    right: 0;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  .nav-span{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bolder;
+  }
+ #story #story-2nd{
+    font-size: 25px;
+  }
+#story .interview-slide-container{
+    width: 80%;
+  }
+#story .interview-slide-button{
+    position: absolute;
+    top: 40%;
+}
+#change-span-4{
+    display: block;
+}
+#thway-div span{
+    font-size: 30px;
+}
+#dudung-span5{
+    font-size: 35px;
+}
+.dudung-span6{
+font-size: 35px;
+}
+#delivery-div-2{
+    position: relative;
+    margin-top: -10%;
+    transform: translate(-50%, -70%);
+}
+#delivery-div-2 span{
+    font-size: 40px;
+}
+#delivery-div-3 .blink-text{
+font-size: 60px;
+}
+#delivery-div-3 span{
+    font-size: 40px;
+}
+#delivery-div-4{
+    position: relative;
+    margin-top: 5%;
+}
+#sec-9 span{
+position: relative;
+left: -17%;
+}
+.image-gallery{
+    width: 160%;
+}
+#competition-slide{
+    width: 100%;
+}
+.waviy span{
+    font-size: 60px;
+}
+.sec15-2{
+    position: relative;
+    margin-top: 40%;
+}
+.sec15-2 span{
+    position: relative;
+    font-size: 30px;   
+}
+.table-title{
+    font-size: 20px;
+}
+.sec12-table td{
+font-size: 20px;
+}
+.sec12-table table{
+    width: 130%;
+}
+#Tab1{
+    position: relative;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-45%);
+}
+
+}
